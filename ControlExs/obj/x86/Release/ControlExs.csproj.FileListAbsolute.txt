@@ -1,0 +1,8 @@
+E:\project\mp4box\ControlExs\bin\Release\ControlExs.dll
+E:\project\mp4box\ControlExs\bin\Release\ControlExs.pdb
+E:\project\mp4box\ControlExs\obj\x86\Release\ControlExs.FormEx.resources
+E:\project\mp4box\ControlExs\obj\x86\Release\ControlExs.QQMessageBox.resources
+E:\project\mp4box\ControlExs\obj\x86\Release\ControlExs.Properties.Resources.resources
+E:\project\mp4box\ControlExs\obj\x86\Release\ControlExs.csproj.GenerateResource.Cache
+E:\project\mp4box\ControlExs\obj\x86\Release\ControlExs.dll
+E:\project\mp4box\ControlExs\obj\x86\Release\ControlExs.pdb
