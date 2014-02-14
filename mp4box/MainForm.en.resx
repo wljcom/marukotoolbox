@@ -140,34 +140,13 @@
     <value>Clip</value>
   </data>
   <data name="btnout4.Text" xml:space="preserve">
-    <value>Start</value>
-  </data>
-  <data name="cbFLV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 21</value>
-  </data>
-  <data name="cbFLV.Text" xml:space="preserve">
-    <value>Mux as FLV</value>
+    <value>OneKey</value>
   </data>
   <data name="cbDelTmp.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 21</value>
   </data>
   <data name="cbDelTmp.Text" xml:space="preserve">
     <value>Retain temporary files</value>
-  </data>
-  <data name="cbshutdown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 21</value>
-  </data>
-  <data name="cbshutdown.Text" xml:space="preserve">
-    <value>Auto shutdown</value>
-  </data>
-  <data name="btnvideo3.Text" xml:space="preserve">
-    <value>Video</value>
-  </data>
-  <data name="button8.Text" xml:space="preserve">
-    <value>Output</value>
-  </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>Independent ( x264 + NeroAAC )</value>
   </data>
   <data name="btnMIopen.Text" xml:space="preserve">
     <value>Open</value>
@@ -181,11 +160,17 @@
   <data name="txtMI.Text" xml:space="preserve">
     <value>Drag file here</value>
   </data>
+  <data name="AVSSaveButton.Text" xml:space="preserve">
+    <value>Save AVS</value>
+  </data>
   <data name="AVSSubCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 21</value>
   </data>
   <data name="AVSSubCheckBox.Text" xml:space="preserve">
     <value>Subtitle</value>
+  </data>
+  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 177</value>
   </data>
   <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
     <value>275, 12</value>
@@ -193,11 +178,23 @@
   <data name="label25.Text" xml:space="preserve">
     <value>Left,Up,-Right,-Down(or Left,Up,Width,Height)</value>
   </data>
+  <data name="AVSCropTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>423, 171</value>
+  </data>
+  <data name="AVSCropTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="label30.Location" type="System.Drawing.Point, System.Drawing">
+    <value>302, 204</value>
+  </data>
   <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 12</value>
   </data>
   <data name="label30.Text" xml:space="preserve">
     <value>End Frame</value>
+  </data>
+  <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 204</value>
   </data>
   <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 12</value>
@@ -205,8 +202,23 @@
   <data name="label29.Text" xml:space="preserve">
     <value>Start Frame</value>
   </data>
+  <data name="TrimEndNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>376, 200</value>
+  </data>
+  <data name="TrimStartNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 200</value>
+  </data>
+  <data name="LevelsNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 229</value>
+  </data>
+  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 150</value>
+  </data>
   <data name="label24.Text" xml:space="preserve">
     <value>Up</value>
+  </data>
+  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>302, 150</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 12</value>
@@ -214,11 +226,17 @@
   <data name="label23.Text" xml:space="preserve">
     <value>Right</value>
   </data>
+  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>406, 150</value>
+  </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
     <value>Down</value>
+  </data>
+  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 150</value>
   </data>
   <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -226,11 +244,32 @@
   <data name="label21.Text" xml:space="preserve">
     <value>Left</value>
   </data>
+  <data name="AddBorders4NumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>448, 148</value>
+  </data>
+  <data name="AddBorders3NumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>345, 148</value>
+  </data>
+  <data name="AddBorders2NumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>241, 148</value>
+  </data>
+  <data name="SharpenNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 256</value>
+  </data>
+  <data name="AddBorders1NumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 148</value>
+  </data>
+  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 123</value>
+  </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 12</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Height</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 123</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 12</value>
@@ -238,11 +277,20 @@
   <data name="label20.Text" xml:space="preserve">
     <value>Width</value>
   </data>
+  <data name="AVSHeightNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>337, 121</value>
+  </data>
+  <data name="AVSWidthNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>177, 121</value>
+  </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 12</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>Contrast</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>334, 96</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 12</value>
@@ -250,11 +298,17 @@
   <data name="label10.Text" xml:space="preserve">
     <value>Brightness</value>
   </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 96</value>
+  </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 12</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Saturation</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 96</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 12</value>
@@ -262,11 +316,71 @@
   <data name="label5.Text" xml:space="preserve">
     <value>chroma</value>
   </data>
+  <data name="TweakContrastNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>515, 92</value>
+  </data>
+  <data name="TweakContrastNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 21</value>
+  </data>
+  <data name="TweakBrightnessNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>405, 92</value>
+  </data>
+  <data name="TweakBrightnessNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 21</value>
+  </data>
+  <data name="TweakSaturationNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>283, 92</value>
+  </data>
+  <data name="TweakSaturationNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 21</value>
+  </data>
+  <data name="TweakChromaNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 92</value>
+  </data>
+  <data name="TweakChromaNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 21</value>
+  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>251, 12</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Paste AVS script in the following textbox</value>
+  </data>
+  <data name="LevelsCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 21</value>
+  </data>
+  <data name="LevelsCheckBox.Text" xml:space="preserve">
+    <value>Levels</value>
+  </data>
+  <data name="CropCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="CropCheckBox.Text" xml:space="preserve">
+    <value>Crop</value>
+  </data>
+  <data name="TrimCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 21</value>
+  </data>
+  <data name="TrimCheckBox.Text" xml:space="preserve">
+    <value>Trim</value>
+  </data>
+  <data name="SharpenCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="SharpenCheckBox.Text" xml:space="preserve">
+    <value>Sharpen</value>
+  </data>
+  <data name="AddBordersCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 21</value>
+  </data>
+  <data name="AddBordersCheckBox.Text" xml:space="preserve">
+    <value>AddBorders</value>
+  </data>
+  <data name="UndotCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
+  </data>
+  <data name="UndotCheckBox.Text" xml:space="preserve">
+    <value>Undot</value>
   </data>
   <data name="button9.Text" xml:space="preserve">
     <value>Clear</value>
@@ -292,8 +406,20 @@
   <data name="btnsub9.Text" xml:space="preserve">
     <value>Subtitle</value>
   </data>
+  <data name="MkvExtract4Button.Text" xml:space="preserve">
+    <value>Track 4</value>
+  </data>
+  <data name="MkvExtract3Button.Text" xml:space="preserve">
+    <value>Track 3</value>
+  </data>
+  <data name="MkvExtract2Button.Text" xml:space="preserve">
+    <value>Track 2</value>
+  </data>
+  <data name="MkvExtract1Button.Text" xml:space="preserve">
+    <value>Track 1</value>
+  </data>
   <data name="btnextract7.Text" xml:space="preserve">
-    <value>Start</value>
+    <value>Track 0</value>
   </data>
   <data name="btnvideo7.Text" xml:space="preserve">
     <value>Video</value>
@@ -349,20 +475,32 @@
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Convert to FLV / MP4</value>
   </data>
+  <data name="MuxReplaceAudioButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>369, 105</value>
+  </data>
+  <data name="MuxReplaceAudioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 23</value>
+  </data>
+  <data name="MuxReplaceAudioButton.Text" xml:space="preserve">
+    <value>Replace Audio</value>
+  </data>
   <data name="btnvideo.Text" xml:space="preserve">
     <value>Video</value>
   </data>
   <data name="btnmux.Text" xml:space="preserve">
-    <value>Start</value>
+    <value>Mux</value>
   </data>
-  <data name="cbFPS.Items7" xml:space="preserve">
-    <value>59.940</value>
+  <data name="cbFPS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>249, 108</value>
   </data>
   <data name="btnaudio.Text" xml:space="preserve">
     <value>Audio</value>
   </data>
   <data name="btnout.Text" xml:space="preserve">
     <value>Output</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 112</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Mux as MP4</value>
@@ -380,7 +518,7 @@
     <value>Video</value>
   </data>
   <data name="button7.Text" xml:space="preserve">
-    <value>Start</value>
+    <value>Mux</value>
   </data>
   <data name="groupBox8.Text" xml:space="preserve">
     <value>Mux as MKV</value>
@@ -388,22 +526,43 @@
   <data name="MuxTab.Text" xml:space="preserve">
     <value>Mux</value>
   </data>
+  <data name="AudioCopyCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 21</value>
+  </data>
+  <data name="AudioCopyCheckBox.Text" xml:space="preserve">
+    <value>Copy Audio</value>
+  </data>
+  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 12</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Audio Bitrate</value>
+  </data>
+  <data name="AudioOnePicOutputButton.Text" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="AudioOnePicButton.Text" xml:space="preserve">
+    <value>Mux</value>
+  </data>
+  <data name="AudioPicAudioButton.Text" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="AudioPicButton.Text" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>Single Picture Video</value>
+  </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 12</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Encoder</value>
   </data>
-  <data name="radioButton4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 21</value>
-  </data>
-  <data name="radioButton4.Text" xml:space="preserve">
+  <data name="AudioBitrateRadioButton.Text" xml:space="preserve">
     <value>Bitrate</value>
   </data>
-  <data name="radioButton5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 21</value>
-  </data>
-  <data name="radioButton5.Text" xml:space="preserve">
+  <data name="AudioCustomizeRadioButton.Text" xml:space="preserve">
     <value>Custom</value>
   </data>
   <data name="cbwavtemp.Size" type="System.Drawing.Size, System.Drawing">
@@ -425,10 +584,13 @@
     <value>Bitrate</value>
   </data>
   <data name="btnaac.Text" xml:space="preserve">
-    <value>Start</value>
+    <value>Convert</value>
   </data>
   <data name="NeroAACGroupBox.Text" xml:space="preserve">
-    <value>Convert to AAC</value>
+    <value>Audio Convert</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 192</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 12</value>
@@ -454,8 +616,20 @@
   <data name="tabNeroAAC.Text" xml:space="preserve">
     <value>Audio</value>
   </data>
+  <data name="x264FramesLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="x264FramesLabel.Text" xml:space="preserve">
+    <value>Frames</value>
+  </data>
+  <data name="x264SeekLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="x264SeekLabel.Text" xml:space="preserve">
+    <value>Seek</value>
+  </data>
   <data name="MaintainResolutionCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 16</value>
+    <value>159, 21</value>
   </data>
   <data name="MaintainResolutionCheckBox.Text" xml:space="preserve">
     <value>Use original resolution</value>
@@ -466,32 +640,29 @@
   <data name="x264FLVCheckBox.Text" xml:space="preserve">
     <value>Mux as FLV</value>
   </data>
+  <data name="x264OneBatchButton.Text" xml:space="preserve">
+    <value>OneKey</value>
+  </data>
   <data name="x264PathButton.Text" xml:space="preserve">
-    <value>Output path</value>
+    <value>Output Path</value>
   </data>
   <data name="x264BatchClearBtn.Text" xml:space="preserve">
     <value>Clear</value>
   </data>
-  <data name="x264BatchShutdownCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 21</value>
-  </data>
-  <data name="x264BatchShutdownCheckBox.Text" xml:space="preserve">
-    <value>Auto shutdown</value>
-  </data>
   <data name="x264BatchSubCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 21</value>
+    <value>70, 21</value>
   </data>
   <data name="x264BatchSubCheckBox.Text" xml:space="preserve">
-    <value>Add Subtitle</value>
+    <value>Subtitle</value>
   </data>
   <data name="x264BatchDeleteBtn.Text" xml:space="preserve">
     <value>Delete</value>
   </data>
-  <data name="btnBatchAuto.Text" xml:space="preserve">
-    <value>Start</value>
-  </data>
   <data name="x264BatchAddBtn.Text" xml:space="preserve">
     <value>Add</value>
+  </data>
+  <data name="btnBatchAuto.Text" xml:space="preserve">
+    <value>Start</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Batch</value>
@@ -502,23 +673,17 @@
   <data name="x264ShutdownCheckBox.Text" xml:space="preserve">
     <value>Auto shutdown</value>
   </data>
-  <data name="x264Mode1RadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 21</value>
+  <data name="x264AudioParameterTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 93</value>
   </data>
-  <data name="x264Mode1RadioButton.Text" xml:space="preserve">
-    <value>CRF</value>
+  <data name="x264AudioParameterTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 23</value>
   </data>
   <data name="x264Mode3RadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 21</value>
   </data>
   <data name="x264Mode3RadioButton.Text" xml:space="preserve">
     <value>Custom</value>
-  </data>
-  <data name="x264Mode2RadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 21</value>
-  </data>
-  <data name="x264Mode2RadioButton.Text" xml:space="preserve">
-    <value>2Pass</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 12</value>
@@ -528,24 +693,6 @@
   </data>
   <data name="PresetNameTextBox.Text" xml:space="preserve">
     <value>New_Preset</value>
-  </data>
-  <data name="x264PriorityComboBox.Items" xml:space="preserve">
-    <value>Idle;</value>
-  </data>
-  <data name="x264PriorityComboBox.Items1" xml:space="preserve">
-    <value>BelowNormal</value>
-  </data>
-  <data name="x264PriorityComboBox.Items2" xml:space="preserve">
-    <value>Normal</value>
-  </data>
-  <data name="x264PriorityComboBox.Items3" xml:space="preserve">
-    <value>AboveNormal</value>
-  </data>
-  <data name="x264PriorityComboBox.Items4" xml:space="preserve">
-    <value>High</value>
-  </data>
-  <data name="x264PriorityComboBox.Items5" xml:space="preserve">
-    <value>RealTime</value>
   </data>
   <data name="x264AddPresetBtn.Text" xml:space="preserve">
     <value>Add</value>
@@ -571,15 +718,6 @@
   <data name="label16.Text" xml:space="preserve">
     <value>x264</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Preset</value>
-  </data>
-  <data name="cbFPS2.Items7" xml:space="preserve">
-    <value>59.940</value>
-  </data>
   <data name="x264AudioModeComboBox.Items" xml:space="preserve">
     <value>None</value>
   </data>
@@ -588,6 +726,9 @@
   </data>
   <data name="x264AudioModeComboBox.Items2" xml:space="preserve">
     <value>External</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>287, 98</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 12</value>
@@ -601,12 +742,6 @@
   <data name="labelAudio.Text" xml:space="preserve">
     <value>Audio Parameter</value>
   </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Priority</value>
-  </data>
   <data name="lbheight.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 12</value>
   </data>
@@ -619,8 +754,23 @@
   <data name="lbwidth.Text" xml:space="preserve">
     <value>Width</value>
   </data>
+  <data name="lbrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 12</value>
+  </data>
+  <data name="lbrate.Text" xml:space="preserve">
+    <value>Bitrate</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Preset</value>
+  </data>
   <data name="VideoTab.Text" xml:space="preserve">
     <value>Video</value>
+  </data>
+  <data name="DonateButton.Text" xml:space="preserve">
+    <value>Donate</value>
   </data>
   <data name="HomePageBtn.Text" xml:space="preserve">
     <value>HomePage</value>
@@ -628,11 +778,62 @@
   <data name="AboutBtn.Text" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="linkLabel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 565</value>
+  </data>
+  <data name="linkLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 12</value>
+  </data>
+  <data name="linkLabel4.Text" xml:space="preserve">
+    <value>FinalCodecs</value>
+  </data>
+  <data name="linkLabel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 565</value>
+  </data>
+  <data name="linkLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 12</value>
+  </data>
+  <data name="linkLabel2.Text" xml:space="preserve">
+    <value>Direct264 upyzl</value>
+  </data>
+  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
+  </data>
+  <data name="linkLabel1.Text" xml:space="preserve">
+    <value>x264 - 06_taro</value>
+  </data>
   <data name="HelpTab.Text" xml:space="preserve">
     <value>Help</value>
   </data>
   <data name="qqButton1.Text" xml:space="preserve">
     <value>Restore Settings</value>
+  </data>
+  <data name="x264PriorityComboBox.Items" xml:space="preserve">
+    <value>Idle</value>
+  </data>
+  <data name="x264PriorityComboBox.Items1" xml:space="preserve">
+    <value>BelowNormal</value>
+  </data>
+  <data name="x264PriorityComboBox.Items2" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="x264PriorityComboBox.Items3" xml:space="preserve">
+    <value>AboveNormal</value>
+  </data>
+  <data name="x264PriorityComboBox.Items4" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="x264PriorityComboBox.Items5" xml:space="preserve">
+    <value>RealTime</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 12</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>x264 Priority</value>
+  </data>
+  <data name="languageComboBox.Items1" xml:space="preserve">
+    <value>繁體中文</value>
   </data>
   <data name="label26.Text" xml:space="preserve">
     <value>Language</value>
@@ -1232,5 +1433,8 @@
         vWv5+rpp9PYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAA
 </value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Maruko ToolBox</value>
   </data>
 </root>
