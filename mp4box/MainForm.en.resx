@@ -526,33 +526,6 @@
   <data name="MuxTab.Text" xml:space="preserve">
     <value>Mux</value>
   </data>
-  <data name="AudioCopyCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 21</value>
-  </data>
-  <data name="AudioCopyCheckBox.Text" xml:space="preserve">
-    <value>Copy Audio</value>
-  </data>
-  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 12</value>
-  </data>
-  <data name="label27.Text" xml:space="preserve">
-    <value>Audio Bitrate</value>
-  </data>
-  <data name="AudioOnePicOutputButton.Text" xml:space="preserve">
-    <value>Output</value>
-  </data>
-  <data name="AudioOnePicButton.Text" xml:space="preserve">
-    <value>Mux</value>
-  </data>
-  <data name="AudioPicAudioButton.Text" xml:space="preserve">
-    <value>Audio</value>
-  </data>
-  <data name="AudioPicButton.Text" xml:space="preserve">
-    <value>Picture</value>
-  </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>Single Picture Video</value>
-  </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 12</value>
   </data>
@@ -615,6 +588,33 @@
   </data>
   <data name="tabNeroAAC.Text" xml:space="preserve">
     <value>Audio</value>
+  </data>
+  <data name="AudioCopyCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 21</value>
+  </data>
+  <data name="AudioCopyCheckBox.Text" xml:space="preserve">
+    <value>Copy Audio</value>
+  </data>
+  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 12</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Audio Bitrate</value>
+  </data>
+  <data name="AudioOnePicOutputButton.Text" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="AudioOnePicButton.Text" xml:space="preserve">
+    <value>Mux</value>
+  </data>
+  <data name="AudioPicAudioButton.Text" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="AudioPicButton.Text" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>Single Picture Video</value>
   </data>
   <data name="x264FramesLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 12</value>
@@ -773,7 +773,7 @@
     <value>Donate</value>
   </data>
   <data name="HomePageBtn.Text" xml:space="preserve">
-    <value>HomePage</value>
+    <value>Website</value>
   </data>
   <data name="AboutBtn.Text" xml:space="preserve">
     <value>About</value>
@@ -804,6 +804,48 @@
   </data>
   <data name="HelpTab.Text" xml:space="preserve">
     <value>Help</value>
+  </data>
+  <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Target Bitrate</value>
+  </data>
+  <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Second</value>
+  </data>
+  <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="BlackNoPicCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 21</value>
+  </data>
+  <data name="BlackNoPicCheckBox.Text" xml:space="preserve">
+    <value>Black</value>
+  </data>
+  <data name="BlackPicButton.Text" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="BlackStartButton.Text" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="BlackOutputButton.Text" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="BlackVideoButton.Text" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="groupBox11.Text" xml:space="preserve">
+    <value>Add Black Scene</value>
+  </data>
+  <data name="MiscTab.Text" xml:space="preserve">
+    <value>General</value>
   </data>
   <data name="qqButton1.Text" xml:space="preserve">
     <value>Restore Settings</value>

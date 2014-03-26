@@ -485,27 +485,6 @@
   <data name="groupBox8.Text" xml:space="preserve">
     <value>封裝為MKV</value>
   </data>
-  <data name="AudioCopyCheckBox.Text" xml:space="preserve">
-    <value>複製音頻</value>
-  </data>
-  <data name="label27.Text" xml:space="preserve">
-    <value>音頻碼率</value>
-  </data>
-  <data name="AudioOnePicOutputButton.Text" xml:space="preserve">
-    <value>輸出</value>
-  </data>
-  <data name="AudioOnePicButton.Text" xml:space="preserve">
-    <value>壓制</value>
-  </data>
-  <data name="AudioPicAudioButton.Text" xml:space="preserve">
-    <value>音頻</value>
-  </data>
-  <data name="AudioPicButton.Text" xml:space="preserve">
-    <value>圖片</value>
-  </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>一圖流</value>
-  </data>
   <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -583,6 +562,27 @@
   </data>
   <data name="tabNeroAAC.Text" xml:space="preserve">
     <value>音頻</value>
+  </data>
+  <data name="AudioCopyCheckBox.Text" xml:space="preserve">
+    <value>複製音頻</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>音頻碼率</value>
+  </data>
+  <data name="AudioOnePicOutputButton.Text" xml:space="preserve">
+    <value>輸出</value>
+  </data>
+  <data name="AudioOnePicButton.Text" xml:space="preserve">
+    <value>壓制</value>
+  </data>
+  <data name="AudioPicAudioButton.Text" xml:space="preserve">
+    <value>音頻</value>
+  </data>
+  <data name="AudioPicButton.Text" xml:space="preserve">
+    <value>圖片</value>
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>一圖流</value>
   </data>
   <data name="x264FramesLabel.Text" xml:space="preserve">
     <value>編碼幀數</value>
@@ -778,6 +778,27 @@
   </data>
   <data name="HelpTab.Text" xml:space="preserve">
     <value>幫助</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>目標碼率</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>後黑時長</value>
+  </data>
+  <data name="BlackPicButton.Text" xml:space="preserve">
+    <value>圖片</value>
+  </data>
+  <data name="BlackStartButton.Text" xml:space="preserve">
+    <value>後黑</value>
+  </data>
+  <data name="BlackOutputButton.Text" xml:space="preserve">
+    <value>輸出</value>
+  </data>
+  <data name="BlackVideoButton.Text" xml:space="preserve">
+    <value>影片</value>
+  </data>
+  <data name="groupBox11.Text" xml:space="preserve">
+    <value>後黑</value>
   </data>
   <data name="qqButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>

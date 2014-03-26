@@ -15,14 +15,10 @@ using System.Globalization;
 using System.Threading;
 using System.Configuration;
 using System.Drawing.Imaging;
-
-
 namespace mp4box
 {
-
     public partial class MainForm : Form
     {
-
         StringBuilder avsBuilder = new StringBuilder(1000);
         string syspath = Environment.GetFolderPath(Environment.SpecialFolder.System).Remove(1);
         int indexofsource;
@@ -53,8 +49,6 @@ namespace mp4box
         string namesub2 = "";
         string namesub9 = "subtitle";
         string MItext = "把视频文件拖到这里";
-
-
         string mkvextract;
         string mkvmerge;
         string mux;
@@ -70,8 +64,6 @@ namespace mp4box
         string avs = "";
         string tempavspath = @"c:\temp.avs";
         string tempPic = @"c:\marukotemp.jpg";
-
-
         [StructLayout(LayoutKind.Sequential)]
         public struct MARGINS
         {
@@ -80,51 +72,40 @@ namespace mp4box
             public int Top;
             public int Bottom;
         }
-
         [DllImport("dwmapi.dll", PreserveSig = false)]
         static extern void DwmExtendFrameIntoClientArea(IntPtr hwnd, ref MARGINS margins);
-
         [DllImport("dwmapi.dll", PreserveSig = false)]
         static extern bool DwmIsCompositionEnabled();
-
         public MainForm()
         {
             InitializeComponent();
-
         }
-
         public string MediaInfo(string VideoName)
         {
-
             string info = "无视频信息";
             if (File.Exists(VideoName))
             {
                 MediaInfo MI = new MediaInfo();
                 MI.Open(VideoName);
-
                 //全局
                 string container = MI.Get(StreamKind.General, 0, "Format");
                 string bitrate = MI.Get(StreamKind.General, 0, "BitRate/String");
                 string duration = MI.Get(StreamKind.General, 0, "Duration/String");
                 string fileSize = MI.Get(StreamKind.General, 0, "FileSize/String");
-
                 //视频
                 string vid = MI.Get(StreamKind.Video, 0, "ID");
                 string video = MI.Get(StreamKind.Video, 0, "Format");
                 string vBitRate = MI.Get(StreamKind.Video, 0, "BitRate/String");
                 string vSize = MI.Get(StreamKind.Video, 0, "StreamSize/String");
-
                 string width = MI.Get(StreamKind.Video, 0, "Width");
                 string height = MI.Get(StreamKind.Video, 0, "Height");
                 string risplayAspectRatio = MI.Get(StreamKind.Video, 0, "DisplayAspectRatio/String");
                 string risplayAspectRatio2 = MI.Get(StreamKind.Video, 0, "DisplayAspectRatio");
                 string frameRate = MI.Get(StreamKind.Video, 0, "FrameRate/String");
                 string bitDepth = MI.Get(StreamKind.Video, 0, "BitDepth/String");
-
                 string pixelAspectRatio = MI.Get(StreamKind.Video, 0, "PixelAspectRatio");
                 string encodedLibrary = MI.Get(StreamKind.Video, 0, "Encoded_Library");
                 string encodeTime = MI.Get(StreamKind.Video, 0, "Encoded_Date");
-
                 //音频
                 string aid = MI.Get(StreamKind.Audio, 0, "ID");
                 string audio = MI.Get(StreamKind.Audio, 0, "Format");
@@ -132,14 +113,12 @@ namespace mp4box
                 string samplingRate = MI.Get(StreamKind.Audio, 0, "SamplingRate/String");
                 string channel = MI.Get(StreamKind.Audio, 0, "Channel(s)");
                 string aSize = MI.Get(StreamKind.Audio, 0, "StreamSize/String");
-
                 info = Path.GetFileName(VideoName) + "\r\n" +
                     "容器：" + container + "\r\n" +
                     "总码率：" + bitrate + "\r\n" +
                     "大小：" + fileSize + "\r\n" +
                     "时长：" + duration + "\r\n" +
                     "\r\n" +
-
                     "视频(" + vid + ")：" + video + "\r\n" +
                     "码率：" + vBitRate + "\r\n" +
                     "大小：" + vSize + "\r\n" +
@@ -150,42 +129,32 @@ namespace mp4box
                     "像素宽高比：" + pixelAspectRatio + "\r\n" +
                     "编码库：" + encodedLibrary + "\r\n" +
                     "编码时间：" + encodeTime + "\r\n" +
-
                     "\r\n" +
-
                     "音频(" + aid + ")：" + audio + "\r\n" +
                     "大小：" + aSize + "\r\n" +
                     "码率：" + aBitRate + "\r\n" +
                     "采样率：" + samplingRate + "\r\n" +
                     "声道数：" + channel + "\r\n";
-
-
-
                 MI.Close();
             }
             return info;
         }
-
-
         public string AddExt(string name, string ext)
         {
             string finish = name.Remove(name.LastIndexOf("."));
             finish += ext;
             return finish;
         }
-
         public string muxbat(string input1, string input2, string fps, string output)
         {
             mux = "\"" + workpath + "\\mp4box.exe\" -fps " + fps + " -add " + input1 + " -add " + input2 + " -new \"" + output + "\"";
             return mux;
         }
-
         public string muxbat(string input1, string input2, string output)
         {
             mux = "\"" + workpath + "\\mp4box.exe\" -add " + input1 + " -add " + input2 + " -new \"" + output + "\"";
             return mux;
         }
-
         public string x264bat(string input, string output)
         {
             switch (mode)
@@ -200,19 +169,16 @@ namespace mp4box
                         x264 = "\"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  --crf " + numcrf.Value + " --preset 8 --demuxer " + DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + numwidth.Value + "," + numheight.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     break;
-
                 case 2:
                     if (numheight.Value == 0 || numwidth.Value == 0)
                     {
                         x264 = "\"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  -p1 --stats \"tmp.stat\" --preset 8 --demuxer " + DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  -p2 --stats \"tmp.stat\" -B " + numrate.Value + " --preset 8 --demuxer " + DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
-
                     else
                     {
                         x264 = "\"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  -p1 --stats \"tmp.stat\" --preset 8 --demuxer " + DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  --vf resize:" + numwidth.Value + "," + numheight.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  -p2 --stats \"tmp.stat\" -B " + numrate.Value + " --preset 8 --demuxer " + DemuxerComboBox.Text + " -r 3 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + numwidth.Value + "," + numheight.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     break;
-
                 case 0:
                     x264 = "\"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  " + txth264.Text + " --demuxer " + DemuxerComboBox.Text + " -o \"" + output + "\" \"" + input + "\"\r\n";
                     break;
@@ -233,43 +199,33 @@ namespace mp4box
         //                x264 = "\"" + workpath + "\\x264.exe\"  --crf " + numcrf.Value + " --preset 8 -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + numwidth.Value + "," + numheight.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
         //            }
         //            break;
-
         //        case 2:
         //            if (numheight.Value == 0 || numwidth.Value == 0)
         //            {
         //                x264 = "\"" + workpath + "\\x264.exe\"  -p1 --stats \"tmp.stat\" --preset 8 -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" + workpath + "\\x264.exe\"  -p2 --stats \"tmp.stat\" -B " + numrate.Value + " --preset 8 -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o \"" + output + "\" \"" + input + "\"\r\n";
         //            }
-
         //            else
         //            {
         //                x264 = "\"" + workpath + "\\x264.exe\"  -p1 --stats \"tmp.stat\" --preset 8 -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  --vf resize:" + numwidth.Value + "," + numheight.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" + workpath + "\\x264.exe\"  -p2 --stats \"tmp.stat\" -B " + numrate.Value + " --preset 8 -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + numwidth.Value + "," + numheight.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
         //            }
         //            break;
-
         //        case 0:
         //            x264 = "\"" + workpath + "\\x264.exe\"  " + txth264.Text + " -o \"" + output + "\" \"" + input + "\"\r\n";
         //            break;
         //    }
-
         //    return x264;
-
-
         //}
-
         public string timeminus(int h1, int m1, int s1, int h2, int m2, int s2)
         {
             int h = 0;
             int m = 0;
             int s = 0;
-
             s = s2 - s1;
             if (s < 0)
             {
                 m = -1;
                 s = s + 60;
             }
-
-
             m = m + m2 - m1;
             if (m < 0)
             {
@@ -277,24 +233,19 @@ namespace mp4box
                 m = m + 60;
             }
             h = h + h2 - h1;
-
             return h.ToString() + ":" + m.ToString() + ":" + s.ToString();
         }
-
         public string timeplus(int h1, int m1, int s1, int h2, int m2, int s2)
         {
             int h = 0;
             int m = 0;
             int s = 0;
-
             s = s1 + s2;
             if (s >= 60)
             {
                 m = 1;
                 s = s - 60;
             }
-
-
             m = m + m1 + m2;
             if (m >= 60)
             {
@@ -302,19 +253,13 @@ namespace mp4box
                 m = m - 60;
             }
             h = h + h1 + h2;
-
             return h.ToString() + ":" + m.ToString() + ":" + s.ToString();
         }
-
-
         public string audiobat(string input, string output)
         {
-
             int AACbr = 1024 * Convert.ToInt32(numq.Value.ToString());
             string br = AACbr.ToString();
-
             ffmpeg = "\"" + workpath + "\\ffmpeg.exe\" -y -i \"" + input + "\" -f wav temp.wav";
-
             switch (AudioEncoderComboBox.SelectedIndex)
             {
                 case 0:
@@ -327,7 +272,6 @@ namespace mp4box
                         neroaac = "\"" + workpath + "\\neroAacEnc.exe\" " + txtNeroaac.Text.ToString() + " -if \"temp.wav\"  -of \"" + output + "\"";
                     }
                     break;
-
                 case 1:
                     if (AudioBitrateRadioButton.Checked)
                     {
@@ -337,38 +281,28 @@ namespace mp4box
                     {
                         neroaac = "\"" + workpath + "\\qaac.exe\" " + txtNeroaac.Text.ToString() + " \"temp.wav\"  -o \"" + output + "\"";
                     }
-
                     break;
-
                 case 2:
-
                     if (Path.GetExtension(output) == ".aac")
                         output = AddExt(output, ".wav");
-
                     ffmpeg = "\"" + workpath + "\\ffmpeg.exe\" -y -i \"" + input + "\" -f wav \"" + output + "\"";
                     neroaac = "";
                     ;
                     break;
-
                 default:
                     break;
             }
             aac = ffmpeg + "\r\n" + neroaac + "\r\n";
-
             if (cbwavtemp.Checked == false)
             {
                 aac += "del temp.wav\r\n";
             }
             return aac;
-
         }
-
         public void oneAuto(string video, string output)
         {
             x264 = x264bat(video, "temp.mp4");
-
             x264 = x264.Replace("\r\n", "");
-
             if (x264SubTextBox.Text != "")
             {
                 if (x264.IndexOf("--vf") == -1)
@@ -383,9 +317,7 @@ namespace mp4box
                     x264 += " --sub \"" + namesub2 + "\"";
                 }
             }
-
             x264 += " --acodec none\r\n";
-
             //audio
             //如果是avs
             if (video.Substring(video.LastIndexOf(".") + 1) == "avs")
@@ -407,22 +339,17 @@ namespace mp4box
                 //    b = str.IndexOf("\"", a + 18);
                 //    namevideo3 = str.Substring(a + 18, b - a - 18);
                 //}
-
                 //if (namevideo3.IndexOf(":") != 1)
                 //{
                 //    namevideo3 = nameavs.Substring(0, nameavs.LastIndexOf("\\") + 1) + namevideo3;
                 //}
-
             }
-
             else
             {
                 aextract = audiobat(video, "temp.aac");
             }
-
             //mux
             mux = muxbat("temp.mp4", "temp.aac", cbFPS.Text, output);
-
             if (cbDelTmp.Checked == false)
             {
                 auto = aextract + x264 + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\ndel temp.wav\r\n";
@@ -431,23 +358,17 @@ namespace mp4box
             {
                 auto = aextract + x264 + mux + " \r\n\r\n";
             }
-
             if (x264FLVCheckBox.Checked == true)
             {
                 string flvfile = AddExt(output, "_FLV.flv");
                 auto += "\r\n\"" + workpath + "\\ffmpeg.exe\"  -i  \"" + output + "\" -c copy -f flv  \"" + flvfile + "\" \r\n";
             }
-
             if (x264ShutdownCheckBox.Checked)
             {
                 auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60\r\n";
             }
-
             auto += "cmd";
-
-
         }
-
         public void batchAuto()
         {
             int i;
@@ -456,13 +377,11 @@ namespace mp4box
             {
                 x264 = x264bat(lbAuto.Items[i].ToString(), "temp.mp4");
                 x264 = x264.Replace("\r\n", "");
-
                 //判断是否内嵌字幕
                 string sub = "";
                 string asssub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + ".ass";
                 string ssasub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + ".ssa";
                 string srtsub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + ".srt";
-
                 if (x264BatchSubCheckBox.Checked)
                 {
                     if (File.Exists(asssub))
@@ -477,7 +396,6 @@ namespace mp4box
                     {
                         sub = srtsub;
                     }
-
                     if (sub != "")
                     {
                         if (x264.IndexOf("--vf") == -1)
@@ -493,16 +411,12 @@ namespace mp4box
                         }
                     }
                 }
-
                 x264 += " --acodec none\r\n";
-
                 //audio
                 //如果是avs
                 if (lbAuto.Items[i].ToString().Substring(lbAuto.Items[i].ToString().LastIndexOf(".") + 1) == "avs")
                 {
                     aextract = "\r\n";
-
-
                     //string tempvideoname;
                     //int a, b;
                     //StreamReader sr = new StreamReader(lbAuto.Items[i].ToString(), System.Text.Encoding.Default);
@@ -519,43 +433,32 @@ namespace mp4box
                     //    b = str.IndexOf("\"", a + 18);
                     //    tempvideoname = str.Substring(a + 18, b - a - 18);
                     //}
-
                     //if (tempvideoname.IndexOf(":") != 1)
                     //{
                     //    tempvideoname = lbAuto.Items[i].ToString().Substring(0, lbAuto.Items[i].ToString().LastIndexOf("\\") + 1) + tempvideoname;
                     //}
                     //aextract = audiobat(tempvideoname, "temp.aac");
-
-
-
                     //ffmpeg = "\"" + workpath + "\\ffmpeg.exe\" -y -i \"" + tempvideoname + "\" -f wav temp.wav";
                 }
-
                 else //如果不是avs
                 {
                     aextract = audiobat(lbAuto.Items[i].ToString(), "temp.aac");
                 }
-
                 //mux
-
                 string finish;
                 if (Directory.Exists(x264PathTextBox.Text))
                     finish = x264PathTextBox.Text + "\\" + Path.GetFileNameWithoutExtension(lbAuto.Items[i].ToString()) + "_onekeybatch.mp4";
                 else
                     finish = AddExt(lbAuto.Items[i].ToString(), "_onekeybatch.mp4");
-
                 mux = muxbat("temp.mp4", "temp.aac", finish);
                 //mux = "\"" + workpath + "\\mp4box.exe\" -add temp.mp4 -add temp.aac -new \"" + finish + "\"";
-                auto += aextract + x264 + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\ndel temp.wav\r\n";
+                auto += aextract + x264 + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\ndel temp.wav\r\n@echo off&&echo MsgBox \"Finish!\",64,\"Maruko Toolbox\" >> msg.vbs &&call msg.vbs &&del msg.vbs\r\ncmd";
             }
-
             if (x264ShutdownCheckBox.Checked)
             {
                 auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60";
             }
         }
-
-
         public void batchAuto2()
         {
             int i;
@@ -566,15 +469,12 @@ namespace mp4box
                 string asssub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + ".ass";
                 string ssasub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + ".ssa";
                 string srtsub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + ".srt";
-
                 string finish;
                 if (Directory.Exists(x264PathTextBox.Text))
                     finish = x264PathTextBox.Text + "\\" + Path.GetFileNameWithoutExtension(lbAuto.Items[i].ToString()) + "_batch.mp4";
                 else
                     finish = AddExt(lbAuto.Items[i].ToString(), "_Batch.mp4");
-
                 x264 = x264bat(lbAuto.Items[i].ToString(), finish).Replace("\r\n", "");
-
                 //判断是否内嵌字幕
                 if (x264BatchSubCheckBox.Checked)
                 {
@@ -590,7 +490,6 @@ namespace mp4box
                     {
                         sub = srtsub;
                     }
-
                     if (sub != "")
                     {
                         if (x264.IndexOf("--vf") == -1)
@@ -606,17 +505,17 @@ namespace mp4box
                         }
                     }
                 }
-                switch (x264AudioModeComboBox.Text)
+                switch (x264AudioModeComboBox.SelectedIndex)
                 {
-                    case "无音频流": x264 += " --acodec none"; break;
-                    case "复制音频流": x264 += " --acodec copy"; break;
-                    case "外置音频流": x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
-                    case "QTAAC": x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
-                    case "libaacplus": x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
-                    case "FAAC": x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
+                    case 0: x264 += " --acodec none"; break;
+                    case 1: x264 += " --acodec copy"; break;
+                    case 2: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
+                    case 3: x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
+                    case 4: x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
+                    case 5: x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
+                    case 6: break;
                     default: ; break;
                 }
-
                 if (cbFPS2.Text != "None")
                 {
                     switch (cbFPS2.Text)
@@ -632,7 +531,6 @@ namespace mp4box
                         default: x264 += " --fps " + cbFPS2.Text; break;
                     }
                 }
-
                 x264 += " \r\n";
                 auto += x264;
             }
@@ -640,66 +538,48 @@ namespace mp4box
             {
                 auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60";
             }
-            auto += "\r\ncmd";
+            auto += "\r\n@echo off&&echo MsgBox \"Finish!\",64,\"Maruko Toolbox\" >> msg.vbs &&call msg.vbs &&del msg.vbs\r\ncmd";
         }
-
         private void btnaudio_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "音频(*.aac;*.mp3;*.mp4)|*.aac;*.mp3;*.mp4|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 nameaudio = openFileDialog1.FileName;
                 txtaudio.Text = nameaudio;
             }
         }
-
         private void btnvideo_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 namevideo = openFileDialog1.FileName;
                 txtvideo.Text = namevideo;
             }
         }
-
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-
-
-
-
         }
-
         private void btnout_Click(object sender, EventArgs e)
         {
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "视频(*.mp4)|*.mp4";
             DialogResult result = savefile.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 nameout = savefile.FileName;
                 txtout.Text = nameout;
             }
         }
-
-
-
-
-
         private void btnmux_Click(object sender, EventArgs e)
         {
             if (namevideo == "")
             {
                 MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
             //else if (nameaudio == "")
             //{
             //    MessageBox.Show("请选择音频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -708,10 +588,8 @@ namespace mp4box
             {
                 MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
             else
             {
-
                 if (cbFPS.Text == "None")
                 {
                     mux = "\"" + workpath + "\\mp4box.exe\" -add \"" + namevideo + "\" -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
@@ -721,24 +599,17 @@ namespace mp4box
                     mux = "\"" + workpath + "\\mp4box.exe\" -fps " + cbFPS.Text + " -add \"" + namevideo + "\" -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
                 }
                 batpath = workpath + "\\mux.bat";
-
                 File.WriteAllText(batpath, mux, UnicodeEncoding.Default);
                 LogRecord(mux);
                 Process.Start(batpath);
             }
         }
-
-
-
-
-
         private void btnaextract_Click(object sender, EventArgs e)
         {
             if (namevideo == "")
             {
                 MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
             else
             {
                 aextract = "\"" + workpath + "\\mp4box.exe\" -raw 2 \"" + namevideo + "\"";
@@ -748,12 +619,10 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show(String.Format(" \r\n有任何建议或疑问可以通过以下方式联系小丸。\nQQ：57655408\n微博：weibo.com/xiaowan3\n百度贴吧ID：小丸到达\n\n\t\t\t发布日期：2012年10月17日\n\t\t\t- ( ゜- ゜)つロ 乾杯~"), "关于", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void btnvextract_Click(object sender, EventArgs e)
         {
             if (namevideo == "")
@@ -769,15 +638,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
-
-
-
-
-
-
-
-
         private void txtvideo_TextChanged(object sender, EventArgs e)
         {
             if (File.Exists(txtvideo.Text.ToString()))
@@ -786,20 +646,14 @@ namespace mp4box
                 txtout.Text = AddExt(txtvideo.Text, "_Mux.mp4");
             }
         }
-
         private void txtaudio_TextChanged(object sender, EventArgs e)
         {
             nameaudio = txtaudio.Text;
         }
-
         private void txtout_TextChanged(object sender, EventArgs e)
         {
             nameout = txtout.Text;
-
         }
-
-
-
         private void btnout4_Click(object sender, EventArgs e)
         {
             if (namevideo2 == "")
@@ -819,40 +673,32 @@ namespace mp4box
                 LogRecord(auto);
                 System.Diagnostics.Process.Start(batpath);
             }
-
         }
-
-
         private void label4_Click(object sender, EventArgs e)
         {
-
         }
-
         private void label8_Click(object sender, EventArgs e)
         {
-
         }
-
-
-
         private void label5_Click(object sender, EventArgs e)
         {
-
         }
-
-
-
-
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-
             //delete temp files
-            string[] deletedfiles = { tempPic, tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat", "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
-            foreach (string deletedfile in deletedfiles)
+            List<string> deleteFileList = new List<string>();
+            string[] deletedfiles = { "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat", "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
+            DirectoryInfo theFolder = new DirectoryInfo(workpath);
+            foreach (FileInfo NextFile in theFolder.GetFiles())
             {
-                File.Delete(deletedfile);
+                if (NextFile.Extension == ".bat")
+                    deleteFileList.Add(NextFile.Name);
             }
-
+            deleteFileList.AddRange(deletedfiles);
+            foreach (string file in deleteFileList)
+            {
+                File.Delete(file);
+            }
             //save settings
             Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             cfa.AppSettings.Settings["CRF"].Value = numcrf.Value.ToString();
@@ -868,9 +714,7 @@ namespace mp4box
             cfa.Save();
             // 刷新命名节，在下次检索它时将从磁盘重新读取它。记住应用程序要刷新节点
             ConfigurationManager.RefreshSection("appSettings");
-
         }
-
         private void txtvideo4_TextChanged(object sender, EventArgs e)
         {
             if (File.Exists(txtvideo4.Text.ToString()))
@@ -883,54 +727,42 @@ namespace mp4box
                 txtout5.Text = finish;
             }
         }
-
         private void txtout5_TextChanged(object sender, EventArgs e)
         {
             nameout5 = txtout5.Text;
         }
-
         private void btnvideo4_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "视频(*.mp4;*.flv;*.mkv)|*.mp4;*.flv;*.mkv|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 namevideo4 = openFileDialog1.FileName;
                 txtvideo4.Text = namevideo4;
             }
         }
-
         private void btnout5_Click(object sender, EventArgs e)
         {
-
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "视频(*.*)|*.*";
             DialogResult result = savefile.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 nameout5 = savefile.FileName;
                 txtout5.Text = nameout5;
             }
-
         }
-
         private void btnflv_Click(object sender, EventArgs e)
         {
             if (namevideo4 == "")
             {
                 MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
             else
             {
-
                 SaveFileDialog savefile = new SaveFileDialog();
                 savefile.Filter = "视频(*.flv)|*.flv";
                 DialogResult result = savefile.ShowDialog();
-
                 if (result == DialogResult.OK)
                 {
                     nameout5 = savefile.FileName;
@@ -940,18 +772,14 @@ namespace mp4box
                     File.WriteAllText(batpath, ffmpeg, UnicodeEncoding.Default);
                     System.Diagnostics.Process.Start(batpath);
                 }
-
             }
         }
-
         public static bool IsWindowsVistaOrNewer
         {
             get { return (Environment.OSVersion.Platform == PlatformID.Win32NT) && (Environment.OSVersion.Version.Major >= 6); }
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-
             var modulename = Process.GetCurrentProcess().MainModule.ModuleName;
             var procesname = Path.GetFileNameWithoutExtension(modulename);
             Process[] processes = Process.GetProcessesByName(procesname);
@@ -960,9 +788,7 @@ namespace mp4box
                 MessageBox.Show("你已经打开了一个小丸工具箱喔！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
-
             //Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("zh-TW");
-
             //use YAHEI in VistaOrNewer
             //if (IsWindowsVistaOrNewer)
             //{
@@ -970,33 +796,26 @@ namespace mp4box
             //    Font myFont = new Font(myFontFamily, 9, FontStyle.Regular); //字是那种字体，显示的风格
             //    this.Font = myFont;
             //}
-
             //define workpath
             string temppath = System.Windows.Forms.Application.StartupPath;
             workpath = temppath;
 
-            //select priority as normal
+            string diskSymbol = workpath.Substring(0, 1);
+            tempavspath = diskSymbol + ":\\temp.avs";
+            tempPic = diskSymbol + ":\\marukotemp.jpg";
 
+            //select priority as normal
             x264PriorityComboBox.SelectedIndex = 2;
             x264AudioModeComboBox.SelectedIndex = 4;
             DemuxerComboBox.SelectedIndex = 2;
             AudioEncoderComboBox.SelectedIndex = 0;
-
-
-
             //load Help Text
-
             if (File.Exists(workpath + "\\help.txt"))
             {
                 StreamReader sr = new StreamReader(workpath + "\\help.txt", System.Text.Encoding.UTF8);
                 HelpTextBox.Text = sr.ReadToEnd();
                 sr.Close();
             }
-
-
-
-
-
             try
             {
                 //load settings
@@ -1008,7 +827,6 @@ namespace mp4box
                 txth264.Text = ConfigurationManager.AppSettings["x264Parameter"];
                 txtAVS.Text = ConfigurationManager.AppSettings["AVSScript"];
                 txtNeroaac.Text = ConfigurationManager.AppSettings["NeroaacParameter"];
-
                 if (int.Parse(ConfigurationManager.AppSettings["LanguageIndex"]) == -1)  //First Startup
                 {
                     string culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
@@ -1039,30 +857,18 @@ namespace mp4box
                 else
                     languageComboBox.SelectedIndex = int.Parse(ConfigurationManager.AppSettings["LanguageIndex"]);
             }
-
-
-
-
             catch (Exception)
             {
                 throw;
             }
-
-
-
-
             //create directory
             string preset = workpath + "\\preset";
             if (!Directory.Exists(preset)) Directory.CreateDirectory(preset);
-
             DirectoryInfo TheFolder = new DirectoryInfo("preset");
             foreach (FileInfo FileName in TheFolder.GetFiles())
             {
                 cbX264.Items.Add(FileName.Name.Replace(".txt", ""));
             }
-
-
-
             DirectoryInfo folder = new DirectoryInfo(workpath);
             foreach (FileInfo FileName in folder.GetFiles())
             {
@@ -1073,41 +879,28 @@ namespace mp4box
             }
             cbx264file.SelectedIndex = cbx264file.Items.IndexOf("x264_32_tMod-8bit-420.exe");
         }
-
         private void tabPage1_Click(object sender, EventArgs e)
         {
-
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "视频(*.mkv)|*.mkv";
             DialogResult result = openFileDialog1.ShowDialog();
-
-
             if (result == DialogResult.OK)
             {
                 namevideo6 = openFileDialog1.FileName;
                 txtvideo6.Text = namevideo6;
             }
         }
-
         private void label16_Click(object sender, EventArgs e)
         {
-
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             if (namevideo6 == "")
             {
                 MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-
             }
-
-
             else
             {
                 mkvextract = workpath + "\\ mkvextract.exe tracks \"" + namevideo6 + "\" 1:video.h264 2:audio.aac";
@@ -1116,194 +909,144 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "视频(*.mp4)|*.mp4|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
-
             if (result == DialogResult.OK)
             {
                 namevideo5 = openFileDialog1.FileName;
                 txtvideo5.Text = namevideo5;
             }
         }
-
         private void button5_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "音频(*.mp3)|*.mp3|音频(*.aac)|*.aac|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
-
             if (result == DialogResult.OK)
             {
                 nameaudio3 = openFileDialog1.FileName;
                 txtaudio3.Text = nameaudio3;
             }
         }
-
         private void button6_Click(object sender, EventArgs e)
         {
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "视频(*.mkv)|*.mkv";
             DialogResult result = savefile.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 nameout6 = savefile.FileName;
                 txtout6.Text = nameout6;
             }
         }
-
         private void button7_Click(object sender, EventArgs e)
         {
             if (namevideo5 == "")
             {
                 MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
-
             else if (nameaudio3 == "")
             {
                 MessageBox.Show("请选择音频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
             else if (nameout6 == "")
             {
                 MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
-
-
-
             else
             {
-
                 mkvmerge = workpath + "\\mkvmerge.exe -o \"" + nameout6 + "\"   \"" + namevideo5 + "\"   \"" + nameaudio3 + "\"";
                 batpath = workpath + "\\mkvmerge.bat";
-
                 File.WriteAllText(batpath, mkvmerge, UnicodeEncoding.Default);
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void txtout6_TextChanged(object sender, EventArgs e)
         {
-
         }
-
         private void button2_Click_1(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
-
             if (result == DialogResult.OK)
             {
                 namevideo5 = openFileDialog1.FileName;
                 txtvideo5.Text = namevideo5;
             }
         }
-
         private void button6_Click_1(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "视频(*.mkv)|*.mkv";
             DialogResult result = openFileDialog1.ShowDialog();
-
-
             if (result == DialogResult.OK)
             {
                 namevideo6 = openFileDialog1.FileName;
                 txtvideo6.Text = namevideo6;
             }
         }
-
         private void button7_Click_1(object sender, EventArgs e)
         {
             if (namevideo5 == "" && nameaudio3 == "")
             {
                 MessageBox.Show("请选择文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
             else
             {
                 if (txtaudio3.Text != "" && txtsub.Text != "")
                 {
                     mkvmerge = "\"" + workpath + "\\mkvmerge.exe\" -o \"" + nameout6 + "\" \"" + namevideo5 + "\" \"" + nameaudio3 + "\" \"" + namesub + "\"";
                 }
-
                 if (txtaudio3.Text == "" && txtsub.Text == "")
                 {
                     mkvmerge = "\"" + workpath + "\\mkvmerge.exe\" -o \"" + nameout6 + "\" \"" + namevideo5 + "\"";
                 }
-
-
                 if (txtaudio3.Text != "" && txtsub.Text == "")
                 {
                     mkvmerge = "\"" + workpath + "\\mkvmerge.exe\" -o \"" + nameout6 + "\" \"" + namevideo5 + "\" \"" + nameaudio3 + "\"";
                 }
-
                 if (txtaudio3.Text == "" && txtsub.Text != "")
                 {
                     mkvmerge = "\"" + workpath + "\\mkvmerge.exe\" -o \"" + nameout6 + "\" \"" + namevideo5 + "\" \"" + namesub + "\"";
                 }
-
                 mkvmerge += "\r\ncmd";
-
                 batpath = workpath + "\\mkvmerge.bat";
-
                 File.WriteAllText(batpath, mkvmerge, UnicodeEncoding.Default);
                 LogRecord(mkvmerge);
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void button4_Click_1(object sender, EventArgs e)
         {
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "视频(*.mkv)|*.mkv";
             DialogResult result = savefile.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 nameout6 = savefile.FileName;
                 txtout6.Text = nameout6;
             }
         }
-
         private void button3_Click_1(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "音频(*.mp3;*.aac)|*.mp3;*.aac|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
-
             if (result == DialogResult.OK)
             {
                 nameaudio3 = openFileDialog1.FileName;
                 txtaudio3.Text = nameaudio3;
             }
         }
-
         private void button5_Click_1(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "ASS字幕(*.ass;*.srt)|*.ass;*.srt|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
-
             if (result == DialogResult.OK)
             {
                 namesub = openFileDialog1.FileName;
                 txtsub.Text = namesub;
             }
         }
-
         private void button8_Click(object sender, EventArgs e)
         {
             if (namevideo6 == "")
@@ -1320,7 +1063,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void txtvideo5_TextChanged(object sender, EventArgs e)
         {
             if (File.Exists(txtvideo5.Text.ToString()))
@@ -1331,41 +1073,33 @@ namespace mp4box
                 txtout6.Text = finish;
             }
         }
-
         private void txtaudio3_TextChanged(object sender, EventArgs e)
         {
             nameaudio3 = txtaudio3.Text;
         }
-
         private void txtsub_TextChanged(object sender, EventArgs e)
         {
             namesub = txtsub.Text;
         }
-
         private void txtout6_TextChanged_1(object sender, EventArgs e)
         {
             nameout6 = txtout6.Text;
         }
-
         private void txtvideo6_TextChanged(object sender, EventArgs e)
         {
             namevideo6 = txtvideo6.Text;
         }
-
         private void btnMP4_Click(object sender, EventArgs e)
         {
             if (namevideo4 == "")
             {
                 MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
             else
             {
-
                 SaveFileDialog savefile = new SaveFileDialog();
                 savefile.Filter = "视频(*.mp4)|*.mp4";
                 DialogResult result = savefile.ShowDialog();
-
                 if (result == DialogResult.OK)
                 {
                     nameout5 = savefile.FileName;
@@ -1375,23 +1109,18 @@ namespace mp4box
                     File.WriteAllText(batpath, ffmpeg, UnicodeEncoding.Default);
                     System.Diagnostics.Process.Start(batpath);
                 }
-
             }
         }
-
         private void btnAutoAdd_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Multiselect = true;
             openFileDialog1.Filter = "所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 lbAuto.Items.AddRange(openFileDialog1.FileNames);
             }
         }
-
         private void btnAutoDel_Click(object sender, EventArgs e)
         {
             if (lbAuto.Items.Count > 0)
@@ -1411,14 +1140,10 @@ namespace mp4box
                 }
             }
         }
-
         private void btnAutoClear_Click(object sender, EventArgs e)
         {
             lbAuto.Items.Clear();
         }
-
-
-
         private void lbAuto_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
@@ -1439,14 +1164,12 @@ namespace mp4box
                 listbox.SelectedIndex = indexoftarget;
             }
         }
-
         private void lbAuto_DragEnter(object sender, DragEventArgs e)
         {
             //if (e.Data.GetDataPresent(DataFormats.FileDrop))
             //    e.Effect = DragDropEffects.All;
             //else e.Effect = DragDropEffects.None;
         }
-
         private void lbAuto_DragOver(object sender, DragEventArgs e)
         {
             //拖动源和放置的目的地一定是一个ListBox
@@ -1460,7 +1183,6 @@ namespace mp4box
             }
             else e.Effect = DragDropEffects.None;
         }
-
         private void lbAuto_MouseDown(object sender, MouseEventArgs e)
         {
             indexofsource = ((ListBox)sender).IndexFromPoint(e.X, e.Y);
@@ -1469,7 +1191,6 @@ namespace mp4box
                 ((ListBox)sender).DoDragDrop(((ListBox)sender).Items[indexofsource].ToString(), DragDropEffects.All);
             }
         }
-
         private void btnBatchAuto_Click(object sender, EventArgs e)
         {
             if (lbAuto.Items.Count != 0)
@@ -1482,7 +1203,6 @@ namespace mp4box
             }
             else MessageBox.Show("请输入视频！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
         private void lbffmpeg_MouseDown(object sender, MouseEventArgs e)
         {
             indexofsource = ((ListBox)sender).IndexFromPoint(e.X, e.Y);
@@ -1491,7 +1211,6 @@ namespace mp4box
                 ((ListBox)sender).DoDragDrop(((ListBox)sender).Items[indexofsource].ToString(), DragDropEffects.All);
             }
         }
-
         private void lbffmpeg_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
@@ -1512,7 +1231,6 @@ namespace mp4box
                 listbox.SelectedIndex = indexoftarget;
             }
         }
-
         private void lbffmpeg_DragOver(object sender, DragEventArgs e)
         {
             //拖动源和放置的目的地一定是一个ListBox
@@ -1526,10 +1244,8 @@ namespace mp4box
             }
             else e.Effect = DragDropEffects.None;
         }
-
         private void btnffmpegAdd_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Multiselect = true;
             openFileDialog1.Filter = "所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
@@ -1538,7 +1254,6 @@ namespace mp4box
                 lbffmpeg.Items.AddRange(openFileDialog1.FileNames);
             }
         }
-
         private void btnffmpegDel_Click(object sender, EventArgs e)
         {
             if (lbffmpeg.Items.Count > 0)
@@ -1558,12 +1273,10 @@ namespace mp4box
                 }
             }
         }
-
         private void btnffmpegClear_Click(object sender, EventArgs e)
         {
             lbffmpeg.Items.Clear();
         }
-
         private void btnBatchFLV_Click(object sender, EventArgs e)
         {
             if (lbffmpeg.Items.Count != 0)
@@ -1574,7 +1287,6 @@ namespace mp4box
                 for (i = 0; i < this.lbffmpeg.Items.Count; i++)
                 {
                     finish = lbffmpeg.Items[i].ToString().Remove(lbffmpeg.Items[i].ToString().LastIndexOf(".")) + "_FLV封装.flv";
-
                     ffmpeg += "\"" + workpath + "\\ffmpeg.exe\" -i \"" + lbffmpeg.Items[i].ToString() + "\" -c copy -f flv \"" + finish + "\" \r\n";
                 }
                 ffmpeg += "\r\ncmd";
@@ -1585,10 +1297,7 @@ namespace mp4box
                 //lbffmpeg.Items.Clear();
             }
             else MessageBox.Show("请输入视频！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-
         }
-
         private void btnBatchMP4_Click(object sender, EventArgs e)
         {
             if (lbffmpeg.Items.Count != 0)
@@ -1606,16 +1315,13 @@ namespace mp4box
                 LogRecord(ffmpeg);
                 System.Diagnostics.Process.Start(batpath);
                 //lbffmpeg.Items.Clear();
-
             }
             else MessageBox.Show("请输入视频！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
         private void txtvideo8_TextChanged(object sender, EventArgs e)
         {
             namevideo8 = txtvideo8.Text;
         }
-
         private void btnvextract8_Click(object sender, EventArgs e)
         {
             if (namevideo8 == "")
@@ -1631,7 +1337,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void btnaextract8_Click(object sender, EventArgs e)
         {
             if (namevideo8 == "")
@@ -1647,20 +1352,16 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void btnvideo8_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "视频(*.flv;*.hlv)|*.flv;*.hlv";
             DialogResult result = openFileDialog1.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 namevideo8 = openFileDialog1.FileName;
                 txtvideo8.Text = namevideo;
             }
         }
-
         private void btnpreview9_Click(object sender, EventArgs e)
         {
             if (txtAVS.Text != "")
@@ -1676,8 +1377,6 @@ namespace mp4box
                 MessageBox.Show("请输入正确的AVS脚本！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-
         private void txtout_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtout.Text.ToString()))
@@ -1685,8 +1384,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(txtout.Text.ToString());
             }
         }
-
-
         private void txtout3_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtout3.Text.ToString()))
@@ -1694,7 +1391,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(txtout3.Text.ToString());
             }
         }
-
         private void txtout6_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtout6.Text.ToString()))
@@ -1702,7 +1398,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(txtout6.Text.ToString());
             }
         }
-
         private void txtout9_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtout9.Text.ToString()))
@@ -1710,11 +1405,8 @@ namespace mp4box
                 System.Diagnostics.Process.Start(txtout9.Text.ToString());
             }
         }
-
-
         private void txtvideo9_TextChanged(object sender, EventArgs e)
         {
-
             if (File.Exists(txtvideo9.Text.ToString()))
             {
                 namevideo9 = txtvideo9.Text;
@@ -1723,7 +1415,6 @@ namespace mp4box
                 txtout9.Text = finish;
                 GenerateAVS();
             }
-
             //if (txtvideo9.Text != "")
             //{
             //    if (txtAVS.Text != "")
@@ -1743,20 +1434,16 @@ namespace mp4box
             //    }
             //    prevideo9 = txtvideo9.Text;
             //}
-
         }
-
         private void txtsub9_TextChanged(object sender, EventArgs e)
         {
             namesub9 = txtsub9.Text;
             GenerateAVS();
-
             //if (txtAVS.Text != "")
             //{
             //    txtAVS.Text=txtAVS.Text.Replace(namesub9, txtsub9.Text);
             //    namesub9 = txtsub9.Text;
             //}
-
             //else
             //{
             //    namesub9 = txtsub9.Text;
@@ -1770,12 +1457,10 @@ namespace mp4box
             //    avs = "";
             //}
         }
-
         private void txtout9_TextChanged(object sender, EventArgs e)
         {
             nameout9 = txtout9.Text;
         }
-
         private void btnAVS9_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(nameout9))
@@ -1795,19 +1480,16 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void btnout9_Click(object sender, EventArgs e)
         {
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "视频(*.mp4)|*.mp4";
             DialogResult result = savefile.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 txtout9.Text = nameout9 = savefile.FileName;
             }
         }
-
         private void btnAVSone_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(nameout9))
@@ -1818,14 +1500,12 @@ namespace mp4box
             {
                 string filepath = workpath + "\\temp.avs";
                 File.WriteAllText(filepath, txtAVS.Text, UnicodeEncoding.Default);
-
                 x264 = x264bat(filepath, "temp.mp4").Replace("\r\n", "");
                 x264 += " --acodec none\r\n";
                 //audio
                 aextract = audiobat(namevideo9, "temp.aac");
                 //mux
                 mux = muxbat("temp.mp4", "temp.aac", "23.976", nameout9);
-
                 if (cbDelTmp.Checked == false)
                 {
                     auto = aextract + x264 + "\r\n" + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\ndel temp.wav\r\ncmd ";
@@ -1839,7 +1519,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void button6_Click_2(object sender, EventArgs e)
         {
             //if (Directory.Exists("avsfilter"))
@@ -1850,20 +1529,15 @@ namespace mp4box
             //        avs += "LoadPlugin(\"" + workpath + "\\avsfilter\\" + FileName + "\")\r\n";
             //    }
             //}
-
             avs += "LoadPlugin(\"avsfilter\\VSFilter.DLL\")\r\n";
             avs += string.Format("\r\nDirectShowSource(\"{0}\",23.976,convertFPS=True)\r\nConvertToYV12()\r\nCrop(0,0,0,0)\r\nAddBorders(0,0,0,0)\r\n" + "TextSub(\"{1}\")\r\n#LanczosResize(1280,960)\r\n", namevideo9, namesub9);
             //avs += "\r\nDirectShowSource(\"" + namevideo9 + "\",23.976,convertFPS=True)\r\nConvertToYV12()\r\nCrop(0,0,0,0)\r\nAddBorders(0,0,0,0)\r\n" + "TextSub(\"" + namesub9 + "\")\r\n#LanczosResize(1280,960)\r\n";
             txtAVS.Text = avs;
             avs = "";
         }
-
-
         private void txth264_TextChanged(object sender, EventArgs e)
         {
-
         }
-
         private void txtvideo_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtvideo.Text.ToString()))
@@ -1871,7 +1545,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(txtvideo.Text.ToString());
             }
         }
-
         private void txtvideo4_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtvideo4.Text.ToString()))
@@ -1879,7 +1552,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(txtvideo4.Text.ToString());
             }
         }
-
         private void txtout5_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtout5.Text.ToString()))
@@ -1887,7 +1559,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(txtout5.Text.ToString());
             }
         }
-
         private void txtvideo8_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtvideo8.Text.ToString()))
@@ -1895,7 +1566,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(txtvideo8.Text.ToString());
             }
         }
-
         private void txtvideo9_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtvideo9.Text.ToString()))
@@ -1903,7 +1573,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(txtvideo9.Text.ToString());
             }
         }
-
         private void txtvideo6_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtvideo6.Text.ToString()))
@@ -1911,7 +1580,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(txtvideo6.Text.ToString());
             }
         }
-
         private void txtvideo5_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtvideo5.Text.ToString()))
@@ -1919,7 +1587,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(txtvideo5.Text.ToString());
             }
         }
-
         private void txtaudio3_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtaudio3.Text.ToString()))
@@ -1927,7 +1594,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(txtaudio3.Text.ToString());
             }
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             Process[] processes = Process.GetProcesses();
@@ -1948,40 +1614,30 @@ namespace mp4box
                 }
             }
         }
-
-
         private void btnsub9_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "ASS字幕(*.ass;*.ssa)|*.ass;*.ssa|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
-
             if (result == DialogResult.OK)
             {
                 namesub9 = openFileDialog1.FileName;
                 txtsub9.Text = namesub9;
             }
         }
-
         private void btnvideo9_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "视频(*.mp4;*.flv;*.mkv)|*.mp4;*.flv;*.mkv|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 namevideo9 = openFileDialog1.FileName;
                 txtvideo9.Text = namevideo9;
             }
         }
-
         private void button9_Click(object sender, EventArgs e)
         {
             txtAVS.Clear();
         }
-
         private void btnClip_Click(object sender, EventArgs e)
         {
             if (namevideo4 == "")
@@ -1994,37 +1650,29 @@ namespace mp4box
             }
             else
             {
-
                 int h1 = int.Parse(maskb.Text.ToString().Substring(0, 2));
                 int m1 = int.Parse(maskb.Text.ToString().Substring(3, 2));
                 int s1 = int.Parse(maskb.Text.ToString().Substring(6, 2));
                 int h2 = int.Parse(maske.Text.ToString().Substring(0, 2));
                 int m2 = int.Parse(maske.Text.ToString().Substring(3, 2));
                 int s2 = int.Parse(maske.Text.ToString().Substring(6, 2));
-
                 clip = "\"" + workpath + "\\ffmpeg.exe\" -ss " + maskb.Text.ToString() + " -t " + timeminus(h1, m1, s1, h2, m2, s2) + " -i  \"" + namevideo4 + "\" -c copy \"" + nameout5 + "\" \r\ncmd";
                 batpath = workpath + "\\clip.bat";
                 File.WriteAllText(batpath, clip, UnicodeEncoding.Default);
                 Process.Start(batpath);
             }
         }
-
-
         private void cbX264_SelectedIndexChanged(object sender, EventArgs e)
         {
             StreamReader sr = new StreamReader(workpath + "\\preset\\" + cbX264.Text + ".txt", System.Text.Encoding.Default);
             txth264.Text = sr.ReadToEnd();
             sr.Close();
         }
-
         private void cbFPS_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
-
         private void btnMIopen_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "视频(*.mp4;*.flv;*.mkv)|*.mp4;*.flv;*.mkv|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
@@ -2033,32 +1681,24 @@ namespace mp4box
                 txtMI.Text = MediaInfo(MIvideo);
             }
         }
-
         private void btnMIplay_Click(object sender, EventArgs e)
         {
             Process.Start(MIvideo);
         }
-
         private void btnMIcopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(MItext);
         }
-
-
-
         private void btnvideo7_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "视频(*.mkv)|*.mkv";
             DialogResult result = openFileDialog1.ShowDialog();
-
-
             if (result == DialogResult.OK)
             {
                 namevideo6 = openFileDialog1.FileName;
                 txtvideo6.Text = namevideo6;
             }
         }
-
         private void btnextract7_Click(object sender, EventArgs e)
         {
             if (namevideo6 == "")
@@ -2070,7 +1710,6 @@ namespace mp4box
                 int i = namevideo6.IndexOf(".");
                 string mkvname = namevideo6.Remove(i);
                 QQButton btn = (QQButton)sender;
-
                 switch (btn.Name)
                 {
                     case "MkvExtract1Button":
@@ -2089,49 +1728,37 @@ namespace mp4box
                         mkvextract = "\"" + workpath + "\\mkvextract.exe\" tracks \"" + namevideo6 + "\" 0:\"" + mkvname + "_video.h264\"";
                         break;
                 }
-
                 batpath = workpath + "\\mkvextract.bat";
                 File.WriteAllText(batpath, mkvextract, UnicodeEncoding.Default);
                 LogRecord(mkvextract);
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
-
         private void txtMI_TextChanged(object sender, EventArgs e)
         {
             MItext = txtMI.Text;
         }
-
         private void txtAVScreate_Click(object sender, EventArgs e)
         {
-
         }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://www.nmm-hd.org/newbbs/viewtopic.php?f=8&t=219");
         }
-
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://www.sosg.net/read.php?tid=480646");
-
         }
-
-
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://pan.baidu.com/share/link?shareid=4513&uk=4094576855");
         }
-
         private void btnaextract2_Click(object sender, EventArgs e)
         {
             if (namevideo == "")
             {
                 MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
             else
             {
                 aextract = "\"" + workpath + "\\mp4box.exe\" -raw 3 \"" + namevideo + "\"";
@@ -2141,14 +1768,12 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void btnaextract3_Click(object sender, EventArgs e)
         {
             if (namevideo == "")
             {
                 MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
             else
             {
                 aextract = "\"" + workpath + "\\mp4box.exe\" -raw 4 \"" + namevideo + "\"";
@@ -2158,7 +1783,6 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void txtvideo6_TextChanged_1(object sender, EventArgs e)
         {
             if (File.Exists(txtvideo6.Text.ToString()))
@@ -2166,29 +1790,22 @@ namespace mp4box
                 namevideo6 = txtvideo6.Text;
             }
         }
-
         #region 帮助页面
-
         private void AboutBtn_Click(object sender, EventArgs e)
         {
             QQMessageBox.Show(
                 this,
-                "小丸工具箱 2014版\r\n主页：http://maruko.appinn.me/ \r\n发布日期：2014年2月13日",
+                "小丸工具箱 2014版\r\n主页：http://maruko.appinn.me/ \r\n发布日期：2014年3月24日",
                 "关于",
                 QQMessageBoxIcon.Information,
                 QQMessageBoxButtons.OK);
         }
-
         private void HomePageBtn_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("http://maruko.appinn.me/");
         }
-
         #endregion
-
         #region 视频页面
-
-
         private void x264OneBatchButton_Click(object sender, EventArgs e)
         {
             if (lbAuto.Items.Count != 0)
@@ -2201,47 +1818,38 @@ namespace mp4box
             }
             else MessageBox.Show("请输入视频！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
-
         private void x264VideoBtn_Click(object sender, EventArgs e)
         {
             //
             openFileDialog1.Filter = "视频(*.mp4;*.flv;*.mkv;*.avi;*.wmv;*.mpg;*.avs)|*.mp4;*.flv;*.mkv;*.avi;*.wmv;*.mpg;*.avs|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 namevideo2 = openFileDialog1.FileName;
                 x264VideoTextBox.Text = namevideo2;
             }
         }
-
         private void x264OutBtn_Click(object sender, EventArgs e)
         {
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "视频(*.mp4)|*.mp4";
             DialogResult result = savefile.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 nameout2 = savefile.FileName;
                 x264OutTextBox.Text = nameout2;
             }
         }
-
         private void x264SubBtn_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "ASS字幕(*.ass;*.ssa)|*.ass;*.ssa|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 namesub2 = openFileDialog1.FileName;
                 x264SubTextBox.Text = namesub2;
             }
         }
-
         private void x264StartBtn_Click(object sender, EventArgs e)
         {
             if (namevideo2 == "")
@@ -2252,7 +1860,6 @@ namespace mp4box
             {
                 MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
             else
             {
                 //如果是AVS复制到C盘根目录
@@ -2262,9 +1869,7 @@ namespace mp4box
                     File.Copy(x264VideoTextBox.Text, tempavspath, true);
                     namevideo2 = tempavspath;
                 }
-
                 x264 = x264bat(namevideo2, nameout2).Replace("\r\n", "");
-
                 if (x264SubTextBox.Text != "")
                 {
                     if (x264.IndexOf("--vf") == -1)
@@ -2279,19 +1884,17 @@ namespace mp4box
                         x264 += " --sub \"" + namesub2 + "\"";
                     }
                 }
-
-                switch (x264AudioModeComboBox.Text)
+                switch (x264AudioModeComboBox.SelectedIndex)
                 {
-                    case "无音频流": x264 += " --acodec none"; break;
-                    case "复制音频流": x264 += " --acodec copy"; break;
-                    case "外置音频流": x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
-                    case "QTAAC": x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
-                    case "libaacplus": x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
-                    case "FAAC": x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
+                    case 0: x264 += " --acodec none"; break;
+                    case 1: x264 += " --acodec copy"; break;
+                    case 2: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
+                    case 3: x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
+                    case 4: x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
+                    case 5: x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
+                    case 6: break;
                     default: ; break;
                 }
-
-
                 if (cbFPS2.Text != "None")
                 {
                     switch (cbFPS2.Text)
@@ -2307,31 +1910,24 @@ namespace mp4box
                         default: x264 += " --fps " + cbFPS2.Text; break;
                     }
                 }
-
                 if (x264SeekNumericUpDown.Value != 0)
                 {
                     x264 += " --seek " + x264SeekNumericUpDown.Value.ToString();
                 }
-
                 if (x264FramesNumericUpDown.Value != 0)
                 {
                     x264 += " --frames " + x264FramesNumericUpDown.Value.ToString();
                 }
-
                 x264 += "\r\n";
-
                 if (x264FLVCheckBox.Checked == true)
                 {
                     string flvfile = AddExt(nameout2, "_FLV.flv");
                     x264 += "\r\n\"" + workpath + "\\ffmpeg.exe\" -i  \"" + nameout2 + "\" -c copy -f flv  \"" + flvfile + "\" \r\n";
                 }
-
-
                 if (x264ShutdownCheckBox.Checked)
                 {
                     x264 += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60";
                 }
-
                 x264 += "\r\ncmd";
                 batpath = workpath + "\\x264.bat";
                 File.WriteAllText(batpath, x264, UnicodeEncoding.Default);
@@ -2339,18 +1935,15 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void x264AddPresetBtn_Click(object sender, EventArgs e)
         {
             //create directory
             string preset = workpath + "\\preset";
             if (!Directory.Exists(preset)) Directory.CreateDirectory(preset);
-
             //add file
             aextract = "\"" + workpath + "\\FLVExtractCL.exe\" -a \"" + namevideo8 + "\"";
             batpath = workpath + "\\preset\\" + PresetNameTextBox.Text + ".txt";
             File.WriteAllText(batpath, txth264.Text, UnicodeEncoding.Default);
-
             //refresh combobox
             cbX264.Items.Clear();
             if (Directory.Exists(workpath + "\\preset"))
@@ -2363,14 +1956,12 @@ namespace mp4box
             }
             if (cbX264.Items.Count > 0) cbX264.SelectedIndex = 0;
         }
-
         private void x264DeletePresetBtn_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("确定要删除这条预设参数？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 string name = batpath = workpath + "\\preset\\" + cbX264.Text + ".txt";
                 File.Delete(name);
-
                 cbX264.Items.Clear();
                 if (Directory.Exists(workpath + "\\preset"))
                 {
@@ -2383,28 +1974,21 @@ namespace mp4box
                 if (cbX264.Items.Count > 0) cbX264.SelectedIndex = 0;
             }
         }
-
-
         private void x264Mode2RadioButton_CheckedChanged(object sender, EventArgs e)
         {
-
             mode = 2;
             lbrate.Visible = true;
             numrate.Visible = true;
             label12.Visible = true;
             cbFPS2.Visible = true;
             lbFPS2.Visible = true;
-
             lbwidth.Visible = true;
             lbheight.Visible = true;
             numwidth.Visible = true;
             numheight.Visible = true;
             MaintainResolutionCheckBox.Visible = true;
-
-
             lbcrf.Visible = false;
             numcrf.Visible = false;
-
             label4.Visible = false;
             txth264.Visible = false;
             cbX264.Visible = false;
@@ -2412,37 +1996,28 @@ namespace mp4box
             x264DeletePresetBtn.Visible = false;
             PresetNameTextBox.Visible = false;
         }
-
         private void x264Mode3RadioButton_CheckedChanged(object sender, EventArgs e)
         {
             mode = 0;
-
             label4.Visible = true;
             txth264.Visible = true;
             cbX264.Visible = true;
             x264AddPresetBtn.Visible = true;
             x264DeletePresetBtn.Visible = true;
             PresetNameTextBox.Visible = true;
-
             lbwidth.Visible = false;
             lbheight.Visible = false;
             numwidth.Visible = false;
             numheight.Visible = false;
             MaintainResolutionCheckBox.Visible = false;
-
-
             lbrate.Visible = false;
             numrate.Visible = false;
             label12.Visible = false;
-
             lbcrf.Visible = false;
             numcrf.Visible = false;
             cbFPS2.Visible = false;
             lbFPS2.Visible = false;
-
-
         }
-
         private void x264Mode1RadioButton_CheckedChanged(object sender, EventArgs e)
         {
             mode = 1;
@@ -2450,18 +2025,14 @@ namespace mp4box
             numcrf.Visible = true;
             cbFPS2.Visible = true;
             lbFPS2.Visible = true;
-
             lbwidth.Visible = true;
             lbheight.Visible = true;
             numwidth.Visible = true;
             numheight.Visible = true;
             MaintainResolutionCheckBox.Visible = true;
-
             lbrate.Visible = false;
             numrate.Visible = false;
             label12.Visible = false;
-
-
             label4.Visible = false;
             txth264.Visible = false;
             cbX264.Visible = false;
@@ -2469,7 +2040,6 @@ namespace mp4box
             x264DeletePresetBtn.Visible = false;
             PresetNameTextBox.Visible = false;
         }
-
         private void x264AudioModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (x264AudioModeComboBox.SelectedIndex != -1)
@@ -2499,14 +2069,11 @@ namespace mp4box
                 }
             }
         }
-
         private void x264PriorityComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string processName = cbx264file.Text;
             processName = processName.Replace(".exe", "");
-
             Process[] processes = Process.GetProcesses();
-
             //if (x264PriorityComboBox.SelectedIndex == 4 || x264PriorityComboBox.SelectedIndex == 5)
             //{
             //    if (MessageBox.Show("优先级那么高的话会严重影响其他进程的运行速度，\r\n是否继续？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -2514,8 +2081,6 @@ namespace mp4box
             //        x264PriorityComboBox.SelectedIndex = 2;
             //    }
             //}
-
-
             //遍历电脑中的进程
             for (int i = 0; i < processes.GetLength(0); i++)
             {
@@ -2544,26 +2109,18 @@ namespace mp4box
                 //txtsub2.Text = AddExt(path, ".ass");
             }
         }
-
         private void x264OutTextBox_TextChanged(object sender, EventArgs e)
         {
             nameout2 = x264OutTextBox.Text;
         }
-
         private void x264SubTextBox_TextChanged(object sender, EventArgs e)
         {
             namesub2 = x264SubTextBox.Text;
         }
-
-
-
-
         private void x264BatchClearBtn_Click(object sender, EventArgs e)
         {
             lbAuto.Items.Clear();
-
         }
-
         private void x264BatchDeleteBtn_Click(object sender, EventArgs e)
         {
             if (lbAuto.Items.Count > 0)
@@ -2583,24 +2140,18 @@ namespace mp4box
                 }
             }
         }
-
         private void x264BatchAddBtn_Click(object sender, EventArgs e)
         {
             openFileDialog1.Multiselect = true;
             openFileDialog1.Filter = "所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 lbAuto.Items.AddRange(openFileDialog1.FileNames);
             }
         }
-
         #endregion
-
         #region 音频界面
-
-
         private void AudioEncoderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (File.Exists(txtaudio2.Text))
@@ -2611,7 +2162,6 @@ namespace mp4box
                     txtout3.Text = AddExt(txtaudio2.Text, "_AAC.aac");
             }
         }
-
         private void AudioListBox_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
@@ -2644,7 +2194,6 @@ namespace mp4box
             }
             else e.Effect = DragDropEffects.None;
         }
-
         private void AudioListBox_MouseDown(object sender, MouseEventArgs e)
         {
             indexofsource = ((ListBox)sender).IndexFromPoint(e.X, e.Y);
@@ -2653,9 +2202,6 @@ namespace mp4box
                 ((ListBox)sender).DoDragDrop(((ListBox)sender).Items[indexofsource].ToString(), DragDropEffects.All);
             }
         }
-
-
-
         private void AudioBatchButton_Click(object sender, EventArgs e)
         {
             if (AudioListBox.Items.Count != 0)
@@ -2679,35 +2225,27 @@ namespace mp4box
             }
             else MessageBox.Show("请输入文件！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
         private void btnaudio2_Click(object sender, EventArgs e)
         {
-
             openFileDialog1.Filter = "所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 nameaudio2 = openFileDialog1.FileName;
                 txtaudio2.Text = nameaudio2;
             }
         }
-
         private void btnout3_Click(object sender, EventArgs e)
         {
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "音频(*.aac)|*.aac";
             DialogResult result = savefile.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 nameout3 = savefile.FileName;
                 txtout3.Text = nameout3;
             }
         }
-
-
-
         private void btnaac_Click(object sender, EventArgs e)
         {
             if (nameaudio2 == "")
@@ -2718,7 +2256,6 @@ namespace mp4box
             {
                 MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
             else
             {
                 //ffmpeg = "\"" + workpath + "\\ffmpeg.exe\" -y -i \"" + nameaudio2 + "\" -f wav temp.wav";
@@ -2730,32 +2267,27 @@ namespace mp4box
                 //{
                 //    aac += "del temp.wav\r\ncmd";
                 //}
-
                 batpath = workpath + "\\aac.bat";
                 File.WriteAllText(batpath, audiobat(nameaudio2, nameout3), UnicodeEncoding.Default);
                 LogRecord(audiobat(nameaudio2, nameout3));
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-
         private void txtaudio2_TextChanged(object sender, EventArgs e)
         {
             if (File.Exists(txtaudio2.Text.ToString()))
             {
                 nameaudio2 = txtaudio2.Text;
-
                 if (AudioEncoderComboBox.SelectedIndex == 2)
                     txtout3.Text = AddExt(txtaudio2.Text, "_WAV.wav");
                 else
                     txtout3.Text = AddExt(txtaudio2.Text, "_AAC.aac");
             }
         }
-
         private void txtout3_TextChanged(object sender, EventArgs e)
         {
             nameout3 = txtout3.Text;
         }
-
         private void txtaudio2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (File.Exists(txtaudio2.Text.ToString()))
@@ -2766,35 +2298,29 @@ namespace mp4box
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
             aacmode = 2;
-
             lbaacrate.Visible = false;
             lbaackbps.Visible = false;
             numq.Visible = false;
             txtNeroaac.Visible = true;
         }
-
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             aacmode = 1;
-
             lbaacrate.Visible = true;
             lbaackbps.Visible = true;
             numq.Visible = true;
             txtNeroaac.Visible = false;
         }
-
         private void AudioAddButton_Click(object sender, EventArgs e)
         {
             openFileDialog1.Multiselect = true;
             openFileDialog1.Filter = "所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 AudioListBox.Items.AddRange(openFileDialog1.FileNames);
             }
         }
-
         private void AudioDeleteButton_Click(object sender, EventArgs e)
         {
             if (AudioListBox.Items.Count > 0)
@@ -2814,16 +2340,12 @@ namespace mp4box
                 }
             }
         }
-
         private void AudioClearButton_Click(object sender, EventArgs e)
         {
             AudioListBox.Items.Clear();
         }
-
         #endregion
-
         #region AVS页面
-
         private void GenerateAVS()
         {
             //if (Directory.Exists("avsfilter"))
@@ -2835,35 +2357,24 @@ namespace mp4box
             //    }
             //}
             avsBuilder.Remove(0, avsBuilder.Length);
-
             avsBuilder.AppendLine("LoadPlugin(\"avsfilter\\VSFilter.DLL\")");
             if (UndotCheckBox.Checked) avsBuilder.AppendLine("LoadPlugin(\"avsfilter\\UnDot.DLL\")");
             avsBuilder.AppendLine("DirectShowSource(\"" + namevideo9 + "\")");
             avsBuilder.AppendLine("ConvertToYV12()");
-
             if (UndotCheckBox.Checked)
                 avsBuilder.AppendLine("Undot()");
-
             if (TweakCheckBox.Checked)
                 avsBuilder.AppendLine("Tweak(" + TweakChromaNumericUpDown.Value.ToString() + ", " + TweakSaturationNumericUpDown.Value.ToString() + ", " + TweakBrightnessNumericUpDown.Value.ToString() + ", " + TweakContrastNumericUpDown.Value.ToString() + ")");
-
             if (LevelsCheckBox.Checked)
                 avsBuilder.AppendLine("Levels(0," + LevelsNumericUpDown.Value.ToString() + ",255,0,255)");
-
             if (LanczosResizeCheckBox.Checked)
                 avsBuilder.AppendLine("LanczosResize(" + AVSWidthNumericUpDown.Value.ToString() + "," + AVSHeightNumericUpDown.Value.ToString() + ")");
-
             if (SharpenCheckBox.Checked)
                 avsBuilder.AppendLine("Sharpen(" + SharpenNumericUpDown.Value.ToString() + ")");
-
-
             if (CropCheckBox.Checked)
                 avsBuilder.AppendLine("Crop(" + AVSCropTextBox.Text + ")");
-
-
             if (AddBordersCheckBox.Checked)
                 avsBuilder.AppendLine("AddBorders(" + AddBorders1NumericUpDown.Value.ToString() + "," + AddBorders2NumericUpDown.Value.ToString() + "," + AddBorders3NumericUpDown.Value.ToString() + "," + AddBorders4NumericUpDown.Value.ToString() + ")");
-
             if (AVSSubCheckBox.Checked)
             {
                 if (Path.GetExtension(namesub9) == ".idx")
@@ -2871,153 +2382,119 @@ namespace mp4box
                 else
                     avsBuilder.AppendLine("TextSub(\"" + namesub9 + "\")");
             }
-
             if (TrimCheckBox.Checked)
                 avsBuilder.AppendLine("Trim(" + TrimStartNumericUpDown.Value.ToString() + "," + TrimEndNumericUpDown.Value.ToString() + ")");
-
             txtAVS.Text = avsBuilder.ToString();
         }
-
         #region 更改AVS
-
         private void TweakCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void LanczosResizeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void AddBordersCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void CropCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void TrimCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void LevelsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void SharpenCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void UndotCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void TweakChromaNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void TweakSaturationNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void TweakBrightnessNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void TweakContrastNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void AVSWidthNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void AVSHeightNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void AddBorders1NumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void AddBorders2NumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void AddBorders3NumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void AddBorders4NumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void AVSCropTextBox_TextChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void TrimStartNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void TrimEndNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void LevelsNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void SharpenNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
-
         private void AVSSubCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             GenerateAVS();
         }
         #endregion
-
-
-
         #endregion
-
-
         private void ExtractMP4Button_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "视频(*.mp4)|*.mp4|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 namevideo = openFileDialog1.FileName;
                 ExtractMP4TextBox.Text = namevideo;
             }
         }
-
         private void txtAVS_TextChanged(object sender, EventArgs e)
         {
             Match m = Regex.Match(txtAVS.Text, "ource\\(\"[a-zA-Z]:\\\\.+\\.\\w+\"");
@@ -3030,7 +2507,6 @@ namespace mp4box
                 txtout9.Text = str;
             }
         }
-
         public void Log(string path)
         {
             ProcessStartInfo start = new ProcessStartInfo(path);//设置运行的命令行文件问ping.exe文件，这个文件系统会自己找到
@@ -3053,12 +2529,10 @@ namespace mp4box
             p.Close();//关闭进程
             reader.Close();//关闭流
         }
-
         public void LogRecord(string log)
         {
             File.AppendAllText(workpath + "\\log.txt", "===========" + DateTime.Now.ToString() + "===========\r\n" + log + "\r\n\r\n", UnicodeEncoding.Default);
         }
-
         private void DeleteLogButton_Click(object sender, EventArgs e)
         {
             if (File.Exists(workpath + "\\log.txt"))
@@ -3068,7 +2542,6 @@ namespace mp4box
             }
             else MessageBox.Show("没有找到日志文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
         private void ViewLogButton_Click(object sender, EventArgs e)
         {
             if (File.Exists(workpath + "\\log.txt"))
@@ -3077,19 +2550,16 @@ namespace mp4box
             }
             else MessageBox.Show("没有找到日志文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
         private void x264PathButton_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.ShowDialog();
             x264PathTextBox.Text = fbd.SelectedPath;
         }
-
         private void ExtractMP4TextBox_TextChanged(object sender, EventArgs e)
         {
             namevideo = ExtractMP4TextBox.Text;
         }
-
         private void MaintainResolutionCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (MaintainResolutionCheckBox.Checked)
@@ -3099,20 +2569,13 @@ namespace mp4box
                 numwidth.Enabled = false;
                 numheight.Enabled = false;
             }
-
             else
             {
                 numwidth.Enabled = true;
                 numheight.Enabled = true;
             }
-
-
-
-
         }
-
         #region globalization
-
         public static void SetLang(string lang, Form form, Type formType)
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang);
@@ -3123,7 +2586,6 @@ namespace mp4box
                 AppLang(form, resources);
             }
         }
-
         private static void AppLang(Control control, System.ComponentModel.ComponentResourceManager resources)
         {
             foreach (Control c in control.Controls)
@@ -3132,7 +2594,6 @@ namespace mp4box
                 AppLang(c, resources);
             }
         }
-
         private void languageComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             StreamReader sr;
@@ -3142,11 +2603,9 @@ namespace mp4box
             {
                 case 0:
                     SetLang("zh-CN", this, typeof(MainForm));
-
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "低", "低于标准", "普通", "高于标准", "高", "实时" });
                     x264PriorityComboBox.SelectedIndex = 2;
-
                     x264VideoTextBox.EmptyTextTip = "可以把文件拖曳到这里";
                     x264OutTextBox.EmptyTextTip = "宽度和高度全为0即不改变分辨率";
                     x264PathTextBox.EmptyTextTip = "字幕文件和视频文件在同一目录下且同名";
@@ -3154,10 +2613,7 @@ namespace mp4box
                     ExtractMP4TextBox.EmptyTextTip = "抽取的视频或音频在原视频目录下";
                     txtvideo8.EmptyTextTip = "抽取的视频或音频在原视频目录下";
                     txtvideo6.EmptyTextTip = "抽取的视频或音频在原视频目录下";
-
-
                     //load Help Text
-
                     if (File.Exists(workpath + "\\help.txt"))
                     {
                         sr = new StreamReader(workpath + "\\help.txt", System.Text.Encoding.UTF8);
@@ -3170,7 +2626,6 @@ namespace mp4box
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "低", "在標準以下", "標準", "在標準以上", "高", "即時" });
                     x264PriorityComboBox.SelectedIndex = 2;
-
                     x264VideoTextBox.EmptyTextTip = "可以把文件拖曳到這裡";
                     x264OutTextBox.EmptyTextTip = "寬度和高度全為0即不改變解析度";
                     x264PathTextBox.EmptyTextTip = "字幕和視頻在同一資料夾下且同名";
@@ -3178,7 +2633,6 @@ namespace mp4box
                     ExtractMP4TextBox.EmptyTextTip = "新檔案生成在原資料夾";
                     txtvideo8.EmptyTextTip = "新檔案生成在原資料夾";
                     txtvideo6.EmptyTextTip = "新檔案生成在原資料夾";
-
                     //load Help Text
                     if (File.Exists(workpath + "\\help_zh_tw.txt"))
                     {
@@ -3187,14 +2641,11 @@ namespace mp4box
                         sr.Close();
                     }
                     break;
-
                 case 2:
                     SetLang("en-US", this, typeof(MainForm));
-
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "Idle", "BelowNormal", "Normal", "AboveNormal", "High", "RealTime" });
                     x264PriorityComboBox.SelectedIndex = 2;
-
                     x264VideoTextBox.EmptyTextTip = "Drag file here";
                     x264OutTextBox.EmptyTextTip = "Both the width and height equal zero means using original resolution";
                     x264PathTextBox.EmptyTextTip = "Subtitle and Video must be of the same name and in the same folder";
@@ -3202,7 +2653,6 @@ namespace mp4box
                     ExtractMP4TextBox.EmptyTextTip = "New file will be created in the original folder";
                     txtvideo8.EmptyTextTip = "New file will be created in the original folder";
                     txtvideo6.EmptyTextTip = "New file will be created in the original folder";
-
                     //load Help Text
                     if (File.Exists(workpath + "\\help.txt"))
                     {
@@ -3210,21 +2660,16 @@ namespace mp4box
                         HelpTextBox.Text = sr.ReadToEnd();
                         sr.Close();
                     }
-
                     break;
-
                 //case 3:
                 //    SetLang("ja-JP", this, typeof(MainForm));
                 //    break;
-
                 default:
                     SetLang("zh-CN", this, typeof(MainForm));
                     break;
             }
         }
-
         #endregion
-
         public static void RunProcess(string exe, string arg)
         {
             Thread thread = new Thread(() =>
@@ -3240,26 +2685,21 @@ namespace mp4box
             });
             thread.IsBackground = true;
             thread.Start();
-
         }
-
         private void DonateButton_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://me.alipay.com/marukochan");
         }
-
         private void AVSSaveButton_Click(object sender, EventArgs e)
         {
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "AVS(*.avs)|*.avs";
             DialogResult result = savefile.ShowDialog();
-
             if (result == DialogResult.OK)
             {
                 File.WriteAllText(savefile.FileName, txtAVS.Text, UnicodeEncoding.Default);
             }
         }
-
         private void MuxReplaceAudioButton_Click(object sender, EventArgs e)
         {
             if (namevideo == "")
@@ -3286,7 +2726,6 @@ namespace mp4box
             LogRecord(mux);
             Process.Start(batpath);
         }
-
         private void cbx264file_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbx264file.Text.Contains("all"))
@@ -3295,6 +2734,7 @@ namespace mp4box
                 x264AudioModeComboBox.Items.Add("无音频流");
                 x264AudioModeComboBox.Items.Add("复制音频流");
                 x264AudioModeComboBox.Items.Add("外置音频流");
+                x264AudioModeComboBox.Items.Add("默认");
                 x264AudioModeComboBox.SelectedIndex = 0;
             }
             else
@@ -3306,9 +2746,12 @@ namespace mp4box
                 x264AudioModeComboBox.Items.Add("QTAAC");
                 x264AudioModeComboBox.Items.Add("FAAC");
                 x264AudioModeComboBox.Items.Add("libaacplus");
+                x264AudioModeComboBox.Items.Add("默认");
                 x264AudioModeComboBox.SelectedIndex = 4;
             }
         }
+
+        #region 一图流
 
         private void AudioPicButton_Click(object sender, EventArgs e)
         {
@@ -3319,7 +2762,6 @@ namespace mp4box
                 AudioPicTextBox.Text = openFileDialog1.FileName;
             }
         }
-
         private void AudioPicAudioButton_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "音频(*.aac;*.mp3;*.mp4;*.wav)|*.aac;*.mp3;*.mp4;*.wav|所有文件(*.*)|*.*";
@@ -3329,7 +2771,6 @@ namespace mp4box
                 AudioPicAudioTextBox.Text = openFileDialog1.FileName;
             }
         }
-
         private void AudioOnePicOutputButton_Click(object sender, EventArgs e)
         {
             SaveFileDialog savefile = new SaveFileDialog();
@@ -3341,7 +2782,6 @@ namespace mp4box
                 AudioOnePicOutputTextBox.Text = savefile.FileName;
             }
         }
-
         public int SecondsFromHHMMSS(string hhmmss)
         {
             int hh = int.Parse(hhmmss.Substring(0, 2));
@@ -3349,7 +2789,6 @@ namespace mp4box
             int ss = int.Parse(hhmmss.Substring(6, 2));
             return hh * 3600 + mm * 60 + ss;
         }
-
         private void AudioOnePicButton_Click(object sender, EventArgs e)
         {
             if (!File.Exists(AudioPicTextBox.Text))
@@ -3364,20 +2803,17 @@ namespace mp4box
             {
                 MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
             else
             {
-
                 System.Drawing.Image img = System.Drawing.Image.FromFile(AudioPicTextBox.Text);
                 int sourceWidth = img.Width;
                 int sourceHeight = img.Height;
                 if (img.Width % 2 != 0 || img.Height % 2 != 0)
                 {
                     MessageBox.Show("图片的长和宽必须是偶数。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    img.Dispose();
                     return;
                 }
-
-
                 if (img.RawFormat.Equals(ImageFormat.Jpeg))
                 {
                     File.Copy(AudioPicTextBox.Text, tempPic, true);
@@ -3389,48 +2825,61 @@ namespace mp4box
                     EncoderParameters eps = new EncoderParameters(1);
                     ImageCodecInfo ImageCoderType = getImageCoderInfo("image/jpeg");
                     eps.Param[0] = ep;
-                    img.Save(tempPic, ImageCoderType,eps);
+                    img.Save(tempPic, ImageCoderType, eps);
                     //img.Save(tempPic, ImageFormat.Jpeg);
                 }
-
                 //获得音频时长
                 MediaInfo MI = new MediaInfo();
                 MI.Open(AudioPicAudioTextBox.Text);
                 int seconds = SecondsFromHHMMSS(MI.Get(StreamKind.General, 0, "Duration/String3"));
-
                 if (AudioCopyCheckBox.Checked)
                 {
-                    mux = "ffmpeg -loop 1 -r " + AudioOnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf 24 -y SinglePictureVideo.mp4\r\n";
+                    mux = "ffmpeg -loop 1 -r " + AudioOnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
                     mux += "ffmpeg -i SinglePictureVideo.mp4 -i \"" + AudioPicAudioTextBox.Text + "\" -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
                     mux += "del SinglePictureVideo.mp4\r\n";
                 }
                 else
                 {
                     mux = "ffmpeg -i \"" + AudioPicAudioTextBox.Text + "\" -f wav - |neroaacenc -br " + AudioOnePicAudioBitrateNum.Value.ToString() + "000 -ignorelength -if - -of audio.mp4 -lc\r\n";
-                    mux += "ffmpeg -loop 1 -r " + AudioOnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf 24 -y SinglePictureVideo.mp4\r\n";
+                    mux += "ffmpeg -loop 1 -crf " + OnePicCRFNum.Value.ToString() + " -r " + AudioOnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
                     mux += "ffmpeg -i SinglePictureVideo.mp4 -i audio.mp4 -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
                     mux += "del SinglePictureVideo.mp4\r\ndel audio.mp4\r\n";
                 }
-                batpath = workpath + "\\mux.bat";
+                /*
+                string audioPath = AddExt(Path.GetFileName(AudioPicAudioTextBox.Text), "_atmp.mp4");
+                string videoPath = AddExt(Path.GetFileName(AudioPicAudioTextBox.Text), "_vtmp.mp4");
+                string picturePath = "c:\\" + Path.GetFileNameWithoutExtension(AudioPicTextBox.Text) + "_tmp.jpg";
+                if (AudioCopyCheckBox.Checked)
+                {
+                    mux = "ffmpeg -loop 1 -r " + AudioOnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + picturePath + "\" -vcodec libx264 -crf 24 -y \"" + videoPath + "\"\r\n";
+                    mux += "ffmpeg -i \"" + videoPath + "\" -i \"" + AudioPicAudioTextBox.Text + "\" -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
+                    mux += "del \"" + videoPath + "\"\r\ndel \"" + picturePath + "\"\r\n";
+                }
+                else
+                {
+                    mux = "ffmpeg -i \"" + AudioPicAudioTextBox.Text + "\" -f wav - |neroaacenc -br " + AudioOnePicAudioBitrateNum.Value.ToString() + "000 -ignorelength -if - -of \"" + audioPath + "\" -lc\r\n";
+                    mux += "ffmpeg -loop 1 -r " + AudioOnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + picturePath + "\" -vcodec libx264 -crf 24 -y \"" + videoPath + "\"\r\n";
+                    mux += "ffmpeg -i \"" + videoPath + "\" -i \"" + audioPath + "\" -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
+                    mux += "del \"" + videoPath + "\"\r\ndel \"" + audioPath + "\"\r\ndel \"" + picturePath + "\"\r\n";
+                }
+                */
+                batpath = Path.Combine(workpath, Path.GetRandomFileName() + ".bat");
                 File.WriteAllText(batpath, mux, UnicodeEncoding.Default);
                 LogRecord(mux);
                 Process.Start(batpath);
             }
         }
-
         private void txtMI_DragDrop(object sender, DragEventArgs e)
         {
             MIvideo = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
             txtMI.Text = MediaInfo(MIvideo);
         }
-
         private void txtMI_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 e.Effect = DragDropEffects.Link;
             else e.Effect = DragDropEffects.None;
         }
-
         private void AudioPicAudioTextBox_TextChanged(object sender, EventArgs e)
         {
             if (File.Exists(AudioPicAudioTextBox.Text.ToString()))
@@ -3438,7 +2887,6 @@ namespace mp4box
                 AudioOnePicOutputTextBox.Text = AddExt(AudioPicAudioTextBox.Text, "_SP.flv");
             }
         }
-
         /// <summary>
         /// 获取图片编码类型信息
         /// </summary>
@@ -3447,13 +2895,183 @@ namespace mp4box
         private ImageCodecInfo getImageCoderInfo(string ImageCoderType)
         {
             ImageCodecInfo[] coderTypeArray = ImageCodecInfo.GetImageEncoders();
-
             foreach (ImageCodecInfo coderType in coderTypeArray)
             {
                 if (coderType.MimeType.Equals(ImageCoderType))
                     return coderType;
             }
             return null;
+        }
+
+        #endregion
+
+
+        #region 后黑
+
+        private void BlackVideoButton_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "FLV视频(*.flv)|*.flv";
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                BlackVideoTextBox.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void BlackOutputButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.Filter = "FLV视频(*.flv)|*.flv";
+            DialogResult result = savefile.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                BlackOutputTextBox.Text = savefile.FileName;
+            }
+        }
+
+        private void BlackPicButton_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "图片(*.jpg;*.jpeg;*.png;*.bmp;*.gif)|*.jpg;*.jpeg;*.png;*.bmp;*.gif|所有文件(*.*)|*.*";
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                BlackPicTextBox.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void BlackStartButton_Click(object sender, EventArgs e)
+        {
+            string videoname = BlackVideoTextBox.Text;
+            MediaInfo MI = new MediaInfo();
+            MI.Open(videoname);
+            double videobitrate = double.Parse(MI.Get(StreamKind.General, 0, "BitRate"));
+            double targetBitrate = (double)BlackBitrateNum.Value;
+
+            //验证
+            if (!File.Exists(BlackVideoTextBox.Text) || Path.GetExtension(BlackVideoTextBox.Text) != ".flv")
+            {
+                MessageBox.Show("请选择FLV视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!File.Exists(BlackPicTextBox.Text) && BlackNoPicCheckBox.Checked == false)
+            {
+                MessageBox.Show("请选择图片文件或勾选使用黑屏", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (BlackOutputTextBox.Text == "")
+            {
+                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (videobitrate < 1000000)
+            {
+                MessageBox.Show("此视频不需要后黑。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (videobitrate > 2500000)
+            {
+                MessageBox.Show("此视频码率过大，请先压制再后黑。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+
+            //处理图片
+            int videoWidth = int.Parse(MI.Get(StreamKind.Video, 0, "Width"));
+            int videoHeight = int.Parse(MI.Get(StreamKind.Video, 0, "Height"));
+            if (BlackNoPicCheckBox.Checked)
+            {
+                Bitmap bm = new Bitmap(videoWidth, videoHeight);
+                Graphics g = Graphics.FromImage(bm);
+                //g.FillRectangle(Brushes.White, new Rectangle(0, 0, 800, 600));
+                g.Clear(Color.Black);
+                bm.Save(tempPic, ImageFormat.Jpeg);
+                g.Dispose();
+                bm.Dispose();
+            }
+            else
+            {
+                System.Drawing.Image img = System.Drawing.Image.FromFile(BlackPicTextBox.Text);
+                int sourceWidth = img.Width;
+                int sourceHeight = img.Height;
+                if (img.Width % 2 != 0 || img.Height % 2 != 0)
+                {
+                    MessageBox.Show("图片的长和宽必须都是偶数。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    img.Dispose();
+                    return;
+                }
+                if (img.Width != videoWidth || img.Height != videoHeight)
+                {
+                    MessageBox.Show("图片的长和宽和视频不一致。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    img.Dispose();
+                    return;
+                }
+                if (img.RawFormat.Equals(ImageFormat.Jpeg))
+                {
+                    File.Copy(BlackPicTextBox.Text, tempPic, true);
+                }
+                else
+                {
+                    System.Drawing.Imaging.Encoder ImageEncoder = System.Drawing.Imaging.Encoder.Quality;
+                    EncoderParameter ep = new EncoderParameter(ImageEncoder, 100L);
+                    EncoderParameters eps = new EncoderParameters(1);
+                    ImageCodecInfo ImageCoderType = getImageCoderInfo("image/jpeg");
+                    eps.Param[0] = ep;
+                    img.Save(tempPic, ImageCoderType, eps);
+                    //img.Save(tempPic, ImageFormat.Jpeg);
+                }
+            }
+            int blackSecond = 300;
+            //计算后黑时长
+            if (BlackSecondComboBox.Text == "auto")
+            {
+                int seconds = SecondsFromHHMMSS(MI.Get(StreamKind.General, 0, "Duration/String3"));
+                double s = videobitrate / 1000.0 * (double)seconds / targetBitrate - (double)seconds;
+                blackSecond = (int)s;
+                BlackSecondComboBox.Text = blackSecond.ToString();
+            }
+            else
+            {
+                blackSecond = int.Parse(Regex.Replace(BlackSecondComboBox.Text.ToString(), @"\D", "")); //排除除数字外的所有字符
+            }
+
+            //批处理
+            mux = "ffmpeg -loop 1 -r " + BlackFPSNum.Value.ToString() + " -t " + blackSecond.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + BlackCRFNum.Value.ToString() + " -y black.flv\r\n";
+            mux += string.Format("flvbind \"{0}\"  \"{1}\"  black.flv\r\n", BlackOutputTextBox.Text, BlackVideoTextBox.Text);
+            mux += "del black.flv\r\n";
+
+            batpath = Path.Combine(workpath, Path.GetRandomFileName() + ".bat");
+            File.WriteAllText(batpath, mux, UnicodeEncoding.Default);
+            LogRecord(mux);
+            Process.Start(batpath);
+        }
+
+        private void BlackVideoTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string path = BlackVideoTextBox.Text;
+            if (File.Exists(path))
+            {
+                BlackOutputTextBox.Text = AddExt(path, "_black.flv");
+            }
+        }
+        #endregion
+
+        private void BlackNoPicCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            BlackPicTextBox.Enabled = !BlackNoPicCheckBox.Checked;
+            BlackPicButton.Enabled = !BlackNoPicCheckBox.Checked;
+        }
+
+        private void BlackSecondComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (BlackSecondComboBox.Text != "auto")
+            {
+                BlackBitrateNum.Enabled = false;
+            }
+            else
+            {
+                BlackBitrateNum.Enabled = true;
+            }
         }
 
     }

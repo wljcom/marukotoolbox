@@ -128,10 +128,10 @@
     <value>微软雅黑, 9pt</value>
   </data>
   <data name="txtvideo4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 18</value>
+    <value>9, 18</value>
   </data>
   <data name="txtvideo4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 23</value>
+    <value>469, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtvideo4.TabIndex" type="System.Int32, mscorlib">
@@ -153,7 +153,7 @@
     <value>微软雅黑, 9pt</value>
   </data>
   <data name="btnvideo4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>483, 18</value>
+    <value>483, 17</value>
   </data>
   <data name="btnvideo4.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -234,10 +234,10 @@
     <value>微软雅黑, 9pt</value>
   </data>
   <data name="txtout5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 47</value>
+    <value>9, 47</value>
   </data>
   <data name="txtout5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 23</value>
+    <value>469, 23</value>
   </data>
   <data name="txtout5.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -255,7 +255,7 @@
     <value>4</value>
   </data>
   <data name="maske.Location" type="System.Drawing.Point, System.Drawing">
-    <value>407, 76</value>
+    <value>369, 76</value>
   </data>
   <data name="maske.Mask" xml:space="preserve">
     <value>90:00:00</value>
@@ -289,7 +289,7 @@
     <value>True</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>207, 80</value>
+    <value>169, 80</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 12</value>
@@ -316,7 +316,7 @@
     <value>True</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 80</value>
+    <value>310, 80</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 12</value>
@@ -340,7 +340,7 @@
     <value>7</value>
   </data>
   <data name="maskb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 76</value>
+    <value>228, 76</value>
   </data>
   <data name="maskb.Mask" xml:space="preserve">
     <value>90:00:00</value>
@@ -370,10 +370,10 @@
     <value>8</value>
   </data>
   <data name="groupBox10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 269</value>
+    <value>0, 343</value>
   </data>
   <data name="groupBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>570, 115</value>
+    <value>566, 115</value>
   </data>
   <data name="groupBox10.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -388,10 +388,10 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox10.Parent" xml:space="preserve">
-    <value>ExtractTab</value>
+    <value>MiscTab</value>
   </data>
   <data name="&gt;&gt;groupBox10.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnout4.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -2173,7 +2173,7 @@
     <value>ExtractTab</value>
   </data>
   <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="btnvextract8.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -2302,7 +2302,7 @@
     <value>ExtractTab</value>
   </data>
   <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="ExtractMP4TextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -2485,7 +2485,7 @@
     <value>ExtractTab</value>
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="ExtractTab.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -3318,384 +3318,6 @@
   <data name="&gt;&gt;MuxTab.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="AudioCopyCheckBox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="AudioCopyCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="AudioCopyCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 107</value>
-  </data>
-  <data name="AudioCopyCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
-  </data>
-  <data name="AudioCopyCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="AudioCopyCheckBox.Text" xml:space="preserve">
-    <value>复制音频</value>
-  </data>
-  <data name="&gt;&gt;AudioCopyCheckBox.Name" xml:space="preserve">
-    <value>AudioCopyCheckBox</value>
-  </data>
-  <data name="&gt;&gt;AudioCopyCheckBox.Type" xml:space="preserve">
-    <value>ControlExs.QQCheckBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;AudioCopyCheckBox.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;AudioCopyCheckBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label28.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>238, 113</value>
-  </data>
-  <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 12</value>
-  </data>
-  <data name="label28.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="label28.Text" xml:space="preserve">
-    <value>FPS</value>
-  </data>
-  <data name="&gt;&gt;label28.Name" xml:space="preserve">
-    <value>label28</value>
-  </data>
-  <data name="&gt;&gt;label28.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="AudioOnePicFPSNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 109</value>
-  </data>
-  <data name="AudioOnePicFPSNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 21</value>
-  </data>
-  <data name="AudioOnePicFPSNum.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="AudioOnePicFPSNum.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicFPSNum.Name" xml:space="preserve">
-    <value>AudioOnePicFPSNum</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicFPSNum.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicFPSNum.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicFPSNum.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 113</value>
-  </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
-  </data>
-  <data name="label17.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>Kbps</value>
-  </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label27.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 113</value>
-  </data>
-  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
-  </data>
-  <data name="label27.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="label27.Text" xml:space="preserve">
-    <value>音频码率</value>
-  </data>
-  <data name="&gt;&gt;label27.Name" xml:space="preserve">
-    <value>label27</value>
-  </data>
-  <data name="&gt;&gt;label27.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="AudioOnePicAudioBitrateNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>115, 109</value>
-  </data>
-  <data name="AudioOnePicAudioBitrateNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
-  </data>
-  <data name="AudioOnePicAudioBitrateNum.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="AudioOnePicAudioBitrateNum.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicAudioBitrateNum.Name" xml:space="preserve">
-    <value>AudioOnePicAudioBitrateNum</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicAudioBitrateNum.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicAudioBitrateNum.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicAudioBitrateNum.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="AudioOnePicOutputButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="AudioOnePicOutputButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>484, 78</value>
-  </data>
-  <data name="AudioOnePicOutputButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="AudioOnePicOutputButton.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="AudioOnePicOutputButton.Text" xml:space="preserve">
-    <value>输出</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicOutputButton.Name" xml:space="preserve">
-    <value>AudioOnePicOutputButton</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicOutputButton.Type" xml:space="preserve">
-    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicOutputButton.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicOutputButton.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="AudioOnePicButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="AudioOnePicButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="AudioOnePicButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>484, 107</value>
-  </data>
-  <data name="AudioOnePicButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="AudioOnePicButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="AudioOnePicButton.Text" xml:space="preserve">
-    <value>压制</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicButton.Name" xml:space="preserve">
-    <value>AudioOnePicButton</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicButton.Type" xml:space="preserve">
-    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicButton.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicButton.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="AudioPicAudioButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="AudioPicAudioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="AudioPicAudioButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>484, 49</value>
-  </data>
-  <data name="AudioPicAudioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="AudioPicAudioButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="AudioPicAudioButton.Text" xml:space="preserve">
-    <value>音频</value>
-  </data>
-  <data name="&gt;&gt;AudioPicAudioButton.Name" xml:space="preserve">
-    <value>AudioPicAudioButton</value>
-  </data>
-  <data name="&gt;&gt;AudioPicAudioButton.Type" xml:space="preserve">
-    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;AudioPicAudioButton.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;AudioPicAudioButton.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="AudioPicButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="AudioPicButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>484, 20</value>
-  </data>
-  <data name="AudioPicButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="AudioPicButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="AudioPicButton.Text" xml:space="preserve">
-    <value>图片</value>
-  </data>
-  <data name="&gt;&gt;AudioPicButton.Name" xml:space="preserve">
-    <value>AudioPicButton</value>
-  </data>
-  <data name="&gt;&gt;AudioPicButton.Type" xml:space="preserve">
-    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;AudioPicButton.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;AudioPicButton.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="AudioOnePicOutputTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="AudioOnePicOutputTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 78</value>
-  </data>
-  <data name="AudioOnePicOutputTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>469, 23</value>
-  </data>
-  <data name="AudioOnePicOutputTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicOutputTextBox.Name" xml:space="preserve">
-    <value>AudioOnePicOutputTextBox</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicOutputTextBox.Type" xml:space="preserve">
-    <value>ControlExs.QQTextBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicOutputTextBox.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;AudioOnePicOutputTextBox.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="AudioPicAudioTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="AudioPicAudioTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 49</value>
-  </data>
-  <data name="AudioPicAudioTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>469, 23</value>
-  </data>
-  <data name="AudioPicAudioTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;AudioPicAudioTextBox.Name" xml:space="preserve">
-    <value>AudioPicAudioTextBox</value>
-  </data>
-  <data name="&gt;&gt;AudioPicAudioTextBox.Type" xml:space="preserve">
-    <value>ControlExs.QQTextBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;AudioPicAudioTextBox.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;AudioPicAudioTextBox.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="AudioPicTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="AudioPicTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 20</value>
-  </data>
-  <data name="AudioPicTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>469, 23</value>
-  </data>
-  <data name="AudioPicTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;AudioPicTextBox.Name" xml:space="preserve">
-    <value>AudioPicTextBox</value>
-  </data>
-  <data name="&gt;&gt;AudioPicTextBox.Type" xml:space="preserve">
-    <value>ControlExs.QQTextBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;AudioPicTextBox.Parent" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;AudioPicTextBox.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="groupBox9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 199</value>
-  </data>
-  <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>566, 156</value>
-  </data>
-  <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>一图流</value>
-  </data>
-  <data name="&gt;&gt;groupBox9.Name" xml:space="preserve">
-    <value>groupBox9</value>
-  </data>
-  <data name="&gt;&gt;groupBox9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox9.Parent" xml:space="preserve">
-    <value>NeroAACGroupBox</value>
-  </data>
-  <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3721,7 +3343,7 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="AudioEncoderComboBox.Items" xml:space="preserve">
     <value>NeroAAC</value>
@@ -3751,7 +3373,7 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;AudioEncoderComboBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="txtaudio2.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -3775,7 +3397,7 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;txtaudio2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="AudioBitrateRadioButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -3850,7 +3472,7 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="txtout3.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -3874,7 +3496,7 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;txtout3.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="cbwavtemp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3904,7 +3526,7 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;cbwavtemp.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="btnaudio2.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -3931,7 +3553,7 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;btnaudio2.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="lbaackbps.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3958,7 +3580,7 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;lbaackbps.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="btnout3.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -3985,7 +3607,7 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;btnout3.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="lbaacrate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4012,7 +3634,7 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;lbaacrate.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="btnaac.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -4039,7 +3661,7 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;btnaac.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="numq.Location" type="System.Drawing.Point, System.Drawing">
     <value>89, 140</value>
@@ -4063,7 +3685,7 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;numq.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="txtNeroaac.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -4093,13 +3715,13 @@
     <value>NeroAACGroupBox</value>
   </data>
   <data name="&gt;&gt;txtNeroaac.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="NeroAACGroupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 6</value>
   </data>
   <data name="NeroAACGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>566, 360</value>
+    <value>566, 201</value>
   </data>
   <data name="NeroAACGroupBox.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -4330,6 +3952,438 @@
     <value>AudioTab</value>
   </data>
   <data name="&gt;&gt;tabNeroAAC.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="OnePicCRFNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>391, 107</value>
+  </data>
+  <data name="OnePicCRFNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="OnePicCRFNum.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="OnePicCRFNum.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;OnePicCRFNum.Name" xml:space="preserve">
+    <value>OnePicCRFNum</value>
+  </data>
+  <data name="&gt;&gt;OnePicCRFNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OnePicCRFNum.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;OnePicCRFNum.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label33.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label33.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>362, 109</value>
+  </data>
+  <data name="label33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 12</value>
+  </data>
+  <data name="label33.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>CRF</value>
+  </data>
+  <data name="&gt;&gt;label33.Name" xml:space="preserve">
+    <value>label33</value>
+  </data>
+  <data name="&gt;&gt;label33.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label33.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="AudioCopyCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AudioCopyCheckBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="AudioCopyCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>484, 136</value>
+  </data>
+  <data name="AudioCopyCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="AudioCopyCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="AudioCopyCheckBox.Text" xml:space="preserve">
+    <value>复制音频</value>
+  </data>
+  <data name="&gt;&gt;AudioCopyCheckBox.Name" xml:space="preserve">
+    <value>AudioCopyCheckBox</value>
+  </data>
+  <data name="&gt;&gt;AudioCopyCheckBox.Type" xml:space="preserve">
+    <value>ControlExs.QQCheckBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;AudioCopyCheckBox.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;AudioCopyCheckBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label28.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
+    <value>259, 109</value>
+  </data>
+  <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 12</value>
+  </data>
+  <data name="label28.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>FPS</value>
+  </data>
+  <data name="&gt;&gt;label28.Name" xml:space="preserve">
+    <value>label28</value>
+  </data>
+  <data name="&gt;&gt;label28.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="AudioOnePicFPSNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>288, 107</value>
+  </data>
+  <data name="AudioOnePicFPSNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 21</value>
+  </data>
+  <data name="AudioOnePicFPSNum.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="AudioOnePicFPSNum.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicFPSNum.Name" xml:space="preserve">
+    <value>AudioOnePicFPSNum</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicFPSNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicFPSNum.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicFPSNum.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 109</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Kbps</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label27.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 109</value>
+  </data>
+  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label27.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>音频码率</value>
+  </data>
+  <data name="&gt;&gt;label27.Name" xml:space="preserve">
+    <value>label27</value>
+  </data>
+  <data name="&gt;&gt;label27.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="AudioOnePicAudioBitrateNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 107</value>
+  </data>
+  <data name="AudioOnePicAudioBitrateNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="AudioOnePicAudioBitrateNum.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="AudioOnePicAudioBitrateNum.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicAudioBitrateNum.Name" xml:space="preserve">
+    <value>AudioOnePicAudioBitrateNum</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicAudioBitrateNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicAudioBitrateNum.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicAudioBitrateNum.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="AudioOnePicOutputButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="AudioOnePicOutputButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>484, 78</value>
+  </data>
+  <data name="AudioOnePicOutputButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="AudioOnePicOutputButton.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="AudioOnePicOutputButton.Text" xml:space="preserve">
+    <value>输出</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicOutputButton.Name" xml:space="preserve">
+    <value>AudioOnePicOutputButton</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicOutputButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicOutputButton.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicOutputButton.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="AudioOnePicButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="AudioOnePicButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AudioOnePicButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>484, 107</value>
+  </data>
+  <data name="AudioOnePicButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="AudioOnePicButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="AudioOnePicButton.Text" xml:space="preserve">
+    <value>压制</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicButton.Name" xml:space="preserve">
+    <value>AudioOnePicButton</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicButton.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicButton.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="AudioPicAudioButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="AudioPicAudioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AudioPicAudioButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>484, 49</value>
+  </data>
+  <data name="AudioPicAudioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="AudioPicAudioButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="AudioPicAudioButton.Text" xml:space="preserve">
+    <value>音频</value>
+  </data>
+  <data name="&gt;&gt;AudioPicAudioButton.Name" xml:space="preserve">
+    <value>AudioPicAudioButton</value>
+  </data>
+  <data name="&gt;&gt;AudioPicAudioButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;AudioPicAudioButton.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;AudioPicAudioButton.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="AudioPicButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="AudioPicButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>484, 20</value>
+  </data>
+  <data name="AudioPicButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="AudioPicButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="AudioPicButton.Text" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="&gt;&gt;AudioPicButton.Name" xml:space="preserve">
+    <value>AudioPicButton</value>
+  </data>
+  <data name="&gt;&gt;AudioPicButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;AudioPicButton.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;AudioPicButton.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="AudioOnePicOutputTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="AudioOnePicOutputTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 78</value>
+  </data>
+  <data name="AudioOnePicOutputTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>469, 23</value>
+  </data>
+  <data name="AudioOnePicOutputTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicOutputTextBox.Name" xml:space="preserve">
+    <value>AudioOnePicOutputTextBox</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicOutputTextBox.Type" xml:space="preserve">
+    <value>ControlExs.QQTextBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicOutputTextBox.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;AudioOnePicOutputTextBox.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="AudioPicAudioTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="AudioPicAudioTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 49</value>
+  </data>
+  <data name="AudioPicAudioTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>469, 23</value>
+  </data>
+  <data name="AudioPicAudioTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;AudioPicAudioTextBox.Name" xml:space="preserve">
+    <value>AudioPicAudioTextBox</value>
+  </data>
+  <data name="&gt;&gt;AudioPicAudioTextBox.Type" xml:space="preserve">
+    <value>ControlExs.QQTextBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;AudioPicAudioTextBox.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;AudioPicAudioTextBox.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="AudioPicTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="AudioPicTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="AudioPicTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>469, 23</value>
+  </data>
+  <data name="AudioPicTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;AudioPicTextBox.Name" xml:space="preserve">
+    <value>AudioPicTextBox</value>
+  </data>
+  <data name="&gt;&gt;AudioPicTextBox.Type" xml:space="preserve">
+    <value>ControlExs.QQTextBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;AudioPicTextBox.Parent" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;AudioPicTextBox.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="groupBox9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 6</value>
+  </data>
+  <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>566, 163</value>
+  </data>
+  <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>一图流</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.Name" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.Parent" xml:space="preserve">
+    <value>MiscTab</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="x264FramesLabel.AutoSize" type="System.Boolean, mscorlib">
@@ -5406,6 +5460,9 @@
   <data name="x264AudioModeComboBox.Items5" xml:space="preserve">
     <value>libaacplus</value>
   </data>
+  <data name="x264AudioModeComboBox.Items6" xml:space="preserve">
+    <value>默认</value>
+  </data>
   <data name="x264AudioModeComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>377, 93</value>
   </data>
@@ -5664,33 +5721,6 @@
   <data name="&gt;&gt;numwidth.ZOrder" xml:space="preserve">
     <value>36</value>
   </data>
-  <data name="numrate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 221</value>
-  </data>
-  <data name="numrate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
-  </data>
-  <data name="numrate.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="numrate.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="numrate.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;numrate.Name" xml:space="preserve">
-    <value>numrate</value>
-  </data>
-  <data name="&gt;&gt;numrate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numrate.Parent" xml:space="preserve">
-    <value>VideoTab</value>
-  </data>
-  <data name="&gt;&gt;numrate.ZOrder" xml:space="preserve">
-    <value>37</value>
-  </data>
   <data name="numcrf.Location" type="System.Drawing.Point, System.Drawing">
     <value>66, 221</value>
   </data>
@@ -5713,7 +5743,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;numcrf.ZOrder" xml:space="preserve">
-    <value>38</value>
+    <value>37</value>
   </data>
   <data name="lbrate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5743,7 +5773,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;lbrate.ZOrder" xml:space="preserve">
-    <value>39</value>
+    <value>38</value>
   </data>
   <data name="txth264.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -5779,7 +5809,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;txth264.ZOrder" xml:space="preserve">
-    <value>40</value>
+    <value>39</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5809,6 +5839,33 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="numrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 221</value>
+  </data>
+  <data name="numrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="numrate.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="numrate.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="numrate.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;numrate.Name" xml:space="preserve">
+    <value>numrate</value>
+  </data>
+  <data name="&gt;&gt;numrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numrate.Parent" xml:space="preserve">
+    <value>VideoTab</value>
+  </data>
+  <data name="&gt;&gt;numrate.ZOrder" xml:space="preserve">
     <value>41</value>
   </data>
   <data name="VideoTab.Location" type="System.Drawing.Point, System.Drawing">
@@ -5836,7 +5893,7 @@
     <value>AudioTab</value>
   </data>
   <data name="&gt;&gt;VideoTab.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="DonateButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -6312,7 +6369,571 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>AudioTab</value>
   </data>
   <data name="&gt;&gt;HelpTab.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label37.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label37.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label37.Location" type="System.Drawing.Point, System.Drawing">
+    <value>211, 140</value>
+  </data>
+  <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label37.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Kbps</value>
+  </data>
+  <data name="&gt;&gt;label37.Name" xml:space="preserve">
+    <value>label37</value>
+  </data>
+  <data name="&gt;&gt;label37.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label37.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="label36.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label36.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label36.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 140</value>
+  </data>
+  <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label36.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>目标码率</value>
+  </data>
+  <data name="&gt;&gt;label36.Name" xml:space="preserve">
+    <value>label36</value>
+  </data>
+  <data name="&gt;&gt;label36.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label36.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="BlackBitrateNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 138</value>
+  </data>
+  <data name="BlackBitrateNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 21</value>
+  </data>
+  <data name="BlackBitrateNum.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="BlackBitrateNum.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;BlackBitrateNum.Name" xml:space="preserve">
+    <value>BlackBitrateNum</value>
+  </data>
+  <data name="&gt;&gt;BlackBitrateNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BlackBitrateNum.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;BlackBitrateNum.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label35.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label35.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label35.Location" type="System.Drawing.Point, System.Drawing">
+    <value>211, 109</value>
+  </data>
+  <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 12</value>
+  </data>
+  <data name="label35.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="&gt;&gt;label35.Name" xml:space="preserve">
+    <value>label35</value>
+  </data>
+  <data name="&gt;&gt;label35.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label35.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="BlackSecondComboBox.Items" xml:space="preserve">
+    <value>auto</value>
+  </data>
+  <data name="BlackSecondComboBox.Items1" xml:space="preserve">
+    <value>60</value>
+  </data>
+  <data name="BlackSecondComboBox.Items2" xml:space="preserve">
+    <value>300</value>
+  </data>
+  <data name="BlackSecondComboBox.Items3" xml:space="preserve">
+    <value>900</value>
+  </data>
+  <data name="BlackSecondComboBox.Items4" xml:space="preserve">
+    <value>3600</value>
+  </data>
+  <data name="BlackSecondComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 108</value>
+  </data>
+  <data name="BlackSecondComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 20</value>
+  </data>
+  <data name="BlackSecondComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="BlackSecondComboBox.Text" xml:space="preserve">
+    <value>auto</value>
+  </data>
+  <data name="&gt;&gt;BlackSecondComboBox.Name" xml:space="preserve">
+    <value>BlackSecondComboBox</value>
+  </data>
+  <data name="&gt;&gt;BlackSecondComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BlackSecondComboBox.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;BlackSecondComboBox.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label34.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 109</value>
+  </data>
+  <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label34.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>后黑时长</value>
+  </data>
+  <data name="&gt;&gt;label34.Name" xml:space="preserve">
+    <value>label34</value>
+  </data>
+  <data name="&gt;&gt;label34.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="BlackCRFNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>390, 107</value>
+  </data>
+  <data name="BlackCRFNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="BlackCRFNum.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="BlackCRFNum.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;BlackCRFNum.Name" xml:space="preserve">
+    <value>BlackCRFNum</value>
+  </data>
+  <data name="&gt;&gt;BlackCRFNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BlackCRFNum.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;BlackCRFNum.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label32.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label32.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>361, 109</value>
+  </data>
+  <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 12</value>
+  </data>
+  <data name="label32.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>CRF</value>
+  </data>
+  <data name="&gt;&gt;label32.Name" xml:space="preserve">
+    <value>label32</value>
+  </data>
+  <data name="&gt;&gt;label32.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label32.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;label32.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="BlackNoPicCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BlackNoPicCheckBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="BlackNoPicCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BlackNoPicCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>483, 136</value>
+  </data>
+  <data name="BlackNoPicCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="BlackNoPicCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="BlackNoPicCheckBox.Text" xml:space="preserve">
+    <value>使用黑屏</value>
+  </data>
+  <data name="&gt;&gt;BlackNoPicCheckBox.Name" xml:space="preserve">
+    <value>BlackNoPicCheckBox</value>
+  </data>
+  <data name="&gt;&gt;BlackNoPicCheckBox.Type" xml:space="preserve">
+    <value>ControlExs.QQCheckBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BlackNoPicCheckBox.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;BlackNoPicCheckBox.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label31.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label31.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label31.Location" type="System.Drawing.Point, System.Drawing">
+    <value>259, 109</value>
+  </data>
+  <data name="label31.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 12</value>
+  </data>
+  <data name="label31.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>FPS</value>
+  </data>
+  <data name="&gt;&gt;label31.Name" xml:space="preserve">
+    <value>label31</value>
+  </data>
+  <data name="&gt;&gt;label31.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label31.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;label31.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="BlackFPSNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>288, 107</value>
+  </data>
+  <data name="BlackFPSNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 21</value>
+  </data>
+  <data name="BlackFPSNum.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="BlackFPSNum.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;BlackFPSNum.Name" xml:space="preserve">
+    <value>BlackFPSNum</value>
+  </data>
+  <data name="&gt;&gt;BlackFPSNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BlackFPSNum.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;BlackFPSNum.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="BlackPicButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="BlackPicButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="BlackPicButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>484, 78</value>
+  </data>
+  <data name="BlackPicButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="BlackPicButton.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="BlackPicButton.Text" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="&gt;&gt;BlackPicButton.Name" xml:space="preserve">
+    <value>BlackPicButton</value>
+  </data>
+  <data name="&gt;&gt;BlackPicButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BlackPicButton.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;BlackPicButton.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="BlackPicTextBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="BlackPicTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="BlackPicTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 78</value>
+  </data>
+  <data name="BlackPicTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>469, 23</value>
+  </data>
+  <data name="BlackPicTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;BlackPicTextBox.Name" xml:space="preserve">
+    <value>BlackPicTextBox</value>
+  </data>
+  <data name="&gt;&gt;BlackPicTextBox.Type" xml:space="preserve">
+    <value>ControlExs.QQTextBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BlackPicTextBox.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;BlackPicTextBox.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="BlackStartButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="BlackStartButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BlackStartButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>484, 107</value>
+  </data>
+  <data name="BlackStartButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="BlackStartButton.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="BlackStartButton.Text" xml:space="preserve">
+    <value>后黑</value>
+  </data>
+  <data name="&gt;&gt;BlackStartButton.Name" xml:space="preserve">
+    <value>BlackStartButton</value>
+  </data>
+  <data name="&gt;&gt;BlackStartButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BlackStartButton.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;BlackStartButton.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="BlackOutputButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="BlackOutputButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BlackOutputButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>484, 49</value>
+  </data>
+  <data name="BlackOutputButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="BlackOutputButton.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="BlackOutputButton.Text" xml:space="preserve">
+    <value>输出</value>
+  </data>
+  <data name="&gt;&gt;BlackOutputButton.Name" xml:space="preserve">
+    <value>BlackOutputButton</value>
+  </data>
+  <data name="&gt;&gt;BlackOutputButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BlackOutputButton.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;BlackOutputButton.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="BlackVideoButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="BlackVideoButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>484, 20</value>
+  </data>
+  <data name="BlackVideoButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="BlackVideoButton.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="BlackVideoButton.Text" xml:space="preserve">
+    <value>视频</value>
+  </data>
+  <data name="&gt;&gt;BlackVideoButton.Name" xml:space="preserve">
+    <value>BlackVideoButton</value>
+  </data>
+  <data name="&gt;&gt;BlackVideoButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BlackVideoButton.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;BlackVideoButton.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="BlackOutputTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="BlackOutputTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 49</value>
+  </data>
+  <data name="BlackOutputTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>469, 23</value>
+  </data>
+  <data name="BlackOutputTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;BlackOutputTextBox.Name" xml:space="preserve">
+    <value>BlackOutputTextBox</value>
+  </data>
+  <data name="&gt;&gt;BlackOutputTextBox.Type" xml:space="preserve">
+    <value>ControlExs.QQTextBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BlackOutputTextBox.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;BlackOutputTextBox.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="BlackVideoTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="BlackVideoTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 20</value>
+  </data>
+  <data name="BlackVideoTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>469, 23</value>
+  </data>
+  <data name="BlackVideoTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;BlackVideoTextBox.Name" xml:space="preserve">
+    <value>BlackVideoTextBox</value>
+  </data>
+  <data name="&gt;&gt;BlackVideoTextBox.Type" xml:space="preserve">
+    <value>ControlExs.QQTextBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;BlackVideoTextBox.Parent" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;BlackVideoTextBox.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="groupBox11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 176</value>
+  </data>
+  <data name="groupBox11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>566, 164</value>
+  </data>
+  <data name="groupBox11.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="groupBox11.Text" xml:space="preserve">
+    <value>后黑</value>
+  </data>
+  <data name="&gt;&gt;groupBox11.Name" xml:space="preserve">
+    <value>groupBox11</value>
+  </data>
+  <data name="&gt;&gt;groupBox11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox11.Parent" xml:space="preserve">
+    <value>MiscTab</value>
+  </data>
+  <data name="&gt;&gt;groupBox11.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="MiscTab.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="MiscTab.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="MiscTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>572, 587</value>
+  </data>
+  <data name="MiscTab.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="MiscTab.Text" xml:space="preserve">
+    <value>常用</value>
+  </data>
+  <data name="&gt;&gt;MiscTab.Name" xml:space="preserve">
+    <value>MiscTab</value>
+  </data>
+  <data name="&gt;&gt;MiscTab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MiscTab.Parent" xml:space="preserve">
+    <value>AudioTab</value>
+  </data>
+  <data name="&gt;&gt;MiscTab.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="qqButton1.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>

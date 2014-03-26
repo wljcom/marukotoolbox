@@ -154,20 +154,6 @@
             this.button7 = new ControlExs.QQButton();
             this.tabNeroAAC = new System.Windows.Forms.TabPage();
             this.NeroAACGroupBox = new System.Windows.Forms.GroupBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.AudioCopyCheckBox = new ControlExs.QQCheckBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.AudioOnePicFPSNum = new System.Windows.Forms.NumericUpDown();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.AudioOnePicAudioBitrateNum = new System.Windows.Forms.NumericUpDown();
-            this.AudioOnePicOutputButton = new ControlExs.QQButton();
-            this.AudioOnePicButton = new ControlExs.QQButton();
-            this.AudioPicAudioButton = new ControlExs.QQButton();
-            this.AudioPicButton = new ControlExs.QQButton();
-            this.AudioOnePicOutputTextBox = new ControlExs.QQTextBox();
-            this.AudioPicAudioTextBox = new ControlExs.QQTextBox();
-            this.AudioPicTextBox = new ControlExs.QQTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.AudioEncoderComboBox = new System.Windows.Forms.ComboBox();
             this.txtaudio2 = new ControlExs.QQTextBox();
@@ -190,6 +176,22 @@
             this.AudioAddButton = new ControlExs.QQButton();
             this.AudioClearButton = new ControlExs.QQButton();
             this.AudioDeleteButton = new ControlExs.QQButton();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.OnePicCRFNum = new System.Windows.Forms.NumericUpDown();
+            this.label33 = new System.Windows.Forms.Label();
+            this.AudioCopyCheckBox = new ControlExs.QQCheckBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.AudioOnePicFPSNum = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.AudioOnePicAudioBitrateNum = new System.Windows.Forms.NumericUpDown();
+            this.AudioOnePicOutputButton = new ControlExs.QQButton();
+            this.AudioOnePicButton = new ControlExs.QQButton();
+            this.AudioPicAudioButton = new ControlExs.QQButton();
+            this.AudioPicButton = new ControlExs.QQButton();
+            this.AudioOnePicOutputTextBox = new ControlExs.QQTextBox();
+            this.AudioPicAudioTextBox = new ControlExs.QQTextBox();
+            this.AudioPicTextBox = new ControlExs.QQTextBox();
             this.VideoTab = new System.Windows.Forms.TabPage();
             this.x264FramesLabel = new System.Windows.Forms.Label();
             this.x264SeekLabel = new System.Windows.Forms.Label();
@@ -239,11 +241,11 @@
             this.lbwidth = new System.Windows.Forms.Label();
             this.numheight = new System.Windows.Forms.NumericUpDown();
             this.numwidth = new System.Windows.Forms.NumericUpDown();
-            this.numrate = new System.Windows.Forms.NumericUpDown();
             this.numcrf = new System.Windows.Forms.NumericUpDown();
             this.lbrate = new System.Windows.Forms.Label();
             this.txth264 = new ControlExs.QQTextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.numrate = new System.Windows.Forms.NumericUpDown();
             this.HelpTab = new System.Windows.Forms.TabPage();
             this.DonateButton = new ControlExs.QQButton();
             this.HelpTextBox = new ControlExs.QQTextBox();
@@ -253,6 +255,26 @@
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.AudioTab = new System.Windows.Forms.TabControl();
+            this.MiscTab = new System.Windows.Forms.TabPage();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.BlackBitrateNum = new System.Windows.Forms.NumericUpDown();
+            this.label35 = new System.Windows.Forms.Label();
+            this.BlackSecondComboBox = new System.Windows.Forms.ComboBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.BlackCRFNum = new System.Windows.Forms.NumericUpDown();
+            this.label32 = new System.Windows.Forms.Label();
+            this.BlackNoPicCheckBox = new ControlExs.QQCheckBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.BlackFPSNum = new System.Windows.Forms.NumericUpDown();
+            this.BlackPicButton = new ControlExs.QQButton();
+            this.BlackPicTextBox = new ControlExs.QQTextBox();
+            this.BlackStartButton = new ControlExs.QQButton();
+            this.BlackOutputButton = new ControlExs.QQButton();
+            this.BlackVideoButton = new ControlExs.QQButton();
+            this.BlackOutputTextBox = new ControlExs.QQTextBox();
+            this.BlackVideoTextBox = new ControlExs.QQTextBox();
             this.SetupTabPage = new System.Windows.Forms.TabPage();
             this.qqButton1 = new ControlExs.QQButton();
             this.x264PriorityComboBox = new System.Windows.Forms.ComboBox();
@@ -290,12 +312,13 @@
             this.groupBox8.SuspendLayout();
             this.tabNeroAAC.SuspendLayout();
             this.NeroAACGroupBox.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AudioOnePicFPSNum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AudioOnePicAudioBitrateNum)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numq)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OnePicCRFNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AudioOnePicFPSNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AudioOnePicAudioBitrateNum)).BeginInit();
             this.VideoTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.x264FramesNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.x264SeekNumericUpDown)).BeginInit();
@@ -303,10 +326,15 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numheight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numwidth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numrate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numcrf)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numrate)).BeginInit();
             this.HelpTab.SuspendLayout();
             this.AudioTab.SuspendLayout();
+            this.MiscTab.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BlackBitrateNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BlackCRFNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BlackFPSNum)).BeginInit();
             this.SetupTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -999,7 +1027,6 @@
             // ExtractTab
             // 
             this.ExtractTab.AllowDrop = true;
-            this.ExtractTab.Controls.Add(this.groupBox10);
             this.ExtractTab.Controls.Add(this.groupBox7);
             this.ExtractTab.Controls.Add(this.groupBox6);
             this.ExtractTab.Controls.Add(this.groupBox5);
@@ -1453,7 +1480,6 @@
             // 
             // NeroAACGroupBox
             // 
-            this.NeroAACGroupBox.Controls.Add(this.groupBox9);
             this.NeroAACGroupBox.Controls.Add(this.label7);
             this.NeroAACGroupBox.Controls.Add(this.AudioEncoderComboBox);
             this.NeroAACGroupBox.Controls.Add(this.txtaudio2);
@@ -1470,138 +1496,6 @@
             resources.ApplyResources(this.NeroAACGroupBox, "NeroAACGroupBox");
             this.NeroAACGroupBox.Name = "NeroAACGroupBox";
             this.NeroAACGroupBox.TabStop = false;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.AudioCopyCheckBox);
-            this.groupBox9.Controls.Add(this.label28);
-            this.groupBox9.Controls.Add(this.AudioOnePicFPSNum);
-            this.groupBox9.Controls.Add(this.label17);
-            this.groupBox9.Controls.Add(this.label27);
-            this.groupBox9.Controls.Add(this.AudioOnePicAudioBitrateNum);
-            this.groupBox9.Controls.Add(this.AudioOnePicOutputButton);
-            this.groupBox9.Controls.Add(this.AudioOnePicButton);
-            this.groupBox9.Controls.Add(this.AudioPicAudioButton);
-            this.groupBox9.Controls.Add(this.AudioPicButton);
-            this.groupBox9.Controls.Add(this.AudioOnePicOutputTextBox);
-            this.groupBox9.Controls.Add(this.AudioPicAudioTextBox);
-            this.groupBox9.Controls.Add(this.AudioPicTextBox);
-            resources.ApplyResources(this.groupBox9, "groupBox9");
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.TabStop = false;
-            // 
-            // AudioCopyCheckBox
-            // 
-            resources.ApplyResources(this.AudioCopyCheckBox, "AudioCopyCheckBox");
-            this.AudioCopyCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.AudioCopyCheckBox.Name = "AudioCopyCheckBox";
-            this.AudioCopyCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // label28
-            // 
-            resources.ApplyResources(this.label28, "label28");
-            this.label28.Name = "label28";
-            // 
-            // AudioOnePicFPSNum
-            // 
-            resources.ApplyResources(this.AudioOnePicFPSNum, "AudioOnePicFPSNum");
-            this.AudioOnePicFPSNum.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.AudioOnePicFPSNum.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.AudioOnePicFPSNum.Name = "AudioOnePicFPSNum";
-            this.AudioOnePicFPSNum.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label17
-            // 
-            resources.ApplyResources(this.label17, "label17");
-            this.label17.Name = "label17";
-            // 
-            // label27
-            // 
-            resources.ApplyResources(this.label27, "label27");
-            this.label27.Name = "label27";
-            // 
-            // AudioOnePicAudioBitrateNum
-            // 
-            resources.ApplyResources(this.AudioOnePicAudioBitrateNum, "AudioOnePicAudioBitrateNum");
-            this.AudioOnePicAudioBitrateNum.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.AudioOnePicAudioBitrateNum.Name = "AudioOnePicAudioBitrateNum";
-            this.AudioOnePicAudioBitrateNum.Value = new decimal(new int[] {
-            96,
-            0,
-            0,
-            0});
-            // 
-            // AudioOnePicOutputButton
-            // 
-            resources.ApplyResources(this.AudioOnePicOutputButton, "AudioOnePicOutputButton");
-            this.AudioOnePicOutputButton.Name = "AudioOnePicOutputButton";
-            this.AudioOnePicOutputButton.UseVisualStyleBackColor = true;
-            this.AudioOnePicOutputButton.Click += new System.EventHandler(this.AudioOnePicOutputButton_Click);
-            // 
-            // AudioOnePicButton
-            // 
-            resources.ApplyResources(this.AudioOnePicButton, "AudioOnePicButton");
-            this.AudioOnePicButton.Name = "AudioOnePicButton";
-            this.AudioOnePicButton.UseVisualStyleBackColor = true;
-            this.AudioOnePicButton.Click += new System.EventHandler(this.AudioOnePicButton_Click);
-            // 
-            // AudioPicAudioButton
-            // 
-            resources.ApplyResources(this.AudioPicAudioButton, "AudioPicAudioButton");
-            this.AudioPicAudioButton.Name = "AudioPicAudioButton";
-            this.AudioPicAudioButton.UseVisualStyleBackColor = true;
-            this.AudioPicAudioButton.Click += new System.EventHandler(this.AudioPicAudioButton_Click);
-            // 
-            // AudioPicButton
-            // 
-            resources.ApplyResources(this.AudioPicButton, "AudioPicButton");
-            this.AudioPicButton.Name = "AudioPicButton";
-            this.AudioPicButton.UseVisualStyleBackColor = true;
-            this.AudioPicButton.Click += new System.EventHandler(this.AudioPicButton_Click);
-            // 
-            // AudioOnePicOutputTextBox
-            // 
-            this.AudioOnePicOutputTextBox.AllowDrop = true;
-            this.AudioOnePicOutputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AudioOnePicOutputTextBox.EmptyTextTip = null;
-            this.AudioOnePicOutputTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            resources.ApplyResources(this.AudioOnePicOutputTextBox, "AudioOnePicOutputTextBox");
-            this.AudioOnePicOutputTextBox.Name = "AudioOnePicOutputTextBox";
-            // 
-            // AudioPicAudioTextBox
-            // 
-            this.AudioPicAudioTextBox.AllowDrop = true;
-            this.AudioPicAudioTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AudioPicAudioTextBox.EmptyTextTip = null;
-            this.AudioPicAudioTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            resources.ApplyResources(this.AudioPicAudioTextBox, "AudioPicAudioTextBox");
-            this.AudioPicAudioTextBox.Name = "AudioPicAudioTextBox";
-            this.AudioPicAudioTextBox.TextChanged += new System.EventHandler(this.AudioPicAudioTextBox_TextChanged);
-            // 
-            // AudioPicTextBox
-            // 
-            this.AudioPicTextBox.AllowDrop = true;
-            this.AudioPicTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AudioPicTextBox.EmptyTextTip = null;
-            this.AudioPicTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            resources.ApplyResources(this.AudioPicTextBox, "AudioPicTextBox");
-            this.AudioPicTextBox.Name = "AudioPicTextBox";
             // 
             // label7
             // 
@@ -1784,6 +1678,171 @@
             this.AudioDeleteButton.UseVisualStyleBackColor = true;
             this.AudioDeleteButton.Click += new System.EventHandler(this.AudioDeleteButton_Click);
             // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.OnePicCRFNum);
+            this.groupBox9.Controls.Add(this.label33);
+            this.groupBox9.Controls.Add(this.AudioCopyCheckBox);
+            this.groupBox9.Controls.Add(this.label28);
+            this.groupBox9.Controls.Add(this.AudioOnePicFPSNum);
+            this.groupBox9.Controls.Add(this.label17);
+            this.groupBox9.Controls.Add(this.label27);
+            this.groupBox9.Controls.Add(this.AudioOnePicAudioBitrateNum);
+            this.groupBox9.Controls.Add(this.AudioOnePicOutputButton);
+            this.groupBox9.Controls.Add(this.AudioOnePicButton);
+            this.groupBox9.Controls.Add(this.AudioPicAudioButton);
+            this.groupBox9.Controls.Add(this.AudioPicButton);
+            this.groupBox9.Controls.Add(this.AudioOnePicOutputTextBox);
+            this.groupBox9.Controls.Add(this.AudioPicAudioTextBox);
+            this.groupBox9.Controls.Add(this.AudioPicTextBox);
+            resources.ApplyResources(this.groupBox9, "groupBox9");
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.TabStop = false;
+            // 
+            // OnePicCRFNum
+            // 
+            this.OnePicCRFNum.DecimalPlaces = 1;
+            this.OnePicCRFNum.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            resources.ApplyResources(this.OnePicCRFNum, "OnePicCRFNum");
+            this.OnePicCRFNum.Maximum = new decimal(new int[] {
+            51,
+            0,
+            0,
+            0});
+            this.OnePicCRFNum.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.OnePicCRFNum.Name = "OnePicCRFNum";
+            this.OnePicCRFNum.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            // 
+            // label33
+            // 
+            resources.ApplyResources(this.label33, "label33");
+            this.label33.Name = "label33";
+            // 
+            // AudioCopyCheckBox
+            // 
+            resources.ApplyResources(this.AudioCopyCheckBox, "AudioCopyCheckBox");
+            this.AudioCopyCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.AudioCopyCheckBox.Name = "AudioCopyCheckBox";
+            this.AudioCopyCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // label28
+            // 
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
+            // 
+            // AudioOnePicFPSNum
+            // 
+            resources.ApplyResources(this.AudioOnePicFPSNum, "AudioOnePicFPSNum");
+            this.AudioOnePicFPSNum.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.AudioOnePicFPSNum.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.AudioOnePicFPSNum.Name = "AudioOnePicFPSNum";
+            this.AudioOnePicFPSNum.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // AudioOnePicAudioBitrateNum
+            // 
+            resources.ApplyResources(this.AudioOnePicAudioBitrateNum, "AudioOnePicAudioBitrateNum");
+            this.AudioOnePicAudioBitrateNum.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.AudioOnePicAudioBitrateNum.Name = "AudioOnePicAudioBitrateNum";
+            this.AudioOnePicAudioBitrateNum.Value = new decimal(new int[] {
+            96,
+            0,
+            0,
+            0});
+            // 
+            // AudioOnePicOutputButton
+            // 
+            resources.ApplyResources(this.AudioOnePicOutputButton, "AudioOnePicOutputButton");
+            this.AudioOnePicOutputButton.Name = "AudioOnePicOutputButton";
+            this.AudioOnePicOutputButton.UseVisualStyleBackColor = true;
+            this.AudioOnePicOutputButton.Click += new System.EventHandler(this.AudioOnePicOutputButton_Click);
+            // 
+            // AudioOnePicButton
+            // 
+            resources.ApplyResources(this.AudioOnePicButton, "AudioOnePicButton");
+            this.AudioOnePicButton.Name = "AudioOnePicButton";
+            this.AudioOnePicButton.UseVisualStyleBackColor = true;
+            this.AudioOnePicButton.Click += new System.EventHandler(this.AudioOnePicButton_Click);
+            // 
+            // AudioPicAudioButton
+            // 
+            resources.ApplyResources(this.AudioPicAudioButton, "AudioPicAudioButton");
+            this.AudioPicAudioButton.Name = "AudioPicAudioButton";
+            this.AudioPicAudioButton.UseVisualStyleBackColor = true;
+            this.AudioPicAudioButton.Click += new System.EventHandler(this.AudioPicAudioButton_Click);
+            // 
+            // AudioPicButton
+            // 
+            resources.ApplyResources(this.AudioPicButton, "AudioPicButton");
+            this.AudioPicButton.Name = "AudioPicButton";
+            this.AudioPicButton.UseVisualStyleBackColor = true;
+            this.AudioPicButton.Click += new System.EventHandler(this.AudioPicButton_Click);
+            // 
+            // AudioOnePicOutputTextBox
+            // 
+            this.AudioOnePicOutputTextBox.AllowDrop = true;
+            this.AudioOnePicOutputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AudioOnePicOutputTextBox.EmptyTextTip = null;
+            this.AudioOnePicOutputTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.AudioOnePicOutputTextBox, "AudioOnePicOutputTextBox");
+            this.AudioOnePicOutputTextBox.Name = "AudioOnePicOutputTextBox";
+            // 
+            // AudioPicAudioTextBox
+            // 
+            this.AudioPicAudioTextBox.AllowDrop = true;
+            this.AudioPicAudioTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AudioPicAudioTextBox.EmptyTextTip = null;
+            this.AudioPicAudioTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.AudioPicAudioTextBox, "AudioPicAudioTextBox");
+            this.AudioPicAudioTextBox.Name = "AudioPicAudioTextBox";
+            this.AudioPicAudioTextBox.TextChanged += new System.EventHandler(this.AudioPicAudioTextBox_TextChanged);
+            // 
+            // AudioPicTextBox
+            // 
+            this.AudioPicTextBox.AllowDrop = true;
+            this.AudioPicTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AudioPicTextBox.EmptyTextTip = null;
+            this.AudioPicTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.AudioPicTextBox, "AudioPicTextBox");
+            this.AudioPicTextBox.Name = "AudioPicTextBox";
+            // 
             // VideoTab
             // 
             this.VideoTab.AllowDrop = true;
@@ -1824,11 +1883,11 @@
             this.VideoTab.Controls.Add(this.lbwidth);
             this.VideoTab.Controls.Add(this.numheight);
             this.VideoTab.Controls.Add(this.numwidth);
-            this.VideoTab.Controls.Add(this.numrate);
             this.VideoTab.Controls.Add(this.numcrf);
             this.VideoTab.Controls.Add(this.lbrate);
             this.VideoTab.Controls.Add(this.txth264);
             this.VideoTab.Controls.Add(this.label4);
+            this.VideoTab.Controls.Add(this.numrate);
             resources.ApplyResources(this.VideoTab, "VideoTab");
             this.VideoTab.Name = "VideoTab";
             this.VideoTab.UseVisualStyleBackColor = true;
@@ -2157,7 +2216,8 @@
             resources.GetString("x264AudioModeComboBox.Items2"),
             resources.GetString("x264AudioModeComboBox.Items3"),
             resources.GetString("x264AudioModeComboBox.Items4"),
-            resources.GetString("x264AudioModeComboBox.Items5")});
+            resources.GetString("x264AudioModeComboBox.Items5"),
+            resources.GetString("x264AudioModeComboBox.Items6")});
             resources.ApplyResources(this.x264AudioModeComboBox, "x264AudioModeComboBox");
             this.x264AudioModeComboBox.Name = "x264AudioModeComboBox";
             this.x264AudioModeComboBox.SelectedIndexChanged += new System.EventHandler(this.x264AudioModeComboBox_SelectedIndexChanged);
@@ -2220,26 +2280,6 @@
             0});
             this.numwidth.Name = "numwidth";
             // 
-            // numrate
-            // 
-            resources.ApplyResources(this.numrate, "numrate");
-            this.numrate.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-            this.numrate.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numrate.Name = "numrate";
-            this.numrate.Value = new decimal(new int[] {
-            800,
-            0,
-            0,
-            0});
-            // 
             // numcrf
             // 
             this.numcrf.DecimalPlaces = 1;
@@ -2286,6 +2326,26 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
+            // numrate
+            // 
+            resources.ApplyResources(this.numrate, "numrate");
+            this.numrate.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.numrate.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numrate.Name = "numrate";
+            this.numrate.Value = new decimal(new int[] {
+            800,
+            0,
+            0,
+            0});
+            // 
             // HelpTab
             // 
             this.HelpTab.Controls.Add(this.DonateButton);
@@ -2308,6 +2368,7 @@
             // 
             // HelpTextBox
             // 
+            this.HelpTextBox.AllowDrop = true;
             this.HelpTextBox.BackColor = System.Drawing.Color.White;
             this.HelpTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.HelpTextBox.EmptyTextTip = null;
@@ -2354,19 +2415,223 @@
             // AudioTab
             // 
             this.AudioTab.AllowDrop = true;
-            this.AudioTab.Controls.Add(this.HelpTab);
             this.AudioTab.Controls.Add(this.VideoTab);
             this.AudioTab.Controls.Add(this.tabNeroAAC);
+            this.AudioTab.Controls.Add(this.MiscTab);
             this.AudioTab.Controls.Add(this.MuxTab);
             this.AudioTab.Controls.Add(this.ExtractTab);
             this.AudioTab.Controls.Add(this.AVSTab);
             this.AudioTab.Controls.Add(this.MediaInfoTab);
             this.AudioTab.Controls.Add(this.SetupTabPage);
+            this.AudioTab.Controls.Add(this.HelpTab);
             this.AudioTab.Cursor = System.Windows.Forms.Cursors.Default;
             this.AudioTab.HotTrack = true;
             resources.ApplyResources(this.AudioTab, "AudioTab");
             this.AudioTab.Name = "AudioTab";
             this.AudioTab.SelectedIndex = 0;
+            // 
+            // MiscTab
+            // 
+            this.MiscTab.Controls.Add(this.groupBox11);
+            this.MiscTab.Controls.Add(this.groupBox10);
+            this.MiscTab.Controls.Add(this.groupBox9);
+            resources.ApplyResources(this.MiscTab, "MiscTab");
+            this.MiscTab.Name = "MiscTab";
+            this.MiscTab.UseVisualStyleBackColor = true;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.label37);
+            this.groupBox11.Controls.Add(this.label36);
+            this.groupBox11.Controls.Add(this.BlackBitrateNum);
+            this.groupBox11.Controls.Add(this.label35);
+            this.groupBox11.Controls.Add(this.BlackSecondComboBox);
+            this.groupBox11.Controls.Add(this.label34);
+            this.groupBox11.Controls.Add(this.BlackCRFNum);
+            this.groupBox11.Controls.Add(this.label32);
+            this.groupBox11.Controls.Add(this.BlackNoPicCheckBox);
+            this.groupBox11.Controls.Add(this.label31);
+            this.groupBox11.Controls.Add(this.BlackFPSNum);
+            this.groupBox11.Controls.Add(this.BlackPicButton);
+            this.groupBox11.Controls.Add(this.BlackPicTextBox);
+            this.groupBox11.Controls.Add(this.BlackStartButton);
+            this.groupBox11.Controls.Add(this.BlackOutputButton);
+            this.groupBox11.Controls.Add(this.BlackVideoButton);
+            this.groupBox11.Controls.Add(this.BlackOutputTextBox);
+            this.groupBox11.Controls.Add(this.BlackVideoTextBox);
+            resources.ApplyResources(this.groupBox11, "groupBox11");
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.TabStop = false;
+            // 
+            // label37
+            // 
+            resources.ApplyResources(this.label37, "label37");
+            this.label37.Name = "label37";
+            // 
+            // label36
+            // 
+            resources.ApplyResources(this.label36, "label36");
+            this.label36.Name = "label36";
+            // 
+            // BlackBitrateNum
+            // 
+            resources.ApplyResources(this.BlackBitrateNum, "BlackBitrateNum");
+            this.BlackBitrateNum.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.BlackBitrateNum.Name = "BlackBitrateNum";
+            this.BlackBitrateNum.Value = new decimal(new int[] {
+            900,
+            0,
+            0,
+            0});
+            // 
+            // label35
+            // 
+            resources.ApplyResources(this.label35, "label35");
+            this.label35.Name = "label35";
+            // 
+            // BlackSecondComboBox
+            // 
+            this.BlackSecondComboBox.FormattingEnabled = true;
+            this.BlackSecondComboBox.Items.AddRange(new object[] {
+            resources.GetString("BlackSecondComboBox.Items"),
+            resources.GetString("BlackSecondComboBox.Items1"),
+            resources.GetString("BlackSecondComboBox.Items2"),
+            resources.GetString("BlackSecondComboBox.Items3"),
+            resources.GetString("BlackSecondComboBox.Items4")});
+            resources.ApplyResources(this.BlackSecondComboBox, "BlackSecondComboBox");
+            this.BlackSecondComboBox.Name = "BlackSecondComboBox";
+            this.BlackSecondComboBox.SelectedIndexChanged += new System.EventHandler(this.BlackSecondComboBox_SelectedIndexChanged);
+            // 
+            // label34
+            // 
+            resources.ApplyResources(this.label34, "label34");
+            this.label34.Name = "label34";
+            // 
+            // BlackCRFNum
+            // 
+            this.BlackCRFNum.DecimalPlaces = 1;
+            this.BlackCRFNum.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            resources.ApplyResources(this.BlackCRFNum, "BlackCRFNum");
+            this.BlackCRFNum.Maximum = new decimal(new int[] {
+            51,
+            0,
+            0,
+            0});
+            this.BlackCRFNum.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.BlackCRFNum.Name = "BlackCRFNum";
+            this.BlackCRFNum.Value = new decimal(new int[] {
+            51,
+            0,
+            0,
+            0});
+            // 
+            // label32
+            // 
+            resources.ApplyResources(this.label32, "label32");
+            this.label32.Name = "label32";
+            // 
+            // BlackNoPicCheckBox
+            // 
+            resources.ApplyResources(this.BlackNoPicCheckBox, "BlackNoPicCheckBox");
+            this.BlackNoPicCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.BlackNoPicCheckBox.Checked = true;
+            this.BlackNoPicCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.BlackNoPicCheckBox.Name = "BlackNoPicCheckBox";
+            this.BlackNoPicCheckBox.UseVisualStyleBackColor = false;
+            this.BlackNoPicCheckBox.CheckedChanged += new System.EventHandler(this.BlackNoPicCheckBox_CheckedChanged);
+            // 
+            // label31
+            // 
+            resources.ApplyResources(this.label31, "label31");
+            this.label31.Name = "label31";
+            // 
+            // BlackFPSNum
+            // 
+            resources.ApplyResources(this.BlackFPSNum, "BlackFPSNum");
+            this.BlackFPSNum.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.BlackFPSNum.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.BlackFPSNum.Name = "BlackFPSNum";
+            this.BlackFPSNum.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // BlackPicButton
+            // 
+            resources.ApplyResources(this.BlackPicButton, "BlackPicButton");
+            this.BlackPicButton.Name = "BlackPicButton";
+            this.BlackPicButton.UseVisualStyleBackColor = true;
+            this.BlackPicButton.Click += new System.EventHandler(this.BlackPicButton_Click);
+            // 
+            // BlackPicTextBox
+            // 
+            this.BlackPicTextBox.AllowDrop = true;
+            this.BlackPicTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BlackPicTextBox.EmptyTextTip = null;
+            this.BlackPicTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.BlackPicTextBox, "BlackPicTextBox");
+            this.BlackPicTextBox.Name = "BlackPicTextBox";
+            // 
+            // BlackStartButton
+            // 
+            resources.ApplyResources(this.BlackStartButton, "BlackStartButton");
+            this.BlackStartButton.Name = "BlackStartButton";
+            this.BlackStartButton.UseVisualStyleBackColor = true;
+            this.BlackStartButton.Click += new System.EventHandler(this.BlackStartButton_Click);
+            // 
+            // BlackOutputButton
+            // 
+            resources.ApplyResources(this.BlackOutputButton, "BlackOutputButton");
+            this.BlackOutputButton.Name = "BlackOutputButton";
+            this.BlackOutputButton.UseVisualStyleBackColor = true;
+            this.BlackOutputButton.Click += new System.EventHandler(this.BlackOutputButton_Click);
+            // 
+            // BlackVideoButton
+            // 
+            resources.ApplyResources(this.BlackVideoButton, "BlackVideoButton");
+            this.BlackVideoButton.Name = "BlackVideoButton";
+            this.BlackVideoButton.UseVisualStyleBackColor = true;
+            this.BlackVideoButton.Click += new System.EventHandler(this.BlackVideoButton_Click);
+            // 
+            // BlackOutputTextBox
+            // 
+            this.BlackOutputTextBox.AllowDrop = true;
+            this.BlackOutputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BlackOutputTextBox.EmptyTextTip = null;
+            this.BlackOutputTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.BlackOutputTextBox, "BlackOutputTextBox");
+            this.BlackOutputTextBox.Name = "BlackOutputTextBox";
+            // 
+            // BlackVideoTextBox
+            // 
+            this.BlackVideoTextBox.AllowDrop = true;
+            this.BlackVideoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BlackVideoTextBox.EmptyTextTip = null;
+            this.BlackVideoTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.BlackVideoTextBox, "BlackVideoTextBox");
+            this.BlackVideoTextBox.Name = "BlackVideoTextBox";
+            this.BlackVideoTextBox.TextChanged += new System.EventHandler(this.BlackVideoTextBox_TextChanged);
             // 
             // SetupTabPage
             // 
@@ -2502,14 +2767,15 @@
             this.tabNeroAAC.ResumeLayout(false);
             this.NeroAACGroupBox.ResumeLayout(false);
             this.NeroAACGroupBox.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AudioOnePicFPSNum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AudioOnePicAudioBitrateNum)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numq)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OnePicCRFNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AudioOnePicFPSNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AudioOnePicAudioBitrateNum)).EndInit();
             this.VideoTab.ResumeLayout(false);
             this.VideoTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.x264FramesNumericUpDown)).EndInit();
@@ -2520,11 +2786,17 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numheight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numwidth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numrate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numcrf)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numrate)).EndInit();
             this.HelpTab.ResumeLayout(false);
             this.HelpTab.PerformLayout();
             this.AudioTab.ResumeLayout(false);
+            this.MiscTab.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BlackBitrateNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BlackCRFNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BlackFPSNum)).EndInit();
             this.SetupTabPage.ResumeLayout(false);
             this.SetupTabPage.PerformLayout();
             this.ResumeLayout(false);
@@ -2766,6 +3038,28 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.NumericUpDown AudioOnePicFPSNum;
         private ControlExs.QQCheckBox AudioCopyCheckBox;
+        private System.Windows.Forms.TabPage MiscTab;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private ControlExs.QQButton BlackStartButton;
+        private ControlExs.QQButton BlackOutputButton;
+        private ControlExs.QQButton BlackVideoButton;
+        private ControlExs.QQTextBox BlackOutputTextBox;
+        private ControlExs.QQTextBox BlackVideoTextBox;
+        private ControlExs.QQButton BlackPicButton;
+        private ControlExs.QQTextBox BlackPicTextBox;
+        private System.Windows.Forms.NumericUpDown OnePicCRFNum;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.NumericUpDown BlackCRFNum;
+        private System.Windows.Forms.Label label32;
+        private ControlExs.QQCheckBox BlackNoPicCheckBox;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.NumericUpDown BlackFPSNum;
+        private System.Windows.Forms.ComboBox BlackSecondComboBox;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.NumericUpDown BlackBitrateNum;
     }
 }
 
