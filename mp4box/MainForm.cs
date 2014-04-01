@@ -29,7 +29,7 @@ namespace mp4box
         string MIvideo = "";
         string namevideo = "";
         string namevideo2 = "";
-        string namevideo3 = "";
+        //string namevideo3 = "";
         string namevideo4 = "";
         string namevideo5 = "";
         string namevideo6 = "";
@@ -41,7 +41,7 @@ namespace mp4box
         string nameout;
         string nameout2;
         string nameout3;
-        string nameout4;
+        //string nameout4;
         string nameout5;
         string nameout6;
         string nameout9;
@@ -160,27 +160,27 @@ namespace mp4box
             switch (mode)
             {
                 case 1:
-                    if (numheight.Value == 0 || numwidth.Value == 0)
+                    if (x264HeightNum.Value == 0 || x264WidthNum.Value == 0)
                     {
-                        x264 = "\"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  --crf " + numcrf.Value + " --preset 8 --demuxer " + DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workpath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  --crf " + x264CRFNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     else
                     {
-                        x264 = "\"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  --crf " + numcrf.Value + " --preset 8 --demuxer " + DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + numwidth.Value + "," + numheight.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workpath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  --crf " + x264CRFNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     break;
                 case 2:
-                    if (numheight.Value == 0 || numwidth.Value == 0)
+                    if (x264HeightNum.Value == 0 || x264WidthNum.Value == 0)
                     {
-                        x264 = "\"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  -p1 --stats \"tmp.stat\" --preset 8 --demuxer " + DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  -p2 --stats \"tmp.stat\" -B " + numrate.Value + " --preset 8 --demuxer " + DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workpath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  -p1 --stats \"tmp.stat\" --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" + workpath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  -p2 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     else
                     {
-                        x264 = "\"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  -p1 --stats \"tmp.stat\" --preset 8 --demuxer " + DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  --vf resize:" + numwidth.Value + "," + numheight.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  -p2 --stats \"tmp.stat\" -B " + numrate.Value + " --preset 8 --demuxer " + DemuxerComboBox.Text + " -r 3 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + numwidth.Value + "," + numheight.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workpath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  -p1 --stats \"tmp.stat\" --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" + workpath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  -p2 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     break;
                 case 0:
-                    x264 = "\"" + workpath + "\\" + cbx264file.SelectedItem.ToString() + "\"  " + txth264.Text + " --demuxer " + DemuxerComboBox.Text + " -o \"" + output + "\" \"" + input + "\"\r\n";
+                    x264 = "\"" + workpath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  " + x264CustomParameterTextBox.Text + " --demuxer " + x264DemuxerComboBox.Text + " -o \"" + output + "\" \"" + input + "\"\r\n";
                     break;
             }
             return x264;
@@ -257,7 +257,7 @@ namespace mp4box
         }
         public string audiobat(string input, string output)
         {
-            int AACbr = 1024 * Convert.ToInt32(numq.Value.ToString());
+            int AACbr = 1024 * Convert.ToInt32(AudioBitrateNum.Value.ToString());
             string br = AACbr.ToString();
             ffmpeg = "\"" + workpath + "\\ffmpeg.exe\" -y -i \"" + input + "\" -f wav temp.wav";
             switch (AudioEncoderComboBox.SelectedIndex)
@@ -269,17 +269,17 @@ namespace mp4box
                     }
                     if (AudioCustomizeRadioButton.Checked)
                     {
-                        neroaac = "\"" + workpath + "\\neroAacEnc.exe\" " + txtNeroaac.Text.ToString() + " -if \"temp.wav\"  -of \"" + output + "\"";
+                        neroaac = "\"" + workpath + "\\neroAacEnc.exe\" " + AudioCustomParameterTextBox.Text.ToString() + " -if \"temp.wav\"  -of \"" + output + "\"";
                     }
                     break;
                 case 1:
                     if (AudioBitrateRadioButton.Checked)
                     {
-                        neroaac = "\"" + workpath + "\\qaac.exe\" -q 2 -c  " + numq.Value.ToString() + " \"temp.wav\"  -o \"" + output + "\"";
+                        neroaac = "\"" + workpath + "\\qaac.exe\" -q 2 -c  " + AudioBitrateNum.Value.ToString() + " \"temp.wav\"  -o \"" + output + "\"";
                     }
                     if (AudioCustomizeRadioButton.Checked)
                     {
-                        neroaac = "\"" + workpath + "\\qaac.exe\" " + txtNeroaac.Text.ToString() + " \"temp.wav\"  -o \"" + output + "\"";
+                        neroaac = "\"" + workpath + "\\qaac.exe\" " + AudioCustomParameterTextBox.Text.ToString() + " \"temp.wav\"  -o \"" + output + "\"";
                     }
                     break;
                 case 2:
@@ -685,35 +685,55 @@ namespace mp4box
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //delete temp files
-            List<string> deleteFileList = new List<string>();
-            string[] deletedfiles = { "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat", "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
-            DirectoryInfo theFolder = new DirectoryInfo(workpath);
-            foreach (FileInfo NextFile in theFolder.GetFiles())
+
+            #region Delete Temp Files
+            if (SetupDeleteTempFileCheckBox.Checked == true)
             {
-                if (NextFile.Extension == ".bat")
-                    deleteFileList.Add(NextFile.Name);
+                List<string> deleteFileList = new List<string>();
+                string[] deletedfiles = { "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat", "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
+                DirectoryInfo theFolder = new DirectoryInfo(workpath);
+                foreach (FileInfo NextFile in theFolder.GetFiles())
+                {
+                    if (NextFile.Extension == ".bat")
+                        deleteFileList.Add(NextFile.Name);
+                }
+                deleteFileList.AddRange(deletedfiles);
+                foreach (string file in deleteFileList)
+                {
+                    File.Delete(file);
+                }
             }
-            deleteFileList.AddRange(deletedfiles);
-            foreach (string file in deleteFileList)
-            {
-                File.Delete(file);
-            }
-            //save settings
+            #endregion
+
+            #region Save Settings
             Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            cfa.AppSettings.Settings["CRF"].Value = numcrf.Value.ToString();
-            cfa.AppSettings.Settings["VideoBitrate"].Value = numrate.Value.ToString();
-            cfa.AppSettings.Settings["AudioBitrate"].Value = numq.Value.ToString();
-            cfa.AppSettings.Settings["Width"].Value = numwidth.Value.ToString();
-            cfa.AppSettings.Settings["Height"].Value = numheight.Value.ToString();
-            cfa.AppSettings.Settings["x264Parameter"].Value = txth264.Text;
-            cfa.AppSettings.Settings["AVSScript"].Value = txtAVS.Text;
-            cfa.AppSettings.Settings["NeroaacParameter"].Value = txtNeroaac.Text;
+            cfa.AppSettings.Settings["x264CRF"].Value = x264CRFNum.Value.ToString();
+            cfa.AppSettings.Settings["x264Bitrate"].Value = x264BitrateNum.Value.ToString();
+            cfa.AppSettings.Settings["x264AudioParameter"].Value = x264AudioParameterTextBox.Text;
+            cfa.AppSettings.Settings["x264AudioMode"].Value = x264AudioModeComboBox.SelectedIndex.ToString();
+            cfa.AppSettings.Settings["x264Exe"].Value = x264ExeComboBox.SelectedIndex.ToString();
+            cfa.AppSettings.Settings["x264Demuxer"].Value = x264DemuxerComboBox.SelectedIndex.ToString();
+            cfa.AppSettings.Settings["x264Width"].Value = x264WidthNum.Value.ToString();
+            cfa.AppSettings.Settings["x264Height"].Value = x264HeightNum.Value.ToString();
+            cfa.AppSettings.Settings["x264CustomParameter"].Value = x264CustomParameterTextBox.Text;
+            cfa.AppSettings.Settings["x264Priority"].Value = x264PriorityComboBox.SelectedIndex.ToString();
+            cfa.AppSettings.Settings["AVSScript"].Value = AVSScriptTextBox.Text;
+            cfa.AppSettings.Settings["AudioEncoder"].Value = AudioEncoderComboBox.SelectedIndex.ToString();
+            cfa.AppSettings.Settings["AudioCustomParameter"].Value = AudioCustomParameterTextBox.Text;
+            cfa.AppSettings.Settings["AudioParameter"].Value = AudioBitrateNum.Value.ToString();
+            cfa.AppSettings.Settings["OnePicAudioBitrate"].Value = OnePicAudioBitrateNum.Value.ToString();
+            cfa.AppSettings.Settings["OnePicFPS"].Value = OnePicFPSNum.Value.ToString();
+            cfa.AppSettings.Settings["OnePicCRF"].Value = OnePicCRFNum.Value.ToString();
+            cfa.AppSettings.Settings["BlackFPS"].Value = BlackFPSNum.Value.ToString();
+            cfa.AppSettings.Settings["BlackCRF"].Value = BlackCRFNum.Value.ToString();
+            cfa.AppSettings.Settings["BlackBitrate"].Value = BlackBitrateNum.Value.ToString();
+            cfa.AppSettings.Settings["SetupDeleteTempFile"].Value = SetupDeleteTempFileCheckBox.Checked.ToString();
             cfa.AppSettings.Settings["LanguageIndex"].Value = languageComboBox.SelectedIndex.ToString();
-            //最后调用save
+
             cfa.Save();
-            // 刷新命名节，在下次检索它时将从磁盘重新读取它。记住应用程序要刷新节点
-            ConfigurationManager.RefreshSection("appSettings");
+            ConfigurationManager.RefreshSection("appSettings"); // 刷新命名节，在下次检索它时将从磁盘重新读取它。记住应用程序要刷新节点
+            #endregion
+
         }
         private void txtvideo4_TextChanged(object sender, EventArgs e)
         {
@@ -778,6 +798,37 @@ namespace mp4box
         {
             get { return (Environment.OSVersion.Platform == PlatformID.Win32NT) && (Environment.OSVersion.Version.Major >= 6); }
         }
+
+
+        /// <summary>
+        /// 还原默认参数
+        /// </summary>
+        private void InitParameter()
+        {
+            x264CRFNum.Value = 24;
+            x264BitrateNum.Value = 800;
+            x264AudioParameterTextBox.Text = "--abitrate 128";
+            x264AudioModeComboBox.SelectedIndex = 4;
+            x264DemuxerComboBox.SelectedIndex = 2;
+            x264WidthNum.Value = 0;
+            x264HeightNum.Value = 0;
+            x264CustomParameterTextBox.Text = "";
+            x264PriorityComboBox.SelectedIndex = 2;
+            AudioEncoderComboBox.SelectedIndex = 0;
+            AudioCustomParameterTextBox.Text = "";
+            AudioBitrateNum.Value = 128;
+            OnePicAudioBitrateNum.Value = 128;
+            OnePicFPSNum.Value = 1;
+            OnePicCRFNum.Value = 24;
+            AVSScriptTextBox.Text = "";
+            BlackFPSNum.Value = 1;
+            BlackCRFNum.Value = 51;
+            BlackBitrateNum.Value = 900;
+            SetupDeleteTempFileCheckBox.Checked = true;
+
+
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             var modulename = Process.GetCurrentProcess().MainModule.ModuleName;
@@ -803,12 +854,17 @@ namespace mp4box
             string diskSymbol = workpath.Substring(0, 1);
             tempavspath = diskSymbol + ":\\temp.avs";
             tempPic = diskSymbol + ":\\marukotemp.jpg";
+            InitParameter();
 
-            //select priority as normal
-            x264PriorityComboBox.SelectedIndex = 2;
-            x264AudioModeComboBox.SelectedIndex = 4;
-            DemuxerComboBox.SelectedIndex = 2;
-            AudioEncoderComboBox.SelectedIndex = 0;
+            DirectoryInfo folder = new DirectoryInfo(workpath);
+            foreach (FileInfo FileName in folder.GetFiles())
+            {
+                if (FileName.Name.Contains("x264") && Path.GetExtension(FileName.Name) == ".exe")
+                {
+                    x264ExeComboBox.Items.Add(FileName.Name);
+                }
+            }
+            x264ExeComboBox.SelectedIndex = x264ExeComboBox.Items.IndexOf("x264_32_tMod-8bit-420.exe");
             //load Help Text
             if (File.Exists(workpath + "\\help.txt"))
             {
@@ -819,14 +875,28 @@ namespace mp4box
             try
             {
                 //load settings
-                numcrf.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["CRF"]);
-                numrate.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["VideoBitrate"]);
-                numq.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["AudioBitrate"]);
-                numwidth.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["Width"]);
-                numheight.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["Height"]);
-                txth264.Text = ConfigurationManager.AppSettings["x264Parameter"];
-                txtAVS.Text = ConfigurationManager.AppSettings["AVSScript"];
-                txtNeroaac.Text = ConfigurationManager.AppSettings["NeroaacParameter"];
+                x264CRFNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["x264CRF"]);
+                x264BitrateNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["x264Bitrate"]);
+                x264AudioParameterTextBox.Text = ConfigurationManager.AppSettings["x264AudioParameter"];
+                x264AudioModeComboBox.SelectedIndex = Convert.ToInt32(ConfigurationManager.AppSettings["x264AudioMode"]);
+                x264ExeComboBox.SelectedIndex = Convert.ToInt32(ConfigurationManager.AppSettings["x264Exe"]);
+                x264DemuxerComboBox.SelectedIndex = Convert.ToInt32(ConfigurationManager.AppSettings["x264Demuxer"]);
+                x264WidthNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["x264Width"]);
+                x264HeightNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["x264Height"]);
+                x264CustomParameterTextBox.Text = ConfigurationManager.AppSettings["x264CustomParameter"];
+                x264PriorityComboBox.SelectedIndex = Convert.ToInt32(ConfigurationManager.AppSettings["x264Priority"]);
+                AVSScriptTextBox.Text = ConfigurationManager.AppSettings["AVSScript"];
+                AudioEncoderComboBox.SelectedIndex = Convert.ToInt32(ConfigurationManager.AppSettings["AudioEncoder"]);
+                AudioCustomParameterTextBox.Text = ConfigurationManager.AppSettings["AudioCustomParameter"];
+                AudioBitrateNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["AudioBitrate"]);
+                OnePicAudioBitrateNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["OnePicAudioBitrate"]);
+                OnePicFPSNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["OnePicFPS"]);
+                OnePicCRFNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["OnePicCRF"]);
+                BlackFPSNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["BlackFPS"]);
+                BlackCRFNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["BlackCRF"]);
+                BlackBitrateNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["BlackBitrate"]);
+                SetupDeleteTempFileCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["SetupDeleteTempFile"]);
+
                 if (int.Parse(ConfigurationManager.AppSettings["LanguageIndex"]) == -1)  //First Startup
                 {
                     string culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
@@ -850,6 +920,9 @@ namespace mp4box
                         case "en-US":
                             languageComboBox.SelectedIndex = 2;
                             break;
+                        case "ja-JP":
+                            languageComboBox.SelectedIndex = 3;
+                            break;
                         default:
                             break;
                     }
@@ -869,15 +942,7 @@ namespace mp4box
             {
                 cbX264.Items.Add(FileName.Name.Replace(".txt", ""));
             }
-            DirectoryInfo folder = new DirectoryInfo(workpath);
-            foreach (FileInfo FileName in folder.GetFiles())
-            {
-                if (FileName.Name.Contains("x264") && Path.GetExtension(FileName.Name) == ".exe")
-                {
-                    cbx264file.Items.Add(FileName.Name);
-                }
-            }
-            cbx264file.SelectedIndex = cbx264file.Items.IndexOf("x264_32_tMod-8bit-420.exe");
+
         }
         private void tabPage1_Click(object sender, EventArgs e)
         {
@@ -1364,10 +1429,10 @@ namespace mp4box
         }
         private void btnpreview9_Click(object sender, EventArgs e)
         {
-            if (txtAVS.Text != "")
+            if (AVSScriptTextBox.Text != "")
             {
                 string filepath = workpath + "\\temp.avs";
-                File.WriteAllText(filepath, txtAVS.Text.ToString(), UnicodeEncoding.Default);
+                File.WriteAllText(filepath, AVSScriptTextBox.Text.ToString(), UnicodeEncoding.Default);
                 PreviewForm form2 = new PreviewForm();
                 form2.Show();
                 form2.axWindowsMediaPlayer1.URL = filepath;
@@ -1471,7 +1536,7 @@ namespace mp4box
             {
                 string filepath = tempavspath;
                 //string filepath = workpath + "\\temp.avs";
-                File.WriteAllText(filepath, txtAVS.Text, UnicodeEncoding.Default);
+                File.WriteAllText(filepath, AVSScriptTextBox.Text, UnicodeEncoding.Default);
                 x264 = x264bat(filepath, nameout9).Replace("\r\n", "");
                 x264 += " --acodec none\r\n";
                 batpath = workpath + "\\x264.bat";
@@ -1499,7 +1564,7 @@ namespace mp4box
             else
             {
                 string filepath = workpath + "\\temp.avs";
-                File.WriteAllText(filepath, txtAVS.Text, UnicodeEncoding.Default);
+                File.WriteAllText(filepath, AVSScriptTextBox.Text, UnicodeEncoding.Default);
                 x264 = x264bat(filepath, "temp.mp4").Replace("\r\n", "");
                 x264 += " --acodec none\r\n";
                 //audio
@@ -1532,7 +1597,7 @@ namespace mp4box
             avs += "LoadPlugin(\"avsfilter\\VSFilter.DLL\")\r\n";
             avs += string.Format("\r\nDirectShowSource(\"{0}\",23.976,convertFPS=True)\r\nConvertToYV12()\r\nCrop(0,0,0,0)\r\nAddBorders(0,0,0,0)\r\n" + "TextSub(\"{1}\")\r\n#LanczosResize(1280,960)\r\n", namevideo9, namesub9);
             //avs += "\r\nDirectShowSource(\"" + namevideo9 + "\",23.976,convertFPS=True)\r\nConvertToYV12()\r\nCrop(0,0,0,0)\r\nAddBorders(0,0,0,0)\r\n" + "TextSub(\"" + namesub9 + "\")\r\n#LanczosResize(1280,960)\r\n";
-            txtAVS.Text = avs;
+            AVSScriptTextBox.Text = avs;
             avs = "";
         }
         private void txth264_TextChanged(object sender, EventArgs e)
@@ -1600,7 +1665,7 @@ namespace mp4box
             for (int i = 0; i < processes.GetLength(0); i++)
             {
                 //我是要找到我需要的YZT.exe的进程,可以根据ProcessName属性判断
-                if (processes[i].ProcessName.Equals(Path.GetFileNameWithoutExtension(cbx264file.Text)))
+                if (processes[i].ProcessName.Equals(Path.GetFileNameWithoutExtension(x264ExeComboBox.Text)))
                 {
                     switch (x264PriorityComboBox.SelectedIndex)
                     {
@@ -1636,7 +1701,7 @@ namespace mp4box
         }
         private void button9_Click(object sender, EventArgs e)
         {
-            txtAVS.Clear();
+            AVSScriptTextBox.Clear();
         }
         private void btnClip_Click(object sender, EventArgs e)
         {
@@ -1665,7 +1730,7 @@ namespace mp4box
         private void cbX264_SelectedIndexChanged(object sender, EventArgs e)
         {
             StreamReader sr = new StreamReader(workpath + "\\preset\\" + cbX264.Text + ".txt", System.Text.Encoding.Default);
-            txth264.Text = sr.ReadToEnd();
+            x264CustomParameterTextBox.Text = sr.ReadToEnd();
             sr.Close();
         }
         private void cbFPS_SelectedIndexChanged(object sender, EventArgs e)
@@ -1943,7 +2008,7 @@ namespace mp4box
             //add file
             aextract = "\"" + workpath + "\\FLVExtractCL.exe\" -a \"" + namevideo8 + "\"";
             batpath = workpath + "\\preset\\" + PresetNameTextBox.Text + ".txt";
-            File.WriteAllText(batpath, txth264.Text, UnicodeEncoding.Default);
+            File.WriteAllText(batpath, x264CustomParameterTextBox.Text, UnicodeEncoding.Default);
             //refresh combobox
             cbX264.Items.Clear();
             if (Directory.Exists(workpath + "\\preset"))
@@ -1978,19 +2043,19 @@ namespace mp4box
         {
             mode = 2;
             lbrate.Visible = true;
-            numrate.Visible = true;
+            x264BitrateNum.Visible = true;
             label12.Visible = true;
             cbFPS2.Visible = true;
             lbFPS2.Visible = true;
             lbwidth.Visible = true;
             lbheight.Visible = true;
-            numwidth.Visible = true;
-            numheight.Visible = true;
+            x264WidthNum.Visible = true;
+            x264HeightNum.Visible = true;
             MaintainResolutionCheckBox.Visible = true;
             lbcrf.Visible = false;
-            numcrf.Visible = false;
+            x264CRFNum.Visible = false;
             label4.Visible = false;
-            txth264.Visible = false;
+            x264CustomParameterTextBox.Visible = false;
             cbX264.Visible = false;
             x264AddPresetBtn.Visible = false;
             x264DeletePresetBtn.Visible = false;
@@ -2000,21 +2065,21 @@ namespace mp4box
         {
             mode = 0;
             label4.Visible = true;
-            txth264.Visible = true;
+            x264CustomParameterTextBox.Visible = true;
             cbX264.Visible = true;
             x264AddPresetBtn.Visible = true;
             x264DeletePresetBtn.Visible = true;
             PresetNameTextBox.Visible = true;
             lbwidth.Visible = false;
             lbheight.Visible = false;
-            numwidth.Visible = false;
-            numheight.Visible = false;
+            x264WidthNum.Visible = false;
+            x264HeightNum.Visible = false;
             MaintainResolutionCheckBox.Visible = false;
             lbrate.Visible = false;
-            numrate.Visible = false;
+            x264BitrateNum.Visible = false;
             label12.Visible = false;
             lbcrf.Visible = false;
-            numcrf.Visible = false;
+            x264CRFNum.Visible = false;
             cbFPS2.Visible = false;
             lbFPS2.Visible = false;
         }
@@ -2022,19 +2087,19 @@ namespace mp4box
         {
             mode = 1;
             lbcrf.Visible = true;
-            numcrf.Visible = true;
+            x264CRFNum.Visible = true;
             cbFPS2.Visible = true;
             lbFPS2.Visible = true;
             lbwidth.Visible = true;
             lbheight.Visible = true;
-            numwidth.Visible = true;
-            numheight.Visible = true;
+            x264WidthNum.Visible = true;
+            x264HeightNum.Visible = true;
             MaintainResolutionCheckBox.Visible = true;
             lbrate.Visible = false;
-            numrate.Visible = false;
+            x264BitrateNum.Visible = false;
             label12.Visible = false;
             label4.Visible = false;
-            txth264.Visible = false;
+            x264CustomParameterTextBox.Visible = false;
             cbX264.Visible = false;
             x264AddPresetBtn.Visible = false;
             x264DeletePresetBtn.Visible = false;
@@ -2071,7 +2136,7 @@ namespace mp4box
         }
         private void x264PriorityComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string processName = cbx264file.Text;
+            string processName = x264ExeComboBox.Text;
             processName = processName.Replace(".exe", "");
             Process[] processes = Process.GetProcesses();
             //if (x264PriorityComboBox.SelectedIndex == 4 || x264PriorityComboBox.SelectedIndex == 5)
@@ -2300,16 +2365,16 @@ namespace mp4box
             aacmode = 2;
             lbaacrate.Visible = false;
             lbaackbps.Visible = false;
-            numq.Visible = false;
-            txtNeroaac.Visible = true;
+            AudioBitrateNum.Visible = false;
+            AudioCustomParameterTextBox.Visible = true;
         }
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             aacmode = 1;
             lbaacrate.Visible = true;
             lbaackbps.Visible = true;
-            numq.Visible = true;
-            txtNeroaac.Visible = false;
+            AudioBitrateNum.Visible = true;
+            AudioCustomParameterTextBox.Visible = false;
         }
         private void AudioAddButton_Click(object sender, EventArgs e)
         {
@@ -2384,7 +2449,7 @@ namespace mp4box
             }
             if (TrimCheckBox.Checked)
                 avsBuilder.AppendLine("Trim(" + TrimStartNumericUpDown.Value.ToString() + "," + TrimEndNumericUpDown.Value.ToString() + ")");
-            txtAVS.Text = avsBuilder.ToString();
+            AVSScriptTextBox.Text = avsBuilder.ToString();
         }
         #region 更改AVS
         private void TweakCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -2497,7 +2562,7 @@ namespace mp4box
         }
         private void txtAVS_TextChanged(object sender, EventArgs e)
         {
-            Match m = Regex.Match(txtAVS.Text, "ource\\(\"[a-zA-Z]:\\\\.+\\.\\w+\"");
+            Match m = Regex.Match(AVSScriptTextBox.Text, "ource\\(\"[a-zA-Z]:\\\\.+\\.\\w+\"");
             if (m.Success)
             {
                 string str = m.ToString();
@@ -2564,15 +2629,15 @@ namespace mp4box
         {
             if (MaintainResolutionCheckBox.Checked)
             {
-                numwidth.Value = 0;
-                numheight.Value = 0;
-                numwidth.Enabled = false;
-                numheight.Enabled = false;
+                x264WidthNum.Value = 0;
+                x264HeightNum.Value = 0;
+                x264WidthNum.Enabled = false;
+                x264HeightNum.Enabled = false;
             }
             else
             {
-                numwidth.Enabled = true;
-                numheight.Enabled = true;
+                x264WidthNum.Enabled = true;
+                x264HeightNum.Enabled = true;
             }
         }
         #region globalization
@@ -2661,9 +2726,9 @@ namespace mp4box
                         sr.Close();
                     }
                     break;
-                //case 3:
-                //    SetLang("ja-JP", this, typeof(MainForm));
-                //    break;
+                case 3:
+                    SetLang("ja-JP", this, typeof(MainForm));
+                    break;
                 default:
                     SetLang("zh-CN", this, typeof(MainForm));
                     break;
@@ -2697,7 +2762,7 @@ namespace mp4box
             DialogResult result = savefile.ShowDialog();
             if (result == DialogResult.OK)
             {
-                File.WriteAllText(savefile.FileName, txtAVS.Text, UnicodeEncoding.Default);
+                File.WriteAllText(savefile.FileName, AVSScriptTextBox.Text, UnicodeEncoding.Default);
             }
         }
         private void MuxReplaceAudioButton_Click(object sender, EventArgs e)
@@ -2728,7 +2793,7 @@ namespace mp4box
         }
         private void cbx264file_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbx264file.Text.Contains("all"))
+            if (x264ExeComboBox.Text.Contains("all"))
             {
                 x264AudioModeComboBox.Items.Clear();
                 x264AudioModeComboBox.Items.Add("无音频流");
@@ -2834,14 +2899,14 @@ namespace mp4box
                 int seconds = SecondsFromHHMMSS(MI.Get(StreamKind.General, 0, "Duration/String3"));
                 if (AudioCopyCheckBox.Checked)
                 {
-                    mux = "ffmpeg -loop 1 -r " + AudioOnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
+                    mux = "ffmpeg -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
                     mux += "ffmpeg -i SinglePictureVideo.mp4 -i \"" + AudioPicAudioTextBox.Text + "\" -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
                     mux += "del SinglePictureVideo.mp4\r\n";
                 }
                 else
                 {
-                    mux = "ffmpeg -i \"" + AudioPicAudioTextBox.Text + "\" -f wav - |neroaacenc -br " + AudioOnePicAudioBitrateNum.Value.ToString() + "000 -ignorelength -if - -of audio.mp4 -lc\r\n";
-                    mux += "ffmpeg -loop 1 -crf " + OnePicCRFNum.Value.ToString() + " -r " + AudioOnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
+                    mux = "ffmpeg -i \"" + AudioPicAudioTextBox.Text + "\" -f wav - |neroaacenc -br " + OnePicAudioBitrateNum.Value.ToString() + "000 -ignorelength -if - -of audio.mp4 -lc\r\n";
+                    mux += "ffmpeg -loop 1 -crf " + OnePicCRFNum.Value.ToString() + " -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
                     mux += "ffmpeg -i SinglePictureVideo.mp4 -i audio.mp4 -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
                     mux += "del SinglePictureVideo.mp4\r\ndel audio.mp4\r\n";
                 }
@@ -3072,6 +3137,11 @@ namespace mp4box
             {
                 BlackBitrateNum.Enabled = true;
             }
+        }
+
+        private void SetDefaultButton_Click(object sender, EventArgs e)
+        {
+            InitParameter();
         }
 
     }
