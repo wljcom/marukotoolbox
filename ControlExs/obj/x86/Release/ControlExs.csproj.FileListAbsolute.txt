@@ -6,3 +6,11 @@ E:\project\mp4box\ControlExs\obj\x86\Release\ControlExs.Properties.Resources.res
 E:\project\mp4box\ControlExs\obj\x86\Release\ControlExs.csproj.GenerateResource.Cache
 E:\project\mp4box\ControlExs\obj\x86\Release\ControlExs.dll
 E:\project\mp4box\ControlExs\obj\x86\Release\ControlExs.pdb
+E:\Codes\CodePlexWorkspace\marukotoolbox\ControlExs\bin\Release\ControlExs.dll
+E:\Codes\CodePlexWorkspace\marukotoolbox\ControlExs\bin\Release\ControlExs.pdb
+E:\Codes\CodePlexWorkspace\marukotoolbox\ControlExs\obj\x86\Release\ControlExs.FormEx.resources
+E:\Codes\CodePlexWorkspace\marukotoolbox\ControlExs\obj\x86\Release\ControlExs.QQMessageBox.resources
+E:\Codes\CodePlexWorkspace\marukotoolbox\ControlExs\obj\x86\Release\ControlExs.Properties.Resources.resources
+E:\Codes\CodePlexWorkspace\marukotoolbox\ControlExs\obj\x86\Release\ControlExs.csproj.GenerateResource.Cache
+E:\Codes\CodePlexWorkspace\marukotoolbox\ControlExs\obj\x86\Release\ControlExs.dll
+E:\Codes\CodePlexWorkspace\marukotoolbox\ControlExs\obj\x86\Release\ControlExs.pdb
