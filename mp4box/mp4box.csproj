@@ -51,8 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Res\wan.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>D94B72CA453F9119160A155B1EBE49C339601C98</ManifestCertificateThumbprint>
@@ -73,7 +72,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <RunPostBuildEvent>Always</RunPostBuildEvent>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>mp4box.Program</StartupObject>
@@ -204,8 +203,18 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>copy /y "$(ProjectDir)$(OutDir)xiaowan.exe" "$(SolutionDir)xiaowan\"
+copy /y "$(ProjectDir)$(OutDir)xiaowan.exe.Config" "$(SolutionDir)xiaowan\"
+copy /y "$(ProjectDir)$(OutDir)AxInterop.WMPLib.dll" "$(SolutionDir)xiaowan\"
+copy /y "$(ProjectDir)$(OutDir)Interop.WMPLib.dll" "$(SolutionDir)xiaowan\"
+
+mkdir "$(SolutionDir)xiaowan\en"
+mkdir "$(SolutionDir)xiaowan\zh-Hant"
+mkdir "$(SolutionDir)xiaowan\ja-JP"
+
+xcopy /y "$(ProjectDir)$(OutDir)en" "$(SolutionDir)xiaowan\en"
+xcopy /y "$(ProjectDir)$(OutDir)zh-Hant" "$(SolutionDir)xiaowan\zh-Hant"
+xcopy /y "$(ProjectDir)$(OutDir)ja-JP" "$(SolutionDir)xiaowan\ja-JP"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
