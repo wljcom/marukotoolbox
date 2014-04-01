@@ -516,7 +516,7 @@ namespace mp4box
                     case 6: break;
                     default: ; break;
                 }
-                if (cbFPS2.Text != "None")
+                if (cbFPS2.Text != "auto")
                 {
                     switch (cbFPS2.Text)
                     {
@@ -590,7 +590,7 @@ namespace mp4box
             }
             else
             {
-                if (cbFPS.Text == "None")
+                if (cbFPS.Text == "auto")
                 {
                     mux = "\"" + workpath + "\\mp4box.exe\" -add \"" + namevideo + "\" -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
                 }
@@ -1960,7 +1960,7 @@ namespace mp4box
                     case 6: break;
                     default: ; break;
                 }
-                if (cbFPS2.Text != "None")
+                if (cbFPS2.Text != "auto")
                 {
                     switch (cbFPS2.Text)
                     {
