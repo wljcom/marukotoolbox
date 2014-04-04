@@ -829,17 +829,16 @@ namespace mp4box
             //    Font myFont = new Font(myFontFamily, 9, FontStyle.Regular); //字是那种字体，显示的风格
             //    this.Font = myFont;
             //}
+
             //define workpath
-            string temppath = System.Windows.Forms.Application.StartupPath;
-            workpath = temppath;
-
-          
-
-
+            string startpath = System.Windows.Forms.Application.StartupPath;
+            workpath = startpath + "\\tools";
+            if (!Directory.Exists(workpath))
+                Directory.CreateDirectory(workpath);
 
             //string diskSymbol = workpath.Substring(0, 1);
-            tempavspath = Path.GetTempPath().ToString() + "temp.avs";
-            tempPic = Path.GetTempPath().ToString() + "marukotemp.jpg";
+            tempavspath = Path.GetTempPath() + "temp.avs";
+            tempPic = Path.GetTempPath() + "marukotemp.jpg";
             InitParameter();
 
             DirectoryInfo folder = new DirectoryInfo(workpath);
@@ -852,9 +851,9 @@ namespace mp4box
             }
             x264ExeComboBox.SelectedIndex = x264ExeComboBox.Items.IndexOf("x264_32_tMod-8bit-420.exe");
             //load Help Text
-            if (File.Exists(workpath + "\\help.txt"))
+            if (File.Exists(startpath + "\\help.txt"))
             {
-                StreamReader sr = new StreamReader(workpath + "\\help.txt", System.Text.Encoding.UTF8);
+                StreamReader sr = new StreamReader(startpath + "\\help.txt", System.Text.Encoding.UTF8);
                 HelpTextBox.Text = sr.ReadToEnd();
                 sr.Close();
             }
@@ -922,8 +921,9 @@ namespace mp4box
             }
             //create directory
             string preset = workpath + "\\preset";
-            if (!Directory.Exists(preset)) Directory.CreateDirectory(preset);
-            DirectoryInfo TheFolder = new DirectoryInfo("preset");
+            if (!Directory.Exists(preset))
+                Directory.CreateDirectory(preset);
+            DirectoryInfo TheFolder = new DirectoryInfo(preset);
             foreach (FileInfo FileName in TheFolder.GetFiles())
             {
                 cbX264.Items.Add(FileName.Name.Replace(".txt", ""));
