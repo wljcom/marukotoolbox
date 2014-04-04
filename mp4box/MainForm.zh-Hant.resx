@@ -241,15 +241,8 @@
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 12</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>可直接把AVS腳本粘貼到下框</value>
+  <data name="AVSScriptTextBox.Text" xml:space="preserve">
+    <value>可直接把AVS腳本拷貝到這裡</value>
   </data>
   <data name="LevelsCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -389,6 +382,9 @@
   <data name="btnaextract2.Text" xml:space="preserve">
     <value>抽取音頻2</value>
   </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>封装轉換</value>
+  </data>
   <data name="btnffmpegAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -398,6 +394,7 @@
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 12</value>
   </data>
@@ -419,8 +416,8 @@
   <data name="btnBatchFLV.Text" xml:space="preserve">
     <value>封装為FLV</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>封装轉換</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>封裝為MP4</value>
   </data>
   <data name="MuxReplaceAudioButton.Text" xml:space="preserve">
     <value>替換音頻</value>
@@ -452,8 +449,8 @@
   <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>封裝為MP4</value>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>封裝為MKV</value>
   </data>
   <data name="button4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -482,8 +479,11 @@
   <data name="button7.Text" xml:space="preserve">
     <value>封裝</value>
   </data>
-  <data name="groupBox8.Text" xml:space="preserve">
-    <value>封裝為MKV</value>
+  <data name="tabNeroAAC.Text" xml:space="preserve">
+    <value>音頻</value>
+  </data>
+  <data name="NeroAACGroupBox.Text" xml:space="preserve">
+    <value>音頻壓制</value>
   </data>
   <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -530,8 +530,8 @@
   <data name="btnaac.Text" xml:space="preserve">
     <value>壓制</value>
   </data>
-  <data name="NeroAACGroupBox.Text" xml:space="preserve">
-    <value>音頻壓制</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>批量壓制</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -557,11 +557,8 @@
   <data name="AudioDeleteButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>批量壓制</value>
-  </data>
-  <data name="tabNeroAAC.Text" xml:space="preserve">
-    <value>音頻</value>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>一圖流</value>
   </data>
   <data name="AudioCopyCheckBox.Text" xml:space="preserve">
     <value>複製音頻</value>
@@ -581,8 +578,8 @@
   <data name="AudioPicButton.Text" xml:space="preserve">
     <value>圖片</value>
   </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>一圖流</value>
+  <data name="VideoTab.Text" xml:space="preserve">
+    <value>影片</value>
   </data>
   <data name="x264FramesLabel.Text" xml:space="preserve">
     <value>編碼幀數</value>
@@ -601,6 +598,9 @@
   </data>
   <data name="x264FLVCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>批量壓制</value>
   </data>
   <data name="x264OneBatchButton.Text" xml:space="preserve">
     <value>一鍵壓制</value>
@@ -633,9 +633,6 @@
     <value>NoControl</value>
   </data>
   <data name="btnBatchAuto.Text" xml:space="preserve">
-    <value>批量壓制</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
     <value>批量壓制</value>
   </data>
   <data name="x264ShutdownCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -740,8 +737,8 @@
   <data name="label4.Text" xml:space="preserve">
     <value>預設</value>
   </data>
-  <data name="VideoTab.Text" xml:space="preserve">
-    <value>影片</value>
+  <data name="HelpTab.Text" xml:space="preserve">
+    <value>幫助</value>
   </data>
   <data name="DonateButton.Text" xml:space="preserve">
     <value>捐贈小丸</value>
@@ -776,8 +773,8 @@
   <data name="linkLabel1.Text" xml:space="preserve">
     <value>x264 - 06_taro編譯版</value>
   </data>
-  <data name="HelpTab.Text" xml:space="preserve">
-    <value>幫助</value>
+  <data name="groupBox11.Text" xml:space="preserve">
+    <value>後黑</value>
   </data>
   <data name="label36.Text" xml:space="preserve">
     <value>目標碼率</value>
@@ -797,14 +794,11 @@
   <data name="BlackVideoButton.Text" xml:space="preserve">
     <value>影片</value>
   </data>
-  <data name="groupBox11.Text" xml:space="preserve">
-    <value>後黑</value>
+  <data name="SetupTabPage.Text" xml:space="preserve">
+    <value>設定</value>
   </data>
-  <data name="qqButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="qqButton1.Text" xml:space="preserve">
-    <value>缺省設置</value>
+  <data name="SetupDeleteTempFileCheckBox.Text" xml:space="preserve">
+    <value>退出軟體時刪除所有暫存檔案</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>x264優先權</value>
@@ -814,12 +808,6 @@
   </data>
   <data name="label26.Text" xml:space="preserve">
     <value>介面語言</value>
-  </data>
-  <data name="btnMP4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnflv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="DeleteLogButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -832,9 +820,6 @@
   </data>
   <data name="ViewLogButton.Text" xml:space="preserve">
     <value>查看日誌</value>
-  </data>
-  <data name="SetupTabPage.Text" xml:space="preserve">
-    <value>設定</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

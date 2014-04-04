@@ -48,10 +48,9 @@
             this.btnMIopen = new ControlExs.QQButton();
             this.btnMIplay = new ControlExs.QQButton();
             this.btnMIcopy = new ControlExs.QQButton();
-            this.txtMI = new System.Windows.Forms.TextBox();
+            this.MediaInfoTextBox = new System.Windows.Forms.TextBox();
             this.AVSTab = new System.Windows.Forms.TabPage();
             this.AVSSaveButton = new ControlExs.QQButton();
-            this.AVSSubCheckBox = new ControlExs.QQCheckBox();
             this.label25 = new System.Windows.Forms.Label();
             this.AVSCropTextBox = new ControlExs.QQTextBox();
             this.label30 = new System.Windows.Forms.Label();
@@ -80,7 +79,6 @@
             this.TweakBrightnessNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.TweakSaturationNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.TweakChromaNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             this.AVSScriptTextBox = new ControlExs.QQTextBox();
             this.txtvideo9 = new ControlExs.QQTextBox();
             this.txtout9 = new ControlExs.QQTextBox();
@@ -154,6 +152,7 @@
             this.button7 = new ControlExs.QQButton();
             this.tabNeroAAC = new System.Windows.Forms.TabPage();
             this.NeroAACGroupBox = new System.Windows.Forms.GroupBox();
+            this.AudioBitrateComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.AudioEncoderComboBox = new System.Windows.Forms.ComboBox();
             this.txtaudio2 = new ControlExs.QQTextBox();
@@ -167,7 +166,6 @@
             this.btnout3 = new ControlExs.QQButton();
             this.lbaacrate = new System.Windows.Forms.Label();
             this.btnaac = new ControlExs.QQButton();
-            this.AudioBitrateNum = new System.Windows.Forms.NumericUpDown();
             this.AudioCustomParameterTextBox = new ControlExs.QQTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -282,8 +280,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.languageComboBox = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.btnMP4 = new ControlExs.QQButton();
-            this.btnflv = new ControlExs.QQButton();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
             this.groupBox10.SuspendLayout();
@@ -314,7 +310,6 @@
             this.tabNeroAAC.SuspendLayout();
             this.NeroAACGroupBox.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AudioBitrateNum)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OnePicCRFNum)).BeginInit();
@@ -442,7 +437,7 @@
             this.MediaInfoTab.Controls.Add(this.btnMIopen);
             this.MediaInfoTab.Controls.Add(this.btnMIplay);
             this.MediaInfoTab.Controls.Add(this.btnMIcopy);
-            this.MediaInfoTab.Controls.Add(this.txtMI);
+            this.MediaInfoTab.Controls.Add(this.MediaInfoTextBox);
             resources.ApplyResources(this.MediaInfoTab, "MediaInfoTab");
             this.MediaInfoTab.Name = "MediaInfoTab";
             this.MediaInfoTab.UseVisualStyleBackColor = true;
@@ -468,20 +463,20 @@
             this.btnMIcopy.UseVisualStyleBackColor = true;
             this.btnMIcopy.Click += new System.EventHandler(this.btnMIcopy_Click);
             // 
-            // txtMI
+            // MediaInfoTextBox
             // 
-            this.txtMI.AllowDrop = true;
-            this.txtMI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.txtMI, "txtMI");
-            this.txtMI.Name = "txtMI";
-            this.txtMI.TextChanged += new System.EventHandler(this.txtMI_TextChanged);
-            this.txtMI.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtMI_DragDrop);
-            this.txtMI.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtMI_DragEnter);
+            this.MediaInfoTextBox.AllowDrop = true;
+            this.MediaInfoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.MediaInfoTextBox, "MediaInfoTextBox");
+            this.MediaInfoTextBox.Name = "MediaInfoTextBox";
+            this.MediaInfoTextBox.TextChanged += new System.EventHandler(this.txtMI_TextChanged);
+            this.MediaInfoTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtMI_DragDrop);
+            this.MediaInfoTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtMI_DragEnter);
+            this.MediaInfoTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MediaInfoTextBox_KeyDown);
             // 
             // AVSTab
             // 
             this.AVSTab.Controls.Add(this.AVSSaveButton);
-            this.AVSTab.Controls.Add(this.AVSSubCheckBox);
             this.AVSTab.Controls.Add(this.label25);
             this.AVSTab.Controls.Add(this.AVSCropTextBox);
             this.AVSTab.Controls.Add(this.label30);
@@ -510,7 +505,6 @@
             this.AVSTab.Controls.Add(this.TweakBrightnessNumericUpDown);
             this.AVSTab.Controls.Add(this.TweakSaturationNumericUpDown);
             this.AVSTab.Controls.Add(this.TweakChromaNumericUpDown);
-            this.AVSTab.Controls.Add(this.label2);
             this.AVSTab.Controls.Add(this.AVSScriptTextBox);
             this.AVSTab.Controls.Add(this.txtvideo9);
             this.AVSTab.Controls.Add(this.txtout9);
@@ -542,16 +536,6 @@
             this.AVSSaveButton.Name = "AVSSaveButton";
             this.AVSSaveButton.UseVisualStyleBackColor = true;
             this.AVSSaveButton.Click += new System.EventHandler(this.AVSSaveButton_Click);
-            // 
-            // AVSSubCheckBox
-            // 
-            resources.ApplyResources(this.AVSSubCheckBox, "AVSSubCheckBox");
-            this.AVSSubCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.AVSSubCheckBox.Checked = true;
-            this.AVSSubCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AVSSubCheckBox.Name = "AVSSubCheckBox";
-            this.AVSSubCheckBox.UseVisualStyleBackColor = false;
-            this.AVSSubCheckBox.CheckedChanged += new System.EventHandler(this.AVSSubCheckBox_CheckedChanged);
             // 
             // label25
             // 
@@ -858,11 +842,6 @@
             this.TweakChromaNumericUpDown.Name = "TweakChromaNumericUpDown";
             this.TweakChromaNumericUpDown.ValueChanged += new System.EventHandler(this.TweakChromaNumericUpDown_ValueChanged);
             // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
             // AVSScriptTextBox
             // 
             this.AVSScriptTextBox.AllowDrop = true;
@@ -872,6 +851,7 @@
             resources.ApplyResources(this.AVSScriptTextBox, "AVSScriptTextBox");
             this.AVSScriptTextBox.Name = "AVSScriptTextBox";
             this.AVSScriptTextBox.TextChanged += new System.EventHandler(this.txtAVS_TextChanged);
+            this.AVSScriptTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AVSScriptTextBox_KeyDown);
             // 
             // txtvideo9
             // 
@@ -1481,6 +1461,7 @@
             // 
             // NeroAACGroupBox
             // 
+            this.NeroAACGroupBox.Controls.Add(this.AudioBitrateComboBox);
             this.NeroAACGroupBox.Controls.Add(this.label7);
             this.NeroAACGroupBox.Controls.Add(this.AudioEncoderComboBox);
             this.NeroAACGroupBox.Controls.Add(this.txtaudio2);
@@ -1492,11 +1473,24 @@
             this.NeroAACGroupBox.Controls.Add(this.btnout3);
             this.NeroAACGroupBox.Controls.Add(this.lbaacrate);
             this.NeroAACGroupBox.Controls.Add(this.btnaac);
-            this.NeroAACGroupBox.Controls.Add(this.AudioBitrateNum);
             this.NeroAACGroupBox.Controls.Add(this.AudioCustomParameterTextBox);
             resources.ApplyResources(this.NeroAACGroupBox, "NeroAACGroupBox");
             this.NeroAACGroupBox.Name = "NeroAACGroupBox";
             this.NeroAACGroupBox.TabStop = false;
+            // 
+            // AudioBitrateComboBox
+            // 
+            this.AudioBitrateComboBox.FormattingEnabled = true;
+            this.AudioBitrateComboBox.Items.AddRange(new object[] {
+            resources.GetString("AudioBitrateComboBox.Items"),
+            resources.GetString("AudioBitrateComboBox.Items1"),
+            resources.GetString("AudioBitrateComboBox.Items2"),
+            resources.GetString("AudioBitrateComboBox.Items3"),
+            resources.GetString("AudioBitrateComboBox.Items4"),
+            resources.GetString("AudioBitrateComboBox.Items5"),
+            resources.GetString("AudioBitrateComboBox.Items6")});
+            resources.ApplyResources(this.AudioBitrateComboBox, "AudioBitrateComboBox");
+            this.AudioBitrateComboBox.Name = "AudioBitrateComboBox";
             // 
             // label7
             // 
@@ -1599,21 +1593,6 @@
             this.btnaac.Name = "btnaac";
             this.btnaac.UseVisualStyleBackColor = true;
             this.btnaac.Click += new System.EventHandler(this.btnaac_Click);
-            // 
-            // AudioBitrateNum
-            // 
-            resources.ApplyResources(this.AudioBitrateNum, "AudioBitrateNum");
-            this.AudioBitrateNum.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.AudioBitrateNum.Name = "AudioBitrateNum";
-            this.AudioBitrateNum.Value = new decimal(new int[] {
-            96,
-            0,
-            0,
-            0});
             // 
             // AudioCustomParameterTextBox
             // 
@@ -2321,6 +2300,7 @@
             resources.ApplyResources(this.x264CustomParameterTextBox, "x264CustomParameterTextBox");
             this.x264CustomParameterTextBox.Name = "x264CustomParameterTextBox";
             this.x264CustomParameterTextBox.TextChanged += new System.EventHandler(this.txth264_TextChanged);
+            this.x264CustomParameterTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.x264CustomParameterTextBox_KeyDown);
             // 
             // label4
             // 
@@ -2642,8 +2622,6 @@
             this.SetupTabPage.Controls.Add(this.label11);
             this.SetupTabPage.Controls.Add(this.languageComboBox);
             this.SetupTabPage.Controls.Add(this.label26);
-            this.SetupTabPage.Controls.Add(this.btnMP4);
-            this.SetupTabPage.Controls.Add(this.btnflv);
             this.SetupTabPage.Controls.Add(this.DeleteLogButton);
             this.SetupTabPage.Controls.Add(this.ViewLogButton);
             resources.ApplyResources(this.SetupTabPage, "SetupTabPage");
@@ -2703,20 +2681,6 @@
             // 
             resources.ApplyResources(this.label26, "label26");
             this.label26.Name = "label26";
-            // 
-            // btnMP4
-            // 
-            resources.ApplyResources(this.btnMP4, "btnMP4");
-            this.btnMP4.Name = "btnMP4";
-            this.btnMP4.UseVisualStyleBackColor = true;
-            this.btnMP4.Click += new System.EventHandler(this.btnMP4_Click);
-            // 
-            // btnflv
-            // 
-            resources.ApplyResources(this.btnflv, "btnflv");
-            this.btnflv.Name = "btnflv";
-            this.btnflv.UseVisualStyleBackColor = true;
-            this.btnflv.Click += new System.EventHandler(this.btnflv_Click);
             // 
             // DeleteLogButton
             // 
@@ -2781,7 +2745,6 @@
             this.NeroAACGroupBox.ResumeLayout(false);
             this.NeroAACGroupBox.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.AudioBitrateNum)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox9.ResumeLayout(false);
@@ -2835,9 +2798,8 @@
         private ControlExs.QQButton btnMIopen;
         private ControlExs.QQButton btnMIplay;
         private ControlExs.QQButton btnMIcopy;
-        private System.Windows.Forms.TextBox txtMI;
+        private System.Windows.Forms.TextBox MediaInfoTextBox;
         private System.Windows.Forms.TabPage AVSTab;
-        private System.Windows.Forms.Label label2;
         private ControlExs.QQButton button9;
         private ControlExs.QQButton button6;
         private ControlExs.QQButton btnpreview9;
@@ -2896,14 +2858,11 @@
         private ControlExs.QQTextBox txtaudio;
         private System.Windows.Forms.Label label14;
         private ControlExs.QQTextBox txtout;
-        private ControlExs.QQButton btnflv;
-        private ControlExs.QQButton btnMP4;
         private System.Windows.Forms.TabPage tabNeroAAC;
         private System.Windows.Forms.Panel panel2;
         private ControlExs.QQCheckBox cbwavtemp;
         private System.Windows.Forms.Label lbaackbps;
         private System.Windows.Forms.Label lbaacrate;
-        private System.Windows.Forms.NumericUpDown AudioBitrateNum;
         private ControlExs.QQButton btnaac;
         private ControlExs.QQButton btnout3;
         private ControlExs.QQButton btnaudio2;
@@ -3009,7 +2968,6 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.NumericUpDown TrimEndNumericUpDown;
         private System.Windows.Forms.NumericUpDown TrimStartNumericUpDown;
-        private ControlExs.QQCheckBox AVSSubCheckBox;
         private System.Windows.Forms.ComboBox x264DemuxerComboBox;
         private ControlExs.QQButton DeleteLogButton;
         private ControlExs.QQButton ViewLogButton;
@@ -3074,6 +3032,7 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.NumericUpDown BlackBitrateNum;
         private ControlExs.QQCheckBox SetupDeleteTempFileCheckBox;
+        private System.Windows.Forms.ComboBox AudioBitrateComboBox;
     }
 }
 
