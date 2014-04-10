@@ -15,6 +15,7 @@ using System.Globalization;
 using System.Threading;
 using System.Configuration;
 using System.Drawing.Imaging;
+using System.Net;
 namespace mp4box
 {
     public partial class MainForm : Form
@@ -59,10 +60,12 @@ namespace mp4box
         string vextract;
         string batpath;
         string auto;
+        string startpath;
         string workpath;
         string avs = "";
         string tempavspath = "";
         string tempPic = "";
+        DateTime RealseDate;
 
         [StructLayout(LayoutKind.Sequential)]
         public struct MARGINS
@@ -693,7 +696,7 @@ namespace mp4box
             if (SetupDeleteTempFileCheckBox.Checked == true)
             {
                 List<string> deleteFileList = new List<string>();
-                string[] deletedfiles = { "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat", "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
+                string[] deletedfiles = { tempPic, "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat", "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
                 DirectoryInfo theFolder = new DirectoryInfo(workpath);
                 foreach (FileInfo NextFile in theFolder.GetFiles())
                 {
@@ -790,7 +793,7 @@ namespace mp4box
             x264CRFNum.Value = 24;
             x264BitrateNum.Value = 800;
             x264AudioParameterTextBox.Text = "--abitrate 128";
-            x264AudioModeComboBox.SelectedIndex = 4;
+            x264AudioModeComboBox.SelectedIndex = 5;
             x264DemuxerComboBox.SelectedIndex = 2;
             x264WidthNum.Value = 0;
             x264HeightNum.Value = 0;
@@ -813,6 +816,8 @@ namespace mp4box
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            DateTime RealseDate = DateTime.Parse("2014-4-28");
+
             var modulename = Process.GetCurrentProcess().MainModule.ModuleName;
             var procesname = Path.GetFileNameWithoutExtension(modulename);
             Process[] processes = Process.GetProcessesByName(procesname);
@@ -831,14 +836,17 @@ namespace mp4box
             //}
 
             //define workpath
-            string startpath = System.Windows.Forms.Application.StartupPath;
+            startpath = System.Windows.Forms.Application.StartupPath;
             workpath = startpath + "\\tools";
             if (!Directory.Exists(workpath))
                 Directory.CreateDirectory(workpath);
 
             //string diskSymbol = workpath.Substring(0, 1);
-            tempavspath = Path.GetTempPath() + "temp.avs";
-            tempPic = Path.GetTempPath() + "marukotemp.jpg";
+
+            string systemDisk = Environment.GetFolderPath(Environment.SpecialFolder.System).Substring(0, 3);
+            string systemTempPath = systemDisk + @"windows\temp";
+            tempavspath = systemTempPath + "temp.avs";
+            tempPic = systemTempPath + "marukotemp.jpg";
             InitParameter();
 
             DirectoryInfo folder = new DirectoryInfo(workpath);
@@ -849,7 +857,7 @@ namespace mp4box
                     x264ExeComboBox.Items.Add(FileName.Name);
                 }
             }
-            x264ExeComboBox.SelectedIndex = x264ExeComboBox.Items.IndexOf("x264_32_tMod-8bit-420.exe");
+
             //load Help Text
             if (File.Exists(startpath + "\\help.txt"))
             {
@@ -881,6 +889,11 @@ namespace mp4box
                 BlackCRFNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["BlackCRF"]);
                 BlackBitrateNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["BlackBitrate"]);
                 SetupDeleteTempFileCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["SetupDeleteTempFile"]);
+
+                if (x264ExeComboBox.SelectedIndex == -1)
+                {
+                    x264ExeComboBox.SelectedIndex = x264ExeComboBox.Items.IndexOf("x264_32_tMod-8bit-420.exe");
+                }
 
                 if (int.Parse(ConfigurationManager.AppSettings["LanguageIndex"]) == -1)  //First Startup
                 {
@@ -1825,9 +1838,10 @@ namespace mp4box
         #region 帮助页面
         private void AboutBtn_Click(object sender, EventArgs e)
         {
+            DateTime CompileDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
             QQMessageBox.Show(
                 this,
-                "小丸工具箱 2014版\r\n主页：http://maruko.appinn.me/ \r\n发布日期：2014年3月24日",
+                "小丸工具箱 2014版\r\n主页：http://maruko.appinn.me/ \r\n编译日期：" + CompileDate.ToString(),
                 "关于",
                 QQMessageBoxIcon.Information,
                 QQMessageBoxButtons.OK);
@@ -1918,13 +1932,13 @@ namespace mp4box
                 }
                 switch (x264AudioModeComboBox.SelectedIndex)
                 {
-                    case 0: x264 += " --acodec none"; break;
-                    case 1: x264 += " --acodec copy"; break;
-                    case 2: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
-                    case 3: x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
-                    case 4: x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
-                    case 5: x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
-                    case 6: break;
+                    case 1: x264 += " --acodec none"; break;
+                    case 2: x264 += " --acodec copy"; break;
+                    case 3: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
+                    case 4: x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
+                    case 5: x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
+                    case 6: x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
+                    case 0: break;
                     default: ; break;
                 }
                 if (cbFPS2.Text != "auto")
@@ -2078,27 +2092,27 @@ namespace mp4box
             {
                 switch (x264AudioModeComboBox.SelectedIndex)
                 {
-                    case 0:
-                        x264AudioParameterTextBox.Text = "";
-                        break;
                     case 1:
                         x264AudioParameterTextBox.Text = "";
-                        x264AudioParameterTextBox.EmptyTextTip = "可能失败，如出错请用FAAC";
                         break;
                     case 2:
                         x264AudioParameterTextBox.Text = "";
-                        x264AudioParameterTextBox.EmptyTextTip = "把音频文件拖到这里";
+                        x264AudioParameterTextBox.EmptyTextTip = "可能失败，如出错请用FAAC";
                         break;
                     case 3:
-                        x264AudioParameterTextBox.Text = "--abitrate 128";
+                        x264AudioParameterTextBox.Text = "";
+                        x264AudioParameterTextBox.EmptyTextTip = "把音频文件拖到这里";
                         break;
                     case 4:
                         x264AudioParameterTextBox.Text = "--abitrate 128";
                         break;
                     case 5:
-                        x264AudioParameterTextBox.Text = "";
+                        x264AudioParameterTextBox.Text = "--abitrate 128";
                         break;
                     case 6:
+                        x264AudioParameterTextBox.Text = "";
+                        break;
+                    case 0:
                         x264AudioParameterTextBox.Text = "";
                         break;
                     default:
@@ -2646,9 +2660,9 @@ namespace mp4box
                     txtvideo8.EmptyTextTip = "抽取的视频或音频在原视频目录下";
                     txtvideo6.EmptyTextTip = "抽取的视频或音频在原视频目录下";
                     //load Help Text
-                    if (File.Exists(workpath + "\\help.txt"))
+                    if (File.Exists(startpath + "\\help.txt"))
                     {
-                        sr = new StreamReader(workpath + "\\help.txt", System.Text.Encoding.UTF8);
+                        sr = new StreamReader(startpath + "\\help.txt", System.Text.Encoding.UTF8);
                         HelpTextBox.Text = sr.ReadToEnd();
                         sr.Close();
                     }
@@ -2666,9 +2680,9 @@ namespace mp4box
                     txtvideo8.EmptyTextTip = "新檔案生成在原資料夾";
                     txtvideo6.EmptyTextTip = "新檔案生成在原資料夾";
                     //load Help Text
-                    if (File.Exists(workpath + "\\help_zh_tw.txt"))
+                    if (File.Exists(startpath + "\\help_zh_tw.txt"))
                     {
-                        sr = new StreamReader(workpath + "\\help_zh_tw.txt", System.Text.Encoding.UTF8);
+                        sr = new StreamReader(startpath + "\\help_zh_tw.txt", System.Text.Encoding.UTF8);
                         HelpTextBox.Text = sr.ReadToEnd();
                         sr.Close();
                     }
@@ -2686,9 +2700,9 @@ namespace mp4box
                     txtvideo8.EmptyTextTip = "New file will be created in the original folder";
                     txtvideo6.EmptyTextTip = "New file will be created in the original folder";
                     //load Help Text
-                    if (File.Exists(workpath + "\\help.txt"))
+                    if (File.Exists(startpath + "\\help.txt"))
                     {
-                        sr = new StreamReader(workpath + "\\help.txt", System.Text.Encoding.UTF8);
+                        sr = new StreamReader(startpath + "\\help.txt", System.Text.Encoding.UTF8);
                         HelpTextBox.Text = sr.ReadToEnd();
                         sr.Close();
                     }
@@ -2773,23 +2787,23 @@ namespace mp4box
             if (x264ExeComboBox.Text.Contains("all"))
             {
                 x264AudioModeComboBox.Items.Clear();
+                x264AudioModeComboBox.Items.Add("默认");
                 x264AudioModeComboBox.Items.Add("无音频流");
                 x264AudioModeComboBox.Items.Add("复制音频流");
                 x264AudioModeComboBox.Items.Add("外置音频流");
-                x264AudioModeComboBox.Items.Add("默认");
-                x264AudioModeComboBox.SelectedIndex = 0;
+                x264AudioModeComboBox.SelectedIndex = 1;
             }
             else
             {
                 x264AudioModeComboBox.Items.Clear();
+                x264AudioModeComboBox.Items.Add("默认");
                 x264AudioModeComboBox.Items.Add("无音频流");
                 x264AudioModeComboBox.Items.Add("复制音频流");
                 x264AudioModeComboBox.Items.Add("外置音频流");
                 x264AudioModeComboBox.Items.Add("QTAAC");
                 x264AudioModeComboBox.Items.Add("FAAC");
                 x264AudioModeComboBox.Items.Add("libaacplus");
-                x264AudioModeComboBox.Items.Add("默认");
-                x264AudioModeComboBox.SelectedIndex = 4;
+                x264AudioModeComboBox.SelectedIndex = 5;
             }
         }
 
@@ -3146,5 +3160,51 @@ namespace mp4box
             }
         }
 
+        private void CheckUpdateButton_Click(object sender, EventArgs e)
+        {
+            WebRequest request = WebRequest.Create("http://hi.baidu.com/xiaowanmaruko/item/119203f757097c603c148502");
+            request.Credentials = CredentialCache.DefaultCredentials;
+            // Get the response.
+            request.BeginGetResponse(new AsyncCallback(OnResponse), request);
+        }
+
+        protected void OnResponse(IAsyncResult ar)
+        {
+            WebRequest wrq = (WebRequest)ar.AsyncState;
+            WebResponse wrs = wrq.EndGetResponse(ar);
+            // read the response ...
+
+            Stream dataStream = wrs.GetResponseStream();
+            // Open the stream using a StreamReader for easy access.
+            StreamReader reader = new StreamReader(dataStream);
+            // Read the content.
+            string responseFromServer = reader.ReadToEnd();
+
+            Regex reg = new Regex(@"Maruko20\S+Maruko");
+            Match m = reg.Match(responseFromServer);
+            if (m.Success)
+            {
+                string a = m.Value.Replace("Maruko", "");
+                DateTime NewDate = DateTime.Parse(a);
+                DateTime CompileDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
+                int s = DateTime.Compare(NewDate, CompileDate);
+                if (s == 1) //NewDate 晚于 RealseDate
+                {
+                    DialogResult dr = MessageBox.Show(string.Format("新鲜小丸已于{0}上架，主人不来尝一口咩？", NewDate.ToString("yyyy-M-d")), "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dr == DialogResult.Yes)//如果点击“确定”按钮
+                    {
+                        Process.Start("http://maruko.appinn.me");
+                    }
+                    else//如果点击“取消”按钮
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("喵~伦家已经是最新版啦！", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
     }
 }

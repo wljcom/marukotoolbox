@@ -274,6 +274,7 @@
             this.BlackOutputTextBox = new ControlExs.QQTextBox();
             this.BlackVideoTextBox = new ControlExs.QQTextBox();
             this.SetupTabPage = new System.Windows.Forms.TabPage();
+            this.CheckUpdateButton = new ControlExs.QQButton();
             this.SetupDeleteTempFileCheckBox = new ControlExs.QQCheckBox();
             this.SetDefaultButton = new ControlExs.QQButton();
             this.x264PriorityComboBox = new System.Windows.Forms.ComboBox();
@@ -2621,6 +2622,7 @@
             // SetupTabPage
             // 
             resources.ApplyResources(this.SetupTabPage, "SetupTabPage");
+            this.SetupTabPage.Controls.Add(this.CheckUpdateButton);
             this.SetupTabPage.Controls.Add(this.SetupDeleteTempFileCheckBox);
             this.SetupTabPage.Controls.Add(this.SetDefaultButton);
             this.SetupTabPage.Controls.Add(this.x264PriorityComboBox);
@@ -2631,6 +2633,13 @@
             this.SetupTabPage.Controls.Add(this.ViewLogButton);
             this.SetupTabPage.Name = "SetupTabPage";
             this.SetupTabPage.UseVisualStyleBackColor = true;
+            // 
+            // CheckUpdateButton
+            // 
+            resources.ApplyResources(this.CheckUpdateButton, "CheckUpdateButton");
+            this.CheckUpdateButton.Name = "CheckUpdateButton";
+            this.CheckUpdateButton.UseVisualStyleBackColor = true;
+            this.CheckUpdateButton.Click += new System.EventHandler(this.CheckUpdateButton_Click);
             // 
             // SetupDeleteTempFileCheckBox
             // 
@@ -3037,6 +3046,7 @@
         private System.Windows.Forms.NumericUpDown BlackBitrateNum;
         private ControlExs.QQCheckBox SetupDeleteTempFileCheckBox;
         private System.Windows.Forms.ComboBox AudioBitrateComboBox;
+        private ControlExs.QQButton CheckUpdateButton;
     }
 }
 

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="groupBox10.Text" xml:space="preserve">
+    <value>クリップ</value>
+  </data>
   <data name="btnvideo4.Text" xml:space="preserve">
     <value>ビデオ</value>
   </data>
@@ -139,9 +142,6 @@
   <data name="label15.Text" xml:space="preserve">
     <value>エンド時刻</value>
   </data>
-  <data name="groupBox10.Text" xml:space="preserve">
-    <value>クリップ</value>
-  </data>
   <data name="btnout4.Text" xml:space="preserve">
     <value>オートエンコード</value>
   </data>
@@ -153,9 +153,6 @@
   </data>
   <data name="btnMIcopy.Text" xml:space="preserve">
     <value>コピー</value>
-  </data>
-  <data name="txtMI.Text" xml:space="preserve">
-    <value>ビデオファイルをここに引きずってください...</value>
   </data>
   <data name="AVSSaveButton.Text" xml:space="preserve">
     <value>AVSを保存</value>
@@ -223,6 +220,9 @@
   <data name="btnout9.Text" xml:space="preserve">
     <value>出力</value>
   </data>
+  <data name="ExtractTab.Text" xml:space="preserve">
+    <value>デマクス</value>
+  </data>
   <data name="MkvExtract4Button.Text" xml:space="preserve">
     <value>トラック4</value>
   </data>
@@ -265,8 +265,11 @@
   <data name="btnaextract2.Text" xml:space="preserve">
     <value>オーディオ2</value>
   </data>
-  <data name="ExtractTab.Text" xml:space="preserve">
-    <value>分離</value>
+  <data name="MuxTab.Text" xml:space="preserve">
+    <value>マクス</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>マクス</value>
   </data>
   <data name="btnffmpegAdd.Text" xml:space="preserve">
     <value>追加</value>
@@ -289,8 +292,8 @@
   <data name="btnBatchFLV.Text" xml:space="preserve">
     <value>flvで出力</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>マクス</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>mp4で出力</value>
   </data>
   <data name="MuxReplaceAudioButton.Text" xml:space="preserve">
     <value>置き換えオーディオ</value>
@@ -307,8 +310,8 @@
   <data name="btnout.Text" xml:space="preserve">
     <value>出力</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>mp4で出力</value>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>mkvで出力</value>
   </data>
   <data name="button4.Text" xml:space="preserve">
     <value>出力</value>
@@ -322,11 +325,11 @@
   <data name="button7.Text" xml:space="preserve">
     <value>マクス</value>
   </data>
-  <data name="groupBox8.Text" xml:space="preserve">
-    <value>mkvで出力</value>
+  <data name="tabNeroAAC.Text" xml:space="preserve">
+    <value>オーディオ</value>
   </data>
-  <data name="MuxTab.Text" xml:space="preserve">
-    <value>マクス</value>
+  <data name="NeroAACGroupBox.Text" xml:space="preserve">
+    <value>オーディオ エンコード</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 12</value>
@@ -358,8 +361,8 @@
   <data name="btnaac.Text" xml:space="preserve">
     <value>スタート</value>
   </data>
-  <data name="NeroAACGroupBox.Text" xml:space="preserve">
-    <value>オーディオ エンコード</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>バッチエンコード</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>353, 12</value>
@@ -379,11 +382,8 @@
   <data name="AudioDeleteButton.Text" xml:space="preserve">
     <value>削除</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>バッチエンコード</value>
-  </data>
-  <data name="tabNeroAAC.Text" xml:space="preserve">
-    <value>オーディオ</value>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>１メージ流　（画像一枚と音声のみのビデオを作る）</value>
   </data>
   <data name="AudioCopyCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 21</value>
@@ -409,8 +409,8 @@
   <data name="AudioPicButton.Text" xml:space="preserve">
     <value>画像</value>
   </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>１メージ流　（画像一枚と音声のみのビデオを作る）</value>
+  <data name="VideoTab.Text" xml:space="preserve">
+    <value>ビデオ</value>
   </data>
   <data name="x264FramesLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 12</value>
@@ -523,8 +523,8 @@
   <data name="label4.Text" xml:space="preserve">
     <value>プレセット</value>
   </data>
-  <data name="VideoTab.Text" xml:space="preserve">
-    <value>ビデオ</value>
+  <data name="HelpTab.Text" xml:space="preserve">
+    <value>ヘルプ</value>
   </data>
   <data name="DonateButton.Text" xml:space="preserve">
     <value>寄付する</value>
@@ -535,8 +535,11 @@
   <data name="AboutBtn.Text" xml:space="preserve">
     <value>情報</value>
   </data>
-  <data name="HelpTab.Text" xml:space="preserve">
-    <value>ヘルプ</value>
+  <data name="MiscTab.Text" xml:space="preserve">
+    <value>コモディティー</value>
+  </data>
+  <data name="groupBox11.Text" xml:space="preserve">
+    <value>ブランクを付ける（平均ビットレートを減らすため）</value>
   </data>
   <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 12</value>
@@ -568,11 +571,11 @@
   <data name="BlackVideoButton.Text" xml:space="preserve">
     <value>ビデオ</value>
   </data>
-  <data name="groupBox11.Text" xml:space="preserve">
-    <value>ブランクを付ける（平均ビットレートを減らすため）</value>
+  <data name="SetupTabPage.Text" xml:space="preserve">
+    <value>設定</value>
   </data>
-  <data name="MiscTab.Text" xml:space="preserve">
-    <value>コモディティー</value>
+  <data name="CheckUpdateButton.Text" xml:space="preserve">
+    <value>更新をチェックする</value>
   </data>
   <data name="SetupDeleteTempFileCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>339, 21</value>
@@ -594,9 +597,6 @@
   </data>
   <data name="ViewLogButton.Text" xml:space="preserve">
     <value>ログの表示</value>
-  </data>
-  <data name="SetupTabPage.Text" xml:space="preserve">
-    <value>設定</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
