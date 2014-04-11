@@ -513,13 +513,15 @@ namespace mp4box
                 }
                 switch (x264AudioModeComboBox.SelectedIndex)
                 {
-                    case 0: x264 += " --acodec none"; break;
-                    case 1: x264 += " --acodec copy"; break;
-                    case 2: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
-                    case 3: x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
-                    case 4: x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
-                    case 5: x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
-                    case 6: break;
+
+
+                    case 1: x264 += " --acodec none"; break;
+                    case 2: x264 += " --acodec copy"; break;
+                    case 3: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
+                    case 4: x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
+                    case 5: x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
+                    //case 6: x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
+                    case 0: break;
                     default: ; break;
                 }
                 if (cbFPS2.Text != "auto")
@@ -1937,7 +1939,7 @@ namespace mp4box
                     case 3: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
                     case 4: x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
                     case 5: x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
-                    case 6: x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
+                    //case 6: x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
                     case 0: break;
                     default: ; break;
                 }
@@ -2802,7 +2804,6 @@ namespace mp4box
                 x264AudioModeComboBox.Items.Add("外置音频流");
                 x264AudioModeComboBox.Items.Add("QTAAC");
                 x264AudioModeComboBox.Items.Add("FAAC");
-                x264AudioModeComboBox.Items.Add("libaacplus");
                 x264AudioModeComboBox.SelectedIndex = 5;
             }
         }
