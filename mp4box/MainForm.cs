@@ -696,7 +696,7 @@ namespace mp4box
                 DirectoryInfo theFolder = new DirectoryInfo(workpath);
                 foreach (FileInfo NextFile in theFolder.GetFiles())
                 {
-                    if (NextFile.Extension == ".bat")
+                    if (NextFile.Extension.Equals(".bat"))
                         deleteFileList.Add(NextFile.Name);
                 }
                 deleteFileList.AddRange(deletedfiles);
