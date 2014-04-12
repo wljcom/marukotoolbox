@@ -65,7 +65,7 @@ namespace mp4box
         string avs = "";
         string tempavspath = "";
         string tempPic = "";
-        DateTime RealseDate;
+        //DateTime ReleaseDate;
 
         [StructLayout(LayoutKind.Sequential)]
         public struct MARGINS

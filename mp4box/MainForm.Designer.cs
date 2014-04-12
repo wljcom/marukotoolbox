@@ -1907,6 +1907,8 @@
             // 
             resources.ApplyResources(this.MaintainResolutionCheckBox, "MaintainResolutionCheckBox");
             this.MaintainResolutionCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.MaintainResolutionCheckBox.Checked = true;
+            this.MaintainResolutionCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.MaintainResolutionCheckBox.Name = "MaintainResolutionCheckBox";
             this.MaintainResolutionCheckBox.UseVisualStyleBackColor = true;
             this.MaintainResolutionCheckBox.CheckedChanged += new System.EventHandler(this.MaintainResolutionCheckBox_CheckedChanged);
