@@ -61,11 +61,11 @@ namespace mp4box
         string batpath;
         string auto;
         string startpath;
-        string workpath;
+        string workpath = "!undefined";
         string avs = "";
         string tempavspath = "";
         string tempPic = "";
-        //DateTime ReleaseDate;
+        DateTime ReleaseDate = DateTime.Parse("2014-4-28");
 
         [StructLayout(LayoutKind.Sequential)]
         public struct MARGINS
@@ -682,23 +682,17 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-        private void label4_Click(object sender, EventArgs e)
-        {
-        }
-        private void label8_Click(object sender, EventArgs e)
-        {
-        }
-        private void label5_Click(object sender, EventArgs e)
-        {
-        }
+
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
 
             #region Delete Temp Files
-            if (SetupDeleteTempFileCheckBox.Checked == true)
+            
+            if (SetupDeleteTempFileCheckBox.Checked && !workpath.Equals("!undefined"))
             {
                 List<string> deleteFileList = new List<string>();
-                string[] deletedfiles = { tempPic, "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat", "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
+                string[] deletedfiles = { tempPic, "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat",
+                                            "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
                 DirectoryInfo theFolder = new DirectoryInfo(workpath);
                 foreach (FileInfo NextFile in theFolder.GetFiles())
                 {
@@ -741,8 +735,8 @@ namespace mp4box
             cfa.Save();
             ConfigurationManager.RefreshSection("appSettings"); // 刷新命名节，在下次检索它时将从磁盘重新读取它。记住应用程序要刷新节点
             #endregion
-
         }
+
         private void txtvideo4_TextChanged(object sender, EventArgs e)
         {
             if (File.Exists(txtvideo4.Text.ToString()))
@@ -818,8 +812,6 @@ namespace mp4box
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            DateTime RealseDate = DateTime.Parse("2014-4-28");
-
             var modulename = Process.GetCurrentProcess().MainModule.ModuleName;
             var procesname = Path.GetFileNameWithoutExtension(modulename);
             Process[] processes = Process.GetProcessesByName(procesname);
@@ -842,8 +834,7 @@ namespace mp4box
             workpath = startpath + "\\tools";
             if (!Directory.Exists(workpath))
                 Directory.CreateDirectory(workpath);
-
-            //string diskSymbol = workpath.Substring(0, 1);
+            //string diskSymbol = startpath.Substring(0, 1);
 
             string systemDisk = Environment.GetFolderPath(Environment.SpecialFolder.System).Substring(0, 3);
             string systemTempPath = systemDisk + @"windows\temp";
@@ -945,9 +936,7 @@ namespace mp4box
             }
 
         }
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "视频(*.mkv)|*.mkv";
@@ -1028,9 +1017,7 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
             }
         }
-        private void txtout6_TextChanged(object sender, EventArgs e)
-        {
-        }
+
         private void button2_Click_1(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "所有文件(*.*)|*.*";
@@ -1155,7 +1142,6 @@ namespace mp4box
         {
             namevideo6 = txtvideo6.Text;
         }
-
 
         private void btnAutoAdd_Click(object sender, EventArgs e)
         {

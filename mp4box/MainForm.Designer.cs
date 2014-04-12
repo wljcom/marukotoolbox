@@ -1015,7 +1015,6 @@
             resources.ApplyResources(this.ExtractTab, "ExtractTab");
             this.ExtractTab.Name = "ExtractTab";
             this.ExtractTab.UseVisualStyleBackColor = true;
-            this.ExtractTab.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // groupBox7
             // 
