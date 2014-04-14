@@ -693,19 +693,27 @@ namespace mp4box
         {
 
             #region Delete Temp Files
-            
+
             if (SetupDeleteTempFileCheckBox.Checked && !workpath.Equals("!undefined"))
             {
                 List<string> deleteFileList = new List<string>();
-                string[] deletedfiles = { tempPic, "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat",
-                                            "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
+
+                string systemDisk = Environment.GetFolderPath(Environment.SpecialFolder.System).Substring(0, 3);
+                string systemTempPath = systemDisk + @"windows\temp";
+
+                //Delete all BAT files
                 DirectoryInfo theFolder = new DirectoryInfo(workpath);
                 foreach (FileInfo NextFile in theFolder.GetFiles())
                 {
                     if (NextFile.Extension.Equals(".bat"))
-                        deleteFileList.Add(NextFile.Name);
+                        deleteFileList.Add(NextFile.FullName);
                 }
+
+                //string[] deletedfiles = { tempPic, "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat",
+                //                            "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
+                string[] deletedfiles = { tempPic, tempavspath, workpath + "msg.vbs", workpath + "tmp.stat.mbtree", workpath + "tmp.stat" };
                 deleteFileList.AddRange(deletedfiles);
+
                 foreach (string file in deleteFileList)
                 {
                     File.Delete(file);
@@ -844,8 +852,8 @@ namespace mp4box
 
             string systemDisk = Environment.GetFolderPath(Environment.SpecialFolder.System).Substring(0, 3);
             string systemTempPath = systemDisk + @"windows\temp";
-            tempavspath = systemTempPath + "temp.avs";
-            tempPic = systemTempPath + "marukotemp.jpg";
+            tempavspath = systemTempPath + "\\temp.avs";
+            tempPic = systemTempPath + "\\marukotemp.jpg";
             InitParameter();
 
             DirectoryInfo folder = new DirectoryInfo(workpath);
