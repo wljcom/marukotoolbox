@@ -65,7 +65,7 @@ namespace mp4box
         string avs = "";
         string tempavspath = "";
         string tempPic = "";
-        DateTime ReleaseDate = DateTime.Parse("2014-4-28");
+        DateTime ReleaseDate = DateTime.Parse("2014-4-14");
 
         [StructLayout(LayoutKind.Sequential)]
         public struct MARGINS
@@ -677,9 +677,12 @@ namespace mp4box
                 //x264
                 oneAuto(namevideo2, nameout2);
                 batpath = workpath + "\\auto.bat";
-                File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
                 LogRecord(auto);
-                System.Diagnostics.Process.Start(batpath);
+                WorkingForm wf = new WorkingForm(batpath);
+                wf.Show();
+
+                //File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
+                //System.Diagnostics.Process.Start(batpath);
             }
         }
 
@@ -850,6 +853,8 @@ namespace mp4box
                     x264ExeComboBox.Items.Add(FileName.Name);
                 }
             }
+
+            ReleaseDatelabel.Text = ReleaseDate.ToString("yyyy-M-d");
 
             //load Help Text
             if (File.Exists(startpath + "\\help.txt"))
@@ -1229,9 +1234,12 @@ namespace mp4box
             {
                 batchAuto2();
                 batpath = workpath + "\\auto.bat";
-                File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
                 LogRecord(auto);
-                System.Diagnostics.Process.Start(batpath);
+                WorkingForm wf = new WorkingForm(batpath);
+                wf.Show();
+
+                //File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
+                //System.Diagnostics.Process.Start(batpath);
             }
             else MessageBox.Show("请输入视频！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
@@ -1846,9 +1854,12 @@ namespace mp4box
             {
                 batchAuto();
                 batpath = workpath + "\\auto.bat";
-                File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
                 LogRecord(auto);
-                System.Diagnostics.Process.Start(batpath);
+                WorkingForm wf = new WorkingForm(auto);
+                wf.Show();
+
+                //File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
+                //System.Diagnostics.Process.Start(batpath);
             }
             else MessageBox.Show("请输入视频！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
@@ -1962,11 +1973,16 @@ namespace mp4box
                 {
                     x264 += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60";
                 }
-                x264 += "\r\ncmd";
-                batpath = workpath + "\\x264.bat";
-                File.WriteAllText(batpath, x264, UnicodeEncoding.Default);
+
                 LogRecord(x264);
-                System.Diagnostics.Process.Start(batpath);
+
+                WorkingForm wf = new WorkingForm(x264);
+                wf.Show();
+
+                //x264 += "\r\ncmd";
+                //batpath = workpath + "\\x264.bat";
+                //File.WriteAllText(batpath, x264, UnicodeEncoding.Default);
+                //System.Diagnostics.Process.Start(batpath);
             }
         }
         private void x264AddPresetBtn_Click(object sender, EventArgs e)

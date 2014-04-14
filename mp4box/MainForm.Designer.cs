@@ -283,6 +283,8 @@
             this.label26 = new System.Windows.Forms.Label();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
+            this.ReleaseDatelabel2 = new System.Windows.Forms.Label();
+            this.ReleaseDatelabel = new System.Windows.Forms.Label();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -2617,6 +2619,8 @@
             // 
             // SetupTabPage
             // 
+            this.SetupTabPage.Controls.Add(this.ReleaseDatelabel);
+            this.SetupTabPage.Controls.Add(this.ReleaseDatelabel2);
             this.SetupTabPage.Controls.Add(this.CheckUpdateButton);
             this.SetupTabPage.Controls.Add(this.SetupDeleteTempFileCheckBox);
             this.SetupTabPage.Controls.Add(this.SetDefaultButton);
@@ -2704,6 +2708,16 @@
             this.ViewLogButton.Name = "ViewLogButton";
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
+            // 
+            // ReleaseDatelabel2
+            // 
+            resources.ApplyResources(this.ReleaseDatelabel2, "ReleaseDatelabel2");
+            this.ReleaseDatelabel2.Name = "ReleaseDatelabel2";
+            // 
+            // ReleaseDatelabel
+            // 
+            resources.ApplyResources(this.ReleaseDatelabel, "ReleaseDatelabel");
+            this.ReleaseDatelabel.Name = "ReleaseDatelabel";
             // 
             // MainForm
             // 
@@ -3043,6 +3057,8 @@
         private ControlExs.QQCheckBox SetupDeleteTempFileCheckBox;
         private System.Windows.Forms.ComboBox AudioBitrateComboBox;
         private ControlExs.QQButton CheckUpdateButton;
+        private System.Windows.Forms.Label ReleaseDatelabel2;
+        private System.Windows.Forms.Label ReleaseDatelabel;
     }
 }
 
