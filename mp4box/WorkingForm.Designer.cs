@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkingForm));
             this.buttonAbort = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.richTextBoxOutput = new System.Windows.Forms.RichTextBox();
@@ -84,6 +85,7 @@
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonAbort);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "WorkingForm";
             this.Text = "Xiaowan [in Processing...]";

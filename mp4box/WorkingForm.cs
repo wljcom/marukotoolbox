@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace mp4box
@@ -61,11 +62,76 @@ namespace mp4box
         private System.Diagnostics.Process proc;
 
         /// <summary>
-        /// Definition of Regex formula used in filter.
+        /// Frame count of current processing file via FFmpeg.
         /// </summary>
-        private static System.Text.RegularExpressions.Regex extractRex
-            = new System.Text.RegularExpressions.Regex(@"^[[0-9]+.[0-9]+%]");
+        private int frameCount;
 
+        #endregion
+
+        #region Regex Patterns
+        /// <summary>
+        /// Store const regex patterns.
+        ///     The Regex objects are made to speed up matchup instead of passing string as arguments from time to time.
+        /// </summary>
+        public static class Patterns
+        {
+            /// <summary>
+            /// ffms splitter sample output:
+            /// <para>[8.1%] 273/3357 frames, 56.22 fps, 17.99 kb/s, 25.01 KB, eta 0:00:54, est.size 307.54 KB</para>
+            /// </summary>
+            private const string ffmsRegStr = @"^\[(?<percent>\d+\.\d+)%\]";
+
+            /// <summary>
+            /// ffms splitter Regex.
+            ///     Available patterns: percent.
+            /// </summary>
+            public static readonly Regex ffmsReg = new Regex(ffmsRegStr);
+
+            /// <summary>
+            /// lavf splitter sample output:
+            /// <para>387 frames: 68.65 fps, 14.86 kb/s, 29.27 KB</para>
+            /// </summary>
+            private const string lavfRegStr = @"^(?<frame>\d+) frames:";
+
+            /// <summary>
+            /// lavf splitter Regex.
+            ///     Available patterns: frame.
+            /// </summary>
+            public static readonly Regex lavfReg = new Regex(lavfRegStr);
+
+            /// <summary>
+            /// x264 execution sample output:
+            /// <para>X:\toolDIR>"X:\toolDIR\tools\x264_32_tMod-8bit-420.exe" --crf 24 --preset 8 --demuxer ffms
+            /// -r 3 --b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8
+            /// -o "X:\workDIR\output.ext" "X:\workDIR\input.ext" --acodec faac --abitrate 128</para>
+            /// </summary>
+            /// <remarks>
+            /// Without double quote: ^(?<workDIR>.+)>".+x264.+ -o "(?<fileOut>.+)" "(?<fileIn>.+)"
+            /// </remarks>
+            private const string fileRegStr = @"^(?<workDIR>.+)>"".+x264.+ -o ""(?<fileOut>.+)"" ""(?<fileIn>.+)""";
+
+            /// <summary>
+            /// Filename and working directory Regex.
+            ///     Available patterns: workDIR, fileOut, fileIn.
+            /// </summary>
+            public static readonly Regex fileReg = new Regex(fileRegStr);
+
+            /// <summary>
+            /// ffmpeg -i sample output:
+            /// <para>Duration: 00:02:20.22, start: 0.000000, bitrate: 827 kb/s</para>
+            /// <para>Stream #0:0: Video: h264 (High), yuv420p, 1280x720, 545 kb/s, 24.42 fps, 23.98 tbr, 1k tbn, 47.95 tbc</para>
+            /// <para>Stream #0:1: Audio: aac, 48000 Hz, stereo, fltp, 128 kb/s</para>
+            /// </summary>
+            private const string ffmpegRegStr = @"\bDuration: (?<duration>\d{2}:\d{2}:\d{2}\.\d{2}), start: " +
+                @".+: Video: .+ fps, (?<tbr>\d+\.\d{2}) tbr, ";
+
+            /// <summary>
+            /// ffmpeg output Regex.
+            ///     Available patterns: duration, tbr.
+            /// </summary>
+            public static readonly Regex ffmpegReg = new Regex(ffmpegRegStr, RegexOptions.Singleline); 
+        }
+        
         #endregion
 
         #region Native Functions
@@ -95,7 +161,6 @@ namespace mp4box
             var sw = new System.IO.StreamWriter(batPath);
             sw.WriteLine(Commands);
             sw.Close();
-            // synchronize UI
             richTextBoxOutput.Select();
             // start working
             ProcStart();
@@ -117,6 +182,10 @@ namespace mp4box
                 }
                 else
                 {
+                    // return value is useless when force aborted
+                    proc.CancelOutputRead();
+                    // exit process should be omitted too
+                    proc.Exited -= new EventHandler(ProcExit);
                     // terminate threads
                     killProcTree(proc.Id);
                 }
@@ -220,16 +289,28 @@ namespace mp4box
                 // log first
                 richTextBoxOutput.InvokeIfRequired(() =>
                     richTextBoxOutput.AppendText(e.Data + Environment.NewLine));
-                // extract x264 progress if possible
-                System.Text.RegularExpressions.Match result = extractRex.Match(e.Data);
+                // test if it is command
+                Match result = Patterns.fileReg.Match(e.Data);
+                if (result.Success)
+                    frameCount = EstimateFrame(result.Groups["workDIR"].Value, result.Groups["fileIn"].Value);
+                // try ffms pattern
+                result = Patterns.ffmsReg.Match(e.Data);
                 if (result.Success)
                     progressBarX264.InvokeIfRequired(() =>
                     {
                         progressBarX264.Value = Convert.ToInt32(
-                            Double.Parse(result.Value.Substring(1, result.Value.Length - 3))
+                            Double.Parse(result.Groups["percent"].Value)
                             * progressBarX264.Maximum / 100);
                     });
-
+                // try lavf pattern
+                result = Patterns.lavfReg.Match(e.Data);
+                if (result.Success)
+                    progressBarX264.InvokeIfRequired(() =>
+                    {
+                        progressBarX264.Value = Convert.ToInt32(
+                            Double.Parse(result.Groups["frame"].Value)
+                            * progressBarX264.Maximum / frameCount);
+                    });
             }
         }
 
@@ -251,6 +332,33 @@ namespace mp4box
                 System.Diagnostics.Process.GetProcessById(pid).Kill();
             }
             catch (ArgumentException) { }
+        }
+
+        /// <summary>
+        /// Get a rough estimation on frame counts via FFmpeg.
+        /// <exception cref="System.ArgumentException">
+        ///     An exception is thrown if the return value is unrecognizable.</exception>
+        /// </summary>
+        /// <param name="workPath">Path to ffmpeg binary.</param>
+        /// <param name="filePath">Path to target file.</param>
+        /// <returns>Estimated frame count with some tolerance.</returns>
+        private int EstimateFrame(string workPath, string filePath)
+        {
+            string ffmpegPath = System.IO.Path.Combine(workPath, @"tools\ffmpeg.exe");
+            var processInfo = new System.Diagnostics.ProcessStartInfo(ffmpegPath, "-i \"" + filePath + '"');
+            processInfo.CreateNoWindow = true;
+            processInfo.UseShellExecute = false;
+            processInfo.RedirectStandardError = true;
+            var ffproc = System.Diagnostics.Process.Start(processInfo);
+            string mediaInfo = ffproc.StandardError.ReadToEnd();
+            ffproc.WaitForExit();
+            var result = Patterns.ffmpegReg.Match(mediaInfo);
+            if (!result.Success)
+                throw new ArgumentException("FFmpeg probing went wrong!");
+            else
+                // add a 1% tolorance to avoid unintentional overflow on progress bar
+                return Convert.ToInt32(TimeSpan.Parse(result.Groups["duration"].Value).TotalSeconds
+                    * Double.Parse(result.Groups["tbr"].Value) * 1.01);
         }
     }
 }
