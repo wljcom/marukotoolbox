@@ -61,11 +61,6 @@ namespace mp4box
         private System.Diagnostics.Process proc;
 
         /// <summary>
-        /// True if the vertical scroll bar is at bottom
-        /// </summary>
-        private bool atBottom;
-
-        /// <summary>
         /// Definition of Regex formula used in filter.
         /// </summary>
         private static System.Text.RegularExpressions.Regex extractRex
@@ -73,20 +68,21 @@ namespace mp4box
 
         #endregion
 
+        #region Native Functions
         /// <summary>
         /// Class hosting Native Win32 APIs
         /// </summary>
         private class NativeMethods
         {
             // Definitions extracted from <Winuser.h>
-            public const int SB_VERT = 0x1;
+            public const int SB_VERT = 1;
 
-            [DllImport("user32.dll", CharSet = CharSet.Auto)]
+            [DllImport("user32.dll")]
             public static extern int GetScrollPos(IntPtr hWnd, int nBar);
             [DllImport("user32.dll")]
             public static extern bool GetScrollRange(IntPtr hWnd, int nBar, out int lpMinPos, out int lpMaxPos);
-
         }
+        #endregion
 
         #region UI Methods
 
@@ -100,7 +96,7 @@ namespace mp4box
             sw.WriteLine(Commands);
             sw.Close();
             // synchronize UI
-            atBottom = true;
+            richTextBoxOutput.Select();
             // start working
             ProcStart();
         }
@@ -147,12 +143,7 @@ namespace mp4box
                 savDlg.FilterIndex = 1;
                 savDlg.RestoreDirectory = true;
                 if (savDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    var sw = savDlg.OpenFile();
-                    byte[] buffer = Encoding.UTF8.GetBytes(richTextBoxOutput.Text);
-                    sw.Write(buffer, 0, buffer.Length);
-                    sw.Close();
-                }
+                    richTextBoxOutput.SaveFile(savDlg.FileName, RichTextBoxStreamType.UnicodePlainText);
             }
         }
 
@@ -160,8 +151,11 @@ namespace mp4box
         {
             int vMin, vMax;
             NativeMethods.GetScrollRange(richTextBoxOutput.Handle, NativeMethods.SB_VERT, out vMin, out vMax);
-            atBottom = (NativeMethods.GetScrollPos(richTextBoxOutput.Handle, NativeMethods.SB_VERT)
-                + richTextBoxOutput.Font.Height > vMax - richTextBoxOutput.ClientSize.Height);
+            if (NativeMethods.GetScrollPos(richTextBoxOutput.Handle, NativeMethods.SB_VERT)
+                + richTextBoxOutput.Font.Height > vMax - richTextBoxOutput.ClientSize.Height)
+                richTextBoxOutput.Select();
+            else
+                this.ActiveControl = null;
         }
 
         #endregion
@@ -212,8 +206,6 @@ namespace mp4box
                         + Environment.NewLine);
                     richTextBoxOutput.AppendText("Exit code is: " + proc.ExitCode.ToString()
                         + Environment.NewLine);
-                    if (atBottom)
-                        richTextBoxOutput.ScrollToCaret();
                 }
             });
         }
@@ -227,19 +219,17 @@ namespace mp4box
             {
                 // log first
                 richTextBoxOutput.InvokeIfRequired(() =>
-                {
-                    richTextBoxOutput.AppendText(e.Data + Environment.NewLine);
-                    if (atBottom)
-                        richTextBoxOutput.ScrollToCaret();
-                });
+                    richTextBoxOutput.AppendText(e.Data + Environment.NewLine));
                 // extract x264 progress if possible
                 System.Text.RegularExpressions.Match result = extractRex.Match(e.Data);
                 if (result.Success)
-                {
-                    progressBarX264.Value = Convert.ToInt32(
-                        Double.Parse(result.Value.Substring(1, result.Value.Length - 3))
-                        * progressBarX264.Maximum / 100);
-                }
+                    progressBarX264.InvokeIfRequired(() =>
+                    {
+                        progressBarX264.Value = Convert.ToInt32(
+                            Double.Parse(result.Value.Substring(1, result.Value.Length - 3))
+                            * progressBarX264.Maximum / 100);
+                    });
+
             }
         }
 
