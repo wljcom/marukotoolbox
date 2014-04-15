@@ -66,6 +66,11 @@ namespace mp4box
         /// </summary>
         private int frameCount;
 
+        /// <summary>
+        /// String decoder of current code page.
+        /// </summary>
+        private Encoding decoder;
+
         #endregion
 
         #region Regex Patterns
@@ -158,9 +163,12 @@ namespace mp4box
             batPath = System.IO.Path.Combine(
                 Environment.GetEnvironmentVariable("TEMP", EnvironmentVariableTarget.Machine),
                 "xiaowan" + DateTime.Now.ToFileTimeUtc().ToString() + ".bat");
-            var sw = new System.IO.StreamWriter(batPath);
+            var sw = new System.IO.StreamWriter(batPath, false, new UTF8Encoding(false));
+            sw.WriteLine("chcp " + Encoding.UTF8.CodePage);
             sw.WriteLine(Commands);
             sw.Close();
+            // synchronize UI
+            decoder = Encoding.GetEncoding(0);
             richTextBoxOutput.Select();
             // start working
             ProcStart();
@@ -286,15 +294,16 @@ namespace mp4box
         {
             if (!String.IsNullOrEmpty(e.Data))
             {
-                // log first
+                // convert and log first
+                string utf8Data = localToUTF8(e.Data);
                 richTextBoxOutput.InvokeIfRequired(() =>
-                    richTextBoxOutput.AppendText(e.Data + Environment.NewLine));
+                    richTextBoxOutput.AppendText(utf8Data + Environment.NewLine));
                 // test if it is command
-                Match result = Patterns.fileReg.Match(e.Data);
+                Match result = Patterns.fileReg.Match(utf8Data);
                 if (result.Success)
                     frameCount = EstimateFrame(result.Groups["workDIR"].Value, result.Groups["fileIn"].Value);
                 // try ffms pattern
-                result = Patterns.ffmsReg.Match(e.Data);
+                result = Patterns.ffmsReg.Match(utf8Data);
                 if (result.Success)
                     progressBarX264.InvokeIfRequired(() =>
                     {
@@ -303,7 +312,7 @@ namespace mp4box
                             * progressBarX264.Maximum / 100);
                     });
                 // try lavf pattern
-                result = Patterns.lavfReg.Match(e.Data);
+                result = Patterns.lavfReg.Match(utf8Data);
                 if (result.Success)
                     progressBarX264.InvokeIfRequired(() =>
                     {
@@ -332,6 +341,17 @@ namespace mp4box
                 System.Diagnostics.Process.GetProcessById(pid).Kill();
             }
             catch (ArgumentException) { }
+        }
+
+        /// <summary>
+        /// Convert a string from local code page to UTF8.
+        /// </summary>
+        /// <param name="localstr">String in local code page.</param>
+        /// <returns></returns>
+        private string localToUTF8(string localstr)
+        {
+            byte[] rawBytes = decoder.GetBytes(localstr);
+            return Encoding.UTF8.GetString(rawBytes);
         }
 
         /// <summary>
