@@ -10,24 +10,27 @@ using System.Windows.Forms;
 
 namespace mp4box
 {
-    using InvokeEx;
+    using Extentions;
     public partial class WorkingForm : Form
     {
         /// <summary>
         /// Initialize a cmd output wrapper.
         /// </summary>
         /// <param name="commands">Proposing commands.
-        ///     Expecting Environment.NewLine as line breaker.</param>
-        public WorkingForm(string commands)
+        ///     Expecting <see cref="Environment.NewLine"/> as line breaker.</param>
+        /// <param name="workcount">The amount of roposing commands.
+        ///     Single-pass work don't need to specify this parameter.</param>
+        public WorkingForm(string commands, int workcount = 1)
         {
             InitializeComponent();
             Commands = commands;
+            WorkQueued = workcount;
         }
 
         /// <summary>
-        /// Gets or sets the proposed commands. Expecting Environment.NewLine as line breaker.
+        /// Gets or sets the proposed commands. Expecting <see cref="Environment.NewLine"/> as line breaker.
         /// <exception cref="System.ArgumentException">
-        ///     An exception is thrown if it's empty or null</exception>
+        ///     An exception is thrown if set it empty or null.</exception>
         /// </summary>
         public string Commands
         {
@@ -44,12 +47,42 @@ namespace mp4box
             }
         }
 
+        /// <summary>
+        /// Gets or sets the amount of proposed works.
+        /// <exception cref="System.ArgumentException">
+        ///     An exception is thrown if set it zero of negative.</exception>
+        /// </summary>
+        public int WorkQueued
+        {
+            get
+            {
+                return workQueued;
+            }
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException("Negative number? Really?");
+                else
+                    workQueued = value;
+            }
+        }
+
         #region Private Members Declaration
 
         /// <summary>
         /// Proposed commands.
         /// </summary>
         private string cmds;
+
+        /// <summary>
+        /// Queued works quantity.
+        /// </summary>
+        private int workQueued;
+
+        /// <summary>
+        /// Completed works quantity.
+        /// </summary>
+        private int workCompleted;
 
         /// <summary>
         /// Path to the batch file.
@@ -71,7 +104,8 @@ namespace mp4box
         #region Regex Patterns
         /// <summary>
         /// Store const regex patterns.
-        ///     The Regex objects are made to speed up matchup instead of passing string as arguments from time to time.
+        ///     The Regex objects are made to speed up matchup instead of
+        ///     passing the pattern string as arguments from time to time.
         /// </summary>
         public static class Patterns
         {
@@ -229,6 +263,7 @@ namespace mp4box
             sw.WriteLine(Commands);
             sw.Close();
             // synchronize UI
+            workCompleted = -1;
             richTextBoxOutput.Select();
             // start working
             ProcStart();
@@ -249,14 +284,7 @@ namespace mp4box
                     return;
                 }
                 else
-                {
-                    // return value is useless when force aborted
-                    proc.CancelOutputRead();
-                    // exit process should be omitted too
-                    proc.Exited -= new EventHandler(ProcExit);
-                    // terminate threads
-                    killProcTree(proc.Id);
-                }
+                    ProcAbort();
             }
             // clean up temp batch file
             System.IO.File.Delete(batPath);
@@ -264,14 +292,14 @@ namespace mp4box
 
         private void buttonAbort_Click(object sender, EventArgs e)
         {
-            killProcTree(proc.Id);
+            ProcAbort();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
             // prohibit saving before work completion
             if (!proc.HasExited)
-                MessageBox.Show("Saving before completion is not recommonded." +
+                MessageBox.Show("Saving before completion is not recommended." +
                     Environment.NewLine + "Please manually abort the process or wait patiently.");
             else
             {
@@ -318,35 +346,49 @@ namespace mp4box
         }
 
         /// <summary>
-        /// Process Exit event handler.
+        /// Process Exit event handler. Automatically called when process exit normally.
         /// </summary>
         private void ProcExit(object sender, EventArgs e)
         {
             // synchronize UI
+            UpdateWorkCountUI();
             buttonAbort.InvokeIfRequired(() =>
                 buttonAbort.Enabled = false);
-            this.InvokeIfRequired(() =>
-                this.Text = "Xiaowan [Completed.]");
-            progressBarX264.InvokeIfRequired(() =>
-                progressBarX264.Value = progressBarX264.Maximum);
+            UpdateProgressBar(1);
             // wait a little bit for the last asynchronous reading
             System.Threading.Thread.Sleep(75);
             // append finish tag
             richTextBoxOutput.InvokeIfRequired(() =>
             {
-                richTextBoxOutput.AppendText(Environment.NewLine + "Work Finished." + Environment.NewLine);
+                richTextBoxOutput.AppendText(Environment.NewLine + "Work Complete!");
                 // fire a warning if something went wrong
                 // this feature need %ERRORLEVEL% support in batch commands
                 if (proc.ExitCode != 0)
                 {
-                    richTextBoxOutput.AppendText("Potential Error detected. Please double check the log."
-                        + Environment.NewLine);
-                    richTextBoxOutput.AppendText("Exit code is: " + proc.ExitCode.ToString()
-                        + Environment.NewLine);
+                    richTextBoxOutput.AppendText(Environment.NewLine +
+                        "Potential Error detected. Please double check the log.");
+                    richTextBoxOutput.AppendText(Environment.NewLine + 
+                        "Exit code is: " + proc.ExitCode.ToString());
                 }
                 // flash form
                 FlashForm();
             });
+        }
+
+        /// <summary>
+        /// Manually call this method to abort all workings.
+        /// </summary>
+        private void ProcAbort()
+        {
+            // return value is useless when force aborted
+            proc.CancelOutputRead();
+            // exit process should be omitted too
+            proc.Exited -= new EventHandler(ProcExit);
+            // terminate threads
+            killProcTree(proc.Id);
+            // Print abort message to log
+            richTextBoxOutput.InvokeIfRequired(() =>
+                richTextBoxOutput.AppendText(Environment.NewLine + "Work is aborted by user."));
         }
 
         /// <summary>
@@ -362,25 +404,19 @@ namespace mp4box
                 // test if it is command
                 Match result = Patterns.fileReg.Match(e.Data);
                 if (result.Success)
+                {
+                    UpdateWorkCountUI();
+                    UpdateProgressBar(0);
                     frameCount = EstimateFrame(result.Groups["workDIR"].Value, result.Groups["fileIn"].Value);
+                }
                 // try ffms pattern
                 result = Patterns.ffmsReg.Match(e.Data);
                 if (result.Success)
-                    progressBarX264.InvokeIfRequired(() =>
-                    {
-                        progressBarX264.Value = Convert.ToInt32(
-                            Double.Parse(result.Groups["percent"].Value)
-                            * progressBarX264.Maximum / 100);
-                    });
+                    UpdateProgressBar(Double.Parse(result.Groups["percent"].Value));
                 // try lavf pattern
                 result = Patterns.lavfReg.Match(e.Data);
                 if (result.Success)
-                    progressBarX264.InvokeIfRequired(() =>
-                    {
-                        progressBarX264.Value = Convert.ToInt32(
-                            Double.Parse(result.Groups["frame"].Value)
-                            * progressBarX264.Maximum / frameCount);
-                    });
+                    UpdateProgressBar(Double.Parse(result.Groups["frame"].Value) / frameCount);
             }
         }
 
@@ -405,13 +441,35 @@ namespace mp4box
         }
 
         /// <summary>
+        /// Update Work Count UI on call. Each call will bump up completed work count by 1.
+        /// </summary>
+        private void UpdateWorkCountUI()
+        {
+            ++workCompleted;
+            this.InvokeIfRequired(() =>
+                this.Text = "Xiaowan (" + workCompleted + '/' + WorkQueued + ')');
+            this.labelworkCount.InvokeIfRequired(() =>
+                labelworkCount.Text = workCompleted.ToString() + '/' + WorkQueued);
+        }
+
+        /// <summary>
+        /// Update Progress Bar as well as the number on it.
+        /// </summary>
+        /// <param name="value">Progress expressed in decimal (0.00-1.00).</param>
+        private void UpdateProgressBar(double value)
+        {
+            progressBarX264.InvokeIfRequired(() =>
+                progressBarX264.Value = Convert.ToInt32(value * progressBarX264.Maximum));
+            labelProgress.InvokeIfRequired(() =>
+                labelProgress.Text = value.ToString("P"));
+        }
+
+        /// <summary>
         /// Get a rough estimation on frame counts via FFmpeg.
-        /// <exception cref="System.ArgumentException">
-        ///     An exception is thrown if the return value is unrecognizable.</exception>
         /// </summary>
         /// <param name="workPath">Path to ffmpeg binary.</param>
         /// <param name="filePath">Path to target file.</param>
-        /// <returns>Estimated frame count with some tolerance.</returns>
+        /// <returns>Estimated frame count. 1% tolerance added.</returns>
         private int EstimateFrame(string workPath, string filePath)
         {
             string ffmpegPath = System.IO.Path.Combine(workPath, @"tools\ffmpeg.exe");
@@ -424,9 +482,18 @@ namespace mp4box
             ffproc.WaitForExit();
             var result = Patterns.ffmpegReg.Match(mediaInfo);
             if (!result.Success)
-                throw new ArgumentException("FFmpeg probing went wrong!");
+            {
+                killProcTree(proc.Id);
+                if (System.Windows.Forms.DialogResult.Yes == MessageBox.Show(
+                    "Fatal Error Detected! Click \"Yes\" to save log. More details on help page."
+                    + Environment.NewLine +
+                    "出现严重错误！点“是”可以保存错误日志文件。提交错误报告清查看帮助页。",
+                    "Fatal Error.", MessageBoxButtons.YesNo, MessageBoxIcon.Error))
+                    ProcAbort();
+                return -1;
+            }
             else
-                // add a 1% tolorance to avoid unintentional overflow on progress bar
+                // add a 1% tolerance to avoid unintentional overflow on progress bar
                 return Convert.ToInt32(TimeSpan.Parse(result.Groups["duration"].Value).TotalSeconds
                     * Double.Parse(result.Groups["tbr"].Value) * 1.01);
         }

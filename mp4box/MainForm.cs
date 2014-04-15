@@ -1246,7 +1246,7 @@ namespace mp4box
                 batchAuto2();
                 batpath = workpath + "\\auto.bat";
                 LogRecord(auto);
-                WorkingForm wf = new WorkingForm(auto);
+                WorkingForm wf = new WorkingForm(auto, lbAuto.Items.Count);
                 wf.Show();
 
                 //File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
@@ -3209,7 +3209,7 @@ namespace mp4box
                 DateTime NewDate = DateTime.Parse(a);
                 //DateTime CompileDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
                 int s = DateTime.Compare(NewDate, ReleaseDate);
-                if (s == 1) //NewDate is later than RealseDate
+                if (s == 1) //NewDate is later than ReleaseDate
                 {
                     DialogResult dr = MessageBox.Show(string.Format("新鲜小丸已于{0}上架，主人不来尝一口咩？", NewDate.ToString("yyyy-M-d")), "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dr == DialogResult.Yes)
