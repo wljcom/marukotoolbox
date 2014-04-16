@@ -110,6 +110,7 @@ namespace mp4box
                 string encodedLibrary = MI.Get(StreamKind.Video, 0, "Encoded_Library");
                 string encodeTime = MI.Get(StreamKind.Video, 0, "Encoded_Date");
                 string codecProfile = MI.Get(StreamKind.Video, 0, "Codec_Profile");
+                string frameCount = MI.Get(StreamKind.Video, 0, "FrameCount");
 
                 //音频
                 string aid = MI.Get(StreamKind.Audio, 0, "ID");
@@ -135,6 +136,8 @@ namespace mp4box
                     "编码库：" + encodedLibrary + "\r\n" +
                     "Profile：" + codecProfile + "\r\n" +
                     "编码时间：" + encodeTime + "\r\n" +
+                    "总帧数：" + frameCount + "\r\n" +
+                    
                     "\r\n" +
                     "音频(" + aid + ")：" + audio + "\r\n" +
                     "大小：" + aSize + "\r\n" +
@@ -678,7 +681,7 @@ namespace mp4box
                 oneAuto(namevideo2, nameout2);
                 batpath = workpath + "\\auto.bat";
                 LogRecord(auto);
-                WorkingForm wf = new WorkingForm(batpath);
+                WorkingForm wf = new WorkingForm(auto);
                 wf.Show();
 
                 //File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
@@ -1235,7 +1238,7 @@ namespace mp4box
                 batchAuto2();
                 batpath = workpath + "\\auto.bat";
                 LogRecord(auto);
-                WorkingForm wf = new WorkingForm(batpath);
+                WorkingForm wf = new WorkingForm(auto);
                 wf.Show();
 
                 //File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
@@ -1976,8 +1979,17 @@ namespace mp4box
 
                 LogRecord(x264);
 
-                WorkingForm wf = new WorkingForm(x264);
-                wf.Show();
+                try
+                {
+                    WorkingForm wf = new WorkingForm(x264);
+                    wf.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.StackTrace);
+                }
+
 
                 //x264 += "\r\ncmd";
                 //batpath = workpath + "\\x264.bat";
@@ -3176,29 +3188,27 @@ namespace mp4box
             WebRequest wrq = (WebRequest)ar.AsyncState;
             WebResponse wrs = wrq.EndGetResponse(ar);
             // read the response ...
-
             Stream dataStream = wrs.GetResponseStream();
             // Open the stream using a StreamReader for easy access.
             StreamReader reader = new StreamReader(dataStream);
             // Read the content.
             string responseFromServer = reader.ReadToEnd();
-
             Regex reg = new Regex(@"Maruko20\S+Maruko");
             Match m = reg.Match(responseFromServer);
             if (m.Success)
             {
                 string a = m.Value.Replace("Maruko", "");
                 DateTime NewDate = DateTime.Parse(a);
-                DateTime CompileDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
-                int s = DateTime.Compare(NewDate, CompileDate);
-                if (s == 1) //NewDate 晚于 RealseDate
+                //DateTime CompileDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
+                int s = DateTime.Compare(NewDate, ReleaseDate);
+                if (s == 1) //NewDate is later than RealseDate
                 {
                     DialogResult dr = MessageBox.Show(string.Format("新鲜小丸已于{0}上架，主人不来尝一口咩？", NewDate.ToString("yyyy-M-d")), "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (dr == DialogResult.Yes)//如果点击“确定”按钮
+                    if (dr == DialogResult.Yes)
                     {
                         Process.Start("http://maruko.appinn.me");
                     }
-                    else//如果点击“取消”按钮
+                    else
                     {
                         return;
                     }
