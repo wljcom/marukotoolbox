@@ -143,10 +143,77 @@ namespace mp4box
             // Definitions extracted from <Winuser.h>
             public const int SB_VERT = 1;
 
+            public enum FlashWindowFlags : uint
+            {
+                /// <summary>
+                /// Stop flashing. The system restores the window to its original state.
+                /// </summary>
+                FLASHW_STOP = 0,
+
+                /// <summary>
+                /// Flash the window caption.
+                /// </summary>
+                FLASHW_CAPTION = 1,
+
+                /// <summary>
+                /// Flash the taskbar button.
+                /// </summary>
+                FLASHW_TRAY = 2,
+
+                /// <summary>
+                /// Flash both the window caption and taskbar button.
+                /// This is equivalent to setting the FLASHW_CAPTION | FLASHW_TRAY flags.
+                /// </summary>
+                FLASHW_ALL = 3,
+
+                /// <summary>
+                /// Flash continuously, until the FLASHW_STOP flag is set.
+                /// </summary>
+                FLASHW_TIMER = 4,
+
+                /// <summary>
+                /// Flash continuously until the window comes to the foreground.
+                /// </summary>
+                FLASHW_TIMERNOFG = 12
+            }
+
+            // http://msdn.microsoft.com/en-us/library/windows/desktop/ms679348(v=vs.85).aspx
+            [StructLayout(LayoutKind.Sequential)]
+            public struct FLASHWINFO
+            {
+                /// <summary>
+                /// The size of the structure in bytes.
+                /// </summary>
+                public uint cbSize;
+                /// <summary>
+                /// A Handle to the Window to be Flashed. The window can be either opened or minimized.
+                /// </summary>
+                public IntPtr hwnd;
+                /// <summary>
+                /// The Flash Status.
+                /// </summary>
+                public FlashWindowFlags dwFlags; //uint
+                /// <summary>
+                /// The number of times to Flash the window.
+                /// </summary>
+                public uint uCount;
+                /// <summary>
+                /// The rate at which the Window is to be flashed, in milliseconds. If Zero, the function uses the default cursor blink rate.
+                /// </summary>
+                public uint dwTimeout;
+            }
+
+            // http://msdn.microsoft.com/en-us/library/windows/desktop/bb787585(v=vs.85).aspx
             [DllImport("user32.dll")]
             public static extern int GetScrollPos(IntPtr hWnd, int nBar);
+
+            // http://msdn.microsoft.com/en-us/library/windows/desktop/bb787587(v=vs.85).aspx
             [DllImport("user32.dll")]
             public static extern bool GetScrollRange(IntPtr hWnd, int nBar, out int lpMinPos, out int lpMaxPos);
+            
+            // http://msdn.microsoft.com/en-us/library/windows/desktop/ms679347(v=vs.85).aspx
+            [DllImport("user32.dll")]
+            public static extern bool FlashWindowEx(ref FLASHWINFO pwfi);
         }
         #endregion
 
@@ -277,6 +344,8 @@ namespace mp4box
                     richTextBoxOutput.AppendText("Exit code is: " + proc.ExitCode.ToString()
                         + Environment.NewLine);
                 }
+                // flash form
+                FlashForm();
             });
         }
 
@@ -360,6 +429,23 @@ namespace mp4box
                 // add a 1% tolorance to avoid unintentional overflow on progress bar
                 return Convert.ToInt32(TimeSpan.Parse(result.Groups["duration"].Value).TotalSeconds
                     * Double.Parse(result.Groups["tbr"].Value) * 1.01);
+        }
+
+        /// <summary>
+        /// Flash the current form.
+        /// </summary>
+        /// <returns>Whether the form need flash or not.</returns>
+        private bool FlashForm()
+        {
+            var info = new NativeMethods.FLASHWINFO();
+            info.cbSize = Convert.ToUInt32(Marshal.SizeOf(info));
+            info.hwnd = this.Handle;
+            info.dwFlags = NativeMethods.FlashWindowFlags.FLASHW_ALL |
+                NativeMethods.FlashWindowFlags.FLASHW_TIMERNOFG;
+            // Flash 3 times
+            info.uCount = 3;
+            info.dwTimeout = 0;
+            return NativeMethods.FlashWindowEx(ref info);
         }
     }
 }
