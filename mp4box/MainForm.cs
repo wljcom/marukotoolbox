@@ -137,7 +137,7 @@ namespace mp4box
                     "Profile：" + codecProfile + "\r\n" +
                     "编码时间：" + encodeTime + "\r\n" +
                     "总帧数：" + frameCount + "\r\n" +
-                    
+
                     "\r\n" +
                     "音频(" + aid + ")：" + audio + "\r\n" +
                     "大小：" + aSize + "\r\n" +
@@ -192,6 +192,7 @@ namespace mp4box
                     x264 = "\"" + workpath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  " + x264CustomParameterTextBox.Text + " --demuxer " + x264DemuxerComboBox.Text + " -o \"" + output + "\" \"" + input + "\"\r\n";
                     break;
             }
+            x264 = x264.Insert(0, "chcp 65001 &&");
             return x264;
         }
         //public string x264bat(string input, string output)
@@ -268,7 +269,7 @@ namespace mp4box
         {
             int AACbr = 1024 * Convert.ToInt32(AudioBitrateComboBox.Text);
             string br = AACbr.ToString();
-            ffmpeg = "\"" + workpath + "\\ffmpeg.exe\" -y -i \"" + input + "\" -f wav temp.wav";
+            ffmpeg = "\"chcp 65001 && " + workpath + "\\ffmpeg.exe\" -y -i \"" + input + "\" -f wav temp.wav";
             switch (AudioEncoderComboBox.SelectedIndex)
             {
                 case 0:
@@ -370,13 +371,13 @@ namespace mp4box
             if (x264FLVCheckBox.Checked == true)
             {
                 string flvfile = AddExt(output, "_FLV.flv");
-                auto += "\r\n\"" + workpath + "\\ffmpeg.exe\"  -i  \"" + output + "\" -c copy -f flv  \"" + flvfile + "\" \r\n";
+                auto += "\r\n\"chcp 65001 && " + workpath + "\\ffmpeg.exe\"  -i  \"" + output + "\" -c copy -f flv  \"" + flvfile + "\" \r\n";
             }
-            if (x264ShutdownCheckBox.Checked)
-            {
-                auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60\r\n";
-            }
-            auto += "cmd";
+            //if (x264ShutdownCheckBox.Checked)
+            //{
+            //    auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60\r\n";
+            //}
+            //auto += "cmd";
         }
         public void batchAuto()
         {
@@ -461,12 +462,14 @@ namespace mp4box
                     finish = AddExt(lbAuto.Items[i].ToString(), "_onekeybatch.mp4");
                 mux = muxbat("temp.mp4", "temp.aac", finish);
                 //mux = "\"" + workpath + "\\mp4box.exe\" -add temp.mp4 -add temp.aac -new \"" + finish + "\"";
-                auto += aextract + x264 + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\ndel temp.wav\r\n@echo off&&echo MsgBox \"Finish!\",64,\"Maruko Toolbox\" >> msg.vbs &&call msg.vbs &&del msg.vbs\r\ncmd";
+                auto += aextract + x264 + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\ndel temp.wav\r\n";
+                //auto += aextract + x264 + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\ndel temp.wav\r\n@echo off&&echo MsgBox \"Finish!\",64,\"Maruko Toolbox\" >> msg.vbs &&call msg.vbs &&del msg.vbs\r\ncmd";
+
             }
-            if (x264ShutdownCheckBox.Checked)
-            {
-                auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60";
-            }
+            //if (x264ShutdownCheckBox.Checked)
+            //{
+            //    auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60";
+            //}
         }
         public void batchAuto2()
         {
@@ -516,8 +519,6 @@ namespace mp4box
                 }
                 switch (x264AudioModeComboBox.SelectedIndex)
                 {
-
-
                     case 1: x264 += " --acodec none"; break;
                     case 2: x264 += " --acodec copy"; break;
                     case 3: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
@@ -542,14 +543,15 @@ namespace mp4box
                         default: x264 += " --fps " + cbFPS2.Text; break;
                     }
                 }
-                x264 += " \r\n";
-                auto += x264;
+                auto = auto + "\r\n" + x264;
             }
-            if (x264ShutdownCheckBox.Checked)
-            {
-                auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60";
-            }
-            auto += "\r\n@echo off&&echo MsgBox \"Finish!\",64,\"Maruko Toolbox\" >> msg.vbs &&call msg.vbs &&del msg.vbs\r\ncmd";
+
+            //if (x264ShutdownCheckBox.Checked)
+            //{
+            //    auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60";
+            //}
+            //auto += "\r\n@echo off&&echo MsgBox \"Finish!\",64,\"Maruko Toolbox\" >> msg.vbs &&call msg.vbs &&del msg.vbs\r\ncmd";
+            auto += "\r\n";
         }
         private void btnaudio_Click(object sender, EventArgs e)
         {
@@ -682,8 +684,8 @@ namespace mp4box
                 batpath = workpath + "\\auto.bat";
                 LogRecord(auto);
                 WorkingForm wf = new WorkingForm(auto);
+                wf.Owner = this;
                 wf.Show();
-
                 //File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
                 //System.Diagnostics.Process.Start(batpath);
             }
@@ -1247,6 +1249,7 @@ namespace mp4box
                 batpath = workpath + "\\auto.bat";
                 LogRecord(auto);
                 WorkingForm wf = new WorkingForm(auto, lbAuto.Items.Count);
+                wf.Owner = this;
                 wf.Show();
 
                 //File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
@@ -1867,6 +1870,7 @@ namespace mp4box
                 batpath = workpath + "\\auto.bat";
                 LogRecord(auto);
                 WorkingForm wf = new WorkingForm(auto);
+                wf.Owner = this;
                 wf.Show();
 
                 //File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
@@ -1921,7 +1925,7 @@ namespace mp4box
                 //如果是AVS复制到C盘根目录
                 if (Path.GetExtension(x264VideoTextBox.Text) == ".avs")
                 {
-                    if (File.Exists(tempavspath)) File.Delete(tempavspath);
+                    //if (File.Exists(tempavspath)) File.Delete(tempavspath);
                     File.Copy(x264VideoTextBox.Text, tempavspath, true);
                     namevideo2 = tempavspath;
                 }
@@ -1980,24 +1984,16 @@ namespace mp4box
                     string flvfile = AddExt(nameout2, "_FLV.flv");
                     x264 += "\r\n\"" + workpath + "\\ffmpeg.exe\" -i  \"" + nameout2 + "\" -c copy -f flv  \"" + flvfile + "\" \r\n";
                 }
-                if (x264ShutdownCheckBox.Checked)
-                {
-                    x264 += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60";
-                }
+
+                //if (x264ShutdownCheckBox.Checked)
+                //{
+                //    x264 += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60";
+                //}
 
                 LogRecord(x264);
-
-                try
-                {
-                    WorkingForm wf = new WorkingForm(x264);
-                    wf.Show();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    MessageBox.Show(ex.StackTrace);
-                }
-
+                WorkingForm wf = new WorkingForm(x264);
+                wf.Owner = this;
+                wf.Show();
 
                 //x264 += "\r\ncmd";
                 //batpath = workpath + "\\x264.bat";
