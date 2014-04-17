@@ -192,7 +192,6 @@ namespace mp4box
                     x264 = "\"" + workpath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  " + x264CustomParameterTextBox.Text + " --demuxer " + x264DemuxerComboBox.Text + " -o \"" + output + "\" \"" + input + "\"\r\n";
                     break;
             }
-            x264 = x264.Insert(0, "chcp 65001 &&");
             return x264;
         }
         //public string x264bat(string input, string output)
@@ -269,7 +268,7 @@ namespace mp4box
         {
             int AACbr = 1024 * Convert.ToInt32(AudioBitrateComboBox.Text);
             string br = AACbr.ToString();
-            ffmpeg = "\"chcp 65001 && " + workpath + "\\ffmpeg.exe\" -y -i \"" + input + "\" -f wav temp.wav";
+            ffmpeg = "\"" + workpath + "\\ffmpeg.exe\" -y -i \"" + input + "\" -f wav temp.wav";
             switch (AudioEncoderComboBox.SelectedIndex)
             {
                 case 0:
@@ -371,7 +370,7 @@ namespace mp4box
             if (x264FLVCheckBox.Checked == true)
             {
                 string flvfile = AddExt(output, "_FLV.flv");
-                auto += "\r\n\"chcp 65001 && " + workpath + "\\ffmpeg.exe\"  -i  \"" + output + "\" -c copy -f flv  \"" + flvfile + "\" \r\n";
+                auto += "\r\n\"" + workpath + "\\ffmpeg.exe\"  -i  \"" + output + "\" -c copy -f flv  \"" + flvfile + "\" \r\n";
             }
             //if (x264ShutdownCheckBox.Checked)
             //{
