@@ -385,7 +385,19 @@ namespace mp4box
             // shutdown the system if required
             MainForm main = (MainForm)this.Owner;
             if (main.shutdownState)
-                System.Diagnostics.Process.Start("shutdown", "-s -c \"Work of Xiaowan completed. Shutdown in 30 seconds.\"");
+            {
+                System.Diagnostics.Process.Start("shutdown", "-s");
+                // wait a bit to ensure synchronization
+                System.Threading.Thread.Sleep(75);
+                if (System.Windows.Forms.DialogResult.Cancel == MessageBox.Show(
+                    "System will shutdown in 20 seconds. Click \"Cancel\" to stop countdown."
+                    + Environment.NewLine +
+                    "系统将在20秒后自动关机。点击“取消”停止倒计时。",
+                    "Warning", MessageBoxButtons.OKCancel))
+                {
+                    System.Diagnostics.Process.Start("shutdown", "-a");
+                }
+            }
         }
 
         /// <summary>
@@ -425,7 +437,7 @@ namespace mp4box
                 // try ffms pattern
                 result = Patterns.ffmsReg.Match(e.Data);
                 if (result.Success)
-                    UpdateProgressBar(Double.Parse(result.Groups["percent"].Value)/100.0);
+                    UpdateProgressBar(Double.Parse(result.Groups["percent"].Value) / 100);
                 // try lavf pattern
                 result = Patterns.lavfReg.Match(e.Data);
                 if (result.Success)
@@ -462,7 +474,7 @@ namespace mp4box
             this.InvokeIfRequired(() =>
                 this.Text = "Xiaowan (" + workCompleted + '/' + WorkQueued + ')');
             this.labelworkCount.InvokeIfRequired(() =>
-                labelworkCount.Text = workCompleted.ToString() + '/' + WorkQueued);
+                labelworkCount.Text = workCompleted.ToString() + '/' + WorkQueued + " Completed");
         }
 
         /// <summary>
@@ -526,11 +538,6 @@ namespace mp4box
             info.uCount = 3;
             info.dwTimeout = 0;
             return NativeMethods.FlashWindowEx(ref info);
-        }
-
-        private void CancelShutdownButton_Click(object sender, EventArgs e)
-        {
-              System.Diagnostics.Process.Start("shutdown.exe","-a");
         }
     }
 }

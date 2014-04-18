@@ -118,6 +118,173 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonAbort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 293</value>
+  </data>
+  <data name="buttonAbort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonAbort.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonAbort.Text" xml:space="preserve">
+    <value>&amp;Abort</value>
+  </data>
+  <data name="&gt;&gt;buttonAbort.Name" xml:space="preserve">
+    <value>buttonAbort</value>
+  </data>
+  <data name="&gt;&gt;buttonAbort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAbort.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonAbort.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buttonSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 293</value>
+  </data>
+  <data name="buttonSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonSave.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonSave.Text" xml:space="preserve">
+    <value>&amp;Save Log</value>
+  </data>
+  <data name="&gt;&gt;buttonSave.Name" xml:space="preserve">
+    <value>buttonSave</value>
+  </data>
+  <data name="&gt;&gt;buttonSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSave.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonSave.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="richTextBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Consolas, 8.25pt</value>
+  </data>
+  <data name="richTextBoxOutput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="richTextBoxOutput.ScrollBars" type="System.Windows.Forms.RichTextBoxScrollBars, System.Windows.Forms">
+    <value>ForcedVertical</value>
+  </data>
+  <data name="richTextBoxOutput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>632, 274</value>
+  </data>
+  <data name="richTextBoxOutput.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="richTextBoxOutput.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;richTextBoxOutput.Name" xml:space="preserve">
+    <value>richTextBoxOutput</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxOutput.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxOutput.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxOutput.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelworkCount.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelworkCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>174, 300</value>
+  </data>
+  <data name="labelworkCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 13</value>
+  </data>
+  <data name="labelworkCount.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="labelworkCount.Text" xml:space="preserve">
+    <value>MM/NN Completed</value>
+  </data>
+  <data name="&gt;&gt;labelworkCount.Name" xml:space="preserve">
+    <value>labelworkCount</value>
+  </data>
+  <data name="&gt;&gt;labelworkCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelworkCount.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelworkCount.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="progressBarX264.Location" type="System.Drawing.Point, System.Drawing">
+    <value>373, 293</value>
+  </data>
+  <data name="progressBarX264.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 23</value>
+  </data>
+  <data name="progressBarX264.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;progressBarX264.Name" xml:space="preserve">
+    <value>progressBarX264</value>
+  </data>
+  <data name="&gt;&gt;progressBarX264.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;progressBarX264.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;progressBarX264.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labelProgress.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelProgress.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Consolas, 9pt</value>
+  </data>
+  <data name="labelProgress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>596, 299</value>
+  </data>
+  <data name="labelProgress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 14</value>
+  </data>
+  <data name="labelProgress.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelProgress.Text" xml:space="preserve">
+    <value>188.88%</value>
+  </data>
+  <data name="&gt;&gt;labelProgress.Name" xml:space="preserve">
+    <value>labelProgress</value>
+  </data>
+  <data name="&gt;&gt;labelProgress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelProgress.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelProgress.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>656, 324</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAUAAAAAAAEAIADeQwAAVgAAADAwAAABACAAqCUAADREAAAgIAAAAQAgAKgQAADcaQAAGBgAAAEA
@@ -704,5 +871,14 @@
         vWv5+rpp9PYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAA
 </value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>&lt;Title is modified by UpdateWorkCountUI()&gt;</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>WorkingForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -35,84 +35,49 @@
             this.labelworkCount = new System.Windows.Forms.Label();
             this.progressBarX264 = new System.Windows.Forms.ProgressBar();
             this.labelProgress = new System.Windows.Forms.Label();
-            this.CancelShutdownButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonAbort
             // 
-            this.buttonAbort.Location = new System.Drawing.Point(12, 270);
+            resources.ApplyResources(this.buttonAbort, "buttonAbort");
             this.buttonAbort.Name = "buttonAbort";
-            this.buttonAbort.Size = new System.Drawing.Size(75, 21);
-            this.buttonAbort.TabIndex = 1;
-            this.buttonAbort.Text = "&Abort";
             this.buttonAbort.UseVisualStyleBackColor = true;
             this.buttonAbort.Click += new System.EventHandler(this.buttonAbort_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(93, 270);
+            resources.ApplyResources(this.buttonSave, "buttonSave");
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 21);
-            this.buttonSave.TabIndex = 2;
-            this.buttonSave.Text = "&Save Log";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // richTextBoxOutput
             // 
-            this.richTextBoxOutput.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxOutput.Location = new System.Drawing.Point(12, 11);
+            resources.ApplyResources(this.richTextBoxOutput, "richTextBoxOutput");
             this.richTextBoxOutput.Name = "richTextBoxOutput";
             this.richTextBoxOutput.ReadOnly = true;
-            this.richTextBoxOutput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBoxOutput.Size = new System.Drawing.Size(632, 253);
-            this.richTextBoxOutput.TabIndex = 4;
-            this.richTextBoxOutput.Text = "";
             this.richTextBoxOutput.VScroll += new System.EventHandler(this.richTextBoxOutput_VScroll);
             // 
             // labelworkCount
             // 
-            this.labelworkCount.AutoSize = true;
-            this.labelworkCount.Location = new System.Drawing.Point(286, 276);
+            resources.ApplyResources(this.labelworkCount, "labelworkCount");
             this.labelworkCount.Name = "labelworkCount";
-            this.labelworkCount.Size = new System.Drawing.Size(95, 12);
-            this.labelworkCount.TabIndex = 6;
-            this.labelworkCount.Text = "MM/NN Completed";
             // 
             // progressBarX264
             // 
-            this.progressBarX264.Location = new System.Drawing.Point(373, 270);
+            resources.ApplyResources(this.progressBarX264, "progressBarX264");
             this.progressBarX264.Maximum = 1000;
             this.progressBarX264.Name = "progressBarX264";
-            this.progressBarX264.Size = new System.Drawing.Size(217, 21);
-            this.progressBarX264.TabIndex = 5;
             // 
             // labelProgress
             // 
-            this.labelProgress.AutoSize = true;
-            this.labelProgress.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProgress.Location = new System.Drawing.Point(596, 276);
+            resources.ApplyResources(this.labelProgress, "labelProgress");
             this.labelProgress.Name = "labelProgress";
-            this.labelProgress.Size = new System.Drawing.Size(56, 14);
-            this.labelProgress.TabIndex = 7;
-            this.labelProgress.Text = "188.88%";
-            // 
-            // CancelShutdownButton
-            // 
-            this.CancelShutdownButton.Location = new System.Drawing.Point(174, 270);
-            this.CancelShutdownButton.Name = "CancelShutdownButton";
-            this.CancelShutdownButton.Size = new System.Drawing.Size(106, 21);
-            this.CancelShutdownButton.TabIndex = 8;
-            this.CancelShutdownButton.Text = "Cancel Shutdown";
-            this.CancelShutdownButton.UseVisualStyleBackColor = true;
-            this.CancelShutdownButton.Click += new System.EventHandler(this.CancelShutdownButton_Click);
             // 
             // WorkingForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 299);
-            this.Controls.Add(this.CancelShutdownButton);
             this.Controls.Add(this.labelProgress);
             this.Controls.Add(this.labelworkCount);
             this.Controls.Add(this.progressBarX264);
@@ -120,10 +85,8 @@
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonAbort);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "WorkingForm";
-            this.Text = "<Title is modified by UpdateWorkCountUI()>";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WorkingForm_FormClosing);
             this.Load += new System.EventHandler(this.WorkingForm_Load);
             this.ResumeLayout(false);
@@ -139,6 +102,5 @@
         private System.Windows.Forms.ProgressBar progressBarX264;
         private System.Windows.Forms.Label labelworkCount;
         private System.Windows.Forms.Label labelProgress;
-        private System.Windows.Forms.Button CancelShutdownButton;
     }
 }
