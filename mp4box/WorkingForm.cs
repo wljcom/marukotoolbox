@@ -425,7 +425,7 @@ namespace mp4box
                 // try ffms pattern
                 result = Patterns.ffmsReg.Match(e.Data);
                 if (result.Success)
-                    UpdateProgressBar(Double.Parse(result.Groups["percent"].Value));
+                    UpdateProgressBar(Double.Parse(result.Groups["percent"].Value)/100.0);
                 // try lavf pattern
                 result = Patterns.lavfReg.Match(e.Data);
                 if (result.Success)
@@ -526,6 +526,11 @@ namespace mp4box
             info.uCount = 3;
             info.dwTimeout = 0;
             return NativeMethods.FlashWindowEx(ref info);
+        }
+
+        private void CancelShutdownButton_Click(object sender, EventArgs e)
+        {
+              System.Diagnostics.Process.Start("shutdown.exe","-a");
         }
     }
 }
