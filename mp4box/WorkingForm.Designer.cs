@@ -92,8 +92,6 @@
             this.Controls.Add(this.richTextBoxOutput);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonAbort);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
             this.Name = "WorkingForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WorkingForm_FormClosing);
             this.Load += new System.EventHandler(this.WorkingForm_Load);
