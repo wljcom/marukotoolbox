@@ -125,7 +125,7 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="txtvideo4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtvideo4.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 18</value>
@@ -150,7 +150,7 @@
     <value>0</value>
   </data>
   <data name="btnvideo4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnvideo4.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 17</value>
@@ -177,7 +177,7 @@
     <value>1</value>
   </data>
   <data name="btnout5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnout5.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 47</value>
@@ -204,7 +204,7 @@
     <value>2</value>
   </data>
   <data name="btnClip.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnClip.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 76</value>
@@ -231,7 +231,7 @@
     <value>3</value>
   </data>
   <data name="txtout5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtout5.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 47</value>
@@ -261,7 +261,7 @@
     <value>90:00:00</value>
   </data>
   <data name="maske.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 21</value>
+    <value>70, 20</value>
   </data>
   <data name="maske.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -292,7 +292,7 @@
     <value>92, 80</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -319,7 +319,7 @@
     <value>320, 79</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="label15.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -346,7 +346,7 @@
     <value>90:00:00</value>
   </data>
   <data name="maskb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 21</value>
+    <value>70, 20</value>
   </data>
   <data name="maskb.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -394,7 +394,7 @@
     <value>1</value>
   </data>
   <data name="btnout4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnout4.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 120</value>
@@ -424,7 +424,7 @@
     <value>True</value>
   </data>
   <data name="cbDelTmp.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="cbDelTmp.Location" type="System.Drawing.Point, System.Drawing">
     <value>467, 173</value>
@@ -454,7 +454,7 @@
     <value>0</value>
   </data>
   <data name="btnMIopen.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnMIopen.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 561</value>
@@ -481,7 +481,7 @@
     <value>0</value>
   </data>
   <data name="btnMIplay.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnMIplay.Location" type="System.Drawing.Point, System.Drawing">
     <value>385, 561</value>
@@ -508,7 +508,7 @@
     <value>1</value>
   </data>
   <data name="btnMIcopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnMIcopy.Location" type="System.Drawing.Point, System.Drawing">
     <value>285, 561</value>
@@ -535,7 +535,7 @@
     <value>2</value>
   </data>
   <data name="MediaInfoTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="MediaInfoTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 6</value>
@@ -592,7 +592,7 @@
     <value>6</value>
   </data>
   <data name="AVSSaveButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AVSSaveButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -628,7 +628,7 @@
     <value>156, 176</value>
   </data>
   <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 12</value>
+    <value>163, 13</value>
   </data>
   <data name="label25.TabIndex" type="System.Int32, mscorlib">
     <value>62</value>
@@ -649,7 +649,7 @@
     <value>1</value>
   </data>
   <data name="AVSCropTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AVSCropTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>360, 171</value>
@@ -682,7 +682,7 @@
     <value>313, 204</value>
   </data>
   <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
+    <value>43, 13</value>
   </data>
   <data name="label30.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -709,7 +709,7 @@
     <value>156, 204</value>
   </data>
   <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
+    <value>43, 13</value>
   </data>
   <data name="label29.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
@@ -733,7 +733,7 @@
     <value>360, 200</value>
   </data>
   <data name="TrimEndNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
+    <value>88, 20</value>
   </data>
   <data name="TrimEndNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
@@ -757,7 +757,7 @@
     <value>203, 200</value>
   </data>
   <data name="TrimStartNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
+    <value>88, 20</value>
   </data>
   <data name="TrimStartNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
@@ -781,7 +781,7 @@
     <value>203, 227</value>
   </data>
   <data name="LevelsNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 21</value>
+    <value>57, 20</value>
   </data>
   <data name="LevelsNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -805,7 +805,7 @@
     <value>252, 150</value>
   </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 12</value>
+    <value>19, 13</value>
   </data>
   <data name="label24.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
@@ -832,7 +832,7 @@
     <value>337, 150</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 12</value>
+    <value>19, 13</value>
   </data>
   <data name="label23.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -859,7 +859,7 @@
     <value>421, 150</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 12</value>
+    <value>19, 13</value>
   </data>
   <data name="label22.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -886,7 +886,7 @@
     <value>168, 150</value>
   </data>
   <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 12</value>
+    <value>19, 13</value>
   </data>
   <data name="label21.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -910,7 +910,7 @@
     <value>444, 148</value>
   </data>
   <data name="AddBorders4NumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
+    <value>55, 20</value>
   </data>
   <data name="AddBorders4NumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -931,7 +931,7 @@
     <value>360, 148</value>
   </data>
   <data name="AddBorders3NumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
+    <value>55, 20</value>
   </data>
   <data name="AddBorders3NumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -952,7 +952,7 @@
     <value>276, 148</value>
   </data>
   <data name="AddBorders2NumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
+    <value>55, 20</value>
   </data>
   <data name="AddBorders2NumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -973,7 +973,7 @@
     <value>203, 254</value>
   </data>
   <data name="SharpenNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
+    <value>55, 20</value>
   </data>
   <data name="SharpenNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -994,7 +994,7 @@
     <value>191, 148</value>
   </data>
   <data name="AddBorders1NumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
+    <value>55, 20</value>
   </data>
   <data name="AddBorders1NumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -1018,7 +1018,7 @@
     <value>325, 123</value>
   </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 13</value>
   </data>
   <data name="label19.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -1045,7 +1045,7 @@
     <value>156, 123</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 13</value>
   </data>
   <data name="label20.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -1069,7 +1069,7 @@
     <value>360, 121</value>
   </data>
   <data name="AVSHeightNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
+    <value>88, 20</value>
   </data>
   <data name="AVSHeightNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -1093,7 +1093,7 @@
     <value>193, 121</value>
   </data>
   <data name="AVSWidthNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
+    <value>88, 20</value>
   </data>
   <data name="AVSWidthNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -1120,7 +1120,7 @@
     <value>456, 96</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
+    <value>43, 13</value>
   </data>
   <data name="label18.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -1147,7 +1147,7 @@
     <value>360, 96</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 13</value>
   </data>
   <data name="label10.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -1174,7 +1174,7 @@
     <value>252, 96</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
+    <value>43, 13</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -1201,7 +1201,7 @@
     <value>156, 96</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -1225,7 +1225,7 @@
     <value>503, 92</value>
   </data>
   <data name="TweakContrastNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
+    <value>55, 20</value>
   </data>
   <data name="TweakContrastNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -1246,7 +1246,7 @@
     <value>395, 92</value>
   </data>
   <data name="TweakBrightnessNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
+    <value>55, 20</value>
   </data>
   <data name="TweakBrightnessNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -1267,7 +1267,7 @@
     <value>299, 92</value>
   </data>
   <data name="TweakSaturationNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
+    <value>55, 20</value>
   </data>
   <data name="TweakSaturationNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -1288,7 +1288,7 @@
     <value>191, 92</value>
   </data>
   <data name="TweakChromaNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
+    <value>55, 20</value>
   </data>
   <data name="TweakChromaNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -1306,7 +1306,7 @@
     <value>28</value>
   </data>
   <data name="AVSScriptTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AVSScriptTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 319</value>
@@ -1339,7 +1339,7 @@
     <value>29</value>
   </data>
   <data name="txtvideo9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtvideo9.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 6</value>
@@ -1363,7 +1363,7 @@
     <value>30</value>
   </data>
   <data name="txtout9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtout9.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 63</value>
@@ -1387,7 +1387,7 @@
     <value>31</value>
   </data>
   <data name="txtsub9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtsub9.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 34</value>
@@ -1414,7 +1414,7 @@
     <value>True</value>
   </data>
   <data name="LevelsCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="LevelsCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 227</value>
@@ -1444,7 +1444,7 @@
     <value>True</value>
   </data>
   <data name="CropCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="CropCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 173</value>
@@ -1474,7 +1474,7 @@
     <value>True</value>
   </data>
   <data name="TrimCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="TrimCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 200</value>
@@ -1504,7 +1504,7 @@
     <value>True</value>
   </data>
   <data name="SharpenCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="SharpenCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 254</value>
@@ -1534,7 +1534,7 @@
     <value>True</value>
   </data>
   <data name="AddBordersCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AddBordersCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 146</value>
@@ -1564,7 +1564,7 @@
     <value>True</value>
   </data>
   <data name="LanczosResizeCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="LanczosResizeCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 119</value>
@@ -1594,7 +1594,7 @@
     <value>True</value>
   </data>
   <data name="TweakCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="TweakCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 92</value>
@@ -1624,7 +1624,7 @@
     <value>True</value>
   </data>
   <data name="UndotCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="UndotCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 281</value>
@@ -1651,7 +1651,7 @@
     <value>40</value>
   </data>
   <data name="button9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="button9.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 556</value>
@@ -1678,7 +1678,7 @@
     <value>41</value>
   </data>
   <data name="button6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="button6.Location" type="System.Drawing.Point, System.Drawing">
     <value>99, 556</value>
@@ -1708,7 +1708,7 @@
     <value>42</value>
   </data>
   <data name="btnpreview9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnpreview9.Location" type="System.Drawing.Point, System.Drawing">
     <value>395, 556</value>
@@ -1735,7 +1735,7 @@
     <value>43</value>
   </data>
   <data name="btnAVSone.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnAVSone.Location" type="System.Drawing.Point, System.Drawing">
     <value>194, 556</value>
@@ -1765,7 +1765,7 @@
     <value>44</value>
   </data>
   <data name="btnAVS9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnAVS9.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 556</value>
@@ -1792,7 +1792,7 @@
     <value>45</value>
   </data>
   <data name="btnvideo9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnvideo9.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 6</value>
@@ -1819,7 +1819,7 @@
     <value>46</value>
   </data>
   <data name="btnout9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnout9.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 63</value>
@@ -1846,7 +1846,7 @@
     <value>47</value>
   </data>
   <data name="btnsub9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnsub9.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 34</value>
@@ -1900,7 +1900,7 @@
     <value>5</value>
   </data>
   <data name="MkvExtract4Button.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="MkvExtract4Button.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1930,7 +1930,7 @@
     <value>0</value>
   </data>
   <data name="MkvExtract3Button.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="MkvExtract3Button.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1960,7 +1960,7 @@
     <value>1</value>
   </data>
   <data name="MkvExtract2Button.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="MkvExtract2Button.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1990,7 +1990,7 @@
     <value>2</value>
   </data>
   <data name="MkvExtract1Button.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="MkvExtract1Button.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2020,7 +2020,7 @@
     <value>3</value>
   </data>
   <data name="btnextract7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnextract7.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 47</value>
@@ -2047,7 +2047,7 @@
     <value>4</value>
   </data>
   <data name="btnvideo7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnvideo7.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 18</value>
@@ -2074,7 +2074,7 @@
     <value>5</value>
   </data>
   <data name="txtvideo6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtvideo6.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -2122,7 +2122,7 @@
     <value>0</value>
   </data>
   <data name="btnvextract8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnvextract8.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 50</value>
@@ -2149,7 +2149,7 @@
     <value>0</value>
   </data>
   <data name="btnvideo8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnvideo8.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 17</value>
@@ -2176,7 +2176,7 @@
     <value>1</value>
   </data>
   <data name="txtvideo8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtvideo8.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 17</value>
@@ -2200,7 +2200,7 @@
     <value>2</value>
   </data>
   <data name="btnaextract8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnaextract8.Location" type="System.Drawing.Point, System.Drawing">
     <value>402, 50</value>
@@ -2251,7 +2251,7 @@
     <value>1</value>
   </data>
   <data name="ExtractMP4TextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="ExtractMP4TextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 18</value>
@@ -2275,7 +2275,7 @@
     <value>0</value>
   </data>
   <data name="btnaextract3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnaextract3.Location" type="System.Drawing.Point, System.Drawing">
     <value>402, 47</value>
@@ -2302,7 +2302,7 @@
     <value>1</value>
   </data>
   <data name="ExtractMP4Button.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="ExtractMP4Button.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 18</value>
@@ -2329,7 +2329,7 @@
     <value>2</value>
   </data>
   <data name="btnvextract.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnvextract.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 47</value>
@@ -2356,7 +2356,7 @@
     <value>3</value>
   </data>
   <data name="btnaextract.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnaextract.Location" type="System.Drawing.Point, System.Drawing">
     <value>240, 47</value>
@@ -2383,7 +2383,7 @@
     <value>4</value>
   </data>
   <data name="btnaextract2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnaextract2.Location" type="System.Drawing.Point, System.Drawing">
     <value>321, 47</value>
@@ -2463,9 +2463,6 @@
   <data name="lbffmpeg.HorizontalScrollbar" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbffmpeg.ItemHeight" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
   <data name="lbffmpeg.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 19</value>
   </data>
@@ -2488,7 +2485,7 @@
     <value>0</value>
   </data>
   <data name="btnffmpegAdd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnffmpegAdd.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 240</value>
@@ -2515,7 +2512,7 @@
     <value>1</value>
   </data>
   <data name="btnffmpegClear.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnffmpegClear.Location" type="System.Drawing.Point, System.Drawing">
     <value>168, 240</value>
@@ -2548,7 +2545,7 @@
     <value>8, 212</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 12</value>
+    <value>139, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -2569,7 +2566,7 @@
     <value>3</value>
   </data>
   <data name="btnffmpegDel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnffmpegDel.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 240</value>
@@ -2596,7 +2593,7 @@
     <value>4</value>
   </data>
   <data name="btnBatchMP4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnBatchMP4.Location" type="System.Drawing.Point, System.Drawing">
     <value>481, 240</value>
@@ -2623,7 +2620,7 @@
     <value>5</value>
   </data>
   <data name="btnBatchFLV.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnBatchFLV.Location" type="System.Drawing.Point, System.Drawing">
     <value>400, 240</value>
@@ -2674,7 +2671,7 @@
     <value>0</value>
   </data>
   <data name="MuxReplaceAudioButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="MuxReplaceAudioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>359, 105</value>
@@ -2701,7 +2698,7 @@
     <value>0</value>
   </data>
   <data name="txtvideo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtvideo.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 18</value>
@@ -2725,7 +2722,7 @@
     <value>1</value>
   </data>
   <data name="btnvideo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnvideo.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 18</value>
@@ -2752,7 +2749,7 @@
     <value>2</value>
   </data>
   <data name="btnmux.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnmux.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 105</value>
@@ -2809,7 +2806,7 @@
     <value>37, 107</value>
   </data>
   <data name="cbFPS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 20</value>
+    <value>89, 21</value>
   </data>
   <data name="cbFPS.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -2830,7 +2827,7 @@
     <value>4</value>
   </data>
   <data name="btnaudio.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnaudio.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 47</value>
@@ -2857,7 +2854,7 @@
     <value>5</value>
   </data>
   <data name="btnout.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnout.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 76</value>
@@ -2884,7 +2881,7 @@
     <value>6</value>
   </data>
   <data name="txtaudio.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtaudio.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 47</value>
@@ -2914,7 +2911,7 @@
     <value>8, 111</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 12</value>
+    <value>27, 13</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -2935,7 +2932,7 @@
     <value>8</value>
   </data>
   <data name="txtout.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtout.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 76</value>
@@ -2983,7 +2980,7 @@
     <value>1</value>
   </data>
   <data name="txtvideo5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtvideo5.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 18</value>
@@ -3007,7 +3004,7 @@
     <value>0</value>
   </data>
   <data name="button4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 105</value>
@@ -3034,7 +3031,7 @@
     <value>1</value>
   </data>
   <data name="txtsub.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtsub.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 76</value>
@@ -3058,7 +3055,7 @@
     <value>2</value>
   </data>
   <data name="button3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 47</value>
@@ -3085,7 +3082,7 @@
     <value>3</value>
   </data>
   <data name="txtaudio3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtaudio3.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 47</value>
@@ -3109,7 +3106,7 @@
     <value>4</value>
   </data>
   <data name="button5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="button5.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 76</value>
@@ -3136,7 +3133,7 @@
     <value>5</value>
   </data>
   <data name="txtout6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtout6.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 105</value>
@@ -3160,7 +3157,7 @@
     <value>6</value>
   </data>
   <data name="button2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 18</value>
@@ -3187,7 +3184,7 @@
     <value>7</value>
   </data>
   <data name="button7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="button7.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 134</value>
@@ -3289,7 +3286,7 @@
     <value>114, 139</value>
   </data>
   <data name="AudioBitrateComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 20</value>
+    <value>78, 21</value>
   </data>
   <data name="AudioBitrateComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -3316,7 +3313,7 @@
     <value>24, 84</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
+    <value>43, 13</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -3349,7 +3346,7 @@
     <value>108, 81</value>
   </data>
   <data name="AudioEncoderComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 20</value>
+    <value>122, 21</value>
   </data>
   <data name="AudioEncoderComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -3367,7 +3364,7 @@
     <value>2</value>
   </data>
   <data name="txtaudio2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtaudio2.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 20</value>
@@ -3391,7 +3388,7 @@
     <value>3</value>
   </data>
   <data name="AudioBitrateRadioButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioBitrateRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 5</value>
@@ -3418,7 +3415,7 @@
     <value>0</value>
   </data>
   <data name="AudioCustomizeRadioButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioCustomizeRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>148, 5</value>
@@ -3466,7 +3463,7 @@
     <value>4</value>
   </data>
   <data name="txtout3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="txtout3.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 49</value>
@@ -3493,7 +3490,7 @@
     <value>True</value>
   </data>
   <data name="cbwavtemp.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="cbwavtemp.Location" type="System.Drawing.Point, System.Drawing">
     <value>260, 81</value>
@@ -3520,7 +3517,7 @@
     <value>6</value>
   </data>
   <data name="btnaudio2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnaudio2.Location" type="System.Drawing.Point, System.Drawing">
     <value>484, 20</value>
@@ -3553,7 +3550,7 @@
     <value>198, 143</value>
   </data>
   <data name="lbaackbps.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 13</value>
   </data>
   <data name="lbaackbps.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3574,7 +3571,7 @@
     <value>8</value>
   </data>
   <data name="btnout3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnout3.Location" type="System.Drawing.Point, System.Drawing">
     <value>484, 49</value>
@@ -3607,7 +3604,7 @@
     <value>30, 143</value>
   </data>
   <data name="lbaacrate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 13</value>
   </data>
   <data name="lbaacrate.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3628,7 +3625,7 @@
     <value>10</value>
   </data>
   <data name="btnaac.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnaac.Location" type="System.Drawing.Point, System.Drawing">
     <value>484, 78</value>
@@ -3655,7 +3652,7 @@
     <value>11</value>
   </data>
   <data name="AudioCustomParameterTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioCustomParameterTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 138</value>
@@ -3715,7 +3712,7 @@
     <value>17, 318</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 12</value>
+    <value>139, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -3736,7 +3733,7 @@
     <value>0</value>
   </data>
   <data name="AudioBatchButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioBatchButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>484, 343</value>
@@ -3765,14 +3762,11 @@
   <data name="AudioListBox.HorizontalScrollbar" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="AudioListBox.ItemHeight" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
   <data name="AudioListBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 20</value>
   </data>
   <data name="AudioListBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>551, 256</value>
+    <value>551, 251</value>
   </data>
   <data name="AudioListBox.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -3790,7 +3784,7 @@
     <value>2</value>
   </data>
   <data name="AudioAddButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioAddButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 343</value>
@@ -3817,7 +3811,7 @@
     <value>3</value>
   </data>
   <data name="AudioClearButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioClearButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>201, 343</value>
@@ -3844,7 +3838,7 @@
     <value>4</value>
   </data>
   <data name="AudioDeleteButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioDeleteButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 343</value>
@@ -3925,7 +3919,7 @@
     <value>391, 107</value>
   </data>
   <data name="OnePicCRFNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
+    <value>88, 20</value>
   </data>
   <data name="OnePicCRFNum.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -3955,7 +3949,7 @@
     <value>362, 109</value>
   </data>
   <data name="label33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 12</value>
+    <value>28, 13</value>
   </data>
   <data name="label33.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -3979,7 +3973,7 @@
     <value>True</value>
   </data>
   <data name="AudioCopyCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioCopyCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>390, 136</value>
@@ -4015,7 +4009,7 @@
     <value>275, 109</value>
   </data>
   <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 12</value>
+    <value>27, 13</value>
   </data>
   <data name="label28.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -4039,7 +4033,7 @@
     <value>307, 107</value>
   </data>
   <data name="OnePicFPSNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 21</value>
+    <value>48, 20</value>
   </data>
   <data name="OnePicFPSNum.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -4069,7 +4063,7 @@
     <value>226, 109</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 13</value>
   </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -4099,7 +4093,7 @@
     <value>12, 109</value>
   </data>
   <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="label27.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -4123,7 +4117,7 @@
     <value>158, 107</value>
   </data>
   <data name="OnePicAudioBitrateNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 21</value>
+    <value>62, 20</value>
   </data>
   <data name="OnePicAudioBitrateNum.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -4144,7 +4138,7 @@
     <value>7</value>
   </data>
   <data name="AudioOnePicOutputButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioOnePicOutputButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>484, 78</value>
@@ -4171,7 +4165,7 @@
     <value>8</value>
   </data>
   <data name="AudioOnePicButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioOnePicButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4201,7 +4195,7 @@
     <value>9</value>
   </data>
   <data name="AudioPicAudioButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioPicAudioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4231,7 +4225,7 @@
     <value>10</value>
   </data>
   <data name="AudioPicButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioPicButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>484, 20</value>
@@ -4258,7 +4252,7 @@
     <value>11</value>
   </data>
   <data name="AudioOnePicOutputTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioOnePicOutputTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 78</value>
@@ -4282,7 +4276,7 @@
     <value>12</value>
   </data>
   <data name="AudioPicAudioTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioPicAudioTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 49</value>
@@ -4306,7 +4300,7 @@
     <value>13</value>
   </data>
   <data name="AudioPicTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AudioPicTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 20</value>
@@ -4363,7 +4357,7 @@
     <value>238, 147</value>
   </data>
   <data name="x264FramesLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="x264FramesLabel.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -4390,7 +4384,7 @@
     <value>11, 147</value>
   </data>
   <data name="x264SeekLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
+    <value>43, 13</value>
   </data>
   <data name="x264SeekLabel.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -4414,7 +4408,7 @@
     <value>377, 145</value>
   </data>
   <data name="x264FramesNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 21</value>
+    <value>100, 20</value>
   </data>
   <data name="x264FramesNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -4435,7 +4429,7 @@
     <value>117, 145</value>
   </data>
   <data name="x264SeekNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 21</value>
+    <value>110, 20</value>
   </data>
   <data name="x264SeekNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -4456,7 +4450,7 @@
     <value>True</value>
   </data>
   <data name="MaintainResolutionCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="MaintainResolutionCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>377, 222</value>
@@ -4504,7 +4498,7 @@
     <value>377, 120</value>
   </data>
   <data name="x264DemuxerComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
+    <value>100, 21</value>
   </data>
   <data name="x264DemuxerComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -4525,7 +4519,7 @@
     <value>True</value>
   </data>
   <data name="x264FLVCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264FLVCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>261, 172</value>
@@ -4552,7 +4546,7 @@
     <value>7</value>
   </data>
   <data name="x264OneBatchButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264OneBatchButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 265</value>
@@ -4579,7 +4573,7 @@
     <value>1</value>
   </data>
   <data name="x264PathButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264PathButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 15</value>
@@ -4606,7 +4600,7 @@
     <value>2</value>
   </data>
   <data name="x264PathTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264PathTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 15</value>
@@ -4632,14 +4626,11 @@
   <data name="lbAuto.HorizontalScrollbar" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbAuto.ItemHeight" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
   <data name="lbAuto.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 44</value>
   </data>
   <data name="lbAuto.Size" type="System.Drawing.Size, System.Drawing">
-    <value>469, 220</value>
+    <value>469, 212</value>
   </data>
   <data name="lbAuto.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -4657,7 +4648,7 @@
     <value>4</value>
   </data>
   <data name="x264BatchClearBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264BatchClearBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 102</value>
@@ -4687,7 +4678,7 @@
     <value>True</value>
   </data>
   <data name="x264BatchSubCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264BatchSubCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 131</value>
@@ -4714,7 +4705,7 @@
     <value>6</value>
   </data>
   <data name="x264BatchDeleteBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264BatchDeleteBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 73</value>
@@ -4741,7 +4732,7 @@
     <value>7</value>
   </data>
   <data name="x264BatchAddBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264BatchAddBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 44</value>
@@ -4768,7 +4759,7 @@
     <value>8</value>
   </data>
   <data name="btnBatchAuto.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="btnBatchAuto.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 236</value>
@@ -4822,7 +4813,7 @@
     <value>True</value>
   </data>
   <data name="x264ShutdownCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264ShutdownCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>401, 172</value>
@@ -4849,7 +4840,7 @@
     <value>9</value>
   </data>
   <data name="x264AudioParameterTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264AudioParameterTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>66, 93</value>
@@ -4873,7 +4864,7 @@
     <value>10</value>
   </data>
   <data name="x264SubTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264SubTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 64</value>
@@ -4897,7 +4888,7 @@
     <value>11</value>
   </data>
   <data name="x264OutTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264OutTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 35</value>
@@ -4921,7 +4912,7 @@
     <value>12</value>
   </data>
   <data name="x264VideoTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264VideoTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 6</value>
@@ -4948,7 +4939,7 @@
     <value>True</value>
   </data>
   <data name="x264Mode1RadioButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264Mode1RadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 1</value>
@@ -4978,7 +4969,7 @@
     <value>True</value>
   </data>
   <data name="x264Mode3RadioButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264Mode3RadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>77, 1</value>
@@ -5008,7 +4999,7 @@
     <value>True</value>
   </data>
   <data name="x264Mode2RadioButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264Mode2RadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>145, 1</value>
@@ -5062,7 +5053,7 @@
     <value>324, 123</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
+    <value>43, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -5113,7 +5104,7 @@
     <value>16</value>
   </data>
   <data name="x264AddPresetBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264AddPresetBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>286, 196</value>
@@ -5143,7 +5134,7 @@
     <value>17</value>
   </data>
   <data name="x264DeletePresetBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264DeletePresetBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 196</value>
@@ -5173,7 +5164,7 @@
     <value>18</value>
   </data>
   <data name="x264StartBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264StartBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 93</value>
@@ -5200,7 +5191,7 @@
     <value>19</value>
   </data>
   <data name="x264SubBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264SubBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 64</value>
@@ -5227,7 +5218,7 @@
     <value>20</value>
   </data>
   <data name="x264OutBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264OutBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 35</value>
@@ -5254,7 +5245,7 @@
     <value>21</value>
   </data>
   <data name="x264VideoBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264VideoBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 6</value>
@@ -5287,7 +5278,7 @@
     <value>8, 123</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>54, 13</value>
   </data>
   <data name="label16.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -5311,7 +5302,7 @@
     <value>66, 120</value>
   </data>
   <data name="x264ExeComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 20</value>
+    <value>239, 21</value>
   </data>
   <data name="x264ExeComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -5359,7 +5350,7 @@
     <value>66, 248</value>
   </data>
   <data name="cbFPS2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 20</value>
+    <value>88, 21</value>
   </data>
   <data name="cbFPS2.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -5386,7 +5377,7 @@
     <value>19, 250</value>
   </data>
   <data name="lbFPS2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 12</value>
+    <value>27, 13</value>
   </data>
   <data name="lbFPS2.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -5428,7 +5419,7 @@
     <value>377, 93</value>
   </data>
   <data name="x264AudioModeComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
+    <value>100, 21</value>
   </data>
   <data name="x264AudioModeComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -5449,7 +5440,7 @@
     <value>66, 196</value>
   </data>
   <data name="cbX264.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 20</value>
+    <value>123, 21</value>
   </data>
   <data name="cbX264.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -5476,7 +5467,7 @@
     <value>312, 98</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -5503,7 +5494,7 @@
     <value>7, 98</value>
   </data>
   <data name="labelAudio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="labelAudio.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -5530,7 +5521,7 @@
     <value>163, 223</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>32, 13</value>
   </data>
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -5560,7 +5551,7 @@
     <value>19, 223</value>
   </data>
   <data name="lbcrf.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 12</value>
+    <value>28, 13</value>
   </data>
   <data name="lbcrf.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -5587,7 +5578,7 @@
     <value>233, 250</value>
   </data>
   <data name="lbheight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 13</value>
   </data>
   <data name="lbheight.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -5614,7 +5605,7 @@
     <value>233, 223</value>
   </data>
   <data name="lbwidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 13</value>
   </data>
   <data name="lbwidth.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -5641,7 +5632,7 @@
     <value>277, 248</value>
   </data>
   <data name="x264HeightNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
+    <value>88, 20</value>
   </data>
   <data name="x264HeightNum.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -5668,7 +5659,7 @@
     <value>277, 221</value>
   </data>
   <data name="x264WidthNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
+    <value>88, 20</value>
   </data>
   <data name="x264WidthNum.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -5692,7 +5683,7 @@
     <value>66, 221</value>
   </data>
   <data name="x264CRFNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
+    <value>88, 20</value>
   </data>
   <data name="x264CRFNum.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -5719,7 +5710,7 @@
     <value>19, 223</value>
   </data>
   <data name="lbrate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 13</value>
   </data>
   <data name="lbrate.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -5743,7 +5734,7 @@
     <value>38</value>
   </data>
   <data name="x264CustomParameterTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264CustomParameterTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 221</value>
@@ -5785,7 +5776,7 @@
     <value>23, 200</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -5812,7 +5803,7 @@
     <value>66, 221</value>
   </data>
   <data name="x264BitrateNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
+    <value>88, 20</value>
   </data>
   <data name="x264BitrateNum.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -5863,7 +5854,7 @@
     <value>0</value>
   </data>
   <data name="DonateButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="DonateButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>345, 559</value>
@@ -5890,7 +5881,7 @@
     <value>0</value>
   </data>
   <data name="HelpTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="HelpTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 6</value>
@@ -6177,7 +6168,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>1</value>
   </data>
   <data name="HomePageBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="HomePageBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>423, 559</value>
@@ -6204,7 +6195,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>2</value>
   </data>
   <data name="AboutBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="AboutBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>496, 559</value>
@@ -6237,7 +6228,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>276, 565</value>
   </data>
   <data name="linkLabel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="linkLabel4.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -6264,7 +6255,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>139, 565</value>
   </data>
   <data name="linkLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 12</value>
+    <value>116, 13</value>
   </data>
   <data name="linkLabel2.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -6291,7 +6282,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>8, 565</value>
   </data>
   <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 12</value>
+    <value>111, 13</value>
   </data>
   <data name="linkLabel1.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -6348,7 +6339,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>211, 140</value>
   </data>
   <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 13</value>
   </data>
   <data name="label37.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -6378,7 +6369,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>12, 140</value>
   </data>
   <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="label36.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -6402,7 +6393,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>106, 138</value>
   </data>
   <data name="BlackBitrateNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 21</value>
+    <value>96, 20</value>
   </data>
   <data name="BlackBitrateNum.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -6432,7 +6423,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>211, 109</value>
   </data>
   <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 12</value>
+    <value>19, 13</value>
   </data>
   <data name="label35.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -6471,7 +6462,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>107, 108</value>
   </data>
   <data name="BlackSecondComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 20</value>
+    <value>96, 21</value>
   </data>
   <data name="BlackSecondComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -6498,7 +6489,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>12, 109</value>
   </data>
   <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="label34.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -6522,7 +6513,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>390, 107</value>
   </data>
   <data name="BlackCRFNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
+    <value>88, 20</value>
   </data>
   <data name="BlackCRFNum.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -6552,7 +6543,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>361, 109</value>
   </data>
   <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 12</value>
+    <value>28, 13</value>
   </data>
   <data name="label32.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -6576,7 +6567,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>True</value>
   </data>
   <data name="BlackNoPicCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="BlackNoPicCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6615,7 +6606,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>259, 109</value>
   </data>
   <data name="label31.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 12</value>
+    <value>27, 13</value>
   </data>
   <data name="label31.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -6639,7 +6630,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>288, 107</value>
   </data>
   <data name="BlackFPSNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 21</value>
+    <value>48, 20</value>
   </data>
   <data name="BlackFPSNum.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -6663,7 +6654,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>False</value>
   </data>
   <data name="BlackPicButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="BlackPicButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>484, 78</value>
@@ -6693,7 +6684,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>False</value>
   </data>
   <data name="BlackPicTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="BlackPicTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 78</value>
@@ -6717,7 +6708,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>12</value>
   </data>
   <data name="BlackStartButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="BlackStartButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6747,7 +6738,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>13</value>
   </data>
   <data name="BlackOutputButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="BlackOutputButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6777,7 +6768,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>14</value>
   </data>
   <data name="BlackVideoButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="BlackVideoButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>484, 20</value>
@@ -6804,7 +6795,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>15</value>
   </data>
   <data name="BlackOutputTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="BlackOutputTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 49</value>
@@ -6828,7 +6819,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>16</value>
   </data>
   <data name="BlackVideoTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="BlackVideoTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 20</value>
@@ -6909,7 +6900,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>260, 217</value>
   </data>
   <data name="ReleaseDatelabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 12</value>
+    <value>0, 13</value>
   </data>
   <data name="ReleaseDatelabel.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -6933,7 +6924,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>187, 216</value>
   </data>
   <data name="ReleaseDatelabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="ReleaseDatelabel2.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -6954,7 +6945,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>1</value>
   </data>
   <data name="CheckUpdateButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="CheckUpdateButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 210</value>
@@ -6984,7 +6975,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>True</value>
   </data>
   <data name="SetupDeleteTempFileCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="SetupDeleteTempFileCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 91</value>
@@ -7011,7 +7002,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>3</value>
   </data>
   <data name="SetDefaultButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="SetDefaultButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 171</value>
@@ -7059,7 +7050,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>125, 55</value>
   </data>
   <data name="x264PriorityComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 20</value>
+    <value>116, 21</value>
   </data>
   <data name="x264PriorityComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -7086,7 +7077,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>21, 58</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 12</value>
+    <value>66, 13</value>
   </data>
   <data name="label11.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -7122,7 +7113,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>125, 22</value>
   </data>
   <data name="languageComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 20</value>
+    <value>116, 21</value>
   </data>
   <data name="languageComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -7146,7 +7137,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>21, 25</value>
   </data>
   <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="label26.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -7167,7 +7158,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>8</value>
   </data>
   <data name="DeleteLogButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="DeleteLogButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>172, 129</value>
@@ -7194,7 +7185,7 @@ x264页面中的宽度或高度为0时将不改变视频分辨率
     <value>9</value>
   </data>
   <data name="ViewLogButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="ViewLogButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 129</value>

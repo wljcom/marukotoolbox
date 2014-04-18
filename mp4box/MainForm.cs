@@ -67,6 +67,8 @@ namespace mp4box
         string tempPic = "";
         DateTime ReleaseDate = DateTime.Parse("2014-4-14");
 
+        public bool shutdownState = false;
+
         [StructLayout(LayoutKind.Sequential)]
         public struct MARGINS
         {
@@ -3221,6 +3223,11 @@ namespace mp4box
                     MessageBox.Show("喵~伦家已经是最新版啦！", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
+
+        private void x264ShutdownCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            shutdownState = x264ShutdownCheckBox.Checked;
         }
     }
 }

@@ -259,20 +259,29 @@ namespace mp4box
             batPath = System.IO.Path.Combine(
                 Environment.GetEnvironmentVariable("TEMP", EnvironmentVariableTarget.Machine),
                 "xiaowan" + DateTime.Now.ToFileTimeUtc().ToString() + ".bat");
-            var sw = new System.IO.StreamWriter(batPath, false, Encoding.GetEncoding(0));
+            var encoder = Encoding.GetEncoding(0);
+            var sw = new System.IO.StreamWriter(batPath, false, encoder);
             sw.WriteLine(Commands);
             sw.Close();
             // synchronize UI
             workCompleted = -1;
             richTextBoxOutput.Select();
-            // start working
-            ProcStart();
+            // validate the command string
+            if (Commands.Equals(encoder.GetString(encoder.GetBytes(Commands))))
+                ProcStart();
+            else
+            {
+                MessageBox.Show("Path or filename contains invalid characters, please rename and retry."
+                    + Environment.NewLine +
+                    "路径或文件名含有不可识别的字符，请重命名后重试。");
+                this.Close();
+            }
         }
 
         private void WorkingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // check remaining works
-            if (!proc.HasExited)
+            if (!(proc == null || proc.HasExited))
             {
                 // ask if user hit close button on any accident
                 var result = MessageBox.Show("Processing is still undergoing, confirm exit?",
@@ -373,6 +382,10 @@ namespace mp4box
                 // flash form
                 FlashForm();
             });
+            // shutdown the system if required
+            MainForm main = (MainForm)this.Owner;
+            if (main.shutdownState)
+                System.Diagnostics.Process.Start("shutdown", "-s -c \"Work of Xiaowan completed. Shutdown in 30 seconds.\"");
         }
 
         /// <summary>

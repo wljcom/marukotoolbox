@@ -2026,6 +2026,7 @@
             this.x264ShutdownCheckBox.BackColor = System.Drawing.Color.Transparent;
             this.x264ShutdownCheckBox.Name = "x264ShutdownCheckBox";
             this.x264ShutdownCheckBox.UseVisualStyleBackColor = false;
+            this.x264ShutdownCheckBox.CheckedChanged += new System.EventHandler(this.x264ShutdownCheckBox_CheckedChanged);
             // 
             // x264AudioParameterTextBox
             // 
