@@ -285,6 +285,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
+            this.TrayModeCheckBox = new ControlExs.QQCheckBox();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -2620,6 +2621,7 @@
             // 
             // SetupTabPage
             // 
+            this.SetupTabPage.Controls.Add(this.TrayModeCheckBox);
             this.SetupTabPage.Controls.Add(this.ReleaseDatelabel);
             this.SetupTabPage.Controls.Add(this.ReleaseDatelabel2);
             this.SetupTabPage.Controls.Add(this.CheckUpdateButton);
@@ -2719,6 +2721,14 @@
             this.ViewLogButton.Name = "ViewLogButton";
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
+            // 
+            // TrayModeCheckBox
+            // 
+            resources.ApplyResources(this.TrayModeCheckBox, "TrayModeCheckBox");
+            this.TrayModeCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.TrayModeCheckBox.Name = "TrayModeCheckBox";
+            this.TrayModeCheckBox.UseVisualStyleBackColor = false;
+            this.TrayModeCheckBox.CheckedChanged += new System.EventHandler(this.TrayModeCheckBox_CheckedChanged);
             // 
             // MainForm
             // 
@@ -3060,6 +3070,7 @@
         private ControlExs.QQButton CheckUpdateButton;
         private System.Windows.Forms.Label ReleaseDatelabel2;
         private System.Windows.Forms.Label ReleaseDatelabel;
+        private ControlExs.QQCheckBox TrayModeCheckBox;
     }
 }
 

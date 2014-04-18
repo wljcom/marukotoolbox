@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkingForm));
             this.buttonAbort = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
@@ -35,6 +36,7 @@
             this.labelworkCount = new System.Windows.Forms.Label();
             this.progressBarX264 = new System.Windows.Forms.ProgressBar();
             this.labelProgress = new System.Windows.Forms.Label();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // buttonAbort
@@ -74,6 +76,12 @@
             resources.ApplyResources(this.labelProgress, "labelProgress");
             this.labelProgress.Name = "labelProgress";
             // 
+            // notifyIcon
+            // 
+            resources.ApplyResources(this.notifyIcon, "notifyIcon");
+            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
+            this.notifyIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseMove);
+            // 
             // WorkingForm
             // 
             resources.ApplyResources(this, "$this");
@@ -89,6 +97,7 @@
             this.Name = "WorkingForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WorkingForm_FormClosing);
             this.Load += new System.EventHandler(this.WorkingForm_Load);
+            this.SizeChanged += new System.EventHandler(this.WorkingForm_SizeChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,5 +111,6 @@
         private System.Windows.Forms.ProgressBar progressBarX264;
         private System.Windows.Forms.Label labelworkCount;
         private System.Windows.Forms.Label labelProgress;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }

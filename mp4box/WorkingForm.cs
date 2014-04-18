@@ -99,6 +99,13 @@ namespace mp4box
         /// </summary>
         private int frameCount;
 
+        /// <summary>
+        /// Path to the tools directory.
+        /// </summary>
+        private string workPath;
+
+        private Timer timer;
+
         #endregion
 
         #region Regex Patterns
@@ -163,9 +170,9 @@ namespace mp4box
             /// ffmpeg output Regex.
             ///     Available patterns: duration, tbr.
             /// </summary>
-            public static readonly Regex ffmpegReg = new Regex(ffmpegRegStr, RegexOptions.Singleline); 
+            public static readonly Regex ffmpegReg = new Regex(ffmpegRegStr, RegexOptions.Singleline);
         }
-        
+
         #endregion
 
         #region Native Functions
@@ -244,7 +251,7 @@ namespace mp4box
             // http://msdn.microsoft.com/en-us/library/windows/desktop/bb787587(v=vs.85).aspx
             [DllImport("user32.dll")]
             public static extern bool GetScrollRange(IntPtr hWnd, int nBar, out int lpMinPos, out int lpMaxPos);
-            
+
             // http://msdn.microsoft.com/en-us/library/windows/desktop/ms679347(v=vs.85).aspx
             [DllImport("user32.dll")]
             public static extern bool FlashWindowEx(ref FLASHWINFO pwfi);
@@ -276,6 +283,9 @@ namespace mp4box
                     "路径或文件名含有不可识别的字符，请重命名后重试。");
                 this.Close();
             }
+            notifyIcon.Visible = true;
+            MainForm main = (MainForm)this.Owner;
+            workPath = main.workPath;
         }
 
         private void WorkingForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -332,6 +342,32 @@ namespace mp4box
                 this.ActiveControl = null;
         }
 
+        private void WorkingForm_SizeChanged(object sender, EventArgs e)
+        {
+            MainForm main = (MainForm)this.Owner;
+            if (main.trayMode)
+            {
+                if (this.WindowState == FormWindowState.Minimized)
+                {
+                    this.WindowState = FormWindowState.Minimized;
+                    //this.Hide();
+                    this.notifyIcon.Visible = true;
+                    notifyIcon.ShowBalloonTip(200, "小丸工具箱", "已经隐藏到托盘。", ToolTipIcon.Info);
+                }
+            }
+        }
+
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Visible = true;
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void notifyIcon_MouseMove(object sender, MouseEventArgs e)
+        {
+            notifyIcon.ShowBalloonTip(0, "小丸工具箱", labelProgress.Text + " " + progressBarX264.Value.ToString(), ToolTipIcon.Info);
+        }
+   
         #endregion
 
         /// <summary>
@@ -376,12 +412,15 @@ namespace mp4box
                 {
                     richTextBoxOutput.AppendText(Environment.NewLine +
                         "Potential Error detected. Please double check the log.");
-                    richTextBoxOutput.AppendText(Environment.NewLine + 
+                    richTextBoxOutput.AppendText(Environment.NewLine +
                         "Exit code is: " + proc.ExitCode.ToString());
                 }
                 // flash form
                 FlashForm();
             });
+
+            notifyIcon.ShowBalloonTip(1000, "小丸工具箱", @"完成了喵~ (= ω =)", ToolTipIcon.Info);
+
             // shutdown the system if required
             MainForm main = (MainForm)this.Owner;
             if (main.shutdownState)
@@ -432,7 +471,7 @@ namespace mp4box
                 {
                     UpdateWorkCountUI();
                     UpdateProgressBar(0);
-                    frameCount = EstimateFrame(result.Groups["workDIR"].Value, result.Groups["fileIn"].Value);
+                    frameCount = EstimateFrame(workPath, result.Groups["fileIn"].Value);
                 }
                 // try ffms pattern
                 result = Patterns.ffmsReg.Match(e.Data);
@@ -497,7 +536,7 @@ namespace mp4box
         /// <returns>Estimated frame count. 1% tolerance added.</returns>
         private int EstimateFrame(string workPath, string filePath)
         {
-            string ffmpegPath = System.IO.Path.Combine(workPath, @"tools\ffmpeg.exe");
+            string ffmpegPath = System.IO.Path.Combine(workPath, @"ffmpeg.exe");
             var processInfo = new System.Diagnostics.ProcessStartInfo(ffmpegPath, "-i \"" + filePath + '"');
             processInfo.CreateNoWindow = true;
             processInfo.UseShellExecute = false;
@@ -538,6 +577,8 @@ namespace mp4box
             info.uCount = 3;
             info.dwTimeout = 0;
             return NativeMethods.FlashWindowEx(ref info);
+
         }
+
     }
 }
