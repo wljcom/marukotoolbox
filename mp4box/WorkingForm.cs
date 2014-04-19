@@ -104,8 +104,6 @@ namespace mp4box
         /// </summary>
         private string workPath;
 
-        private Timer timer;
-
         #endregion
 
         #region Regex Patterns
@@ -147,9 +145,9 @@ namespace mp4box
             /// -o "X:\workDIR\output.ext" "X:\workDIR\input.ext" --acodec faac --abitrate 128</para>
             /// </summary>
             /// <remarks>
-            /// Without double quote: ^(?<workDIR>.+)>".+x264.+ -o "(?<fileOut>.+)" "(?<fileIn>.+)"
+            /// Without double quote: ^.+>"(?<workDIR>.+)\\x264.+ -o "(?<fileOut>.+)" "(?<fileIn>.+)"
             /// </remarks>
-            private const string fileRegStr = @"^(?<workDIR>.+)>"".+x264.+ -o ""(?<fileOut>.+)"" ""(?<fileIn>.+)""";
+            private const string fileRegStr = @">""(?<workDIR>.+)\\x264.+-o ""(?<fileOut>.+)"" ""(?<fileIn>.+)""";
 
             /// <summary>
             /// Filename and working directory Regex.
@@ -342,30 +340,17 @@ namespace mp4box
                 this.ActiveControl = null;
         }
 
-        private void WorkingForm_SizeChanged(object sender, EventArgs e)
+        private void WorkingForm_Resize(object sender, EventArgs e)
         {
-            MainForm main = (MainForm)this.Owner;
-            if (main.trayMode)
-            {
-                if (this.WindowState == FormWindowState.Minimized)
-                {
-                    this.WindowState = FormWindowState.Minimized;
-                    //this.Hide();
-                    this.notifyIcon.Visible = true;
-                    notifyIcon.ShowBalloonTip(200, "小丸工具箱", "已经隐藏到托盘。", ToolTipIcon.Info);
-                }
-            }
+            if (this.WindowState == FormWindowState.Minimized)
+                BalloonTip("丸子跑到这里了喔~", 75);
         }
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             this.Visible = true;
             this.WindowState = FormWindowState.Normal;
-        }
-
-        private void notifyIcon_MouseMove(object sender, MouseEventArgs e)
-        {
-            notifyIcon.ShowBalloonTip(0, "小丸工具箱", labelProgress.Text + " " + progressBarX264.Value.ToString(), ToolTipIcon.Info);
+            this.Activate();
         }
    
         #endregion
@@ -399,7 +384,7 @@ namespace mp4box
             UpdateWorkCountUI();
             buttonAbort.InvokeIfRequired(() =>
                 buttonAbort.Enabled = false);
-            UpdateProgressBar(1);
+            UpdateProgress(1);
             // wait a little bit for the last asynchronous reading
             System.Threading.Thread.Sleep(75);
             // append finish tag
@@ -415,11 +400,10 @@ namespace mp4box
                     richTextBoxOutput.AppendText(Environment.NewLine +
                         "Exit code is: " + proc.ExitCode.ToString());
                 }
-                // flash form
-                FlashForm();
             });
-
-            notifyIcon.ShowBalloonTip(1000, "小丸工具箱", @"完成了喵~ (= ω =)", ToolTipIcon.Info);
+            // flash form and show balloon tips
+            FlashForm();
+            BalloonTip(@"完成了喵~ (= ω =)");
 
             // shutdown the system if required
             MainForm main = (MainForm)this.Owner;
@@ -470,17 +454,17 @@ namespace mp4box
                 if (result.Success)
                 {
                     UpdateWorkCountUI();
-                    UpdateProgressBar(0);
+                    UpdateProgress(0);
                     frameCount = EstimateFrame(workPath, result.Groups["fileIn"].Value);
                 }
                 // try ffms pattern
                 result = Patterns.ffmsReg.Match(e.Data);
                 if (result.Success)
-                    UpdateProgressBar(Double.Parse(result.Groups["percent"].Value) / 100);
+                    UpdateProgress(Double.Parse(result.Groups["percent"].Value) / 100);
                 // try lavf pattern
                 result = Patterns.lavfReg.Match(e.Data);
                 if (result.Success)
-                    UpdateProgressBar(Double.Parse(result.Groups["frame"].Value) / frameCount);
+                    UpdateProgress(Double.Parse(result.Groups["frame"].Value) / frameCount);
             }
         }
 
@@ -520,12 +504,14 @@ namespace mp4box
         /// Update Progress Bar as well as the number on it.
         /// </summary>
         /// <param name="value">Progress expressed in decimal (0.00-1.00).</param>
-        private void UpdateProgressBar(double value)
+        private void UpdateProgress(double value)
         {
             progressBarX264.InvokeIfRequired(() =>
                 progressBarX264.Value = Convert.ToInt32(value * progressBarX264.Maximum));
             labelProgress.InvokeIfRequired(() =>
                 labelProgress.Text = value.ToString("P"));
+            notifyIcon.Text = "小丸工具箱" + Environment.NewLine +
+                labelworkCount.Text + " - " + labelProgress.Text;
         }
 
         /// <summary>
@@ -577,8 +563,21 @@ namespace mp4box
             info.uCount = 3;
             info.dwTimeout = 0;
             return NativeMethods.FlashWindowEx(ref info);
-
         }
 
+        /// <summary>
+        /// Pop a balloon tip.
+        /// </summary>
+        /// <param name="notes">The content to show.</param>
+        /// <param name="timeout">Tip timeout.</param>
+        private void BalloonTip(string notes, int timeout = 500)
+        {
+            MainForm main = (MainForm)this.Owner;
+            if (main.trayMode)
+            {
+                notifyIcon.Visible = true;
+                notifyIcon.ShowBalloonTip(timeout, "小丸工具箱", notes, ToolTipIcon.Info);
+            }
+        }
     }
 }

@@ -80,7 +80,6 @@
             // 
             resources.ApplyResources(this.notifyIcon, "notifyIcon");
             this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
-            this.notifyIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseMove);
             // 
             // WorkingForm
             // 
@@ -95,7 +94,7 @@
             this.Name = "WorkingForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WorkingForm_FormClosing);
             this.Load += new System.EventHandler(this.WorkingForm_Load);
-            this.SizeChanged += new System.EventHandler(this.WorkingForm_SizeChanged);
+            this.Resize += new System.EventHandler(this.WorkingForm_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
