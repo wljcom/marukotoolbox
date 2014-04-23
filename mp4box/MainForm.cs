@@ -2609,28 +2609,28 @@ namespace mp4box
                 line = reader.ReadLine();
             }
             p.WaitForExit();//等待程序执行完退出进程
-            File.WriteAllText(workPath + "\\log.txt", log.ToString(), UnicodeEncoding.Default);
+            File.WriteAllText(startpath + "\\log.txt", log.ToString(), UnicodeEncoding.Default);
             p.Close();//关闭进程
             reader.Close();//关闭流
         }
         public void LogRecord(string log)
         {
-            File.AppendAllText(workPath + "\\log.txt", "===========" + DateTime.Now.ToString() + "===========\r\n" + log + "\r\n\r\n", UnicodeEncoding.Default);
+            File.AppendAllText(startpath + "\\log.txt", "===========" + DateTime.Now.ToString() + "===========\r\n" + log + "\r\n\r\n", UnicodeEncoding.Default);
         }
         private void DeleteLogButton_Click(object sender, EventArgs e)
         {
-            if (File.Exists(workPath + "\\log.txt"))
+            if (File.Exists(startpath + "\\log.txt"))
             {
-                File.Delete(workPath + "\\log.txt");
+                File.Delete(startpath + "\\log.txt");
                 MessageBox.Show("已经删除日志文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else MessageBox.Show("没有找到日志文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void ViewLogButton_Click(object sender, EventArgs e)
         {
-            if (File.Exists(workPath + "\\log.txt"))
+            if (File.Exists(startpath + "\\log.txt"))
             {
-                System.Diagnostics.Process.Start(workPath + "\\log.txt");
+                System.Diagnostics.Process.Start(startpath + "\\log.txt");
             }
             else MessageBox.Show("没有找到日志文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
