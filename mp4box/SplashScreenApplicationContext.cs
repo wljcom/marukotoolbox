@@ -79,8 +79,8 @@ public abstract class SplashScreenApplicationContext : ApplicationContext
         this._SplashScreenForm = null;     
         //必须先显示，再激活，否则主窗体不能在启动窗体消失后出现 
         this._PrimaryForm.Show(); 
-        this._PrimaryForm.Activate(); 
-         
+        this._PrimaryForm.TopMost = true;
+        //this._PrimaryForm.Activate();
         this._PrimaryForm.Closed += new EventHandler(_PrimaryForm_Closed); 
     } 
     private void _PrimaryForm_Closed(object sender, EventArgs e) 

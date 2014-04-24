@@ -21,6 +21,10 @@ namespace mp4box
     public partial class MainForm : Form
     {
 
+        public string workPath = "!undefined";
+        public bool shutdownState = false;
+        public bool trayMode = false;
+
         #region Private Members Declaration
 
         StringBuilder avsBuilder = new StringBuilder(1000);
@@ -71,22 +75,28 @@ namespace mp4box
 
         #endregion
 
-        public string workPath = "!undefined";
-        public bool shutdownState = false;
-        public bool trayMode = false;
+        #region CPU Porocessors Number
 
         [StructLayout(LayoutKind.Sequential)]
-        public struct MARGINS
+        public struct SYSTEM_INFO
         {
-            public int Left;
-            public int Right;
-            public int Top;
-            public int Bottom;
+            public uint dwOemId;
+            public uint dwPageSize;
+            public uint lpMinimumApplicationAddress;
+            public uint lpMaximumApplicationAddress;
+            public uint dwActiveProcessorMask;
+            public uint dwNumberOfProcessors;
+            public uint dwProcessorType;
+            public uint dwAllocationGranularity;
+            public uint dwProcessorLevel;
+            public uint dwProcessorRevision;
         }
-        [DllImport("dwmapi.dll", PreserveSig = false)]
-        static extern void DwmExtendFrameIntoClientArea(IntPtr hwnd, ref MARGINS margins);
-        [DllImport("dwmapi.dll", PreserveSig = false)]
-        static extern bool DwmIsCompositionEnabled();
+
+        [DllImport("kernel32")]
+        static extern void GetSystemInfo(ref SYSTEM_INFO pSI);
+
+        #endregion
+
         public MainForm()
         {
             InitializeComponent();
@@ -179,11 +189,11 @@ namespace mp4box
                 case 1:
                     if (x264HeightNum.Value == 0 || x264WidthNum.Value == 0 || MaintainResolutionCheckBox.Checked)
                     {
-                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  --crf " + x264CRFNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + "  --crf " + x264CRFNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     else
                     {
-                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  --crf " + x264CRFNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + "  --crf " + x264CRFNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     break;
                 case 2:
@@ -197,9 +207,10 @@ namespace mp4box
                     }
                     break;
                 case 0:
-                    x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  " + x264CustomParameterTextBox.Text + " --demuxer " + x264DemuxerComboBox.Text + " -o \"" + output + "\" \"" + input + "\"\r\n";
+                    x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " " + x264CustomParameterTextBox.Text + " --demuxer " + x264DemuxerComboBox.Text + " -o \"" + output + "\" \"" + input + "\"\r\n";
                     break;
             }
+
             return x264;
         }
         //public string x264bat(string input, string output)
@@ -722,7 +733,7 @@ namespace mp4box
 
                 //string[] deletedfiles = { tempPic, "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat",
                 //                            "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
-                string[] deletedfiles = { tempPic, tempavspath, workPath + "msg.vbs", workPath + "tmp.stat.mbtree", workPath + "tmp.stat" };
+                string[] deletedfiles = { "temp.wav", tempPic, tempavspath, workPath + "msg.vbs", workPath + "tmp.stat.mbtree", workPath + "tmp.stat" };
                 deleteFileList.AddRange(deletedfiles);
 
                 foreach (string file in deleteFileList)
@@ -758,6 +769,7 @@ namespace mp4box
             cfa.AppSettings.Settings["TrayMode"].Value = TrayModeCheckBox.Checked.ToString();
             cfa.AppSettings.Settings["LanguageIndex"].Value = languageComboBox.SelectedIndex.ToString();
             cfa.AppSettings.Settings["SplashScreen"].Value = SplashScreenCheckBox.Checked.ToString();
+            cfa.AppSettings.Settings["x264Threads"].Value = x264ThreadsComboBox.SelectedIndex.ToString();
 
             cfa.Save();
             ConfigurationManager.RefreshSection("appSettings"); // 刷新命名节，在下次检索它时将从磁盘重新读取它。记住应用程序要刷新节点
@@ -837,6 +849,7 @@ namespace mp4box
 
         }
 
+
         private void Form1_Load(object sender, EventArgs e)
         {
             var modulename = Process.GetCurrentProcess().MainModule.ModuleName;
@@ -846,6 +859,15 @@ namespace mp4box
             {
                 MessageBox.Show("你已经打开了一个小丸工具箱喔！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
+            }
+
+            SYSTEM_INFO pSI = new SYSTEM_INFO();
+            GetSystemInfo(ref pSI);
+            int processorNumber = (int)pSI.dwNumberOfProcessors;
+
+            for (int i = 1; i <= 32; i++)
+            {
+                x264ThreadsComboBox.Items.Add(i.ToString());
             }
             //Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("zh-TW");
             //use YAHEI in VistaOrNewer
@@ -911,6 +933,7 @@ namespace mp4box
                 BlackCRFNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["BlackCRF"]);
                 BlackBitrateNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["BlackBitrate"]);
                 SetupDeleteTempFileCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["SetupDeleteTempFile"]);
+                x264ThreadsComboBox.SelectedIndex = Convert.ToInt32(ConfigurationManager.AppSettings["x264Threads"]);
                 TrayModeCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["TrayMode"]);
                 SplashScreenCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["SplashScreen"]);
 
@@ -3129,8 +3152,8 @@ namespace mp4box
             }
 
             //批处理
-            mux = "ffmpeg -loop 1 -r " + BlackFPSNum.Value.ToString() + " -t " + blackSecond.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + BlackCRFNum.Value.ToString() + " -y black.flv\r\n";
-            mux += string.Format("flvbind \"{0}\"  \"{1}\"  black.flv\r\n", BlackOutputTextBox.Text, BlackVideoTextBox.Text);
+            mux = "\""+ workPath + "\\ffmpeg\" -loop 1 -r " + BlackFPSNum.Value.ToString() + " -t " + blackSecond.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + BlackCRFNum.Value.ToString() + " -y black.flv\r\n";
+            mux += string.Format("\"{0}\\flvbind\" \"{1}\"  \"{2}\"  black.flv\r\n", workPath, BlackOutputTextBox.Text, BlackVideoTextBox.Text);
             mux += "del black.flv\r\n";
 
             batpath = Path.Combine(workPath, Path.GetRandomFileName() + ".bat");

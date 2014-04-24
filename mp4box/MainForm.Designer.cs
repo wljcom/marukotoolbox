@@ -286,6 +286,8 @@
             this.label26 = new System.Windows.Forms.Label();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
+            this.x264ThreadsComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -2613,6 +2615,8 @@
             // 
             // SetupTabPage
             // 
+            this.SetupTabPage.Controls.Add(this.label2);
+            this.SetupTabPage.Controls.Add(this.x264ThreadsComboBox);
             this.SetupTabPage.Controls.Add(this.SplashScreenCheckBox);
             this.SetupTabPage.Controls.Add(this.TrayModeCheckBox);
             this.SetupTabPage.Controls.Add(this.ReleaseDatelabel);
@@ -2731,6 +2735,18 @@
             this.ViewLogButton.Name = "ViewLogButton";
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
+            // 
+            // x264ThreadsComboBox
+            // 
+            this.x264ThreadsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.x264ThreadsComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.x264ThreadsComboBox, "x264ThreadsComboBox");
+            this.x264ThreadsComboBox.Name = "x264ThreadsComboBox";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
             // MainForm
             // 
@@ -3073,6 +3089,8 @@
         private System.Windows.Forms.Label ReleaseDatelabel;
         private ControlExs.QQCheckBox TrayModeCheckBox;
         private ControlExs.QQCheckBox SplashScreenCheckBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox x264ThreadsComboBox;
     }
 }
 
