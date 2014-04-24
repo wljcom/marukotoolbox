@@ -142,12 +142,13 @@ namespace mp4box
             /// x264 execution sample output:
             /// <para>X:\toolDIR>"X:\toolDIR\tools\x264_32_tMod-8bit-420.exe" --crf 24 --preset 8 --demuxer ffms
             /// -r 3 --b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8
-            /// -o "X:\workDIR\output.ext" "X:\workDIR\input.ext" --acodec faac --abitrate 128</para>
+            /// -o "X:\workDIR\output.ext" "X:\workDIR\input.ext" --vf subtitles --sub "X:\workDIR\sub.ext"
+            /// --acodec faac --abitrate 128</para>
             /// </summary>
             /// <remarks>
-            /// Without double quote: ^.+>"(?<workDIR>.+)\\x264.+ -o "(?<fileOut>.+)" "(?<fileIn>.+)"
+            /// Without double quote: ^.+>"(?<workDIR>[^"]+)\\x264.+ -o "(?<fileOut>[^"]+)" "(?<fileIn>[^"]+)"
             /// </remarks>
-            private const string fileRegStr = @">""(?<workDIR>.+)\\x264.+-o ""(?<fileOut>.+)"" ""(?<fileIn>.+)""";
+            private const string fileRegStr = @">""(?<workDIR>[^""]+)\\x264.+-o ""(?<fileOut>[^""]+)"" ""(?<fileIn>[^""]+)""";
 
             /// <summary>
             /// Filename and working directory Regex.
@@ -522,13 +523,19 @@ namespace mp4box
         /// <returns>Estimated frame count. 1% tolerance added.</returns>
         private int EstimateFrame(string workPath, string filePath)
         {
-            string ffmpegPath = System.IO.Path.Combine(workPath, @"ffmpeg.exe");
+            string ffmpegPath = System.IO.Path.Combine(workPath, "ffmpeg.exe");
             var processInfo = new System.Diagnostics.ProcessStartInfo(ffmpegPath, "-i \"" + filePath + '"');
             processInfo.CreateNoWindow = true;
             processInfo.UseShellExecute = false;
             processInfo.RedirectStandardError = true;
             var ffproc = System.Diagnostics.Process.Start(processInfo);
+            // log and append
             string mediaInfo = ffproc.StandardError.ReadToEnd();
+            richTextBoxOutput.InvokeIfRequired(() =>
+            {
+                richTextBoxOutput.AppendText("Input file: " + filePath + Environment.NewLine);
+                richTextBoxOutput.AppendText(mediaInfo + Environment.NewLine);
+            });
             ffproc.WaitForExit();
             var result = Patterns.ffmpegReg.Match(mediaInfo);
             if (!result.Success)
@@ -556,7 +563,8 @@ namespace mp4box
         {
             var info = new NativeMethods.FLASHWINFO();
             info.cbSize = Convert.ToUInt32(Marshal.SizeOf(info));
-            info.hwnd = this.Handle;
+            this.InvokeIfRequired(() =>
+                info.hwnd = this.Handle);
             info.dwFlags = NativeMethods.FlashWindowFlags.FLASHW_ALL |
                 NativeMethods.FlashWindowFlags.FLASHW_TIMERNOFG;
             // Flash 3 times

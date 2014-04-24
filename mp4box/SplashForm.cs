@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace mp4box
 {
+    using Extentions;
     public partial class SplashForm : Form
     {
         //int iCount = 0;
@@ -21,14 +22,10 @@ namespace mp4box
             this.Opacity = 0.1;
         }
 
-        private void SplashForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void timer_Tick(object sender, EventArgs e)
         {
-            this.Opacity += 0.1;
+            this.InvokeIfRequired(() =>
+                this.Opacity += 0.1);
 
             //if (iCount > 800)
             //{
