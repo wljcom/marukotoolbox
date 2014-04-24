@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Threading;
+using System.Configuration;
 namespace mp4box
 {
     static class Program
@@ -16,8 +17,15 @@ namespace mp4box
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mycontext());
-            //Application.Run(new MainForm());
+
+            if (ConfigurationManager.AppSettings["SplashScreen"] == "True")
+            {
+                Application.Run(new mycontext());
+            }
+            else
+            {
+                Application.Run(new MainForm());
+            }
         }
     }
 }

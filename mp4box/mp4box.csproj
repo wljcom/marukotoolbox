@@ -154,6 +154,9 @@
     <EmbeddedResource Include="MainForm.zh-Hant.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.zh-TW.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PreviewForm.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -171,7 +174,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WorkingForm.en.resx">
+      <DependentUpon>WorkingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkingForm.ja-JP.resx">
+      <DependentUpon>WorkingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WorkingForm.resx">
+      <DependentUpon>WorkingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkingForm.zh-TW.resx">
       <DependentUpon>WorkingForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">

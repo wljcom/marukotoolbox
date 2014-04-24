@@ -310,10 +310,6 @@ namespace mp4box
                     break;
             }
             aac = ffmpeg + "\r\n" + neroaac + "\r\n";
-            if (cbwavtemp.Checked == false)
-            {
-                aac += "del temp.wav\r\n";
-            }
             return aac;
         }
         public void oneAuto(string video, string output)
@@ -599,30 +595,36 @@ namespace mp4box
             if (namevideo == "")
             {
                 MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
             //else if (nameaudio == "")
             //{
             //    MessageBox.Show("请选择音频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //}
-            else if (nameout == "")
+            if (nameout == "")
             {
                 MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (cbFPS.Text == "auto")
+            {
+
+                mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + namevideo + "\" -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
             }
             else
             {
-                if (cbFPS.Text == "auto")
-                {
-                    mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + namevideo + "\" -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
-                }
-                else
-                {
-                    mux = "\"" + workPath + "\\mp4box.exe\" -fps " + cbFPS.Text + " -add \"" + namevideo + "\" -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
-                }
-                batpath = workPath + "\\mux.bat";
-                File.WriteAllText(batpath, mux, UnicodeEncoding.Default);
-                LogRecord(mux);
-                Process.Start(batpath);
+                mux = "\"" + workPath + "\\mp4box.exe\" -fps " + cbFPS.Text + " -add \"" + namevideo + "\" -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
             }
+
+            if (nameaudio == "") //如果没有音频流
+            {
+                mux = mux.Replace("-add \"\"", "");
+            }
+
+            batpath = workPath + "\\mux.bat";
+            File.WriteAllText(batpath, mux, UnicodeEncoding.Default);
+            LogRecord(mux);
+            Process.Start(batpath);
         }
         private void btnaextract_Click(object sender, EventArgs e)
         {
@@ -755,6 +757,7 @@ namespace mp4box
             cfa.AppSettings.Settings["SetupDeleteTempFile"].Value = SetupDeleteTempFileCheckBox.Checked.ToString();
             cfa.AppSettings.Settings["TrayMode"].Value = TrayModeCheckBox.Checked.ToString();
             cfa.AppSettings.Settings["LanguageIndex"].Value = languageComboBox.SelectedIndex.ToString();
+            cfa.AppSettings.Settings["SplashScreen"].Value = SplashScreenCheckBox.Checked.ToString();
 
             cfa.Save();
             ConfigurationManager.RefreshSection("appSettings"); // 刷新命名节，在下次检索它时将从磁盘重新读取它。记住应用程序要刷新节点
@@ -909,6 +912,7 @@ namespace mp4box
                 BlackBitrateNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["BlackBitrate"]);
                 SetupDeleteTempFileCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["SetupDeleteTempFile"]);
                 TrayModeCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["TrayMode"]);
+                SplashScreenCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["SplashScreen"]);
 
                 if (x264ExeComboBox.SelectedIndex == -1)
                 {
@@ -2234,12 +2238,21 @@ namespace mp4box
         #region 音频界面
         private void AudioEncoderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (File.Exists(txtaudio2.Text))
+            if (AudioEncoderComboBox.SelectedIndex == 2)
             {
-                if (AudioEncoderComboBox.SelectedIndex == 2)
+                if (File.Exists(txtaudio2.Text))
                     txtout3.Text = AddExt(txtaudio2.Text, "_WAV.wav");
-                else
+                AudioBitrateComboBox.Enabled = false;
+                AudioBitrateRadioButton.Enabled = false;
+                AudioCustomizeRadioButton.Enabled = false;
+            }
+            else
+            {
+                if (File.Exists(txtaudio2.Text))
                     txtout3.Text = AddExt(txtaudio2.Text, "_AAC.aac");
+                AudioBitrateComboBox.Enabled = true;
+                AudioBitrateRadioButton.Enabled = true;
+                AudioCustomizeRadioButton.Enabled = true;
             }
         }
         private void AudioListBox_DragDrop(object sender, DragEventArgs e)
@@ -2343,10 +2356,6 @@ namespace mp4box
                 //string br = AACbr.ToString();
                 //neroaac = "\"" + workpath + "\\neroAacEnc.exe\" -ignorelength -lc -br " + br + " -if \"temp.wav\"  -of \"" + nameout3 + "\"";
                 //aac = ffmpeg + "&&" + neroaac + "\r\ncmd";
-                //if (cbwavtemp.Checked == false)
-                //{
-                //    aac += "del temp.wav\r\ncmd";
-                //}
                 batpath = workPath + "\\aac.bat";
                 File.WriteAllText(batpath, audiobat(nameaudio2, nameout3), UnicodeEncoding.Default);
                 LogRecord(audiobat(nameaudio2, nameout3));

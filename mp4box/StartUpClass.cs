@@ -28,7 +28,7 @@ namespace mp4box
         }
         protected override void SetSeconds()
         {
-            this.SecondsShow = 1;//启动窗体显示的时间(秒) 
+            this.SecondsShow = 2;//启动窗体显示的时间(秒) 
         }
     } 
 }
