@@ -6,6 +6,10 @@
 *.user
 *.sln.docstates
 
+# toolchain
+
+xiaowan/
+
 # Build results
 
 [Dd]ebug/
