@@ -154,7 +154,7 @@ namespace mp4box
             /// Filename and working directory Regex.
             ///     Available patterns: workDIR, fileOut, fileIn.
             /// </summary>
-            public static readonly Regex fileReg = new Regex(fileRegStr);
+            public static readonly Regex fileReg = new Regex(fileRegStr, RegexOptions.Singleline);
 
             /// <summary>
             /// ffmpeg -i sample output:
@@ -163,7 +163,7 @@ namespace mp4box
             /// <para>Stream #0:1: Audio: aac, 48000 Hz, stereo, fltp, 128 kb/s</para>
             /// </summary>
             private const string ffmpegRegStr = @"\bDuration: (?<duration>\d{2}:\d{2}:\d{2}\.\d{2}), start: " +
-                @".+: Video: .+ fps, (?<tbr>\d+\.?\d+) tbr, ";
+                @".+: Video: .+ (?<tbr>\d+\.?\d+) tbr, ";
 
             /// <summary>
             /// ffmpeg output Regex.
@@ -517,6 +517,7 @@ namespace mp4box
 
         /// <summary>
         /// Get a rough estimation on frame counts via FFmpeg.
+        ///     If failed, return <see cref="Int32.MaxValue"/> instead.
         /// </summary>
         /// <param name="workPath">Path to ffmpeg binary.</param>
         /// <param name="filePath">Path to target file.</param>
@@ -540,14 +541,10 @@ namespace mp4box
             var result = Patterns.ffmpegReg.Match(mediaInfo);
             if (!result.Success)
             {
-                killProcTree(proc.Id);
-                if (System.Windows.Forms.DialogResult.Yes == MessageBox.Show(
-                    "Fatal Error Detected! Click \"Yes\" to save log. More details on help page."
-                    + Environment.NewLine +
-                    "出现严重错误！点“是”可以保存错误日志文件。提交错误报告清查看帮助页。",
-                    "Fatal Error.", MessageBoxButtons.YesNo, MessageBoxIcon.Error))
-                    ProcAbort();
-                return -1;
+                richTextBoxOutput.InvokeIfRequired(() =>
+                    richTextBoxOutput.AppendText("Warning: Error detected on previous file. Estimatation may not work."
+                        + Environment.NewLine));
+                return Int32.MaxValue;
             }
             else
                 // add a 1% tolerance to avoid unintentional overflow on progress bar

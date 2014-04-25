@@ -130,6 +130,7 @@ namespace mp4box
                 string codecProfile = MI.Get(StreamKind.Video, 0, "Codec_Profile");
                 string frameCount = MI.Get(StreamKind.Video, 0, "FrameCount");
 
+
                 //音频
                 string aid = MI.Get(StreamKind.Audio, 0, "ID");
                 string audio = MI.Get(StreamKind.Audio, 0, "Format");
@@ -733,7 +734,7 @@ namespace mp4box
 
                 //string[] deletedfiles = { tempPic, "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat",
                 //                            "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
-                string[] deletedfiles = { "temp.wav", tempPic, tempavspath, workPath + "msg.vbs", workPath + "tmp.stat.mbtree", workPath + "tmp.stat" };
+                string[] deletedfiles = { "temp.wav", "temp.aac", "temp.mp4", tempPic, tempavspath, workPath + "msg.vbs", workPath + "tmp.stat.mbtree", workPath + "tmp.stat" };
                 deleteFileList.AddRange(deletedfiles);
 
                 foreach (string file in deleteFileList)
