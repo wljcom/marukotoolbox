@@ -12,6 +12,33 @@ namespace mp4box
     using Extentions;
     public partial class SplashForm : Form
     {
+        public static class ClassStyles
+        {
+            public static readonly Int32
+            CS_BYTEALIGNCLIENT = 0x1000,
+            CS_BYTEALIGNWINDOW = 0x2000,
+            CS_CLASSDC = 0x0040,
+            CS_DBLCLKS = 0x0008,
+            CS_DROPSHADOW = 0x00020000,
+            CS_GLOBALCLASS = 0x4000,
+            CS_HREDRAW = 0x0002,
+            CS_NOCLOSE = 0x0200,
+            CS_OWNDC = 0x0020,
+            CS_PARENTDC = 0x0080,
+            CS_SAVEBITS = 0x0800,
+            CS_VREDRAW = 0x0001;
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= ClassStyles.CS_DROPSHADOW;
+                return cp;
+            }
+        }   
+
         //int iCount = 0;
         public SplashForm()
         {
@@ -61,149 +88,82 @@ namespace mp4box
             int height = this.Height;
             #region 四个圆角
 
-            //左上  
-            list.Add(new Point(0, 47));
-            list.Add(new Point(1, 42));
-            list.Add(new Point(2, 38));
-            list.Add(new Point(3, 36));
-            list.Add(new Point(4, 33));
-            list.Add(new Point(5, 32));
-            list.Add(new Point(6, 29));
-            list.Add(new Point(7, 27));
-            list.Add(new Point(8, 26));
-            list.Add(new Point(9, 24));
-            list.Add(new Point(10, 22));
-            list.Add(new Point(11, 21));
-            list.Add(new Point(12, 20));
-            list.Add(new Point(13, 19));
-            list.Add(new Point(14, 17));
-            list.Add(new Point(15, 16));
-            list.Add(new Point(16, 15));
-            list.Add(new Point(17, 14));
-            list.Add(new Point(19, 13));
-            list.Add(new Point(20, 12));
-            list.Add(new Point(21, 11));
-            list.Add(new Point(22, 10));
-            list.Add(new Point(24, 9));
-            list.Add(new Point(26, 8));
-            list.Add(new Point(27, 7));
-            list.Add(new Point(29, 6));
-            list.Add(new Point(32, 5));
-            list.Add(new Point(33, 4));
-            list.Add(new Point(36, 3));
-            list.Add(new Point(38, 2));
-            list.Add(new Point(42, 1));
-            list.Add(new Point(47, 0));
-
-            //右上  
-            list.Add(new Point(width - 47, 0));
-            list.Add(new Point(width - 42, 1));
-            list.Add(new Point(width - 38, 2));
-            list.Add(new Point(width - 36, 3));
-            list.Add(new Point(width - 33, 4));
-            list.Add(new Point(width - 32, 5));
-            list.Add(new Point(width - 29, 6));
-            list.Add(new Point(width - 27, 7));
-            list.Add(new Point(width - 26, 8));
-            list.Add(new Point(width - 24, 9));
-            list.Add(new Point(width - 22, 10));
-            list.Add(new Point(width - 21, 11));
-            list.Add(new Point(width - 20, 12));
-            list.Add(new Point(width - 19, 13));
-            list.Add(new Point(width - 17, 14));
-            list.Add(new Point(width - 16, 15));
-            list.Add(new Point(width - 15, 16));
-            list.Add(new Point(width - 14, 17));
-            list.Add(new Point(width - 13, 19));
-            list.Add(new Point(width - 12, 20));
-            list.Add(new Point(width - 11, 21));
-            list.Add(new Point(width - 10, 22));
-            list.Add(new Point(width - 9, 24));
-            list.Add(new Point(width - 8, 26));
-            list.Add(new Point(width - 7, 27));
-            list.Add(new Point(width - 6, 29));
-            list.Add(new Point(width - 5, 32));
-            list.Add(new Point(width - 4, 33));
-            list.Add(new Point(width - 3, 36));
-            list.Add(new Point(width - 2, 38));
-            list.Add(new Point(width - 1, 42));
-            list.Add(new Point(width - 0, 47));
-
-            //右下  
-            list.Add(new Point(width - 0, height - 47));
-            list.Add(new Point(width - 1, height - 42));
-            list.Add(new Point(width - 2, height - 38));
-            list.Add(new Point(width - 3, height - 36));
-            list.Add(new Point(width - 4, height - 33));
-            list.Add(new Point(width - 5, height - 32));
-            list.Add(new Point(width - 6, height - 29));
-            list.Add(new Point(width - 7, height - 27));
-            list.Add(new Point(width - 8, height - 26));
-            list.Add(new Point(width - 9, height - 24));
-            list.Add(new Point(width - 10, height - 22));
-            list.Add(new Point(width - 11, height - 21));
-            list.Add(new Point(width - 12, height - 20));
-            list.Add(new Point(width - 13, height - 19));
-            list.Add(new Point(width - 14, height - 17));
-            list.Add(new Point(width - 15, height - 16));
-            list.Add(new Point(width - 16, height - 15));
-            list.Add(new Point(width - 17, height - 14));
-            list.Add(new Point(width - 19, height - 13));
-            list.Add(new Point(width - 20, height - 12));
-            list.Add(new Point(width - 21, height - 11));
-            list.Add(new Point(width - 22, height - 10));
-            list.Add(new Point(width - 24, height - 9));
-            list.Add(new Point(width - 26, height - 8));
-            list.Add(new Point(width - 27, height - 7));
-            list.Add(new Point(width - 29, height - 6));
-            list.Add(new Point(width - 32, height - 5));
-            list.Add(new Point(width - 33, height - 4));
-            list.Add(new Point(width - 36, height - 3));
-            list.Add(new Point(width - 38, height - 2));
-            list.Add(new Point(width - 42, height - 1));
-            list.Add(new Point(width - 47, height - 0));
-
-            //左下  
-            list.Add(new Point(47, height - 0));
-            list.Add(new Point(42, height - 1));
-            list.Add(new Point(38, height - 2));
-            list.Add(new Point(36, height - 3));
-            list.Add(new Point(33, height - 4));
-            list.Add(new Point(32, height - 5));
-            list.Add(new Point(29, height - 6));
-            list.Add(new Point(27, height - 7));
-            list.Add(new Point(26, height - 8));
-            list.Add(new Point(24, height - 9));
-            list.Add(new Point(22, height - 10));
-            list.Add(new Point(21, height - 11));
-            list.Add(new Point(20, height - 12));
-            list.Add(new Point(19, height - 13));
-            list.Add(new Point(17, height - 14));
-            list.Add(new Point(16, height - 15));
-            list.Add(new Point(15, height - 16));
-            list.Add(new Point(14, height - 17));
-            list.Add(new Point(13, height - 19));
-            list.Add(new Point(12, height - 20));
-            list.Add(new Point(11, height - 21));
-            list.Add(new Point(10, height - 22));
-            list.Add(new Point(9, height - 24));
-            list.Add(new Point(8, height - 26));
-            list.Add(new Point(7, height - 27));
-            list.Add(new Point(6, height - 29));
-            list.Add(new Point(5, height - 32));
-            list.Add(new Point(4, height - 33));
-            list.Add(new Point(3, height - 36));
-            list.Add(new Point(2, height - 38));
-            list.Add(new Point(1, height - 42));
-            list.Add(new Point(0, height - 47));
-
+            //左上
+            list.Add(new Point(0, 5));
+            list.Add(new Point(1, 5));
+            list.Add(new Point(1, 3));
+            list.Add(new Point(2, 3));
+            list.Add(new Point(2, 2));
+            list.Add(new Point(3, 2));
+            list.Add(new Point(3, 1));
+            list.Add(new Point(5, 1));
+            list.Add(new Point(5, 0));
+            //右上
+            list.Add(new Point(width - 5, 0));
+            list.Add(new Point(width - 5, 1));
+            list.Add(new Point(width - 3, 1));
+            list.Add(new Point(width - 3, 2));
+            list.Add(new Point(width - 2, 2));
+            list.Add(new Point(width - 2, 3));
+            list.Add(new Point(width - 1, 3));
+            list.Add(new Point(width - 1, 5));
+            list.Add(new Point(width - 0, 5));
+            //右下
+            list.Add(new Point(width - 0, height - 5));
+            list.Add(new Point(width - 1, height - 5));
+            list.Add(new Point(width - 1, height - 3));
+            list.Add(new Point(width - 2, height - 3));
+            list.Add(new Point(width - 2, height - 2));
+            list.Add(new Point(width - 3, height - 2));
+            list.Add(new Point(width - 3, height - 1));
+            list.Add(new Point(width - 5, height - 1));
+            list.Add(new Point(width - 5, height - 0));
+            //左下
+            list.Add(new Point(5, height - 0));
+            list.Add(new Point(5, height - 1));
+            list.Add(new Point(3, height - 1));
+            list.Add(new Point(3, height - 2));
+            list.Add(new Point(2, height - 2));
+            list.Add(new Point(2, height - 3));
+            list.Add(new Point(1, height - 3));
+            list.Add(new Point(1, height - 5));
+            list.Add(new Point(0, height - 5));
             #endregion
             Point[] points = list.ToArray();
             GraphicsPath shape = new GraphicsPath();
             shape.AddPolygon(points);
             this.Region = new System.Drawing.Region(shape);
         }
+
+        private void pictureBox_DoubleClick(object sender, EventArgs e)
+        {
+            if (this.Owner != null)
+                this.Close();
+        }
+
+
+        private void Type(Control sender, int p_1, double p_2)
+        {
+            GraphicsPath oPath = new GraphicsPath();
+            oPath.AddClosedCurve(
+                new Point[] {
+            new Point(0, sender.Height / p_1),
+            new Point(sender.Width / p_1, 0), 
+            new Point(sender.Width - sender.Width / p_1, 0), 
+            new Point(sender.Width, sender.Height / p_1),
+            new Point(sender.Width, sender.Height - sender.Height / p_1), 
+            new Point(sender.Width - sender.Width / p_1, sender.Height), 
+            new Point(sender.Width / p_1, sender.Height),
+            new Point(0, sender.Height - sender.Height / p_1) },
+
+                (float)p_2);
+
+            sender.Region = new Region(oPath);
+        }
+
     }
+
+
 
     class ArtTextLabel : Label
     {

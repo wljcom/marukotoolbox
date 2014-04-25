@@ -485,12 +485,6 @@
   <data name="AudioCustomizeRadioButton.Text" xml:space="preserve">
     <value>自訂</value>
   </data>
-  <data name="cbwavtemp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbwavtemp.Text" xml:space="preserve">
-    <value>保留暫存檔案</value>
-  </data>
   <data name="btnaudio2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -787,6 +781,9 @@
   </data>
   <data name="groupBox11.Text" xml:space="preserve">
     <value>後黑</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>x264線程</value>
   </data>
   <data name="CheckUpdateButton.Text" xml:space="preserve">
     <value>檢查更新</value>

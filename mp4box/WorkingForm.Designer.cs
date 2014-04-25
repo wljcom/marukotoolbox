@@ -56,6 +56,7 @@
             // richTextBoxOutput
             // 
             resources.ApplyResources(this.richTextBoxOutput, "richTextBoxOutput");
+            this.richTextBoxOutput.BackColor = System.Drawing.Color.White;
             this.richTextBoxOutput.Name = "richTextBoxOutput";
             this.richTextBoxOutput.ReadOnly = true;
             this.richTextBoxOutput.VScroll += new System.EventHandler(this.richTextBoxOutput_VScroll);

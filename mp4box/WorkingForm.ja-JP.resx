@@ -117,18 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonAbort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 327</value>
+  </data>
   <data name="buttonAbort.Text" xml:space="preserve">
     <value>中止</value>
+  </data>
+  <data name="buttonSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 327</value>
   </data>
   <data name="buttonSave.Text" xml:space="preserve">
     <value>ログを保存</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="richTextBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Verdana, 12pt</value>
+  </data>
+  <data name="richTextBoxOutput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>693, 310</value>
+  </data>
+  <data name="richTextBoxOutput.Text" xml:space="preserve">
+    <value>abcedfasdfawefawdfsad</value>
+  </data>
+  <data name="labelworkCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>174, 334</value>
+  </data>
   <data name="labelworkCount.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 12</value>
   </data>
   <data name="labelworkCount.Text" xml:space="preserve">
     <value>MM/NN 完成した</value>
+  </data>
+  <data name="progressBarX264.Location" type="System.Drawing.Point, System.Drawing">
+    <value>373, 327</value>
+  </data>
+  <data name="progressBarX264.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 21</value>
+  </data>
+  <data name="labelProgress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>657, 333</value>
   </data>
   <data name="notifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -716,6 +743,9 @@
         vWv5+rpp9PYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAA
 </value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>717, 356</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

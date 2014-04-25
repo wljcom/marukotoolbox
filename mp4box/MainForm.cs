@@ -200,11 +200,11 @@ namespace mp4box
                 case 2:
                     if (x264HeightNum.Value == 0 || x264WidthNum.Value == 0 || MaintainResolutionCheckBox.Checked)
                     {
-                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  -p1 --stats \"tmp.stat\" --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  -p2 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 --stats \"tmp.stat\" --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p2 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     else
                     {
-                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  -p1 --stats \"tmp.stat\" --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\"  -p2 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 --stats \"tmp.stat\" --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p2 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 3 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     break;
                 case 0:
@@ -3274,6 +3274,13 @@ namespace mp4box
         private void TrayModeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             trayMode = TrayModeCheckBox.Checked;
+        }
+
+        private void ReleaseDatelabel_DoubleClick(object sender, EventArgs e)
+        {
+            SplashForm sf = new SplashForm();
+            sf.Owner = this;
+            sf.Show();
         }
     }
 }
