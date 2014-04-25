@@ -59,6 +59,7 @@
             this.Controls.Add(this.pictureBox);
             this.Name = "SplashForm";
             this.Text = "SplashForm";
+            this.Load += new System.EventHandler(this.SplashForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.SplashForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
