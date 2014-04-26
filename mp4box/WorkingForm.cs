@@ -25,6 +25,8 @@ namespace mp4box
             InitializeComponent();
             Commands = commands;
             WorkQueued = workcount;
+            this.Parent = this.Owner;
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         /// <summary>
