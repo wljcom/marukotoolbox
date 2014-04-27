@@ -2920,19 +2920,28 @@ namespace mp4box
             else
             {
                 System.Drawing.Image img = System.Drawing.Image.FromFile(AudioPicTextBox.Text);
-                int sourceWidth = img.Width;
-                int sourceHeight = img.Height;
+                // if not even number, chop 1 pixel out
+                int newWidth = (img.Width % 2 == 0 ? img.Width : img.Width - 1);
+                int newHeight = (img.Height % 2 == 0 ? img.Height : img.Height - 1);
+                Rectangle cropArea;
                 if (img.Width % 2 != 0 || img.Height % 2 != 0)
                 {
-                    MessageBox.Show("图片的长和宽必须是偶数。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    img.Dispose();
-                    return;
+                    Bitmap bmp = new Bitmap(img);
+                    cropArea = new Rectangle(0, 0, newWidth, newHeight);
+                    img = (Image)bmp.Clone(cropArea, bmp.PixelFormat);
                 }
-                if (img.RawFormat.Equals(ImageFormat.Jpeg))
-                {
-                    File.Copy(AudioPicTextBox.Text, tempPic, true);
-                }
-                else
+
+                //if (img.Width % 2 != 0 || img.Height % 2 != 0)
+                //{
+                //    MessageBox.Show("图片的长和宽必须是偶数。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    img.Dispose();
+                //    return;
+                //}
+                //if (img.RawFormat.Equals(ImageFormat.Jpeg))
+                //{
+                //    File.Copy(AudioPicTextBox.Text, tempPic, true);
+                //}
+                //else
                 {
                     System.Drawing.Imaging.Encoder ImageEncoder = System.Drawing.Imaging.Encoder.Quality;
                     EncoderParameter ep = new EncoderParameter(ImageEncoder, 100L);
@@ -2947,18 +2956,21 @@ namespace mp4box
                 MI.Open(AudioPicAudioTextBox.Text);
                 int seconds = SecondsFromHHMMSS(MI.Get(StreamKind.General, 0, "Duration/String3"));
                 string ffPath = Path.Combine(workPath, "ffmpeg.exe");
+                string neroPath = Path.Combine(workPath, "neroaacenc.exe");
                 if (AudioCopyCheckBox.Checked)
                 {
                     mux = ffPath + " -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
                     mux += ffPath + " -i SinglePictureVideo.mp4 -i \"" + AudioPicAudioTextBox.Text + "\" -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
                     mux += "del SinglePictureVideo.mp4\r\n";
+                    mux += "cmd";
                 }
                 else
                 {
-                    mux = ffPath + " -i \"" + AudioPicAudioTextBox.Text + "\" -f wav - |neroaacenc -br " + OnePicAudioBitrateNum.Value.ToString() + "000 -ignorelength -if - -of audio.mp4 -lc\r\n";
-                    mux += ffPath + " -loop 1 -crf " + OnePicCRFNum.Value.ToString() + " -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
+                    mux = ffPath + " -i \"" + AudioPicAudioTextBox.Text + "\" -f wav - |" + neroPath + " -br " + OnePicAudioBitrateNum.Value.ToString() + "000 -ignorelength -if - -of audio.mp4 -lc\r\n";
+                    mux += ffPath + " -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
                     mux += ffPath + " -i SinglePictureVideo.mp4 -i audio.mp4 -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
                     mux += "del SinglePictureVideo.mp4\r\ndel audio.mp4\r\n";
+                    mux += "cmd";
                 }
                 /*
                 string audioPath = AddExt(Path.GetFileName(AudioPicAudioTextBox.Text), "_atmp.mp4");
@@ -3279,6 +3291,11 @@ namespace mp4box
             SplashForm sf = new SplashForm();
             sf.Owner = this;
             sf.Show();
+        }
+
+        private void AudioCopyCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            OnePicAudioBitrateNum.Enabled = !AudioCopyCheckBox.Checked;
         }
     }
 }
