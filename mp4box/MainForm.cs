@@ -1002,9 +1002,6 @@ namespace mp4box
                 txtvideo6.Text = namevideo6;
             }
         }
-        private void label16_Click(object sender, EventArgs e)
-        {
-        }
         private void button3_Click(object sender, EventArgs e)
         {
             if (namevideo6 == "")
@@ -2949,17 +2946,18 @@ namespace mp4box
                 MediaInfo MI = new MediaInfo();
                 MI.Open(AudioPicAudioTextBox.Text);
                 int seconds = SecondsFromHHMMSS(MI.Get(StreamKind.General, 0, "Duration/String3"));
+                string ffPath = Path.Combine(workPath, "ffmpeg.exe");
                 if (AudioCopyCheckBox.Checked)
                 {
-                    mux = "ffmpeg -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
-                    mux += "ffmpeg -i SinglePictureVideo.mp4 -i \"" + AudioPicAudioTextBox.Text + "\" -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
+                    mux = ffPath + " -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
+                    mux += ffPath + " -i SinglePictureVideo.mp4 -i \"" + AudioPicAudioTextBox.Text + "\" -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
                     mux += "del SinglePictureVideo.mp4\r\n";
                 }
                 else
                 {
-                    mux = "ffmpeg -i \"" + AudioPicAudioTextBox.Text + "\" -f wav - |neroaacenc -br " + OnePicAudioBitrateNum.Value.ToString() + "000 -ignorelength -if - -of audio.mp4 -lc\r\n";
-                    mux += "ffmpeg -loop 1 -crf " + OnePicCRFNum.Value.ToString() + " -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
-                    mux += "ffmpeg -i SinglePictureVideo.mp4 -i audio.mp4 -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
+                    mux = ffPath + " -i \"" + AudioPicAudioTextBox.Text + "\" -f wav - |neroaacenc -br " + OnePicAudioBitrateNum.Value.ToString() + "000 -ignorelength -if - -of audio.mp4 -lc\r\n";
+                    mux += ffPath + " -loop 1 -crf " + OnePicCRFNum.Value.ToString() + " -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
+                    mux += ffPath + " -i SinglePictureVideo.mp4 -i audio.mp4 -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
                     mux += "del SinglePictureVideo.mp4\r\ndel audio.mp4\r\n";
                 }
                 /*

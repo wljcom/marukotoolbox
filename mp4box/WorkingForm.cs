@@ -69,6 +69,20 @@ namespace mp4box
             }
         }
 
+        /// <summary>
+        /// Makesure a file really exists.
+        /// </summary>
+        /// <param name="path">Path to the file.</param>
+        /// <param name="arg">Supplement info.</param>
+        /// <returns>The file exist or not.</returns>
+        public static bool CheckFileExist(string path, string info = "")
+        {
+            if (!System.IO.File.Exists(path))
+                MessageBox.Show("找不到 " + path + " 了啦" + Environment.NewLine
+                    + "其他信息：" + info);
+            return System.IO.File.Exists(path);
+        }
+
         #region Private Members Declaration
 
         /// <summary>
@@ -364,6 +378,7 @@ namespace mp4box
         private void ProcStart()
         {
             // setup the process
+            CheckFileExist(batPath);
             var processInfo = new System.Diagnostics.ProcessStartInfo(batPath, "2>&1");
             processInfo.WorkingDirectory = System.IO.Directory.GetCurrentDirectory();
             processInfo.CreateNoWindow = true;
@@ -527,6 +542,7 @@ namespace mp4box
         private int EstimateFrame(string workPath, string filePath)
         {
             string ffmpegPath = System.IO.Path.Combine(workPath, "ffmpeg.exe");
+            CheckFileExist(ffmpegPath);
             var processInfo = new System.Diagnostics.ProcessStartInfo(ffmpegPath, "-i \"" + filePath + '"');
             processInfo.CreateNoWindow = true;
             processInfo.UseShellExecute = false;
