@@ -214,6 +214,16 @@ namespace mp4box
 
             return x264;
         }
+
+        public static bool stringCheck(string str, string info = "")
+        {
+            if (String.IsNullOrEmpty(str))
+            {
+                MessageBox.Show("发现空或者无效的字符串 " + info);
+            }
+            return String.IsNullOrEmpty(str);
+        }
+
         //public string x264bat(string input, string output)
         //{
         //    switch (mode)
@@ -866,7 +876,8 @@ namespace mp4box
             GetSystemInfo(ref pSI);
             int processorNumber = (int)pSI.dwNumberOfProcessors;
 
-            for (int i = 1; i <= 32; i++)
+            x264ThreadsComboBox.Items.Add("auto");
+            for (int i = 1; i <= 16; i++)
             {
                 x264ThreadsComboBox.Items.Add(i.ToString());
             }
@@ -1739,13 +1750,17 @@ namespace mp4box
             }
             else
             {
-                int h1 = int.Parse(maskb.Text.ToString().Substring(0, 2));
-                int m1 = int.Parse(maskb.Text.ToString().Substring(3, 2));
-                int s1 = int.Parse(maskb.Text.ToString().Substring(6, 2));
-                int h2 = int.Parse(maske.Text.ToString().Substring(0, 2));
-                int m2 = int.Parse(maske.Text.ToString().Substring(3, 2));
-                int s2 = int.Parse(maske.Text.ToString().Substring(6, 2));
-                clip = "\"" + workPath + "\\ffmpeg.exe\" -ss " + maskb.Text.ToString() + " -t " + timeminus(h1, m1, s1, h2, m2, s2) + " -i  \"" + namevideo4 + "\" -c copy \"" + nameout5 + "\" \r\ncmd";
+                //int h1 = int.Parse(maskb.Text.ToString().Substring(0, 2));
+                //int m1 = int.Parse(maskb.Text.ToString().Substring(3, 2));
+                //int s1 = int.Parse(maskb.Text.ToString().Substring(6, 2));
+                //int h2 = int.Parse(maske.Text.ToString().Substring(0, 2));
+                //int m2 = int.Parse(maske.Text.ToString().Substring(3, 2));
+                //int s2 = int.Parse(maske.Text.ToString().Substring(6, 2));
+                //clip = "\"" + workPath + "\\ffmpeg.exe\" -ss " + maskb.Text + " -to " + maske.Text + " -i  \"" + namevideo4 + "\" -acodec copy -vcodec copy \"" + nameout5 + "\" \r\ncmd";
+               
+                // "<workPath>\ffmpeg.exe" -i "<namevideo4>" -ss <maskb.Text> -to <maske.Text> -c copy "<nameout5>"
+                clip = String.Format(@"""{0}\ffmpeg.exe"" -i ""{1}"" -ss {2} -to {3} -c copy ""{4}""", 
+                    workPath, namevideo4, maskb.Text, maske.Text, nameout5) + Environment.NewLine + "cmd";
                 batpath = workPath + "\\clip.bat";
                 File.WriteAllText(batpath, clip, UnicodeEncoding.Default);
                 Process.Start(batpath);
