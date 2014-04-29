@@ -245,7 +245,6 @@
             this.x264BitrateNum = new System.Windows.Forms.NumericUpDown();
             this.HelpTab = new System.Windows.Forms.TabPage();
             this.DonateButton = new ControlExs.QQButton();
-            this.HelpTextBox = new ControlExs.QQTextBox();
             this.HomePageBtn = new ControlExs.QQButton();
             this.AboutBtn = new ControlExs.QQButton();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -288,6 +287,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
+            this.HelpTextBox = new System.Windows.Forms.RichTextBox();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -2329,8 +2329,8 @@
             // 
             // HelpTab
             // 
-            this.HelpTab.Controls.Add(this.DonateButton);
             this.HelpTab.Controls.Add(this.HelpTextBox);
+            this.HelpTab.Controls.Add(this.DonateButton);
             this.HelpTab.Controls.Add(this.HomePageBtn);
             this.HelpTab.Controls.Add(this.AboutBtn);
             this.HelpTab.Controls.Add(this.linkLabel4);
@@ -2346,17 +2346,6 @@
             this.DonateButton.Name = "DonateButton";
             this.DonateButton.UseVisualStyleBackColor = true;
             this.DonateButton.Click += new System.EventHandler(this.DonateButton_Click);
-            // 
-            // HelpTextBox
-            // 
-            this.HelpTextBox.AllowDrop = true;
-            this.HelpTextBox.BackColor = System.Drawing.Color.White;
-            this.HelpTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.HelpTextBox.EmptyTextTip = null;
-            this.HelpTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            resources.ApplyResources(this.HelpTextBox, "HelpTextBox");
-            this.HelpTextBox.Name = "HelpTextBox";
-            this.HelpTextBox.ReadOnly = true;
             // 
             // HomePageBtn
             // 
@@ -2750,6 +2739,13 @@
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
             // 
+            // HelpTextBox
+            // 
+            resources.ApplyResources(this.HelpTextBox, "HelpTextBox");
+            this.HelpTextBox.Name = "HelpTextBox";
+            this.HelpTextBox.ReadOnly = true;
+            this.HelpTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.HelpTextBox_LinkClicked);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -2968,7 +2964,6 @@
         private System.Windows.Forms.NumericUpDown x264CRFNum;
         private System.Windows.Forms.Label lbrate;
         private System.Windows.Forms.TabPage HelpTab;
-        private ControlExs.QQTextBox HelpTextBox;
         private ControlExs.QQButton HomePageBtn;
         private ControlExs.QQButton AboutBtn;
         private System.Windows.Forms.LinkLabel linkLabel4;
@@ -3093,6 +3088,7 @@
         private ControlExs.QQCheckBox SplashScreenCheckBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox x264ThreadsComboBox;
+        private System.Windows.Forms.RichTextBox HelpTextBox;
     }
 }
 

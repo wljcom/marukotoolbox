@@ -915,11 +915,9 @@ namespace mp4box
             ReleaseDatelabel.Text = ReleaseDate.ToString("yyyy-M-d");
 
             //load Help Text
-            if (File.Exists(startpath + "\\help.txt"))
+            if (File.Exists(startpath + "\\help.rtf"))
             {
-                StreamReader sr = new StreamReader(startpath + "\\help.txt", System.Text.Encoding.UTF8);
-                HelpTextBox.Text = sr.ReadToEnd();
-                sr.Close();
+                HelpTextBox.LoadFile(startpath + "\\help.rtf");
             }
             try
             {
@@ -1757,9 +1755,9 @@ namespace mp4box
                 //int m2 = int.Parse(maske.Text.ToString().Substring(3, 2));
                 //int s2 = int.Parse(maske.Text.ToString().Substring(6, 2));
                 //clip = "\"" + workPath + "\\ffmpeg.exe\" -ss " + maskb.Text + " -to " + maske.Text + " -i  \"" + namevideo4 + "\" -acodec copy -vcodec copy \"" + nameout5 + "\" \r\ncmd";
-               
+
                 // "<workPath>\ffmpeg.exe" -i "<namevideo4>" -ss <maskb.Text> -to <maske.Text> -c copy "<nameout5>"
-                clip = String.Format(@"""{0}\ffmpeg.exe"" -i ""{1}"" -ss {2} -to {3} -c copy ""{4}""", 
+                clip = String.Format(@"""{0}\ffmpeg.exe"" -i ""{1}"" -ss {2} -to {3} -c copy ""{4}""",
                     workPath, namevideo4, maskb.Text, maske.Text, nameout5) + Environment.NewLine + "cmd";
                 batpath = workPath + "\\clip.bat";
                 File.WriteAllText(batpath, clip, UnicodeEncoding.Default);
@@ -2734,11 +2732,9 @@ namespace mp4box
                     txtvideo8.EmptyTextTip = "抽取的视频或音频在原视频目录下";
                     txtvideo6.EmptyTextTip = "抽取的视频或音频在原视频目录下";
                     //load Help Text
-                    if (File.Exists(startpath + "\\help.txt"))
+                    if (File.Exists(startpath + "\\help.rtf"))
                     {
-                        sr = new StreamReader(startpath + "\\help.txt", System.Text.Encoding.UTF8);
-                        HelpTextBox.Text = sr.ReadToEnd();
-                        sr.Close();
+                        HelpTextBox.LoadFile(startpath + "\\help.rtf");
                     }
                     break;
                 case 1:
@@ -2754,11 +2750,9 @@ namespace mp4box
                     txtvideo8.EmptyTextTip = "新檔案生成在原資料夾";
                     txtvideo6.EmptyTextTip = "新檔案生成在原資料夾";
                     //load Help Text
-                    if (File.Exists(startpath + "\\help_zh_tw.txt"))
+                    if (File.Exists(startpath + "\\help_zh_tw.rtf"))
                     {
-                        sr = new StreamReader(startpath + "\\help_zh_tw.txt", System.Text.Encoding.UTF8);
-                        HelpTextBox.Text = sr.ReadToEnd();
-                        sr.Close();
+                        HelpTextBox.LoadFile(startpath + "\\help_zh_tw.rtf");
                     }
                     break;
                 case 2:
@@ -2774,11 +2768,9 @@ namespace mp4box
                     txtvideo8.EmptyTextTip = "New file will be created in the original folder";
                     txtvideo6.EmptyTextTip = "New file will be created in the original folder";
                     //load Help Text
-                    if (File.Exists(startpath + "\\help.txt"))
+                    if (File.Exists(startpath + "\\help.rtf"))
                     {
-                        sr = new StreamReader(startpath + "\\help.txt", System.Text.Encoding.UTF8);
-                        HelpTextBox.Text = sr.ReadToEnd();
-                        sr.Close();
+                        HelpTextBox.LoadFile(startpath + "\\help.rtf");
                     }
                     break;
                 case 3:
@@ -3178,7 +3170,7 @@ namespace mp4box
             }
 
             //批处理
-            mux = "\""+ workPath + "\\ffmpeg\" -loop 1 -r " + BlackFPSNum.Value.ToString() + " -t " + blackSecond.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + BlackCRFNum.Value.ToString() + " -y black.flv\r\n";
+            mux = "\"" + workPath + "\\ffmpeg\" -loop 1 -r " + BlackFPSNum.Value.ToString() + " -t " + blackSecond.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + BlackCRFNum.Value.ToString() + " -y black.flv\r\n";
             mux += string.Format("\"{0}\\flvbind\" \"{1}\"  \"{2}\"  black.flv\r\n", workPath, BlackOutputTextBox.Text, BlackVideoTextBox.Text);
             mux += "del black.flv\r\n";
 
@@ -3311,6 +3303,11 @@ namespace mp4box
         private void AudioCopyCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             OnePicAudioBitrateNum.Enabled = !AudioCopyCheckBox.Checked;
+        }
+
+        private void HelpTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            Process.Start(e.LinkText);
         }
     }
 }
