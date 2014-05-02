@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>mp4box</RootNamespace>
     <AssemblyName>xiaowan</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -96,6 +96,12 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.WindowsAPICodePack">
+      <HintPath>.\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell">
+      <HintPath>.\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Design" />
@@ -201,6 +207,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Res\mp4box_TemporaryKey.pfx" />
+    <None Include="Res\PostBuildEvent.bat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Res\tomoka.ico" />
@@ -240,20 +247,20 @@
       <Name>ControlExs</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /y "$(ProjectDir)$(OutDir)xiaowan.exe" "$(SolutionDir)xiaowan\"
-copy /y "$(ProjectDir)$(OutDir)xiaowan.exe.Config" "$(SolutionDir)xiaowan\"
-copy /y "$(ProjectDir)$(OutDir)AxInterop.WMPLib.dll" "$(SolutionDir)xiaowan\"
-copy /y "$(ProjectDir)$(OutDir)Interop.WMPLib.dll" "$(SolutionDir)xiaowan\"
-
-mkdir "$(SolutionDir)xiaowan\en"
-mkdir "$(SolutionDir)xiaowan\zh-Hant"
-mkdir "$(SolutionDir)xiaowan\ja-JP"
-
-xcopy /y "$(ProjectDir)$(OutDir)en" "$(SolutionDir)xiaowan\en"
-xcopy /y "$(ProjectDir)$(OutDir)zh-Hant" "$(SolutionDir)xiaowan\zh-Hant"
-xcopy /y "$(ProjectDir)$(OutDir)ja-JP" "$(SolutionDir)xiaowan\ja-JP"</PostBuildEvent>
+    <PostBuildEvent>$(ProjectDir)Res\PostBuildEvent.bat "$(SolutionDir)" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

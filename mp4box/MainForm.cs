@@ -2714,7 +2714,7 @@ namespace mp4box
         }
         private void languageComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            StreamReader sr;
+            //StreamReader sr;
             x264Mode1RadioButton.Checked = true;
             AudioBitrateRadioButton.Checked = true;
             switch (languageComboBox.SelectedIndex)

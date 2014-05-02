@@ -5,16 +5,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Text;
 
-namespace System.Runtime.CompilerServices
-{
-    /// <summary>
-    /// Method Extension .NET 2.0 walkaround
-    /// http://msdn.microsoft.com/en-us/library/system.runtime.compilerservices.extensionattribute(v=vs.110).aspx
-    /// </summary>
-    [AttributeUsageAttribute(AttributeTargets.Assembly|AttributeTargets.Class|AttributeTargets.Method)]
-    public sealed class ExtensionAttribute : Attribute { }
-}
-
 namespace mp4box
 {
     namespace Extentions

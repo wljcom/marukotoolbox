@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace mp4box
 {
@@ -288,6 +289,7 @@ namespace mp4box
             // synchronize UI
             workCompleted = -1;
             richTextBoxOutput.Select();
+            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
             // validate the command string
             if (Commands.Equals(encoder.GetString(encoder.GetBytes(Commands))))
                 ProcStart();
@@ -403,6 +405,7 @@ namespace mp4box
             buttonAbort.InvokeIfRequired(() =>
                 buttonAbort.Enabled = false);
             UpdateProgress(1);
+            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
             // wait a little bit for the last asynchronous reading
             System.Threading.Thread.Sleep(75);
             // append finish tag
@@ -528,6 +531,8 @@ namespace mp4box
                 progressBarX264.Value = Convert.ToInt32(value * progressBarX264.Maximum));
             labelProgress.InvokeIfRequired(() =>
                 labelProgress.Text = value.ToString("P"));
+            TaskbarManager.Instance.SetProgressValue(
+                Convert.ToInt32(value * progressBarX264.Maximum), progressBarX264.Maximum);
             notifyIcon.Text = "小丸工具箱" + Environment.NewLine +
                 labelworkCount.Text + " - " + labelProgress.Text;
         }
