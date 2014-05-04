@@ -1,27 +1,26 @@
 @REM Store args
-set _SolutionDir = %1%
-set _ProjectDir = %2%
-set _OutDir = %3%
+set _SolutionDir=%1%
+set _TargetDir=%2%
 
 @REM Do works
 if not exist "%_SolutionDir%xiaowan" mkdir "%_SolutionDir%xiaowan" >nul
 
-copy /y "%_ProjectDir%%_OutDir%xiaowan.exe" "%_SolutionDir%xiaowan\" >nul
-copy /y "%_ProjectDir%%_OutDir%xiaowan.exe.Config" "%_SolutionDir%xiaowan\" >nul
-copy /y "%_ProjectDir%%_OutDir%ControlExs.dll" "%_SolutionDir%xiaowan\" >nul
-copy /y "%_ProjectDir%%_OutDir%AxInterop.WMPLib.dll" "%_SolutionDir%xiaowan\" >nul
-copy /y "%_ProjectDir%%_OutDir%Interop.WMPLib.dll" "%_SolutionDir%xiaowan\" >nul
-copy /y "%_ProjectDir%%_OutDir%Microsoft.WindowsAPICodePack.dll" "%_SolutionDir%xiaowan\" >nul
-copy /y "%_ProjectDir%%_OutDir%Microsoft.WindowsAPICodePack.Shell.dll" "%_SolutionDir%xiaowan\" >nul
+copy /y "%_TargetDir%xiaowan.exe" "%_SolutionDir%xiaowan\" >nul
+copy /y "%_TargetDir%xiaowan.exe.Config" "%_SolutionDir%xiaowan\" >nul
+copy /y "%_TargetDir%ControlExs.dll" "%_SolutionDir%xiaowan\" >nul
+copy /y "%_TargetDir%AxInterop.WMPLib.dll" "%_SolutionDir%xiaowan\" >nul
+copy /y "%_TargetDir%Interop.WMPLib.dll" "%_SolutionDir%xiaowan\" >nul
+copy /y "%_TargetDir%Microsoft.WindowsAPICodePack.dll" "%_SolutionDir%xiaowan\" >nul
+copy /y "%_TargetDir%Microsoft.WindowsAPICodePack.Shell.dll" "%_SolutionDir%xiaowan\" >nul
 
 if not exist "%_SolutionDir%xiaowan\en" mkdir "%_SolutionDir%xiaowan\en" >nul
 if not exist "%_SolutionDir%xiaowan\zh-Hant" mkdir "%_SolutionDir%xiaowan\zh-Hant" >nul
 if not exist "%_SolutionDir%xiaowan\zh-TW" mkdir "%_SolutionDir%xiaowan\zh-TW" >nul
 if not exist "%_SolutionDir%xiaowan\ja-JP" mkdir "%_SolutionDir%xiaowan\ja-JP" >nul
 
-xcopy /y "%_ProjectDir%%_OutDir%en" "%_SolutionDir%xiaowan\en" >nul
-xcopy /y "%_ProjectDir%%_OutDir%zh-Hant" "%_SolutionDir%xiaowan\zh-Hant" >nul
-xcopy /y "%_ProjectDir%%_OutDir%zh-Hant" "%_SolutionDir%xiaowan\zh-TW" >nul
-xcopy /y "%_ProjectDir%%_OutDir%ja-JP" "%_SolutionDir%xiaowan\ja-JP" >nul
+xcopy /y "%_TargetDir%en" "%_SolutionDir%xiaowan\en" >nul
+xcopy /y "%_TargetDir%zh-Hant" "%_SolutionDir%xiaowan\zh-Hant" >nul
+xcopy /y "%_TargetDir%zh-Hant" "%_SolutionDir%xiaowan\zh-TW" >nul
+xcopy /y "%_TargetDir%ja-JP" "%_SolutionDir%xiaowan\ja-JP" >nul
 
 echo PostBuildEvent Completed.
