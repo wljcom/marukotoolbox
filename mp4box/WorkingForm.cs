@@ -455,6 +455,8 @@ namespace mp4box
             proc.Exited -= new EventHandler(ProcExit);
             // terminate threads
             killProcTree(proc.Id);
+            // reset taskbar progress
+            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
             // Print abort message to log
             richTextBoxOutput.InvokeIfRequired(() =>
                 richTextBoxOutput.AppendText(Environment.NewLine + "Work is aborted by user."));
