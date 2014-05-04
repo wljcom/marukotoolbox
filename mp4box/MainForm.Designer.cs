@@ -244,6 +244,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.x264BitrateNum = new System.Windows.Forms.NumericUpDown();
             this.HelpTab = new System.Windows.Forms.TabPage();
+            this.HelpTextBox = new System.Windows.Forms.RichTextBox();
             this.DonateButton = new ControlExs.QQButton();
             this.HomePageBtn = new ControlExs.QQButton();
             this.AboutBtn = new ControlExs.QQButton();
@@ -287,7 +288,6 @@
             this.label26 = new System.Windows.Forms.Label();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
-            this.HelpTextBox = new System.Windows.Forms.RichTextBox();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -2340,6 +2340,13 @@
             this.HelpTab.Name = "HelpTab";
             this.HelpTab.UseVisualStyleBackColor = true;
             // 
+            // HelpTextBox
+            // 
+            resources.ApplyResources(this.HelpTextBox, "HelpTextBox");
+            this.HelpTextBox.Name = "HelpTextBox";
+            this.HelpTextBox.ReadOnly = true;
+            this.HelpTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.HelpTextBox_LinkClicked);
+            // 
             // DonateButton
             // 
             resources.ApplyResources(this.DonateButton, "DonateButton");
@@ -2738,13 +2745,6 @@
             this.ViewLogButton.Name = "ViewLogButton";
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
-            // 
-            // HelpTextBox
-            // 
-            resources.ApplyResources(this.HelpTextBox, "HelpTextBox");
-            this.HelpTextBox.Name = "HelpTextBox";
-            this.HelpTextBox.ReadOnly = true;
-            this.HelpTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.HelpTextBox_LinkClicked);
             // 
             // MainForm
             // 

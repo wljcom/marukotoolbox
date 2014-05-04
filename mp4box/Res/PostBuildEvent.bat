@@ -14,12 +14,10 @@ copy /y "%_TargetDir%Microsoft.WindowsAPICodePack.dll" "%_SolutionDir%xiaowan\" 
 copy /y "%_TargetDir%Microsoft.WindowsAPICodePack.Shell.dll" "%_SolutionDir%xiaowan\" >nul
 
 if not exist "%_SolutionDir%xiaowan\en" mkdir "%_SolutionDir%xiaowan\en" >nul
-if not exist "%_SolutionDir%xiaowan\zh-Hant" mkdir "%_SolutionDir%xiaowan\zh-Hant" >nul
 if not exist "%_SolutionDir%xiaowan\zh-TW" mkdir "%_SolutionDir%xiaowan\zh-TW" >nul
 if not exist "%_SolutionDir%xiaowan\ja-JP" mkdir "%_SolutionDir%xiaowan\ja-JP" >nul
 
 xcopy /y "%_TargetDir%en" "%_SolutionDir%xiaowan\en" >nul
-xcopy /y "%_TargetDir%zh-Hant" "%_SolutionDir%xiaowan\zh-Hant" >nul
 xcopy /y "%_TargetDir%zh-Hant" "%_SolutionDir%xiaowan\zh-TW" >nul
 xcopy /y "%_TargetDir%ja-JP" "%_SolutionDir%xiaowan\ja-JP" >nul
 

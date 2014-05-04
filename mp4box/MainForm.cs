@@ -71,7 +71,7 @@ namespace mp4box
         string avs = "";
         string tempavspath = "";
         string tempPic = "";
-        DateTime ReleaseDate = DateTime.Parse("2014-4-14");
+        DateTime ReleaseDate = DateTime.Now.ToUniversalTime();
 
         #endregion
 
@@ -894,11 +894,17 @@ namespace mp4box
             startpath = System.Windows.Forms.Application.StartupPath;
             workPath = startpath + "\\tools";
             if (!Directory.Exists(workPath))
-                Directory.CreateDirectory(workPath);
+            {
+                MessageBox.Show("tools文件夹没有解压喔~ 工具箱里没有工具的话运行不起来的喔~", "小丸工具箱",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(1);
+            }
+                //Directory.CreateDirectory(workPath);
             //string diskSymbol = startpath.Substring(0, 1);
 
-            string systemDisk = Environment.GetFolderPath(Environment.SpecialFolder.System).Substring(0, 3);
-            string systemTempPath = systemDisk + @"windows\temp";
+            //string systemDisk = Environment.GetFolderPath(Environment.SpecialFolder.System).Substring(0, 3);
+            //string systemTempPath = systemDisk + @"windows\temp";
+            string systemTempPath = Environment.GetEnvironmentVariable("TEMP", EnvironmentVariableTarget.Machine);
             tempavspath = systemTempPath + "\\temp.avs";
             tempPic = systemTempPath + "\\marukotemp.jpg";
             InitParameter();
