@@ -58,8 +58,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 281);
             this.Controls.Add(this.pictureBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SplashForm";
-            this.Text = "SplashForm";
+            this.Text = "小丸工具箱";
             this.Load += new System.EventHandler(this.SplashForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.SplashForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
