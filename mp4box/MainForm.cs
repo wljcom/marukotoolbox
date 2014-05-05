@@ -2484,7 +2484,8 @@ namespace mp4box
             //    }
             //}
             avsBuilder.Remove(0, avsBuilder.Length);
-            avsBuilder.AppendLine("LoadPlugin(\"avsfilter\\VSFilter.DLL\")");
+            string vsfilterDLLPath = Path.Combine(workPath, @"avsfilter\VSFilter.DLL");
+            avsBuilder.AppendLine("LoadPlugin(\"" + vsfilterDLLPath + "\")");
             if (UndotCheckBox.Checked) avsBuilder.AppendLine("LoadPlugin(\"avsfilter\\UnDot.DLL\")");
             avsBuilder.AppendLine("DirectShowSource(\"" + namevideo9 + "\")");
             avsBuilder.AppendLine("ConvertToYV12()");
