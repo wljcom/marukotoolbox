@@ -175,12 +175,12 @@ namespace mp4box
         }
         public string muxbat(string input1, string input2, string fps, string output)
         {
-            mux = "\"" + workPath + "\\mp4box.exe\" -fps " + fps + " -add " + input1 + " -add " + input2 + " -new \"" + output + "\"";
+            mux = "\"" + workPath + "\\mp4box.exe\" -fps " + fps + " -add " + input1 + " -add " + input2 + " -new \"" + output + "\"\r\n";
             return mux;
         }
         public string muxbat(string input1, string input2, string output)
         {
-            mux = "\"" + workPath + "\\mp4box.exe\" -add " + input1 + " -add " + input2 + " -new \"" + output + "\"";
+            mux = "\"" + workPath + "\\mp4box.exe\" -add " + input1 + " -add " + input2 + " -new \"" + output + "\"\r\n";
             return mux;
         }
         public string x264bat(string input, string output)
@@ -352,7 +352,7 @@ namespace mp4box
                     x264 += " --sub \"" + namesub2 + "\"";
                 }
             }
-            x264 += " --acodec none\r\n";
+            x264 += "\r\n";
             //audio
             //如果是avs
             if (video.Substring(video.LastIndexOf(".") + 1) == "avs")
@@ -391,7 +391,7 @@ namespace mp4box
             //}
             //else
             {
-                auto = aextract + x264 + mux + " \r\n\r\n";
+                auto = aextract + x264 + mux + "\r\n";
             }
             if (x264FLVCheckBox.Checked == true)
             {
@@ -446,7 +446,7 @@ namespace mp4box
                         }
                     }
                 }
-                x264 += " --acodec none\r\n";
+                x264 += "\r\n";
                 //audio
                 //如果是avs
                 if (lbAuto.Items[i].ToString().Substring(lbAuto.Items[i].ToString().LastIndexOf(".") + 1) == "avs")
@@ -542,17 +542,16 @@ namespace mp4box
                         }
                     }
                 }
-                switch (x264AudioModeComboBox.SelectedIndex)
-                {
-                    case 1: x264 += " --acodec none"; break;
-                    case 2: x264 += " --acodec copy"; break;
-                    case 3: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
-                    case 4: x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
-                    case 5: x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
-                    //case 6: x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
-                    case 0: break;
-                    default: ; break;
-                }
+                //switch (x264AudioModeComboBox.SelectedIndex)
+                //{
+                //    case 1: x264 += " --acodec none"; break;
+                //    case 2: x264 += " --acodec copy"; break;
+                //    case 3: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
+                //    case 4: x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
+                //    case 5: x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
+                //    case 0: break;
+                //    default: ; break;
+                //}
                 if (cbFPS2.Text != "auto")
                 {
                     switch (cbFPS2.Text)
@@ -955,7 +954,7 @@ namespace mp4box
 
                 if (x264ExeComboBox.SelectedIndex == -1)
                 {
-                    x264ExeComboBox.SelectedIndex = x264ExeComboBox.Items.IndexOf("x264_32_tMod-8bit-420.exe");
+                    x264ExeComboBox.SelectedIndex = x264ExeComboBox.Items.IndexOf("x264_32-8bit");
                 }
 
                 if (int.Parse(ConfigurationManager.AppSettings["LanguageIndex"]) == -1)  //First Startup
@@ -1576,8 +1575,7 @@ namespace mp4box
                 string filepath = tempavspath;
                 //string filepath = workpath + "\\temp.avs";
                 File.WriteAllText(filepath, AVSScriptTextBox.Text, UnicodeEncoding.Default);
-                x264 = x264bat(filepath, nameout9).Replace("\r\n", "");
-                x264 += " --acodec none\r\n";
+                x264 = x264bat(filepath, nameout9);
                 batpath = workPath + "\\x264.bat";
                 File.WriteAllText(batpath, x264, UnicodeEncoding.Default);
                 LogRecord(x264);
@@ -1604,8 +1602,7 @@ namespace mp4box
             {
                 string filepath = workPath + "\\temp.avs";
                 File.WriteAllText(filepath, AVSScriptTextBox.Text, UnicodeEncoding.Default);
-                x264 = x264bat(filepath, "temp.mp4").Replace("\r\n", "");
-                x264 += " --acodec none\r\n";
+                x264 = x264bat(filepath, "temp.mp4");
                 //audio
                 aextract = audiobat(namevideo9, "temp.aac");
                 //mux
@@ -1997,17 +1994,19 @@ namespace mp4box
                         x264 += " --sub \"" + namesub2 + "\"";
                     }
                 }
-                switch (x264AudioModeComboBox.SelectedIndex)
-                {
-                    case 1: x264 += " --acodec none"; break;
-                    case 2: x264 += " --acodec copy"; break;
-                    case 3: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
-                    case 4: x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
-                    case 5: x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
-                    //case 6: x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
-                    case 0: break;
-                    default: ; break;
-                }
+
+                //switch (x264AudioModeComboBox.SelectedIndex)
+                //{
+                //    case 1: x264 += " --acodec none"; break;
+                //    case 2: x264 += " --acodec copy"; break;
+                //    case 3: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
+                //    case 4: x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
+                //    case 5: x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
+                //    //case 6: x264 += " --acodec libaacplus " + x264AudioParameterTextBox.Text; break;
+                //    case 0: break;
+                //    default: ; break;
+                //}
+
                 if (cbFPS2.Text != "auto")
                 {
                     switch (cbFPS2.Text)
@@ -2973,16 +2972,16 @@ namespace mp4box
                 string neroPath = Path.Combine(workPath, "neroaacenc.exe");
                 if (AudioCopyCheckBox.Checked)
                 {
-                    mux = ffPath + " -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
-                    mux += ffPath + " -i SinglePictureVideo.mp4 -i \"" + AudioPicAudioTextBox.Text + "\" -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
+                    mux = "\"" + ffPath + "\" -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
+                    mux += "\"" + ffPath + "\" -i SinglePictureVideo.mp4 -i \"" + AudioPicAudioTextBox.Text + "\" -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
                     mux += "del SinglePictureVideo.mp4\r\n";
                     mux += "cmd";
                 }
                 else
                 {
-                    mux = ffPath + " -i \"" + AudioPicAudioTextBox.Text + "\" -f wav - |" + neroPath + " -br " + OnePicAudioBitrateNum.Value.ToString() + "000 -ignorelength -if - -of audio.mp4 -lc\r\n";
-                    mux += ffPath + " -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
-                    mux += ffPath + " -i SinglePictureVideo.mp4 -i audio.mp4 -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
+                    mux = "\"" + ffPath + "\" -i \"" + AudioPicAudioTextBox.Text + "\" -f wav - |" + neroPath + " -br " + OnePicAudioBitrateNum.Value.ToString() + "000 -ignorelength -if - -of audio.mp4 -lc\r\n";
+                    mux += "\"" + ffPath + "\" -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
+                    mux += "\"" + ffPath + "\" -i SinglePictureVideo.mp4 -i audio.mp4 -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
                     mux += "del SinglePictureVideo.mp4\r\ndel audio.mp4\r\n";
                     mux += "cmd";
                 }

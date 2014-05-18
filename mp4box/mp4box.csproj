@@ -63,7 +63,7 @@
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -186,7 +186,7 @@
     <EmbeddedResource Include="WorkingForm.resx">
       <DependentUpon>WorkingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WorkingForm.zh-TW.resx">
+    <EmbeddedResource Include="WorkingForm.zh-Hant.resx">
       <DependentUpon>WorkingForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">

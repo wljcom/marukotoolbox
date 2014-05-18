@@ -720,9 +720,6 @@
         AAAAAAAAAAAAAAAA
 </value>
   </data>
-  <data name="labelProgress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>596, 276</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="labelworkCount.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1366,9 +1363,6 @@
   <data name="&gt;&gt;buttonSave.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelProgress.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="buttonSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
@@ -1393,14 +1387,14 @@
   <data name="&gt;&gt;labelProgress.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;progressBarX264.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="richTextBoxOutput.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="richTextBoxOutput.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="richTextBoxOutput.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="notifyIcon.Text" xml:space="preserve">
+    <value>小丸工具箱</value>
   </data>
   <data name="buttonSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 21</value>
@@ -1438,8 +1432,8 @@
   <data name="&gt;&gt;labelworkCount.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="notifyIcon.Text" xml:space="preserve">
-    <value>小丸工具箱</value>
+  <data name="&gt;&gt;labelProgress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>WorkingForm</value>
@@ -1459,8 +1453,8 @@
   <data name="buttonSave.Text" xml:space="preserve">
     <value>保存日志</value>
   </data>
-  <data name="&gt;&gt;progressBarX264.Name" xml:space="preserve">
-    <value>progressBarX264</value>
+  <data name="labelProgress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>596, 276</value>
   </data>
   <data name="buttonAbort.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -1473,6 +1467,9 @@
   </data>
   <data name="&gt;&gt;labelworkCount.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="&gt;&gt;progressBarX264.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;richTextBoxOutput.Name" xml:space="preserve">
     <value>richTextBoxOutput</value>
@@ -1489,6 +1486,9 @@
   <data name="&gt;&gt;richTextBoxOutput.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;progressBarX264.Name" xml:space="preserve">
+    <value>progressBarX264</value>
+  </data>
   <data name="labelworkCount.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
@@ -1500,5 +1500,8 @@
   </metadata>
   <metadata name="notifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>zh-Hant</value>
   </metadata>
 </root>
