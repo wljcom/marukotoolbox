@@ -145,18 +145,6 @@
   <data name="label15.Text" xml:space="preserve">
     <value>結束時刻</value>
   </data>
-  <data name="btnout4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnout4.Text" xml:space="preserve">
-    <value>一鍵壓制</value>
-  </data>
-  <data name="cbDelTmp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="cbDelTmp.Text" xml:space="preserve">
-    <value>保留暫存檔案</value>
-  </data>
   <data name="btnMIopen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -174,6 +162,9 @@
   </data>
   <data name="btnMIcopy.Text" xml:space="preserve">
     <value>拷貝訊息</value>
+  </data>
+  <data name="AVSwithAudioCheckBox.Text" xml:space="preserve">
+    <value>壓制音頻</value>
   </data>
   <data name="AVSSaveButton.Text" xml:space="preserve">
     <value>儲存AVS</value>
@@ -276,12 +267,6 @@
   </data>
   <data name="btnpreview9.Text" xml:space="preserve">
     <value>預覽</value>
-  </data>
-  <data name="btnAVSone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnAVSone.Text" xml:space="preserve">
-    <value>一鍵壓制</value>
   </data>
   <data name="btnAVS9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -542,9 +527,6 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>批量壓制</value>
   </data>
-  <data name="tabNeroAAC.Text" xml:space="preserve">
-    <value>音頻</value>
-  </data>
   <data name="AudioCopyCheckBox.Text" xml:space="preserve">
     <value>複製音頻</value>
   </data>
@@ -583,9 +565,6 @@
   </data>
   <data name="x264FLVCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="x264OneBatchButton.Text" xml:space="preserve">
-    <value>一鍵壓制</value>
   </data>
   <data name="x264PathButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -693,7 +672,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelAudio.Text" xml:space="preserve">
-    <value>音頻參數</value>
+    <value>點我設置音頻參數</value>
   </data>
   <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -725,9 +704,6 @@
   <data name="VideoTab.Text" xml:space="preserve">
     <value>影片</value>
   </data>
-  <data name="DonateButton.Text" xml:space="preserve">
-    <value>捐贈小丸</value>
-  </data>
   <data name="HomePageBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -755,6 +731,9 @@
   <data name="linkLabel1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 12</value>
+  </data>
   <data name="linkLabel1.Text" xml:space="preserve">
     <value>x264 - 06_taro編譯版</value>
   </data>
@@ -781,6 +760,9 @@
   </data>
   <data name="groupBox11.Text" xml:space="preserve">
     <value>後黑</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>預覽播放器</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>x264線程</value>

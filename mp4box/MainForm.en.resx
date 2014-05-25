@@ -139,15 +139,6 @@
   <data name="groupBox10.Text" xml:space="preserve">
     <value>Clip</value>
   </data>
-  <data name="btnout4.Text" xml:space="preserve">
-    <value>OneKey</value>
-  </data>
-  <data name="cbDelTmp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 21</value>
-  </data>
-  <data name="cbDelTmp.Text" xml:space="preserve">
-    <value>Retain temporary files</value>
-  </data>
   <data name="btnMIopen.Text" xml:space="preserve">
     <value>Open</value>
   </data>
@@ -159,6 +150,12 @@
   </data>
   <data name="MediaInfoTextBox.Text" xml:space="preserve">
     <value>Drag and Drop Media files here...</value>
+  </data>
+  <data name="AVSwithAudioCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 21</value>
+  </data>
+  <data name="AVSwithAudioCheckBox.Text" xml:space="preserve">
+    <value>with audio</value>
   </data>
   <data name="AVSSaveButton.Text" xml:space="preserve">
     <value>Save AVS</value>
@@ -382,9 +379,6 @@
   <data name="btnpreview9.Text" xml:space="preserve">
     <value>Preview</value>
   </data>
-  <data name="btnAVSone.Text" xml:space="preserve">
-    <value>Start(with audio)</value>
-  </data>
   <data name="btnAVS9.Text" xml:space="preserve">
     <value>Start</value>
   </data>
@@ -547,6 +541,9 @@
   <data name="NeroAACGroupBox.Text" xml:space="preserve">
     <value>Audio Convert</value>
   </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 12</value>
+  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>New files are located in the original folder</value>
   </data>
@@ -565,7 +562,7 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Batch</value>
   </data>
-  <data name="tabNeroAAC.Text" xml:space="preserve">
+  <data name="AudioTab.Text" xml:space="preserve">
     <value>Audio</value>
   </data>
   <data name="AudioCopyCheckBox.Size" type="System.Drawing.Size, System.Drawing">
@@ -619,9 +616,6 @@
   <data name="x264FLVCheckBox.Text" xml:space="preserve">
     <value>Mux as FLV</value>
   </data>
-  <data name="x264OneBatchButton.Text" xml:space="preserve">
-    <value>OneKey</value>
-  </data>
   <data name="x264PathButton.Text" xml:space="preserve">
     <value>Output Path</value>
   </data>
@@ -653,10 +647,10 @@
     <value>Auto shutdown</value>
   </data>
   <data name="x264AudioParameterTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 93</value>
+    <value>254, 93</value>
   </data>
   <data name="x264AudioParameterTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 23</value>
+    <value>21, 23</value>
   </data>
   <data name="x264Mode3RadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>70, 1</value>
@@ -706,9 +700,6 @@
   <data name="x264AudioModeComboBox.Items1" xml:space="preserve">
     <value>Copy</value>
   </data>
-  <data name="x264AudioModeComboBox.Items2" xml:space="preserve">
-    <value>External</value>
-  </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>287, 98</value>
   </data>
@@ -750,9 +741,6 @@
   </data>
   <data name="VideoTab.Text" xml:space="preserve">
     <value>Video</value>
-  </data>
-  <data name="DonateButton.Text" xml:space="preserve">
-    <value>Donate</value>
   </data>
   <data name="HomePageBtn.Text" xml:space="preserve">
     <value>Website</value>
@@ -828,6 +816,12 @@
   </data>
   <data name="MiscTab.Text" xml:space="preserve">
     <value>General</value>
+  </data>
+  <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 12</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Player Path</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 12</value>

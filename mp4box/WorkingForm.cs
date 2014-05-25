@@ -349,6 +349,7 @@ namespace mp4box
             else
             {
                 var savDlg = new SaveFileDialog();
+                savDlg.FileName = "log";
                 savDlg.Filter = "Log files|*.log|All files|*.*";
                 savDlg.FilterIndex = 1;
                 savDlg.RestoreDirectory = true;

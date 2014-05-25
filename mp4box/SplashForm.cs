@@ -55,14 +55,16 @@ namespace mp4box
             ArtTextLabel TitleLabel = new ArtTextLabel();
             TitleLabel.AutoSize = true;
             TitleLabel.Font = new Font("微软雅黑", 21.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(134)));
-            TitleLabel.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            TitleLabel.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(241)))), ((int)(((byte)(191)))));
             TitleLabel.BackColor = Color.Transparent;
-            TitleLabel.Location = new Point(300, 100);
+            TitleLabel.Location = new Point(300, 110);
             TitleLabel.Name = "TitleLabel";
             TitleLabel.Size = new Size(208, 29);
             TitleLabel.TabIndex = 2;
             TitleLabel.Text = "小丸工具箱";
             TitleLabel.Parent = pictureBox;
+
+            LuneartTextLabel.Parent = pictureBox;
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -141,7 +143,6 @@ namespace mp4box
                 this.Close();
         }
 
-
         private void Type(Control sender, int p_1, double p_2)
         {
             GraphicsPath oPath = new GraphicsPath();
@@ -160,7 +161,6 @@ namespace mp4box
 
             sender.Region = new Region(oPath);
         }
-
     }
 
 
@@ -168,7 +168,7 @@ namespace mp4box
     class ArtTextLabel : Label
     {
         int _borderSize = 3;
-        Color _borderColor = Color.Purple;
+        Color _borderColor = Color.Gray;
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);

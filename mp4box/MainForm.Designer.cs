@@ -42,14 +42,13 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.maskb = new System.Windows.Forms.MaskedTextBox();
-            this.btnout4 = new ControlExs.QQButton();
-            this.cbDelTmp = new ControlExs.QQCheckBox();
             this.MediaInfoTab = new System.Windows.Forms.TabPage();
             this.btnMIopen = new ControlExs.QQButton();
             this.btnMIplay = new ControlExs.QQButton();
             this.btnMIcopy = new ControlExs.QQButton();
             this.MediaInfoTextBox = new System.Windows.Forms.TextBox();
             this.AVSTab = new System.Windows.Forms.TabPage();
+            this.AVSwithAudioCheckBox = new ControlExs.QQCheckBox();
             this.AVSSaveButton = new ControlExs.QQButton();
             this.label25 = new System.Windows.Forms.Label();
             this.AVSCropTextBox = new ControlExs.QQTextBox();
@@ -94,7 +93,6 @@
             this.button9 = new ControlExs.QQButton();
             this.button6 = new ControlExs.QQButton();
             this.btnpreview9 = new ControlExs.QQButton();
-            this.btnAVSone = new ControlExs.QQButton();
             this.btnAVS9 = new ControlExs.QQButton();
             this.btnvideo9 = new ControlExs.QQButton();
             this.btnout9 = new ControlExs.QQButton();
@@ -150,7 +148,7 @@
             this.txtout6 = new ControlExs.QQTextBox();
             this.button2 = new ControlExs.QQButton();
             this.button7 = new ControlExs.QQButton();
-            this.tabNeroAAC = new System.Windows.Forms.TabPage();
+            this.AudioTab = new System.Windows.Forms.TabPage();
             this.NeroAACGroupBox = new System.Windows.Forms.GroupBox();
             this.AudioBitrateComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -198,7 +196,6 @@
             this.x264DemuxerComboBox = new System.Windows.Forms.ComboBox();
             this.x264FLVCheckBox = new ControlExs.QQCheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.x264OneBatchButton = new ControlExs.QQButton();
             this.x264PathButton = new ControlExs.QQButton();
             this.x264PathTextBox = new ControlExs.QQTextBox();
             this.lbAuto = new System.Windows.Forms.ListBox();
@@ -226,10 +223,10 @@
             this.x264VideoBtn = new ControlExs.QQButton();
             this.label16 = new System.Windows.Forms.Label();
             this.x264ExeComboBox = new System.Windows.Forms.ComboBox();
-            this.cbFPS2 = new System.Windows.Forms.ComboBox();
+            this.x264FpsComboBox = new System.Windows.Forms.ComboBox();
             this.lbFPS2 = new System.Windows.Forms.Label();
             this.x264AudioModeComboBox = new System.Windows.Forms.ComboBox();
-            this.cbX264 = new System.Windows.Forms.ComboBox();
+            this.VideoPresetComboBox = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.labelAudio = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -245,13 +242,12 @@
             this.x264BitrateNum = new System.Windows.Forms.NumericUpDown();
             this.HelpTab = new System.Windows.Forms.TabPage();
             this.HelpTextBox = new System.Windows.Forms.RichTextBox();
-            this.DonateButton = new ControlExs.QQButton();
             this.HomePageBtn = new ControlExs.QQButton();
             this.AboutBtn = new ControlExs.QQButton();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.AudioTab = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.MiscTab = new System.Windows.Forms.TabPage();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.label37 = new System.Windows.Forms.Label();
@@ -273,6 +269,9 @@
             this.BlackOutputTextBox = new ControlExs.QQTextBox();
             this.BlackVideoTextBox = new ControlExs.QQTextBox();
             this.SetupTabPage = new System.Windows.Forms.TabPage();
+            this.SetupPlayerTextBox = new ControlExs.QQTextBox();
+            this.SetupPlayerButton = new ControlExs.QQButton();
+            this.label38 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.x264ThreadsComboBox = new System.Windows.Forms.ComboBox();
             this.SplashScreenCheckBox = new ControlExs.QQCheckBox();
@@ -313,7 +312,7 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.tabNeroAAC.SuspendLayout();
+            this.AudioTab.SuspendLayout();
             this.NeroAACGroupBox.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -331,7 +330,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.x264CRFNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.x264BitrateNum)).BeginInit();
             this.HelpTab.SuspendLayout();
-            this.AudioTab.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.MiscTab.SuspendLayout();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BlackBitrateNum)).BeginInit();
@@ -424,20 +423,6 @@
             resources.ApplyResources(this.maskb, "maskb");
             this.maskb.Name = "maskb";
             // 
-            // btnout4
-            // 
-            resources.ApplyResources(this.btnout4, "btnout4");
-            this.btnout4.Name = "btnout4";
-            this.btnout4.UseVisualStyleBackColor = true;
-            this.btnout4.Click += new System.EventHandler(this.btnout4_Click);
-            // 
-            // cbDelTmp
-            // 
-            resources.ApplyResources(this.cbDelTmp, "cbDelTmp");
-            this.cbDelTmp.BackColor = System.Drawing.Color.Transparent;
-            this.cbDelTmp.Name = "cbDelTmp";
-            this.cbDelTmp.UseVisualStyleBackColor = true;
-            // 
             // MediaInfoTab
             // 
             this.MediaInfoTab.Controls.Add(this.btnMIopen);
@@ -482,6 +467,7 @@
             // 
             // AVSTab
             // 
+            this.AVSTab.Controls.Add(this.AVSwithAudioCheckBox);
             this.AVSTab.Controls.Add(this.AVSSaveButton);
             this.AVSTab.Controls.Add(this.label25);
             this.AVSTab.Controls.Add(this.AVSCropTextBox);
@@ -526,7 +512,6 @@
             this.AVSTab.Controls.Add(this.button9);
             this.AVSTab.Controls.Add(this.button6);
             this.AVSTab.Controls.Add(this.btnpreview9);
-            this.AVSTab.Controls.Add(this.btnAVSone);
             this.AVSTab.Controls.Add(this.btnAVS9);
             this.AVSTab.Controls.Add(this.btnvideo9);
             this.AVSTab.Controls.Add(this.btnout9);
@@ -535,6 +520,13 @@
             this.AVSTab.Name = "AVSTab";
             this.AVSTab.UseVisualStyleBackColor = true;
             this.AVSTab.Click += new System.EventHandler(this.txtAVScreate_Click);
+            // 
+            // AVSwithAudioCheckBox
+            // 
+            resources.ApplyResources(this.AVSwithAudioCheckBox, "AVSwithAudioCheckBox");
+            this.AVSwithAudioCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.AVSwithAudioCheckBox.Name = "AVSwithAudioCheckBox";
+            this.AVSwithAudioCheckBox.UseVisualStyleBackColor = false;
             // 
             // AVSSaveButton
             // 
@@ -975,13 +967,6 @@
             this.btnpreview9.Name = "btnpreview9";
             this.btnpreview9.UseVisualStyleBackColor = true;
             this.btnpreview9.Click += new System.EventHandler(this.btnpreview9_Click);
-            // 
-            // btnAVSone
-            // 
-            resources.ApplyResources(this.btnAVSone, "btnAVSone");
-            this.btnAVSone.Name = "btnAVSone";
-            this.btnAVSone.UseVisualStyleBackColor = true;
-            this.btnAVSone.Click += new System.EventHandler(this.btnAVSone_Click);
             // 
             // btnAVS9
             // 
@@ -1455,14 +1440,14 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
-            // tabNeroAAC
+            // AudioTab
             // 
-            this.tabNeroAAC.AllowDrop = true;
-            this.tabNeroAAC.Controls.Add(this.NeroAACGroupBox);
-            this.tabNeroAAC.Controls.Add(this.groupBox2);
-            resources.ApplyResources(this.tabNeroAAC, "tabNeroAAC");
-            this.tabNeroAAC.Name = "tabNeroAAC";
-            this.tabNeroAAC.UseVisualStyleBackColor = true;
+            this.AudioTab.AllowDrop = true;
+            this.AudioTab.Controls.Add(this.NeroAACGroupBox);
+            this.AudioTab.Controls.Add(this.groupBox2);
+            resources.ApplyResources(this.AudioTab, "AudioTab");
+            this.AudioTab.Name = "AudioTab";
+            this.AudioTab.UseVisualStyleBackColor = true;
             // 
             // NeroAACGroupBox
             // 
@@ -1828,7 +1813,6 @@
             this.VideoTab.Controls.Add(this.x264SeekLabel);
             this.VideoTab.Controls.Add(this.x264FramesNumericUpDown);
             this.VideoTab.Controls.Add(this.x264SeekNumericUpDown);
-            this.VideoTab.Controls.Add(this.btnout4);
             this.VideoTab.Controls.Add(this.MaintainResolutionCheckBox);
             this.VideoTab.Controls.Add(this.x264DemuxerComboBox);
             this.VideoTab.Controls.Add(this.x264FLVCheckBox);
@@ -1849,10 +1833,10 @@
             this.VideoTab.Controls.Add(this.x264VideoBtn);
             this.VideoTab.Controls.Add(this.label16);
             this.VideoTab.Controls.Add(this.x264ExeComboBox);
-            this.VideoTab.Controls.Add(this.cbFPS2);
+            this.VideoTab.Controls.Add(this.x264FpsComboBox);
             this.VideoTab.Controls.Add(this.lbFPS2);
             this.VideoTab.Controls.Add(this.x264AudioModeComboBox);
-            this.VideoTab.Controls.Add(this.cbX264);
+            this.VideoTab.Controls.Add(this.VideoPresetComboBox);
             this.VideoTab.Controls.Add(this.label8);
             this.VideoTab.Controls.Add(this.labelAudio);
             this.VideoTab.Controls.Add(this.label12);
@@ -1933,8 +1917,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbDelTmp);
-            this.groupBox1.Controls.Add(this.x264OneBatchButton);
             this.groupBox1.Controls.Add(this.x264PathButton);
             this.groupBox1.Controls.Add(this.x264PathTextBox);
             this.groupBox1.Controls.Add(this.lbAuto);
@@ -1946,13 +1928,6 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            // 
-            // x264OneBatchButton
-            // 
-            resources.ApplyResources(this.x264OneBatchButton, "x264OneBatchButton");
-            this.x264OneBatchButton.Name = "x264OneBatchButton";
-            this.x264OneBatchButton.UseVisualStyleBackColor = true;
-            this.x264OneBatchButton.Click += new System.EventHandler(this.x264OneBatchButton_Click);
             // 
             // x264PathButton
             // 
@@ -2164,23 +2139,22 @@
             this.x264ExeComboBox.FormattingEnabled = true;
             resources.ApplyResources(this.x264ExeComboBox, "x264ExeComboBox");
             this.x264ExeComboBox.Name = "x264ExeComboBox";
-            this.x264ExeComboBox.SelectedIndexChanged += new System.EventHandler(this.cbx264file_SelectedIndexChanged);
             // 
-            // cbFPS2
+            // x264FpsComboBox
             // 
-            this.cbFPS2.FormattingEnabled = true;
-            this.cbFPS2.Items.AddRange(new object[] {
-            resources.GetString("cbFPS2.Items"),
-            resources.GetString("cbFPS2.Items1"),
-            resources.GetString("cbFPS2.Items2"),
-            resources.GetString("cbFPS2.Items3"),
-            resources.GetString("cbFPS2.Items4"),
-            resources.GetString("cbFPS2.Items5"),
-            resources.GetString("cbFPS2.Items6"),
-            resources.GetString("cbFPS2.Items7"),
-            resources.GetString("cbFPS2.Items8")});
-            resources.ApplyResources(this.cbFPS2, "cbFPS2");
-            this.cbFPS2.Name = "cbFPS2";
+            this.x264FpsComboBox.FormattingEnabled = true;
+            this.x264FpsComboBox.Items.AddRange(new object[] {
+            resources.GetString("x264FpsComboBox.Items"),
+            resources.GetString("x264FpsComboBox.Items1"),
+            resources.GetString("x264FpsComboBox.Items2"),
+            resources.GetString("x264FpsComboBox.Items3"),
+            resources.GetString("x264FpsComboBox.Items4"),
+            resources.GetString("x264FpsComboBox.Items5"),
+            resources.GetString("x264FpsComboBox.Items6"),
+            resources.GetString("x264FpsComboBox.Items7"),
+            resources.GetString("x264FpsComboBox.Items8")});
+            resources.ApplyResources(this.x264FpsComboBox, "x264FpsComboBox");
+            this.x264FpsComboBox.Name = "x264FpsComboBox";
             // 
             // lbFPS2
             // 
@@ -2193,22 +2167,17 @@
             this.x264AudioModeComboBox.FormattingEnabled = true;
             this.x264AudioModeComboBox.Items.AddRange(new object[] {
             resources.GetString("x264AudioModeComboBox.Items"),
-            resources.GetString("x264AudioModeComboBox.Items1"),
-            resources.GetString("x264AudioModeComboBox.Items2"),
-            resources.GetString("x264AudioModeComboBox.Items3"),
-            resources.GetString("x264AudioModeComboBox.Items4"),
-            resources.GetString("x264AudioModeComboBox.Items5")});
+            resources.GetString("x264AudioModeComboBox.Items1")});
             resources.ApplyResources(this.x264AudioModeComboBox, "x264AudioModeComboBox");
             this.x264AudioModeComboBox.Name = "x264AudioModeComboBox";
-            this.x264AudioModeComboBox.SelectedIndexChanged += new System.EventHandler(this.x264AudioModeComboBox_SelectedIndexChanged);
             // 
-            // cbX264
+            // VideoPresetComboBox
             // 
-            this.cbX264.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbX264.FormattingEnabled = true;
-            resources.ApplyResources(this.cbX264, "cbX264");
-            this.cbX264.Name = "cbX264";
-            this.cbX264.SelectedIndexChanged += new System.EventHandler(this.cbX264_SelectedIndexChanged);
+            this.VideoPresetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.VideoPresetComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.VideoPresetComboBox, "VideoPresetComboBox");
+            this.VideoPresetComboBox.Name = "VideoPresetComboBox";
+            this.VideoPresetComboBox.SelectedIndexChanged += new System.EventHandler(this.cbX264_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -2218,7 +2187,9 @@
             // labelAudio
             // 
             resources.ApplyResources(this.labelAudio, "labelAudio");
+            this.labelAudio.ForeColor = System.Drawing.Color.Blue;
             this.labelAudio.Name = "labelAudio";
+            this.labelAudio.Click += new System.EventHandler(this.labelAudio_Click);
             // 
             // label12
             // 
@@ -2330,7 +2301,6 @@
             // HelpTab
             // 
             this.HelpTab.Controls.Add(this.HelpTextBox);
-            this.HelpTab.Controls.Add(this.DonateButton);
             this.HelpTab.Controls.Add(this.HomePageBtn);
             this.HelpTab.Controls.Add(this.AboutBtn);
             this.HelpTab.Controls.Add(this.linkLabel4);
@@ -2346,13 +2316,6 @@
             this.HelpTextBox.Name = "HelpTextBox";
             this.HelpTextBox.ReadOnly = true;
             this.HelpTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.HelpTextBox_LinkClicked);
-            // 
-            // DonateButton
-            // 
-            resources.ApplyResources(this.DonateButton, "DonateButton");
-            this.DonateButton.Name = "DonateButton";
-            this.DonateButton.UseVisualStyleBackColor = true;
-            this.DonateButton.Click += new System.EventHandler(this.DonateButton_Click);
             // 
             // HomePageBtn
             // 
@@ -2389,23 +2352,23 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // AudioTab
+            // tabControl
             // 
-            this.AudioTab.AllowDrop = true;
-            this.AudioTab.Controls.Add(this.VideoTab);
-            this.AudioTab.Controls.Add(this.tabNeroAAC);
-            this.AudioTab.Controls.Add(this.MiscTab);
-            this.AudioTab.Controls.Add(this.MuxTab);
-            this.AudioTab.Controls.Add(this.ExtractTab);
-            this.AudioTab.Controls.Add(this.AVSTab);
-            this.AudioTab.Controls.Add(this.MediaInfoTab);
-            this.AudioTab.Controls.Add(this.SetupTabPage);
-            this.AudioTab.Controls.Add(this.HelpTab);
-            this.AudioTab.Cursor = System.Windows.Forms.Cursors.Default;
-            this.AudioTab.HotTrack = true;
-            resources.ApplyResources(this.AudioTab, "AudioTab");
-            this.AudioTab.Name = "AudioTab";
-            this.AudioTab.SelectedIndex = 0;
+            this.tabControl.AllowDrop = true;
+            this.tabControl.Controls.Add(this.VideoTab);
+            this.tabControl.Controls.Add(this.AudioTab);
+            this.tabControl.Controls.Add(this.MiscTab);
+            this.tabControl.Controls.Add(this.MuxTab);
+            this.tabControl.Controls.Add(this.ExtractTab);
+            this.tabControl.Controls.Add(this.AVSTab);
+            this.tabControl.Controls.Add(this.MediaInfoTab);
+            this.tabControl.Controls.Add(this.SetupTabPage);
+            this.tabControl.Controls.Add(this.HelpTab);
+            this.tabControl.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tabControl.HotTrack = true;
+            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
             // 
             // MiscTab
             // 
@@ -2612,6 +2575,9 @@
             // 
             // SetupTabPage
             // 
+            this.SetupTabPage.Controls.Add(this.SetupPlayerTextBox);
+            this.SetupTabPage.Controls.Add(this.SetupPlayerButton);
+            this.SetupTabPage.Controls.Add(this.label38);
             this.SetupTabPage.Controls.Add(this.label2);
             this.SetupTabPage.Controls.Add(this.x264ThreadsComboBox);
             this.SetupTabPage.Controls.Add(this.SplashScreenCheckBox);
@@ -2630,6 +2596,27 @@
             resources.ApplyResources(this.SetupTabPage, "SetupTabPage");
             this.SetupTabPage.Name = "SetupTabPage";
             this.SetupTabPage.UseVisualStyleBackColor = true;
+            // 
+            // SetupPlayerTextBox
+            // 
+            this.SetupPlayerTextBox.AllowDrop = true;
+            this.SetupPlayerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SetupPlayerTextBox.EmptyTextTip = null;
+            this.SetupPlayerTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.SetupPlayerTextBox, "SetupPlayerTextBox");
+            this.SetupPlayerTextBox.Name = "SetupPlayerTextBox";
+            // 
+            // SetupPlayerButton
+            // 
+            resources.ApplyResources(this.SetupPlayerButton, "SetupPlayerButton");
+            this.SetupPlayerButton.Name = "SetupPlayerButton";
+            this.SetupPlayerButton.UseVisualStyleBackColor = true;
+            this.SetupPlayerButton.Click += new System.EventHandler(this.SetupAVSPlayerButton_Click);
+            // 
+            // label38
+            // 
+            resources.ApplyResources(this.label38, "label38");
+            this.label38.Name = "label38";
             // 
             // label2
             // 
@@ -2751,7 +2738,7 @@
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.AudioTab);
+            this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -2791,7 +2778,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.tabNeroAAC.ResumeLayout(false);
+            this.AudioTab.ResumeLayout(false);
             this.NeroAACGroupBox.ResumeLayout(false);
             this.NeroAACGroupBox.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -2816,7 +2803,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.x264BitrateNum)).EndInit();
             this.HelpTab.ResumeLayout(false);
             this.HelpTab.PerformLayout();
-            this.AudioTab.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.MiscTab.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
@@ -2842,8 +2829,6 @@
         private ControlExs.QQTextBox txtvideo4;
         private ControlExs.QQButton btnout5;
         private ControlExs.QQButton btnvideo4;
-        private ControlExs.QQCheckBox cbDelTmp;
-        private ControlExs.QQButton btnout4;
         private System.Windows.Forms.TabPage MediaInfoTab;
         private ControlExs.QQButton btnMIopen;
         private ControlExs.QQButton btnMIplay;
@@ -2853,7 +2838,6 @@
         private ControlExs.QQButton button9;
         private ControlExs.QQButton button6;
         private ControlExs.QQButton btnpreview9;
-        private ControlExs.QQButton btnAVSone;
         private ControlExs.QQButton btnAVS9;
         private ControlExs.QQTextBox AVSScriptTextBox;
         private ControlExs.QQTextBox txtvideo9;
@@ -2908,7 +2892,7 @@
         private ControlExs.QQTextBox txtaudio;
         private System.Windows.Forms.Label label14;
         private ControlExs.QQTextBox txtout;
-        private System.Windows.Forms.TabPage tabNeroAAC;
+        private System.Windows.Forms.TabPage AudioTab;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbaackbps;
         private System.Windows.Forms.Label lbaacrate;
@@ -2943,10 +2927,10 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox x264ExeComboBox;
-        private System.Windows.Forms.ComboBox cbFPS2;
+        private System.Windows.Forms.ComboBox x264FpsComboBox;
         private System.Windows.Forms.Label lbFPS2;
         private System.Windows.Forms.ComboBox x264AudioModeComboBox;
-        private System.Windows.Forms.ComboBox cbX264;
+        private System.Windows.Forms.ComboBox VideoPresetComboBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labelAudio;
         private System.Windows.Forms.Label label12;
@@ -2969,7 +2953,7 @@
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.TabControl AudioTab;
+        private System.Windows.Forms.TabControl tabControl;
         private ControlExs.QQRadioButton AudioBitrateRadioButton;
         private ControlExs.QQRadioButton AudioCustomizeRadioButton;
         private ControlExs.QQCheckBox x264FLVCheckBox;
@@ -3028,8 +3012,6 @@
         private ControlExs.QQButton SetDefaultButton;
         private System.Windows.Forms.ComboBox languageComboBox;
         private System.Windows.Forms.Label label26;
-        private ControlExs.QQButton x264OneBatchButton;
-        private ControlExs.QQButton DonateButton;
         private ControlExs.QQButton AVSSaveButton;
         private ControlExs.QQButton MuxReplaceAudioButton;
         private System.Windows.Forms.Label x264FramesLabel;
@@ -3089,6 +3071,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox x264ThreadsComboBox;
         private System.Windows.Forms.RichTextBox HelpTextBox;
+        private ControlExs.QQCheckBox AVSwithAudioCheckBox;
+        private ControlExs.QQTextBox SetupPlayerTextBox;
+        private ControlExs.QQButton SetupPlayerButton;
+        private System.Windows.Forms.Label label38;
     }
 }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -34,6 +35,16 @@ namespace mp4box
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             NativeMethods.SetUnmanagedDllDirectory();
+
+            var modulename = Process.GetCurrentProcess().MainModule.ModuleName;
+            var procesname = Path.GetFileNameWithoutExtension(modulename);
+            Process[] processes = Process.GetProcessesByName(procesname);
+            if (processes.Length > 1)
+            {
+                MessageBox.Show("你已经打开了一个小丸工具箱喔！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+                return;
+            }
 
             if (ConfigurationManager.AppSettings["SplashScreen"] == "True")
             {

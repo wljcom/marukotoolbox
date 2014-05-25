@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashForm));
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.LuneartTextLabel = new mp4box.ArtTextLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,11 +53,24 @@
             this.pictureBox.TabStop = false;
             this.pictureBox.DoubleClick += new System.EventHandler(this.pictureBox_DoubleClick);
             // 
+            // LuneartTextLabel
+            // 
+            this.LuneartTextLabel.AutoSize = true;
+            this.LuneartTextLabel.BackColor = System.Drawing.Color.Transparent;
+            this.LuneartTextLabel.Font = new System.Drawing.Font("宋体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LuneartTextLabel.ForeColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.LuneartTextLabel.Location = new System.Drawing.Point(350, 176);
+            this.LuneartTextLabel.Name = "LuneartTextLabel";
+            this.LuneartTextLabel.Size = new System.Drawing.Size(100, 29);
+            this.LuneartTextLabel.TabIndex = 1;
+            this.LuneartTextLabel.Text = "月儿版";
+            // 
             // SplashForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 281);
+            this.Controls.Add(this.LuneartTextLabel);
             this.Controls.Add(this.pictureBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SplashForm";
@@ -65,6 +79,7 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.SplashForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -72,5 +87,6 @@
 
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.PictureBox pictureBox;
+        private ArtTextLabel LuneartTextLabel;
     }
 }
