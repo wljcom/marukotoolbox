@@ -151,6 +151,15 @@
   <data name="btnMIcopy.Text" xml:space="preserve">
     <value>コピー</value>
   </data>
+  <data name="AVSAddFilterButton.Text" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="label39.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Filter</value>
+  </data>
   <data name="AVSwithAudioCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 21</value>
   </data>

@@ -163,6 +163,16 @@
   <data name="btnMIcopy.Text" xml:space="preserve">
     <value>拷貝訊息</value>
   </data>
+  <data name="AVSAddFilterButton.Text" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label39.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>濾鏡</value>
+  </data>
   <data name="AVSwithAudioCheckBox.Text" xml:space="preserve">
     <value>壓制音頻</value>
   </data>
@@ -370,7 +380,6 @@
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 12</value>
   </data>
@@ -704,6 +713,12 @@
   <data name="VideoTab.Text" xml:space="preserve">
     <value>影片</value>
   </data>
+  <data name="CheckUpdateButton.Text" xml:space="preserve">
+    <value>檢查更新</value>
+  </data>
+  <data name="ReleaseDatelabel2.Text" xml:space="preserve">
+    <value>發佈日期</value>
+  </data>
   <data name="HomePageBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -721,21 +736,6 @@
   </data>
   <data name="linkLabel4.Text" xml:space="preserve">
     <value>終極解碼</value>
-  </data>
-  <data name="linkLabel2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="linkLabel2.Text" xml:space="preserve">
-    <value>Direct264 upyzl編譯版</value>
-  </data>
-  <data name="linkLabel1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 12</value>
-  </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>x264 - 06_taro編譯版</value>
   </data>
   <data name="HelpTab.Text" xml:space="preserve">
     <value>幫助</value>
@@ -766,9 +766,6 @@
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>x264線程</value>
-  </data>
-  <data name="CheckUpdateButton.Text" xml:space="preserve">
-    <value>檢查更新</value>
   </data>
   <data name="SetupDeleteTempFileCheckBox.Text" xml:space="preserve">
     <value>退出軟體時刪除所有暫存檔案</value>

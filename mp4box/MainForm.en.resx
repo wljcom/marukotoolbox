@@ -151,6 +151,15 @@
   <data name="MediaInfoTextBox.Text" xml:space="preserve">
     <value>Drag and Drop Media files here...</value>
   </data>
+  <data name="AVSAddFilterButton.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="label39.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Filter</value>
+  </data>
   <data name="AVSwithAudioCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 21</value>
   </data>
@@ -748,15 +757,6 @@
   <data name="AboutBtn.Text" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="linkLabel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 565</value>
-  </data>
-  <data name="linkLabel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 12</value>
-  </data>
-  <data name="linkLabel4.Text" xml:space="preserve">
-    <value>FinalCodecs</value>
-  </data>
   <data name="linkLabel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 565</value>
   </data>
@@ -765,12 +765,6 @@
   </data>
   <data name="linkLabel2.Text" xml:space="preserve">
     <value>Direct264 upyzl</value>
-  </data>
-  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 12</value>
-  </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>x264 - 06_taro</value>
   </data>
   <data name="HelpTab.Text" xml:space="preserve">
     <value>Help</value>

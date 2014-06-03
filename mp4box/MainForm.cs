@@ -72,7 +72,7 @@ namespace mp4box
         string avs = "";
         string tempavspath = "";
         string tempPic = "";
-        DateTime ReleaseDate = DateTime.Now.ToUniversalTime();
+        DateTime ReleaseDate;
 
         #endregion
 
@@ -854,10 +854,10 @@ namespace mp4box
             tempPic = systemTempPath + "\\marukotemp.jpg";
             InitParameter();
 
+
+            //load x264 exe
             DirectoryInfo folder = new DirectoryInfo(workPath);
             List<string> x264exe = new List<string>();
-
-            //var x264exe = folder.GetFiles().Where(x => x.Name.Contains("x264") && Path.GetExtension(x.Name) == ".exe").Select(x => new { x.Name }).ToList();
             foreach (FileInfo FileName in folder.GetFiles())
             {
                 if (FileName.Name.Contains("x264") && Path.GetExtension(FileName.Name) == ".exe")
@@ -867,6 +867,20 @@ namespace mp4box
             }
             x264exe = x264exe.OrderByDescending(i => i.Substring(7)).ToList();
             x264ExeComboBox.Items.AddRange(x264exe.ToArray());
+
+            //load AVS filter
+            DirectoryInfo avspath = new DirectoryInfo(workPath+"\\avsfilter");
+            List<string> avsfilters = new List<string>();
+            foreach (FileInfo FileName in avspath.GetFiles())
+            {
+                if (Path.GetExtension(FileName.Name) == ".dll")
+                {
+                    avsfilters.Add(FileName.Name);
+                }
+            }
+            AVSFilterComboBox.Items.AddRange(avsfilters.ToArray());
+
+            ReleaseDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
             ReleaseDatelabel.Text = ReleaseDate.ToString("yyyy-M-d");
 
             ////load Help Text
@@ -1879,7 +1893,7 @@ namespace mp4box
             DateTime CompileDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
             QQMessageBox.Show(
                 this,
-                "小丸工具箱 2014版\r\n主页：http://maruko.appinn.me/ \r\n编译日期：" + CompileDate.ToString(),
+                "小丸工具箱 月儿版\r\n主页：http://maruko.appinn.me/ \r\n编译日期：" + CompileDate.ToString(),
                 "关于",
                 QQMessageBoxIcon.Information,
                 QQMessageBoxButtons.OK);
@@ -2696,9 +2710,12 @@ namespace mp4box
                     ExtractMP4TextBox.EmptyTextTip = "新しいファイルはビデオファイルのあるディレクトリに生成する";
                     txtvideo8.EmptyTextTip = "新しいファイルはビデオファイルのあるディレクトリに生成する";
                     txtvideo6.EmptyTextTip = "新しいファイルはビデオファイルのあるディレクトリに生成する";
+                    if (File.Exists(startpath + "\\help.rtf"))
+                    {
+                        HelpTextBox.LoadFile(startpath + "\\help.rtf");
+                    }
                     break;
                 default:
-                    SetLang("zh-CN", this, typeof(MainForm));
                     break;
             }
         }
@@ -3210,5 +3227,11 @@ namespace mp4box
             }
         }
 
+        private void AVSAddFilterButton_Click(object sender, EventArgs e)
+        {
+            string vsfilterDLLPath = Path.Combine(workPath, @"avsfilter\" + AVSFilterComboBox.Text);
+            Clipboard.SetText("LoadPlugin(\"" + vsfilterDLLPath + "\")");
+            MessageBox.Show("已经复制到剪贴板");
+        }
     }
 }
