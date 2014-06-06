@@ -1263,10 +1263,10 @@ namespace mp4box
             }
             switch (x264AudioModeComboBox.SelectedIndex)
             {
-                case 0:
+                case 1:
                     BatchVideo();
                     break;
-                case 1:
+                case 0:
                     BatchVideoWithAudio();
                     break;
                 default: break;
@@ -1848,7 +1848,7 @@ namespace mp4box
         }
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://pan.baidu.com/share/link?shareid=4513&uk=4094576855");
+            System.Diagnostics.Process.Start("http://pan.baidu.com/s/1dDBvQP7");
         }
         private void btnaextract2_Click(object sender, EventArgs e)
         {
