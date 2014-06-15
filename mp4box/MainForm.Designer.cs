@@ -199,6 +199,7 @@
             this.x264DemuxerComboBox = new System.Windows.Forms.ComboBox();
             this.x264FLVCheckBox = new ControlExs.QQCheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.x264BatchSubSpecialLanguage = new System.Windows.Forms.ComboBox();
             this.x264PathButton = new ControlExs.QQButton();
             this.x264PathTextBox = new ControlExs.QQTextBox();
             this.lbAuto = new System.Windows.Forms.ListBox();
@@ -1945,6 +1946,7 @@
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.x264BatchSubSpecialLanguage);
             this.groupBox1.Controls.Add(this.x264PathButton);
             this.groupBox1.Controls.Add(this.x264PathTextBox);
             this.groupBox1.Controls.Add(this.lbAuto);
@@ -1955,6 +1957,12 @@
             this.groupBox1.Controls.Add(this.btnBatchAuto);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // x264BatchSubSpecialLanguage
+            // 
+            resources.ApplyResources(this.x264BatchSubSpecialLanguage, "x264BatchSubSpecialLanguage");
+            this.x264BatchSubSpecialLanguage.FormattingEnabled = true;
+            this.x264BatchSubSpecialLanguage.Name = "x264BatchSubSpecialLanguage";
             // 
             // x264PathButton
             // 
@@ -3096,6 +3104,7 @@
         private System.Windows.Forms.ComboBox AVSFilterComboBox;
         private ControlExs.QQButton AVSAddFilterButton;
         private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.ComboBox x264BatchSubSpecialLanguage;
     }
 }
 

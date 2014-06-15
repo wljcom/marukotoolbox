@@ -411,9 +411,14 @@ namespace mp4box
                 if (x264BatchSubCheckBox.Checked)
                 {
                     string sub = "";
-                    string asssub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + ".ass";
-                    string ssasub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + ".ssa";
-                    string srtsub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + ".srt";
+                    string splang = "";
+                    if (x264BatchSubSpecialLanguage.Text != "none" || x264BatchSubSpecialLanguage.Text != "")
+                    {
+                        splang = "." + x264BatchSubSpecialLanguage.Text;
+                    }
+                    string asssub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + splang + ".ass";
+                    string ssasub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + splang + ".ssa";
+                    string srtsub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + splang + ".srt";
                     if (File.Exists(asssub))
                     {
                         sub = asssub;
@@ -916,7 +921,8 @@ namespace mp4box
                 TrayModeCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["TrayMode"]);
                 SplashScreenCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["SplashScreen"]);
                 SetupPlayerTextBox.Text = ConfigurationManager.AppSettings["PreviewPlayer"];
-
+                string SubLangExt = Convert.ToString(ConfigurationManager.AppSettings["SubLanguageExtension"]);
+                x264BatchSubSpecialLanguage.DataSource = SubLangExt.Split(',');
                 if (x264ExeComboBox.SelectedIndex == -1)
                 {
                     x264ExeComboBox.SelectedIndex = x264ExeComboBox.Items.IndexOf("x264_32-8bit");
@@ -2651,7 +2657,7 @@ namespace mp4box
                     x264PriorityComboBox.SelectedIndex = 2;
                     x264VideoTextBox.EmptyTextTip = "可以把文件拖曳到这里";
                     //x264OutTextBox.EmptyTextTip = "宽度和高度全为0即不改变分辨率";
-                    x264PathTextBox.EmptyTextTip = "字幕文件和视频文件在同一目录下且同名";
+                    x264PathTextBox.EmptyTextTip = "字幕文件和视频文件在同一目录下且同名，不同名仅有语言后缀时请在右方选择或输入";
                     //txtvideo3.EmptyTextTip = "音频参数在音频选项卡设定";
                     ExtractMP4TextBox.EmptyTextTip = "抽取的视频或音频在原视频目录下";
                     txtvideo8.EmptyTextTip = "抽取的视频或音频在原视频目录下";
@@ -2669,7 +2675,7 @@ namespace mp4box
                     x264PriorityComboBox.SelectedIndex = 2;
                     x264VideoTextBox.EmptyTextTip = "可以把文件拖曳到這裡";
                     //x264OutTextBox.EmptyTextTip = "寬度和高度全為0即不改變解析度";
-                    x264PathTextBox.EmptyTextTip = "字幕和視頻在同一資料夾下且同名";
+                    x264PathTextBox.EmptyTextTip = "字幕和視頻在同一資料夾下且同名，不同名僅有語言後綴時請在右方選擇或輸入";
                     //txtvideo3.EmptyTextTip = "音頻參數需在音頻選項卡设定";
                     ExtractMP4TextBox.EmptyTextTip = "新檔案生成在原資料夾";
                     txtvideo8.EmptyTextTip = "新檔案生成在原資料夾";
