@@ -9,7 +9,7 @@ using System.Drawing.Drawing2D;
 
 namespace mp4box
 {
-    using Extentions;
+    using Extension;
     public partial class SplashForm : Form
     {
         public static class ClassStyles

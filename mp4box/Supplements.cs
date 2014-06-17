@@ -7,7 +7,7 @@ using System.Text;
 
 namespace mp4box
 {
-    namespace Extentions
+    namespace Extension
     {
         /// <summary>
         /// A wrapper to make Invoke more easy by using Method Extension.

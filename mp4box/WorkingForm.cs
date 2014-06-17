@@ -11,7 +11,7 @@ using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace mp4box
 {
-    using Extentions;
+    using Extension;
     public partial class WorkingForm : Form
     {
         /// <summary>
@@ -202,49 +202,186 @@ namespace mp4box
         /// </summary>
         private class NativeMethods
         {
-            // Definitions extracted from <Winuser.h>
-            public const int SB_VERT = 1;
+            #region <WinUser.h>
 
+            /// <summary>
+            /// Specifies the type of scroll bar.
+            /// </summary>
+            public enum ScrollBarConsts : int
+            {
+                /// <summary>
+                /// The parameters for a scroll bar control.
+                /// The hwnd parameter must be the handle to the scroll bar control.
+                /// </summary>
+                SB_HORZ = 0,
+                /// <summary>
+                /// Window's standard horizontal scroll bar.
+                /// </summary>
+                SB_VERT = 1,
+                /// <summary>
+                /// Window's standard vertical scroll bar.
+                /// </summary>
+                SB_CTL = 2,
+                /// <summary>
+                /// Reserved for consistency. DO NOT USE.
+                /// </summary>
+                SB_BOTH = 3
+            }
+
+            /// <summary>
+            /// Indicate the parameters to set or get.
+            /// </summary>
+            public enum ScrollBarFlags : uint
+            {
+                /// <summary>
+                /// The nMin and nMax members contain the minimum and maximum values for the scrolling range.
+                /// </summary>
+                SIF_RANGE = 0x1,
+                /// <summary>
+                /// The nPage member contains the page size for a proportional scroll bar.
+                /// </summary>
+                SIF_PAGE = 0x2,
+                /// <summary>
+                /// The nPos member contains the scroll box position, which is not updated while the user drags the scroll box.
+                /// </summary>
+                SIF_POS = 0x4,
+                /// <summary>
+                /// This value is used only when setting a scroll bar's parameters.
+                /// If the scroll bar's new parameters make the scroll bar unnecessary, disable the scroll bar instead of removing it.
+                /// </summary>
+                SIF_DISABLENOSCROLL = 0x8,
+                /// <summary>
+                /// The nTrackPos member contains the current position of the scroll box while the user is dragging it.
+                /// </summary>
+                SIF_TRACKPOS = 0x10,
+                /// <summary>
+                /// Combination of SIF_PAGE, SIF_POS, SIF_RANGE, and SIF_TRACKPOS.
+                /// </summary>
+                SIF_ALL = (SIF_RANGE | SIF_PAGE | SIF_POS | SIF_TRACKPOS)
+            }
+
+            /// <summary>
+            /// The flash status.
+            /// </summary>
             public enum FlashWindowFlags : uint
             {
                 /// <summary>
                 /// Stop flashing. The system restores the window to its original state.
                 /// </summary>
                 FLASHW_STOP = 0,
-
                 /// <summary>
                 /// Flash the window caption.
                 /// </summary>
-                FLASHW_CAPTION = 1,
-
+                FLASHW_CAPTION = 0x1,
                 /// <summary>
                 /// Flash the taskbar button.
                 /// </summary>
-                FLASHW_TRAY = 2,
-
+                FLASHW_TRAY = 0x2,
                 /// <summary>
                 /// Flash both the window caption and taskbar button.
                 /// This is equivalent to setting the FLASHW_CAPTION | FLASHW_TRAY flags.
                 /// </summary>
-                FLASHW_ALL = 3,
-
+                FLASHW_ALL = (FLASHW_CAPTION | FLASHW_TRAY),
                 /// <summary>
                 /// Flash continuously, until the FLASHW_STOP flag is set.
                 /// </summary>
-                FLASHW_TIMER = 4,
-
+                FLASHW_TIMER = 0x4,
                 /// <summary>
                 /// Flash continuously until the window comes to the foreground.
                 /// </summary>
-                FLASHW_TIMERNOFG = 12
+                FLASHW_TIMERNOFG = 0xC
             }
 
-            // http://msdn.microsoft.com/en-us/library/windows/desktop/ms679348(v=vs.85).aspx
+            #endregion
+
+            /// <summary>
+            /// Contains scroll bar parameters to be set by the SetScrollInfo function, or retrieved by the GetScrollInfo function.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/bb787537(v=vs.85).aspx</para>
+            /// </summary>
+            [StructLayout(LayoutKind.Sequential)]
+            public struct SCROLLINFO
+            {
+                /// <summary>
+                /// Specifies the size, in bytes, of this structure.
+                /// </summary>
+                public uint cbSize;
+                /// <summary>
+                /// Specifies the scroll bar parameters to set or retrieve.
+                /// </summary>
+                public ScrollBarFlags fMask;
+                /// <summary>
+                /// Specifies the minimum scrolling position. 
+                /// </summary>
+                public int nMin;
+                /// <summary>
+                /// Specifies the maximum scrolling position. 
+                /// </summary>
+                public int nMax;
+                /// <summary>
+                /// Specifies the page size, in device units.
+                ///     A scroll bar uses this value to determine the appropriate size of the proportional scroll box. 
+                /// </summary>
+                public uint nPage;
+                /// <summary>
+                /// Specifies the position of the scroll box. 
+                /// </summary>
+                public int nPos;
+                /// <summary>
+                /// Specifies the immediate position of a scroll box that the user is dragging.
+                ///     An application cannot set the immediate scroll position; the SetScrollInfo function ignores this member. 
+                /// </summary>
+                public int nTrackPos;
+            }
+
+            /// <summary>
+            /// The GetScrollInfo function retrieves the parameters of a scroll bar,
+            ///     including the minimum and maximum scrolling positions, the page size,
+            ///     and the position of the scroll box (thumb).
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/bb787583(v=vs.85).aspx</para>
+            /// </summary>
+            /// <param name="hWnd">Handle to a scroll bar control or a window with a standard scroll bar,
+            ///     depending on the value of the fnBar parameter. </param>
+            /// <param name="fnBar">Specifies the type of scroll bar for which to retrieve parameters.</param>
+            /// <param name="lpsi">Pointer to a SCROLLINFO structure. Before calling GetScrollInfo, set the cbSize member to sizeof(SCROLLINFO),
+            ///     and set the fMask member to specify the scroll bar parameters to retrieve.
+            ///     Before returning, the function copies the specified parameters to the appropriate members of the structure.</param>
+            /// <returns>If the function retrieved any values, the return value is nonzero.</returns>
+            [DllImport("user32.dll")]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            public static extern bool GetScrollInfo(
+                IntPtr hWnd,
+                ScrollBarConsts fnBar,
+                ref SCROLLINFO lpsi);
+
+            /// <summary>
+            /// The SetScrollInfo function sets the parameters of a scroll bar, including the minimum and maximum scrolling positions,
+            ///     the page size, and the position of the scroll box (thumb). The function also redraws the scroll bar, if requested.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/bb787595(v=vs.85).aspx</para>
+            /// </summary>
+            /// <param name="hWnd">Handle to a scroll bar control or a window with a standard scroll bar,
+            ///     depending on the value of the fnBar parameter. </param>
+            /// <param name="fnBar">Specifies the type of scroll bar for which to set parameters.</param>
+            /// <param name="lpsi">Pointer to a SCROLLINFO structure. Before calling SetScrollInfo, set the cbSize member of the structure to sizeof(SCROLLINFO),
+            ///     set the fMask member to indicate the parameters to set, and specify the new parameter values in the appropriate members.</param>
+            /// <param name="fRedraw">Specifies whether the scroll bar is redrawn to reflect the changes to the scroll bar.
+            ///     If this parameter is TRUE, the scroll bar is redrawn, otherwise, it is not redrawn. </param>
+            /// <returns>The current position of the scroll box.</returns>
+            [DllImport("user32.dll")]
+            public static extern int SetScrollInfo(
+                IntPtr hWnd,
+                ScrollBarConsts fnBar,
+                ref SCROLLINFO lpsi,
+                [MarshalAs(UnmanagedType.Bool)] bool fRedraw);
+
+            /// <summary>
+            /// Contains the flash status for a window and the number of times the system should flash the window.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms679348(v=vs.85).aspx</para>
+            /// </summary>
             [StructLayout(LayoutKind.Sequential)]
             public struct FLASHWINFO
             {
                 /// <summary>
-                /// The size of the structure in bytes.
+                /// The size of the structure, in bytes.
                 /// </summary>
                 public uint cbSize;
                 /// <summary>
@@ -254,26 +391,25 @@ namespace mp4box
                 /// <summary>
                 /// The Flash Status.
                 /// </summary>
-                public FlashWindowFlags dwFlags; //uint
+                public FlashWindowFlags dwFlags;
                 /// <summary>
                 /// The number of times to Flash the window.
                 /// </summary>
                 public uint uCount;
                 /// <summary>
-                /// The rate at which the Window is to be flashed, in milliseconds. If Zero, the function uses the default cursor blink rate.
+                /// The rate at which the Window is to be flashed, in milliseconds.
+                ///     If Zero, the function uses the default cursor blink rate.
                 /// </summary>
                 public uint dwTimeout;
             }
 
-            // http://msdn.microsoft.com/en-us/library/windows/desktop/bb787585(v=vs.85).aspx
-            [DllImport("user32.dll")]
-            public static extern int GetScrollPos(IntPtr hWnd, int nBar);
-
-            // http://msdn.microsoft.com/en-us/library/windows/desktop/bb787587(v=vs.85).aspx
-            [DllImport("user32.dll")]
-            public static extern bool GetScrollRange(IntPtr hWnd, int nBar, out int lpMinPos, out int lpMaxPos);
-
-            // http://msdn.microsoft.com/en-us/library/windows/desktop/ms679347(v=vs.85).aspx
+            /// <summary>
+            /// Flashes the specified window. It does not change the active state of the window.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms679347(v=vs.85).aspx</para>
+            /// </summary>
+            /// <param name="pwfi">A pointer to a FLASHWINFO structure.</param>
+            /// <returns>The return value specifies the window's state before the call to the FlashWindowEx function.
+            ///     If the window caption was drawn as active before the call, the return value is nonzero. Otherwise, the return value is zero.</returns>
             [DllImport("user32.dll")]
             public static extern bool FlashWindowEx(ref FLASHWINFO pwfi);
         }
@@ -360,10 +496,12 @@ namespace mp4box
 
         private void richTextBoxOutput_VScroll(object sender, EventArgs e)
         {
-            int vMin, vMax;
-            NativeMethods.GetScrollRange(richTextBoxOutput.Handle, NativeMethods.SB_VERT, out vMin, out vMax);
-            if (NativeMethods.GetScrollPos(richTextBoxOutput.Handle, NativeMethods.SB_VERT)
-                + richTextBoxOutput.Font.Height > vMax - richTextBoxOutput.ClientSize.Height)
+            var info = new NativeMethods.SCROLLINFO();
+            info.cbSize = Convert.ToUInt32(Marshal.SizeOf(info));
+            info.fMask = NativeMethods.ScrollBarFlags.SIF_ALL;
+            NativeMethods.GetScrollInfo(richTextBoxOutput.Handle, NativeMethods.ScrollBarConsts.SB_VERT, ref info);
+            if (info.nTrackPos + richTextBoxOutput.Font.Height
+                > info.nMax - richTextBoxOutput.ClientSize.Height)
                 richTextBoxOutput.Select();
             else
                 this.ActiveControl = null;
