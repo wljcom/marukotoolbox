@@ -60,6 +60,7 @@
             this.richTextBoxOutput.Name = "richTextBoxOutput";
             this.richTextBoxOutput.ReadOnly = true;
             this.richTextBoxOutput.VScroll += new System.EventHandler(this.richTextBoxOutput_VScroll);
+            this.richTextBoxOutput.Enter += new System.EventHandler(this.richTextBoxOutput_Enter);
             // 
             // labelworkCount
             // 

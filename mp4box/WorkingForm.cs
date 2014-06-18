@@ -126,6 +126,11 @@ namespace mp4box
         /// </summary>
         private bool win7supported;
 
+        /// <summary>
+        /// true if autoscroll is enabled
+        /// </summary>
+        private bool autoscroll;
+
         #endregion
 
         #region Regex Patterns
@@ -210,22 +215,90 @@ namespace mp4box
             public enum ScrollBarConsts : int
             {
                 /// <summary>
-                /// The parameters for a scroll bar control.
-                /// The hwnd parameter must be the handle to the scroll bar control.
+                /// Window's standard horizontal scroll bar.
                 /// </summary>
                 SB_HORZ = 0,
                 /// <summary>
-                /// Window's standard horizontal scroll bar.
+                /// Window's standard vertical scroll bar.
                 /// </summary>
                 SB_VERT = 1,
                 /// <summary>
-                /// Window's standard vertical scroll bar.
+                /// Reserved for consistency. DO NOT USE.
                 /// </summary>
                 SB_CTL = 2,
                 /// <summary>
-                /// Reserved for consistency. DO NOT USE.
+                /// Window's standard scroll bar.
                 /// </summary>
                 SB_BOTH = 3
+            }
+
+            /// <summary>
+            /// Specifies the commands to scroll bar.
+            /// </summary>
+            public enum ScrollBarCmds : int
+            {
+                /// <summary>
+                /// Scrolls one line down.
+                /// </summary>
+                SB_LINEUP = 0,
+                /// <summary>
+                /// Scrolls left by one unit.
+                /// </summary>
+                SB_LINELEFT = 0,
+                /// <summary>
+                /// Scrolls one line up.
+                /// </summary>
+                SB_LINEDOWN = 1,
+                /// <summary>
+                /// Scrolls right by one unit.
+                /// </summary>
+                SB_LINERIGHT = 1,
+                /// <summary>
+                /// Scrolls one page up.
+                /// </summary>
+                SB_PAGEUP = 2,
+                /// <summary>
+                /// Scrolls left by the width of the window.
+                /// </summary>
+                SB_PAGELEFT = 2,
+                /// <summary>
+                /// Scrolls one page down.
+                /// </summary>
+                SB_PAGEDOWN = 3,
+                /// <summary>
+                /// Scrolls right by the width of the window.
+                /// </summary>
+                SB_PAGERIGHT = 3,
+                /// <summary>
+                /// The user has dragged the scroll box (thumb) and released the mouse button.
+                ///     The HIWORD indicates the position of the scroll box at the end of the drag operation.
+                /// </summary>
+                SB_THUMBPOSITION = 4,
+                /// <summary>
+                /// The user is dragging the scroll box. This message is sent repeatedly until the user releases the mouse button.
+                ///     The HIWORD indicates the position that the scroll box has been dragged to.
+                /// </summary>
+                SB_THUMBTRACK = 5,
+                /// <summary>
+                /// Scrolls to the upper left.
+                /// </summary>
+                SB_TOP = 6,
+                /// <summary>
+                /// Scrolls to the upper left.
+                /// </summary>
+                SB_LEFT = 6,
+                /// <summary>
+                /// Scrolls to the lower right.
+                /// </summary>
+                SB_BOTTOM = 7,
+                /// <summary>
+                /// Scrolls to the lower right.
+                /// </summary>
+                SB_RIGHT = 7,
+                /// <summary>
+                /// Ends scroll.
+                /// </summary>
+                SB_ENDSCROLL = 8
             }
 
             /// <summary>
@@ -290,6 +363,28 @@ namespace mp4box
                 /// Flash continuously until the window comes to the foreground.
                 /// </summary>
                 FLASHW_TIMERNOFG = 0xC
+            }
+
+            /// <summary>
+            /// Window Messages
+            /// </summary>
+            public enum Win32Msgs : uint
+            {
+                /// <summary>
+                /// The WM_HSCROLL message is sent to a window when a scroll event occurs in the window's standard horizontal scroll bar.
+                ///     This message is also sent to the owner of a horizontal scroll bar control when a scroll event occurs in the control.
+                /// </summary>
+                WM_HSCROLL = 0x114,
+                /// <summary>
+                /// The WM_VSCROLL message is sent to a window when a scroll event occurs in the window's standard vertical scroll bar.
+                ///     This message is also sent to the owner of a vertical scroll bar control when a scroll event occurs in the control.
+                /// </summary>
+                WM_VSCROLL = 0x115,
+                /// <summary>
+                /// The WM_CTLCOLORSCROLLBAR message is sent to the parent window of a scroll bar control when the control is about to be drawn.
+                ///     By responding to this message, the parent window can use the display context handle to set the background color of the scroll bar control.
+                /// </summary>
+                WM_CTLCOLORSCROLLBAR = 0x137
             }
 
             #endregion
@@ -412,6 +507,82 @@ namespace mp4box
             ///     If the window caption was drawn as active before the call, the return value is nonzero. Otherwise, the return value is zero.</returns>
             [DllImport("user32.dll")]
             public static extern bool FlashWindowEx(ref FLASHWINFO pwfi);
+
+            /// <summary>
+            /// Places (posts) a message in the message queue associated with the thread that created
+            ///     the specified window and returns without waiting for the thread to process the message.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms644944(v=vs.85).aspx</para>
+            /// </summary>
+            /// <param name="hWnd">A handle to the window whose window procedure is to receive the message.</param>
+            /// <param name="Msg">The message to be posted.</param>
+            /// <param name="wParam">Additional message-specific information.</param>
+            /// <param name="lParam">Additional message-specific information.</param>
+            /// <returns>If the function succeeds, the return value is nonzero.</returns>
+            [DllImport("user32.dll")]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            public static extern bool PostMessage(
+                IntPtr hWnd,
+                Win32Msgs Msg,
+                [MarshalAs(UnmanagedType.SysUInt)] UIntPtr wParam,
+                [MarshalAs(UnmanagedType.SysInt)] IntPtr lParam);
+
+            /// <summary>
+            /// Retrieves the high-order word from the specified 32-bit value.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms632657(v=vs.85).aspx</para>
+            /// </summary>
+            /// <param name="ptr"></param>
+            /// <returns></returns>
+            public static uint HiWord(IntPtr ptr)
+            {
+                if (((uint)ptr & 0x80000000u) == 0x80000000u)
+                    return ((uint)ptr >> 16);
+                else
+                    return ((uint)ptr >> 16) & 0xFFFFu;
+            }
+
+            /// <summary>
+            /// Retrieves the low-order word from the specified value.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms632659(v=vs.85).aspx</para>
+            /// </summary>
+            /// <param name="ptr"></param>
+            /// <returns></returns>
+            public static uint LoWord(IntPtr ptr)
+            {
+                return (uint)ptr & 0xFFFFu;
+            }
+
+            /// <summary>
+            /// Combine two WORD for Win32API
+            /// </summary>
+            /// <param name="wLow">low word</param>
+            /// <param name="wHi">hi word</param>
+            /// <returns>Combined DWORD</returns>
+            private static uint MakeParam(uint wLow, uint wHi)
+            {
+                return (wLow & 0xFFFFu) + ((wHi & 0xFFFFu) << 16);
+            }
+
+            /// <summary>
+            /// Wrapper for Win32API
+            /// </summary>
+            /// <param name="wLow">low word</param>
+            /// <param name="wHi">hi word</param>
+            /// <returns>Combined DWORD</returns>
+            public static UIntPtr MakeWParam(uint wLow, uint wHi)
+            {
+                return (UIntPtr)MakeParam(wLow, wHi);
+            }
+
+            /// <summary>
+            /// Wrapper for Win32API
+            /// </summary>
+            /// <param name="wLow">low word</param>
+            /// <param name="wHi">hi word</param>
+            /// <returns>Combined DWORD</returns>
+            public static IntPtr MakeLParam(uint wLow, uint wHi)
+            {
+                return (IntPtr)MakeParam(wLow, wHi);
+            }
         }
         #endregion
 
@@ -448,6 +619,7 @@ namespace mp4box
             notifyIcon.Visible = true;
             MainForm main = (MainForm)this.Owner;
             workPath = main.workPath;
+            autoscroll = true;
         }
 
         private void WorkingForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -485,7 +657,7 @@ namespace mp4box
             else
             {
                 var savDlg = new SaveFileDialog();
-                savDlg.FileName = "log";
+                savDlg.FileName = "log_" + DateTime.Now.ToShortDateString().Replace('/', '-');
                 savDlg.Filter = "Log files|*.log|All files|*.*";
                 savDlg.FilterIndex = 1;
                 savDlg.RestoreDirectory = true;
@@ -500,11 +672,8 @@ namespace mp4box
             info.cbSize = Convert.ToUInt32(Marshal.SizeOf(info));
             info.fMask = NativeMethods.ScrollBarFlags.SIF_ALL;
             NativeMethods.GetScrollInfo(richTextBoxOutput.Handle, NativeMethods.ScrollBarConsts.SB_VERT, ref info);
-            if (info.nTrackPos + richTextBoxOutput.Font.Height
-                > info.nMax - richTextBoxOutput.ClientSize.Height)
-                richTextBoxOutput.Select();
-            else
-                this.ActiveControl = null;
+            autoscroll = (info.nTrackPos + richTextBoxOutput.Font.Height
+                > info.nMax - richTextBoxOutput.ClientSize.Height);
         }
 
         private void WorkingForm_Resize(object sender, EventArgs e)
@@ -518,6 +687,11 @@ namespace mp4box
             this.Visible = true;
             this.WindowState = FormWindowState.Normal;
             this.Activate();
+        }
+
+        private void richTextBoxOutput_Enter(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
         }
    
         #endregion
@@ -558,19 +732,16 @@ namespace mp4box
             // wait a little bit for the last asynchronous reading
             System.Threading.Thread.Sleep(75);
             // append finish tag
-            richTextBoxOutput.InvokeIfRequired(() =>
+            Print(Environment.NewLine + "Work Complete!");
+            // fire a warning if something went wrong
+            // this feature need %ERRORLEVEL% support in batch commands
+            if (proc.ExitCode != 0)
             {
-                richTextBoxOutput.AppendText(Environment.NewLine + "Work Complete!");
-                // fire a warning if something went wrong
-                // this feature need %ERRORLEVEL% support in batch commands
-                if (proc.ExitCode != 0)
-                {
-                    richTextBoxOutput.AppendText(Environment.NewLine +
-                        "Potential Error detected. Please double check the log.");
-                    richTextBoxOutput.AppendText(Environment.NewLine +
-                        "Exit code is: " + proc.ExitCode.ToString());
-                }
-            });
+                Print(Environment.NewLine +
+                    "Potential Error detected. Please double check the log.");
+                Print(Environment.NewLine +
+                    "Exit code is: " + proc.ExitCode.ToString());
+            }
             // flash form and show balloon tips
             FlashForm();
             BalloonTip(@"完成了喵~ (= ω =)");
@@ -608,8 +779,7 @@ namespace mp4box
             if (win7supported)
                 TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
             // Print abort message to log
-            richTextBoxOutput.InvokeIfRequired(() =>
-                richTextBoxOutput.AppendText(Environment.NewLine + "Work is aborted by user."));
+            Print(Environment.NewLine + "Work is aborted by user.");
         }
 
         /// <summary>
@@ -620,8 +790,7 @@ namespace mp4box
             if (!String.IsNullOrEmpty(e.Data))
             {
                 // convert and log first
-                richTextBoxOutput.InvokeIfRequired(() =>
-                    richTextBoxOutput.AppendText(e.Data + Environment.NewLine));
+                Print(e.Data + Environment.NewLine);
                 // test if it is command
                 Match result = Patterns.fileReg.Match(e.Data);
                 if (result.Success)
@@ -708,18 +877,14 @@ namespace mp4box
             var ffproc = System.Diagnostics.Process.Start(processInfo);
             // log and append
             string mediaInfo = ffproc.StandardError.ReadToEnd();
-            richTextBoxOutput.InvokeIfRequired(() =>
-            {
-                richTextBoxOutput.AppendText("Input file: " + filePath + Environment.NewLine);
-                richTextBoxOutput.AppendText(mediaInfo + Environment.NewLine);
-            });
+            Print("Input file: " + filePath + Environment.NewLine);
+            Print(mediaInfo + Environment.NewLine);
             ffproc.WaitForExit();
             var result = Patterns.ffmpegReg.Match(mediaInfo);
             if (!result.Success)
             {
-                richTextBoxOutput.InvokeIfRequired(() =>
-                    richTextBoxOutput.AppendText("Warning: Error detected on previous file. Estimatation may not work."
-                        + Environment.NewLine));
+                Print("Warning: Error detected on previous file. Estimatation may not work."
+                        + Environment.NewLine);
                 return Int32.MaxValue;
             }
             else
@@ -759,6 +924,27 @@ namespace mp4box
                 notifyIcon.Visible = true;
                 notifyIcon.ShowBalloonTip(timeout, "小丸工具箱", notes, ToolTipIcon.Info);
             }
+        }
+
+        /// <summary>
+        /// Append and scroll Textbox if needed.
+        /// </summary>
+        /// <param name="str">String to append.</param>
+        private void Print(string str)
+        {
+            richTextBoxOutput.InvokeIfRequired(() =>
+            {
+                richTextBoxOutput.AppendText(str);
+                if (autoscroll)
+                {
+                    var info = new NativeMethods.SCROLLINFO();
+                    info.cbSize = Convert.ToUInt32(Marshal.SizeOf(info));
+                    info.fMask = NativeMethods.ScrollBarFlags.SIF_RANGE;
+                    NativeMethods.GetScrollInfo(richTextBoxOutput.Handle, NativeMethods.ScrollBarConsts.SB_VERT, ref info);
+                    NativeMethods.PostMessage(richTextBoxOutput.Handle, NativeMethods.Win32Msgs.WM_VSCROLL,
+                        NativeMethods.MakeWParam((uint)NativeMethods.ScrollBarCmds.SB_THUMBPOSITION, (uint)info.nMax), IntPtr.Zero);
+                }
+            });
         }
     }
 }
