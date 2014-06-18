@@ -223,7 +223,8 @@ namespace mp4box
                 /// </summary>
                 SB_VERT = 1,
                 /// <summary>
-                /// Reserved for consistency. DO NOT USE.
+                /// Retrieves the position of the scroll box in a scroll bar control.
+                ///     The hWnd parameter must be the handle to the scroll bar control.
                 /// </summary>
                 SB_CTL = 2,
                 /// <summary>
@@ -387,8 +388,6 @@ namespace mp4box
                 WM_CTLCOLORSCROLLBAR = 0x137
             }
 
-            #endregion
-
             /// <summary>
             /// Contains scroll bar parameters to be set by the SetScrollInfo function, or retrieved by the GetScrollInfo function.
             /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/bb787537(v=vs.85).aspx</para>
@@ -427,6 +426,102 @@ namespace mp4box
                 /// </summary>
                 public int nTrackPos;
             }
+
+            /// <summary>
+            /// Contains the flash status for a window and the number of times the system should flash the window.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms679348(v=vs.85).aspx</para>
+            /// </summary>
+            [StructLayout(LayoutKind.Sequential)]
+            public struct FLASHWINFO
+            {
+                /// <summary>
+                /// The size of the structure, in bytes.
+                /// </summary>
+                public uint cbSize;
+                /// <summary>
+                /// A Handle to the Window to be Flashed. The window can be either opened or minimized.
+                /// </summary>
+                public IntPtr hwnd;
+                /// <summary>
+                /// The Flash Status.
+                /// </summary>
+                public FlashWindowFlags dwFlags;
+                /// <summary>
+                /// The number of times to Flash the window.
+                /// </summary>
+                public uint uCount;
+                /// <summary>
+                /// The rate at which the Window is to be flashed, in milliseconds.
+                ///     If Zero, the function uses the default cursor blink rate.
+                /// </summary>
+                public uint dwTimeout;
+            }
+
+            /// <summary>
+            /// Creates a value for use as a wParam parameter in a message.
+            ///     The macro concatenates the specified values.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms632664(v=vs.85).aspx</para>
+            /// </summary>
+            /// <param name="wLow">The low-order word of the new value.</param>
+            /// <param name="wHi">The high-order word of the new value.</param>
+            /// <returns>The return value is a WPARAM value.</returns>
+            public static UIntPtr MakeWParam(uint wLow, uint wHi)
+            {
+                return (UIntPtr)MakeLong(wLow, wHi);
+            }
+
+            /// <summary>
+            /// Creates a value for use as an lParam parameter in a message.
+            ///     The macro concatenates the specified values.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms632661(v=vs.85).aspx</para>
+            /// </summary>
+            /// <param name="wLow">The low-order word of the new value.</param>
+            /// <param name="wHi">The high-order word of the new value. </param>
+            /// <returns>The return value is an LPARAM value. </returns>
+            public static IntPtr MakeLParam(uint wLow, uint wHi)
+            {
+                return (IntPtr)MakeLong(wLow, wHi);
+            }
+
+            #endregion
+
+            #region <WinDef.h>
+
+            /// <summary>
+            /// Retrieves the high-order word from the specified 32-bit value.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms632657(v=vs.85).aspx</para>
+            /// </summary>
+            /// <param name="ptr">The value to be converted.</param>
+            /// <returns>The return value is the high-order word of the specified value.</returns>
+            public static uint HiWord(IntPtr ptr)
+            {
+                    return ((uint)ptr >> 16) & 0xFFFFu;
+            }
+
+            /// <summary>
+            /// Retrieves the low-order word from the specified value.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms632659(v=vs.85).aspx</para>
+            /// </summary>
+            /// <param name="ptr">The value to be converted.</param>
+            /// <returns>The return value is the low-order word of the specified value.</returns>
+            public static uint LoWord(IntPtr ptr)
+            {
+                return (uint)ptr & 0xFFFFu;
+            }
+
+            /// <summary>
+            /// Creates a LONG value by concatenating the specified values.
+            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms632660(v=vs.85).aspx</para>
+            /// </summary>
+            /// <param name="wLow">The low-order word of the new value.</param>
+            /// <param name="wHi">The high-order word of the new value.</param>
+            /// <returns>The return value is a LONG value.</returns>
+            public static uint MakeLong(uint wLow, uint wHi)
+            {
+                return (wLow & 0xFFFFu) | ((wHi & 0xFFFFu) << 16);
+            }
+
+            #endregion
 
             /// <summary>
             /// The GetScrollInfo function retrieves the parameters of a scroll bar,
@@ -469,36 +564,6 @@ namespace mp4box
                 [MarshalAs(UnmanagedType.Bool)] bool fRedraw);
 
             /// <summary>
-            /// Contains the flash status for a window and the number of times the system should flash the window.
-            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms679348(v=vs.85).aspx</para>
-            /// </summary>
-            [StructLayout(LayoutKind.Sequential)]
-            public struct FLASHWINFO
-            {
-                /// <summary>
-                /// The size of the structure, in bytes.
-                /// </summary>
-                public uint cbSize;
-                /// <summary>
-                /// A Handle to the Window to be Flashed. The window can be either opened or minimized.
-                /// </summary>
-                public IntPtr hwnd;
-                /// <summary>
-                /// The Flash Status.
-                /// </summary>
-                public FlashWindowFlags dwFlags;
-                /// <summary>
-                /// The number of times to Flash the window.
-                /// </summary>
-                public uint uCount;
-                /// <summary>
-                /// The rate at which the Window is to be flashed, in milliseconds.
-                ///     If Zero, the function uses the default cursor blink rate.
-                /// </summary>
-                public uint dwTimeout;
-            }
-
-            /// <summary>
             /// Flashes the specified window. It does not change the active state of the window.
             /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms679347(v=vs.85).aspx</para>
             /// </summary>
@@ -525,64 +590,6 @@ namespace mp4box
                 Win32Msgs Msg,
                 [MarshalAs(UnmanagedType.SysUInt)] UIntPtr wParam,
                 [MarshalAs(UnmanagedType.SysInt)] IntPtr lParam);
-
-            /// <summary>
-            /// Retrieves the high-order word from the specified 32-bit value.
-            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms632657(v=vs.85).aspx</para>
-            /// </summary>
-            /// <param name="ptr"></param>
-            /// <returns></returns>
-            public static uint HiWord(IntPtr ptr)
-            {
-                if (((uint)ptr & 0x80000000u) == 0x80000000u)
-                    return ((uint)ptr >> 16);
-                else
-                    return ((uint)ptr >> 16) & 0xFFFFu;
-            }
-
-            /// <summary>
-            /// Retrieves the low-order word from the specified value.
-            /// <para>http://msdn.microsoft.com/en-us/library/windows/desktop/ms632659(v=vs.85).aspx</para>
-            /// </summary>
-            /// <param name="ptr"></param>
-            /// <returns></returns>
-            public static uint LoWord(IntPtr ptr)
-            {
-                return (uint)ptr & 0xFFFFu;
-            }
-
-            /// <summary>
-            /// Combine two WORD for Win32API
-            /// </summary>
-            /// <param name="wLow">low word</param>
-            /// <param name="wHi">hi word</param>
-            /// <returns>Combined DWORD</returns>
-            private static uint MakeParam(uint wLow, uint wHi)
-            {
-                return (wLow & 0xFFFFu) + ((wHi & 0xFFFFu) << 16);
-            }
-
-            /// <summary>
-            /// Wrapper for Win32API
-            /// </summary>
-            /// <param name="wLow">low word</param>
-            /// <param name="wHi">hi word</param>
-            /// <returns>Combined DWORD</returns>
-            public static UIntPtr MakeWParam(uint wLow, uint wHi)
-            {
-                return (UIntPtr)MakeParam(wLow, wHi);
-            }
-
-            /// <summary>
-            /// Wrapper for Win32API
-            /// </summary>
-            /// <param name="wLow">low word</param>
-            /// <param name="wHi">hi word</param>
-            /// <returns>Combined DWORD</returns>
-            public static IntPtr MakeLParam(uint wLow, uint wHi)
-            {
-                return (IntPtr)MakeParam(wLow, wHi);
-            }
         }
         #endregion
 
