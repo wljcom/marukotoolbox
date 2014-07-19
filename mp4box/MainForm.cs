@@ -343,7 +343,9 @@ namespace mp4box
                         output = AddExt(output, ".wav");
                     ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + input + "\" -f wav \"" + output + "\"";
                     neroaac = "";
-                    ;
+                    break;
+                case 3:
+                    neroaac = "\"" + workPath + "\\refalac.exe\" -i \"temp.wav\"  -o \"" + output + "\"";
                     break;
                 default:
                     break;
@@ -874,7 +876,7 @@ namespace mp4box
             x264ExeComboBox.Items.AddRange(x264exe.ToArray());
 
             //load AVS filter
-            DirectoryInfo avspath = new DirectoryInfo(workPath+"\\avsfilter");
+            DirectoryInfo avspath = new DirectoryInfo(workPath + "\\avsfilter");
             List<string> avsfilters = new List<string>();
             foreach (FileInfo FileName in avspath.GetFiles())
             {
@@ -2210,6 +2212,14 @@ namespace mp4box
                 AudioBitrateRadioButton.Enabled = false;
                 AudioCustomizeRadioButton.Enabled = false;
             }
+            else if (AudioEncoderComboBox.SelectedIndex == 3)
+            {
+                if (File.Exists(txtaudio2.Text))
+                    txtout3.Text = AddExt(txtaudio2.Text, "_alac.m4a");
+                AudioBitrateComboBox.Enabled = false;
+                AudioBitrateRadioButton.Enabled = false;
+                AudioCustomizeRadioButton.Enabled = false;
+            }
             else
             {
                 if (File.Exists(txtaudio2.Text))
@@ -2333,6 +2343,8 @@ namespace mp4box
                 nameaudio2 = txtaudio2.Text;
                 if (AudioEncoderComboBox.SelectedIndex == 2)
                     txtout3.Text = AddExt(txtaudio2.Text, "_WAV.wav");
+                else if (AudioEncoderComboBox.SelectedIndex == 3)
+                    txtout3.Text = AddExt(txtaudio2.Text, "_alac.m4a");
                 else
                     txtout3.Text = AddExt(txtaudio2.Text, "_AAC.aac");
             }
