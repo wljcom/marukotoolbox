@@ -855,6 +855,12 @@ namespace mp4box
         /// <param name="value">Progress expressed in decimal (0.00-1.00).</param>
         private void UpdateProgress(double value)
         {
+            // Some kind of safeguard
+            if (value < 0)
+                value = 0;
+            if (value > 1)
+                value = 1;
+            // Update UI
             progressBarX264.InvokeIfRequired(() =>
                 progressBarX264.Value = Convert.ToInt32(value * progressBarX264.Maximum));
             labelProgress.InvokeIfRequired(() =>
