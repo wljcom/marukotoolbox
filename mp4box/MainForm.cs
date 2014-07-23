@@ -347,6 +347,9 @@ namespace mp4box
                 case 3:
                     neroaac = "\"" + workPath + "\\refalac.exe\" -i \"temp.wav\"  -o \"" + output + "\"";
                     break;
+                case 4:
+                    neroaac = "\"" + workPath + "\\flac.exe\" -s --ignore-chunk-sizes -5 \"temp.wav\"  -o \"" + output + "\"";
+                    break;
                 default:
                     break;
             }
@@ -2204,31 +2207,42 @@ namespace mp4box
         #region 音频界面
         private void AudioEncoderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (AudioEncoderComboBox.SelectedIndex == 2)
+
+
+            switch (AudioEncoderComboBox.SelectedIndex)
             {
-                if (File.Exists(txtaudio2.Text))
-                    txtout3.Text = AddExt(txtaudio2.Text, "_WAV.wav");
-                AudioBitrateComboBox.Enabled = false;
-                AudioBitrateRadioButton.Enabled = false;
-                AudioCustomizeRadioButton.Enabled = false;
-            }
-            else if (AudioEncoderComboBox.SelectedIndex == 3)
-            {
-                if (File.Exists(txtaudio2.Text))
-                    txtout3.Text = AddExt(txtaudio2.Text, "_alac.m4a");
-                AudioBitrateComboBox.Enabled = false;
-                AudioBitrateRadioButton.Enabled = false;
-                AudioCustomizeRadioButton.Enabled = false;
-            }
-            else
-            {
-                if (File.Exists(txtaudio2.Text))
-                    txtout3.Text = AddExt(txtaudio2.Text, "_AAC.aac");
-                AudioBitrateComboBox.Enabled = true;
-                AudioBitrateRadioButton.Enabled = true;
-                AudioCustomizeRadioButton.Enabled = true;
+                case 0:
+                case 1:
+                    if (File.Exists(txtaudio2.Text))
+                        txtout3.Text = AddExt(txtaudio2.Text, "_AAC.aac");
+                    AudioBitrateComboBox.Enabled = true;
+                    AudioBitrateRadioButton.Enabled = true;
+                    AudioCustomizeRadioButton.Enabled = true;
+                    break;
+                case 2: if (File.Exists(txtaudio2.Text))
+                        txtout3.Text = AddExt(txtaudio2.Text, "_WAV.wav");
+                    AudioBitrateComboBox.Enabled = false;
+                    AudioBitrateRadioButton.Enabled = false;
+                    AudioCustomizeRadioButton.Enabled = false;
+                    break;
+                case 3:
+                    if (File.Exists(txtaudio2.Text))
+                        txtout3.Text = AddExt(txtaudio2.Text, "_alac.m4a");
+                    AudioBitrateComboBox.Enabled = false;
+                    AudioBitrateRadioButton.Enabled = false;
+                    AudioCustomizeRadioButton.Enabled = false;
+                    break;
+                case 4: if (File.Exists(txtaudio2.Text))
+                        txtout3.Text = AddExt(txtaudio2.Text, "_flac.flac");
+                    AudioBitrateComboBox.Enabled = false;
+                    AudioBitrateRadioButton.Enabled = false;
+                    AudioCustomizeRadioButton.Enabled = false;
+                    break;
+                default:
+                    break;
             }
         }
+
         private void AudioListBox_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
@@ -2305,11 +2319,26 @@ namespace mp4box
         private void btnout3_Click(object sender, EventArgs e)
         {
             SaveFileDialog savefile = new SaveFileDialog();
-            savefile.Filter = "音频(*.aac)|*.aac";
+            savefile.Filter = "所有文件(*.*)|*.*";
+            //savefile.Filter = "音频(*.aac;*.wav;*.m4a;*.flac)|*.aac*.wav;*.m4a;*.flac;";
             DialogResult result = savefile.ShowDialog();
             if (result == DialogResult.OK)
             {
-                nameout3 = savefile.FileName;
+                switch (AudioEncoderComboBox.SelectedIndex)
+                {
+                    case 0:
+                    case 1: nameout3 = savefile.FileName + ".aac";
+                        break;
+                    case 2: nameout3 = savefile.FileName + ".wav";
+                        break;
+                    case 3: nameout3 = savefile.FileName + ".m4a";
+                        break;
+                    case 4: nameout3 = savefile.FileName + ".flac";
+                        break;
+                    default:
+                        break;
+                }
+
                 txtout3.Text = nameout3;
             }
         }
@@ -2345,6 +2374,8 @@ namespace mp4box
                     txtout3.Text = AddExt(txtaudio2.Text, "_WAV.wav");
                 else if (AudioEncoderComboBox.SelectedIndex == 3)
                     txtout3.Text = AddExt(txtaudio2.Text, "_alac.m4a");
+                else if (AudioEncoderComboBox.SelectedIndex == 4)
+                    txtout3.Text = AddExt(txtaudio2.Text, "_flac.flac");
                 else
                     txtout3.Text = AddExt(txtaudio2.Text, "_AAC.aac");
             }
