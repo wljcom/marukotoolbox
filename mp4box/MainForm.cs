@@ -832,7 +832,7 @@ namespace mp4box
             int processorNumber = (int)pSI.dwNumberOfProcessors;
 
             x264ThreadsComboBox.Items.Add("auto");
-            for (int i = 1; i <= 16; i++)
+            for (int i = 1; i <= 32; i++)
             {
                 x264ThreadsComboBox.Items.Add(i.ToString());
             }
