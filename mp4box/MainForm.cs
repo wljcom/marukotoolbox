@@ -348,7 +348,7 @@ namespace mp4box
                     neroaac = "\"" + workPath + "\\refalac.exe\" -i \"temp.wav\"  -o \"" + output + "\"";
                     break;
                 case 4:
-                    neroaac = "\"" + workPath + "\\flac.exe\" -s --ignore-chunk-sizes -5 \"temp.wav\"  -o \"" + output + "\"";
+                    neroaac = "\"" + workPath + "\\flac.exe\" -f --ignore-chunk-sizes -5 \"temp.wav\"  -o \"" + output + "\"";
                     break;
                 default:
                     break;
@@ -417,7 +417,7 @@ namespace mp4box
                 {
                     string sub = "";
                     string splang = "";
-                    if (x264BatchSubSpecialLanguage.Text != "none" || x264BatchSubSpecialLanguage.Text != "")
+                    if (x264BatchSubSpecialLanguage.Text != "none")
                     {
                         splang = "." + x264BatchSubSpecialLanguage.Text;
                     }
@@ -514,9 +514,14 @@ namespace mp4box
                 if (x264BatchSubCheckBox.Checked)
                 {
                     string sub = "";
-                    string asssub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + ".ass";
-                    string ssasub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + ".ssa";
-                    string srtsub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + ".srt";
+                    string splang = "";
+                    if (x264BatchSubSpecialLanguage.Text != "none")
+                    {
+                        splang = "." + x264BatchSubSpecialLanguage.Text;
+                    }
+                    string asssub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + splang + ".ass";
+                    string ssasub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + splang + ".ssa";
+                    string srtsub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + splang + ".srt";
                     if (File.Exists(asssub))
                     {
                         sub = asssub;
@@ -1904,7 +1909,7 @@ namespace mp4box
             DateTime CompileDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
             QQMessageBox.Show(
                 this,
-                "小丸工具箱 月儿版\r\n主页：http://maruko.appinn.me/ \r\n编译日期：" + CompileDate.ToString(),
+                "小丸工具箱 月儿版 SP1\r\n主页：http://maruko.appinn.me/ \r\n编译日期：" + CompileDate.ToString(),
                 "关于",
                 QQMessageBoxIcon.Information,
                 QQMessageBoxButtons.OK);
@@ -2069,8 +2074,8 @@ namespace mp4box
             lbrate.Visible = true;
             x264BitrateNum.Visible = true;
             label12.Visible = true;
-            x264FpsComboBox.Visible = true;
-            lbFPS2.Visible = true;
+            //x264FpsComboBox.Visible = true;
+            //lbFPS2.Visible = true;
             lbwidth.Visible = true;
             lbheight.Visible = true;
             x264WidthNum.Visible = true;
@@ -2104,16 +2109,16 @@ namespace mp4box
             label12.Visible = false;
             lbcrf.Visible = false;
             x264CRFNum.Visible = false;
-            x264FpsComboBox.Visible = false;
-            lbFPS2.Visible = false;
+            //x264FpsComboBox.Visible = false;
+            //lbFPS2.Visible = false;
         }
         private void x264Mode1RadioButton_CheckedChanged(object sender, EventArgs e)
         {
             mode = 1;
             lbcrf.Visible = true;
             x264CRFNum.Visible = true;
-            x264FpsComboBox.Visible = true;
-            lbFPS2.Visible = true;
+            //x264FpsComboBox.Visible = true;
+            //lbFPS2.Visible = true;
             lbwidth.Visible = true;
             lbheight.Visible = true;
             x264WidthNum.Visible = true;
