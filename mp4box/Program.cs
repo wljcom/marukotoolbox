@@ -41,7 +41,7 @@ namespace mp4box
             Process[] processes = Process.GetProcessesByName(procesname);
             if (processes.Length > 1)
             {
-                MessageBox.Show("你已经打开了一个小丸工具箱喔！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("你已经打开了一个小丸工具箱喔！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Application.Exit();
                 return;
             }

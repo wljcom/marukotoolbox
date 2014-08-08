@@ -1050,28 +1050,28 @@
             resources.ApplyResources(this.MkvExtract4Button, "MkvExtract4Button");
             this.MkvExtract4Button.Name = "MkvExtract4Button";
             this.MkvExtract4Button.UseVisualStyleBackColor = true;
-            this.MkvExtract4Button.Click += new System.EventHandler(this.btnextract7_Click);
+            this.MkvExtract4Button.Click += new System.EventHandler(this.MkvExtract4Button_Click);
             // 
             // MkvExtract3Button
             // 
             resources.ApplyResources(this.MkvExtract3Button, "MkvExtract3Button");
             this.MkvExtract3Button.Name = "MkvExtract3Button";
             this.MkvExtract3Button.UseVisualStyleBackColor = true;
-            this.MkvExtract3Button.Click += new System.EventHandler(this.btnextract7_Click);
+            this.MkvExtract3Button.Click += new System.EventHandler(this.MkvExtract3Button_Click);
             // 
             // MkvExtract2Button
             // 
             resources.ApplyResources(this.MkvExtract2Button, "MkvExtract2Button");
             this.MkvExtract2Button.Name = "MkvExtract2Button";
             this.MkvExtract2Button.UseVisualStyleBackColor = true;
-            this.MkvExtract2Button.Click += new System.EventHandler(this.btnextract7_Click);
+            this.MkvExtract2Button.Click += new System.EventHandler(this.MkvExtract2Button_Click);
             // 
             // MkvExtract1Button
             // 
             resources.ApplyResources(this.MkvExtract1Button, "MkvExtract1Button");
             this.MkvExtract1Button.Name = "MkvExtract1Button";
             this.MkvExtract1Button.UseVisualStyleBackColor = true;
-            this.MkvExtract1Button.Click += new System.EventHandler(this.btnextract7_Click);
+            this.MkvExtract1Button.Click += new System.EventHandler(this.MkvExtract1Button_Click);
             // 
             // btnextract7
             // 

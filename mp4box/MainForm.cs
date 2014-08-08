@@ -640,37 +640,119 @@ namespace mp4box
         }
         private void btnaextract_Click(object sender, EventArgs e)
         {
-            if (namevideo == "")
+            //MP4 抽取音频1
+            ExtractAV(namevideo, "a", 0);
+            //if (namevideo == "")
+            //{
+            //    MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else
+            //{
+            //    //aextract = "\"" + workPath + "\\mp4box.exe\" -raw 2 \"" + namevideo + "\"";
+            //    aextract = "";
+            //    aextract += Cmd.FormatPath(workPath + "\\ffmpeg.exe");
+            //    aextract += " -i " + Cmd.FormatPath(namevideo);
+            //    aextract += " -vn -sn -c:a:0 copy ";
+            //    string outfile = Cmd.GetDir(namevideo) +
+            //        Path.GetFileNameWithoutExtension(namevideo) + "_抽取音频1" + Path.GetExtension(namevideo);
+            //    aextract += Cmd.FormatPath(outfile);
+            //    batpath = workPath + "\\aextract.bat";
+            //    File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
+            //    LogRecord(aextract);
+            //    System.Diagnostics.Process.Start(batpath);
+            //}
+        }
+
+        private void ExtractAV(string namevideo, string av, int streamIndex)
+        {
+            if (string.IsNullOrEmpty(namevideo))
             {
                 MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //aextract = "\"" + workPath + "\\mp4box.exe\" -raw 2 \"" + namevideo + "\"";
+            string aextract = "";
+            aextract += Cmd.FormatPath(workPath + "\\ffmpeg.exe");
+            aextract += " -i " + Cmd.FormatPath(namevideo);
+            if (av == "a")
+            {
+                aextract += " -vn -sn -c:a:" + streamIndex + " copy ";
+            }
+            else if (av == "v")
+            {
+                aextract += " -an -sn -c:v:" + streamIndex + " copy ";
             }
             else
             {
-                aextract = "\"" + workPath + "\\mp4box.exe\" -raw 2 \"" + namevideo + "\"";
-                batpath = workPath + "\\aextract.bat";
-                File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
-                LogRecord(aextract);
-                System.Diagnostics.Process.Start(batpath);
+                throw new Exception("尼玛到底是音频流还是视频流啊！");
             }
+            string suf = "_抽取音频";
+            if (av == "v")
+            {
+                suf = "_抽取视频";
+            }
+            suf += "Index" + streamIndex;
+            string outfile = Cmd.GetDir(namevideo) +
+                Path.GetFileNameWithoutExtension(namevideo) + suf + Path.GetExtension(namevideo);
+            aextract += Cmd.FormatPath(outfile);
+            //aextract = vextract;
+            batpath = workPath + "\\" + av + "extract.bat";
+            File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
+            LogRecord(aextract);
+            System.Diagnostics.Process.Start(batpath);
         }
+
+        private void ExtractTrack(string namevideo, int streamIndex)
+        {
+            if (string.IsNullOrEmpty(namevideo))
+            {
+                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //aextract = "\"" + workPath + "\\mp4box.exe\" -raw 2 \"" + namevideo + "\"";
+            string aextract = "";
+            aextract += Cmd.FormatPath(workPath + "\\ffmpeg.exe");
+            aextract += " -i " + Cmd.FormatPath(namevideo);
+            aextract += " -map 0:" + streamIndex + " -c copy ";
+            string suf = "_抽取流Index" + streamIndex;
+            string outfile = Cmd.GetDir(namevideo) +
+                Path.GetFileNameWithoutExtension(namevideo) + suf + Path.GetExtension(namevideo);
+            aextract += Cmd.FormatPath(outfile);
+            batpath = workPath + "\\mkvextract.bat";
+            File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
+            LogRecord(aextract);
+            System.Diagnostics.Process.Start(batpath);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show(String.Format(" \r\n有任何建议或疑问可以通过以下方式联系小丸。\nQQ：57655408\n微博：weibo.com/xiaowan3\n百度贴吧ID：小丸到达\n\n\t\t\t发布日期：2012年10月17日\n\t\t\t- ( ゜- ゜)つロ 乾杯~"), "关于", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnvextract_Click(object sender, EventArgs e)
         {
-            if (namevideo == "")
-            {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                vextract = "\"" + workPath + "\\mp4box.exe\" -raw 1 \"" + namevideo + "\"";
-                batpath = workPath + "\\vextract.bat";
-                File.WriteAllText(batpath, vextract, UnicodeEncoding.Default);
-                LogRecord(vextract);
-                System.Diagnostics.Process.Start(batpath);
-            }
+            //MP4抽取视频1
+            ExtractAV(namevideo, "v", 0);
+            //if (namevideo == "")
+            //{
+            //    MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else
+            //{
+            //    //vextract = "\"" + workPath + "\\mp4box.exe\" -raw 1 \"" + namevideo + "\"";
+            //    vextract = "";
+            //    vextract += Cmd.FormatPath(workPath + "\\ffmpeg.exe");
+            //    vextract += " -i " + Cmd.FormatPath(namevideo);
+            //    vextract += " -an -sn -c:v:0 copy ";
+            //    string outfile = Cmd.GetDir(namevideo) +
+            //        Path.GetFileNameWithoutExtension(namevideo) + "_抽取视频1" + Path.GetExtension(namevideo);
+            //    vextract += Cmd.FormatPath(outfile);
+            //    batpath = workPath + "\\vextract.bat";
+            //    File.WriteAllText(batpath, vextract, UnicodeEncoding.Default);
+            //    LogRecord(vextract);
+            //    System.Diagnostics.Process.Start(batpath);
+            //}
         }
         private void txtvideo_TextChanged(object sender, EventArgs e)
         {
@@ -855,7 +937,7 @@ namespace mp4box
             workPath = startpath + "\\tools";
             if (!Directory.Exists(workPath))
             {
-                MessageBox.Show("tools文件夹没有解压喔~ 工具箱里没有工具的话运行不起来的喔~", "小丸工具箱",
+                MessageBox.Show("tools文件夹没有解压喔~ 工具箱里没有工具的话运行不起来的喔~", "（这只丸子）",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(1);
             }
@@ -1418,33 +1500,37 @@ namespace mp4box
         }
         private void btnvextract8_Click(object sender, EventArgs e)
         {
-            if (namevideo8 == "")
-            {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                vextract = "\"" + workPath + "\\FLVExtractCL.exe\" -v \"" + namevideo8 + "\"";
-                batpath = workPath + "\\vextract.bat";
-                File.WriteAllText(batpath, vextract, UnicodeEncoding.Default);
-                LogRecord(vextract);
-                System.Diagnostics.Process.Start(batpath);
-            }
+            //FLV vcopy
+            ExtractAV(namevideo8, "v", 0);
+            //if (namevideo8 == "")
+            //{
+            //    MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else
+            //{
+            //    vextract = "\"" + workPath + "\\FLVExtractCL.exe\" -v \"" + namevideo8 + "\"";
+            //    batpath = workPath + "\\vextract.bat";
+            //    File.WriteAllText(batpath, vextract, UnicodeEncoding.Default);
+            //    LogRecord(vextract);
+            //    System.Diagnostics.Process.Start(batpath);
+            //}
         }
         private void btnaextract8_Click(object sender, EventArgs e)
         {
-            if (namevideo8 == "")
-            {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                aextract = "\"" + workPath + "\\FLVExtractCL.exe\" -a \"" + namevideo8 + "\"";
-                batpath = workPath + "\\aextract.bat";
-                File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
-                LogRecord(aextract);
-                System.Diagnostics.Process.Start(batpath);
-            }
+            //FLV acopy
+            ExtractAV(namevideo8, "a", 0);
+            //if (namevideo8 == "")
+            //{
+            //    MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else
+            //{
+            //    aextract = "\"" + workPath + "\\FLVExtractCL.exe\" -a \"" + namevideo8 + "\"";
+            //    batpath = workPath + "\\aextract.bat";
+            //    File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
+            //    LogRecord(aextract);
+            //    System.Diagnostics.Process.Start(batpath);
+            //}
         }
         private void btnvideo8_Click(object sender, EventArgs e)
         {
@@ -1815,39 +1901,65 @@ namespace mp4box
         }
         private void btnextract7_Click(object sender, EventArgs e)
         {
-            if (namevideo6 == "")
-            {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                int i = namevideo6.IndexOf(".");
-                string mkvname = namevideo6.Remove(i);
-                QQButton btn = (QQButton)sender;
-                switch (btn.Name)
-                {
-                    case "MkvExtract1Button":
-                        mkvextract = "\"" + workPath + "\\mkvextract.exe\" tracks \"" + namevideo6 + "\" 1:\"" + mkvname + "_audio.aac\"";
-                        break;
-                    case "MkvExtract2Button":
-                        mkvextract = "\"" + workPath + "\\mkvextract.exe\" tracks \"" + namevideo6 + "\" 2:\"" + mkvname + "_track2\"";
-                        break;
-                    case "MkvExtract3Button":
-                        mkvextract = "\"" + workPath + "\\mkvextract.exe\" tracks \"" + namevideo6 + "\" 3:\"" + mkvname + "_track3\"";
-                        break;
-                    case "MkvExtract4Button":
-                        mkvextract = "\"" + workPath + "\\mkvextract.exe\" tracks \"" + namevideo6 + "\" 4:\"" + mkvname + "_track4\"";
-                        break;
-                    case "btnextract7":
-                        mkvextract = "\"" + workPath + "\\mkvextract.exe\" tracks \"" + namevideo6 + "\" 0:\"" + mkvname + "_video.h264\"";
-                        break;
-                }
-                batpath = workPath + "\\mkvextract.bat";
-                File.WriteAllText(batpath, mkvextract, UnicodeEncoding.Default);
-                LogRecord(mkvextract);
-                System.Diagnostics.Process.Start(batpath);
-            }
+            //MKV抽0
+            ExtractTrack(namevideo6, 0);
+            //if (namevideo6 == "")
+            //{
+            //    MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else
+            //{
+            //    int i = namevideo6.IndexOf(".");
+            //    string mkvname = namevideo6.Remove(i);
+            //    QQButton btn = (QQButton)sender;
+            //    switch (btn.Name)
+            //    {
+            //        case "MkvExtract1Button":
+            //            mkvextract = "\"" + workPath + "\\mkvextract.exe\" tracks \"" + namevideo6 + "\" 1:\"" + mkvname + "_audio.aac\"";
+            //            break;
+            //        case "MkvExtract2Button":
+            //            mkvextract = "\"" + workPath + "\\mkvextract.exe\" tracks \"" + namevideo6 + "\" 2:\"" + mkvname + "_track2\"";
+            //            break;
+            //        case "MkvExtract3Button":
+            //            mkvextract = "\"" + workPath + "\\mkvextract.exe\" tracks \"" + namevideo6 + "\" 3:\"" + mkvname + "_track3\"";
+            //            break;
+            //        case "MkvExtract4Button":
+            //            mkvextract = "\"" + workPath + "\\mkvextract.exe\" tracks \"" + namevideo6 + "\" 4:\"" + mkvname + "_track4\"";
+            //            break;
+            //        case "btnextract7":
+            //            mkvextract = "\"" + workPath + "\\mkvextract.exe\" tracks \"" + namevideo6 + "\" 0:\"" + mkvname + "_video.h264\"";
+            //            break;
+            //    }
+            //    batpath = workPath + "\\mkvextract.bat";
+            //    File.WriteAllText(batpath, mkvextract, UnicodeEncoding.Default);
+            //    LogRecord(mkvextract);
+            //    System.Diagnostics.Process.Start(batpath);
+            //}
         }
+        private void MkvExtract1Button_Click(object sender, EventArgs e)
+        {
+            //MKV 抽1
+            ExtractTrack(namevideo6, 1);
+        }
+
+        private void MkvExtract2Button_Click(object sender, EventArgs e)
+        {
+            //MKV 抽2
+            ExtractTrack(namevideo6, 2);
+        }
+
+        private void MkvExtract3Button_Click(object sender, EventArgs e)
+        {
+            //MKV 抽3
+            ExtractTrack(namevideo6, 3);
+        }
+
+        private void MkvExtract4Button_Click(object sender, EventArgs e)
+        {
+            //MKV 抽4
+            ExtractTrack(namevideo6, 4);
+        }
+
         private void txtMI_TextChanged(object sender, EventArgs e)
         {
             MItext = MediaInfoTextBox.Text;
@@ -1869,33 +1981,51 @@ namespace mp4box
         }
         private void btnaextract2_Click(object sender, EventArgs e)
         {
-            if (namevideo == "")
-            {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                aextract = "\"" + workPath + "\\mp4box.exe\" -raw 3 \"" + namevideo + "\"";
-                batpath = workPath + "\\aextract.bat";
-                File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
-                LogRecord(aextract);
-                System.Diagnostics.Process.Start(batpath);
-            }
+            //MP4 抽取音频2
+            ExtractAV(namevideo, "a", 1);
+            //if (namevideo == "")
+            //{
+            //    MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else
+            //{
+            //    //aextract = "\"" + workPath + "\\mp4box.exe\" -raw 3 \"" + namevideo + "\"";
+            //    aextract = "";
+            //    aextract += Cmd.FormatPath(workPath + "\\ffmpeg.exe");
+            //    aextract += " -i " + Cmd.FormatPath(namevideo);
+            //    aextract += " -vn -sn -c:a:1 copy ";
+            //    string outfile = Cmd.GetDir(namevideo) +
+            //        Path.GetFileNameWithoutExtension(namevideo) + "_抽取音频2" + Path.GetExtension(namevideo);
+            //    aextract += Cmd.FormatPath(outfile);
+            //    batpath = workPath + "\\aextract.bat";
+            //    File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
+            //    LogRecord(aextract);
+            //    System.Diagnostics.Process.Start(batpath);
+            //}
         }
         private void btnaextract3_Click(object sender, EventArgs e)
         {
-            if (namevideo == "")
-            {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                aextract = "\"" + workPath + "\\mp4box.exe\" -raw 4 \"" + namevideo + "\"";
-                batpath = workPath + "\\aextract.bat";
-                File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
-                LogRecord(aextract);
-                System.Diagnostics.Process.Start(batpath);
-            }
+            //MP4 抽取音频3
+            ExtractAV(namevideo, "a", 2);
+            //if (namevideo == "")
+            //{
+            //    MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else
+            //{
+            //    //aextract = "\"" + workPath + "\\mp4box.exe\" -raw 4 \"" + namevideo + "\"";
+            //    aextract = "";
+            //    aextract += Cmd.FormatPath(workPath + "\\ffmpeg.exe");
+            //    aextract += " -i " + Cmd.FormatPath(namevideo);
+            //    aextract += " -vn -sn -c:a:2 copy ";
+            //    string outfile = Cmd.GetDir(namevideo) +
+            //        Path.GetFileNameWithoutExtension(namevideo) + "_抽取音频3" + Path.GetExtension(namevideo);
+            //    aextract += Cmd.FormatPath(outfile);
+            //    batpath = workPath + "\\aextract.bat";
+            //    File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
+            //    LogRecord(aextract);
+            //    System.Diagnostics.Process.Start(batpath);
+            //}
         }
         private void txtvideo6_TextChanged_1(object sender, EventArgs e)
         {
@@ -3296,5 +3426,7 @@ namespace mp4box
             Clipboard.SetText("LoadPlugin(\"" + vsfilterDLLPath + "\")");
             MessageBox.Show("已经复制到剪贴板");
         }
+
+
     }
 }
