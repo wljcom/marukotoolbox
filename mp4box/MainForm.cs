@@ -1129,7 +1129,7 @@ namespace mp4box
         }
         private void button3_Click_1(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "音频(*.mp3;*.aac)|*.mp3;*.aac|所有文件(*.*)|*.*";
+            openFileDialog1.Filter = "音频(*.mp3;*.aac;*.ac3)|*.mp3;*.aac;*.ac3|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -1139,7 +1139,7 @@ namespace mp4box
         }
         private void button5_Click_1(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "ASS字幕(*.ass;*.srt)|*.ass;*.srt|所有文件(*.*)|*.*";
+            openFileDialog1.Filter = "字幕(*.ass;*.ssa;*.srt)|*.ass;*.ssa;*.srt|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
