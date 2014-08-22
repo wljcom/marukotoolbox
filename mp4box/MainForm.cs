@@ -1395,12 +1395,13 @@ namespace mp4box
             if (lbffmpeg.Items.Count != 0)
             {
                 string finish;
+                string ext = MuxFormatComboBox.Text;
                 int i;
                 ffmpeg = "";
                 for (i = 0; i < this.lbffmpeg.Items.Count; i++)
                 {
-                    finish = lbffmpeg.Items[i].ToString().Remove(lbffmpeg.Items[i].ToString().LastIndexOf(".")) + "_MP4封装.mp4";
-                    ffmpeg += "\"" + workPath + "\\ffmpeg.exe\" -i \"" + lbffmpeg.Items[i].ToString() + "\" -c copy -f mp4 \"" + finish + "\" \r\n";
+                    finish = lbffmpeg.Items[i].ToString().Remove(lbffmpeg.Items[i].ToString().LastIndexOf(".")) + "_" + ext + "封装." + ext;
+                    ffmpeg += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + lbffmpeg.Items[i].ToString() + "\" -c copy -f "+ ext+ " \"" + finish + "\" \r\n";
                 }
                 ffmpeg += "\r\ncmd";
                 batpath = workPath + "\\flv.bat";

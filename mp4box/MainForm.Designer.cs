@@ -290,6 +290,8 @@
             this.label26 = new System.Windows.Forms.Label();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
+            this.MuxFormatComboBox = new System.Windows.Forms.ComboBox();
+            this.label40 = new System.Windows.Forms.Label();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -1205,6 +1207,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label40);
+            this.groupBox4.Controls.Add(this.MuxFormatComboBox);
             this.groupBox4.Controls.Add(this.lbffmpeg);
             this.groupBox4.Controls.Add(this.btnffmpegAdd);
             this.groupBox4.Controls.Add(this.btnffmpegClear);
@@ -2758,6 +2762,24 @@
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
             // 
+            // MuxFormatComboBox
+            // 
+            this.MuxFormatComboBox.FormattingEnabled = true;
+            this.MuxFormatComboBox.Items.AddRange(new object[] {
+            resources.GetString("MuxFormatComboBox.Items"),
+            resources.GetString("MuxFormatComboBox.Items1"),
+            resources.GetString("MuxFormatComboBox.Items2"),
+            resources.GetString("MuxFormatComboBox.Items3"),
+            resources.GetString("MuxFormatComboBox.Items4"),
+            resources.GetString("MuxFormatComboBox.Items5")});
+            resources.ApplyResources(this.MuxFormatComboBox, "MuxFormatComboBox");
+            this.MuxFormatComboBox.Name = "MuxFormatComboBox";
+            // 
+            // label40
+            // 
+            resources.ApplyResources(this.label40, "label40");
+            this.label40.Name = "label40";
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -3103,6 +3125,8 @@
         private ControlExs.QQButton AVSAddFilterButton;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.ComboBox x264BatchSubSpecialLanguage;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.ComboBox MuxFormatComboBox;
     }
 }
 
