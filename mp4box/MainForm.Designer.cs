@@ -123,6 +123,8 @@
             this.btnaextract2 = new ControlExs.QQButton();
             this.MuxTab = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.MuxFormatComboBox = new System.Windows.Forms.ComboBox();
             this.lbffmpeg = new System.Windows.Forms.ListBox();
             this.btnffmpegAdd = new ControlExs.QQButton();
             this.btnffmpegClear = new ControlExs.QQButton();
@@ -160,7 +162,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.AudioBitrateRadioButton = new ControlExs.QQRadioButton();
             this.AudioCustomizeRadioButton = new ControlExs.QQRadioButton();
-            this.txtout3 = new ControlExs.QQTextBox();
+            this.AudioOutputTextBox = new ControlExs.QQTextBox();
             this.btnaudio2 = new ControlExs.QQButton();
             this.lbaackbps = new System.Windows.Forms.Label();
             this.btnout3 = new ControlExs.QQButton();
@@ -168,6 +170,7 @@
             this.btnaac = new ControlExs.QQButton();
             this.AudioCustomParameterTextBox = new ControlExs.QQTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.AudioJoinButton = new ControlExs.QQButton();
             this.label1 = new System.Windows.Forms.Label();
             this.AudioBatchButton = new ControlExs.QQButton();
             this.AudioListBox = new System.Windows.Forms.ListBox();
@@ -290,8 +293,6 @@
             this.label26 = new System.Windows.Forms.Label();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
-            this.MuxFormatComboBox = new System.Windows.Forms.ComboBox();
-            this.label40 = new System.Windows.Forms.Label();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -1220,6 +1221,24 @@
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
+            // label40
+            // 
+            resources.ApplyResources(this.label40, "label40");
+            this.label40.Name = "label40";
+            // 
+            // MuxFormatComboBox
+            // 
+            this.MuxFormatComboBox.FormattingEnabled = true;
+            this.MuxFormatComboBox.Items.AddRange(new object[] {
+            resources.GetString("MuxFormatComboBox.Items"),
+            resources.GetString("MuxFormatComboBox.Items1"),
+            resources.GetString("MuxFormatComboBox.Items2"),
+            resources.GetString("MuxFormatComboBox.Items3"),
+            resources.GetString("MuxFormatComboBox.Items4"),
+            resources.GetString("MuxFormatComboBox.Items5")});
+            resources.ApplyResources(this.MuxFormatComboBox, "MuxFormatComboBox");
+            this.MuxFormatComboBox.Name = "MuxFormatComboBox";
+            // 
             // lbffmpeg
             // 
             this.lbffmpeg.AllowDrop = true;
@@ -1484,7 +1503,7 @@
             this.NeroAACGroupBox.Controls.Add(this.AudioEncoderComboBox);
             this.NeroAACGroupBox.Controls.Add(this.txtaudio2);
             this.NeroAACGroupBox.Controls.Add(this.panel2);
-            this.NeroAACGroupBox.Controls.Add(this.txtout3);
+            this.NeroAACGroupBox.Controls.Add(this.AudioOutputTextBox);
             this.NeroAACGroupBox.Controls.Add(this.btnaudio2);
             this.NeroAACGroupBox.Controls.Add(this.lbaackbps);
             this.NeroAACGroupBox.Controls.Add(this.btnout3);
@@ -1564,16 +1583,16 @@
             this.AudioCustomizeRadioButton.UseVisualStyleBackColor = true;
             this.AudioCustomizeRadioButton.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
-            // txtout3
+            // AudioOutputTextBox
             // 
-            this.txtout3.AllowDrop = true;
-            this.txtout3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtout3.EmptyTextTip = null;
-            this.txtout3.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            resources.ApplyResources(this.txtout3, "txtout3");
-            this.txtout3.Name = "txtout3";
-            this.txtout3.TextChanged += new System.EventHandler(this.txtout3_TextChanged);
-            this.txtout3.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtout3_MouseDoubleClick);
+            this.AudioOutputTextBox.AllowDrop = true;
+            this.AudioOutputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AudioOutputTextBox.EmptyTextTip = null;
+            this.AudioOutputTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.AudioOutputTextBox, "AudioOutputTextBox");
+            this.AudioOutputTextBox.Name = "AudioOutputTextBox";
+            this.AudioOutputTextBox.TextChanged += new System.EventHandler(this.txtout3_TextChanged);
+            this.AudioOutputTextBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtout3_MouseDoubleClick);
             // 
             // btnaudio2
             // 
@@ -1617,6 +1636,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.AudioJoinButton);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.AudioBatchButton);
             this.groupBox2.Controls.Add(this.AudioListBox);
@@ -1626,6 +1646,13 @@
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // AudioJoinButton
+            // 
+            resources.ApplyResources(this.AudioJoinButton, "AudioJoinButton");
+            this.AudioJoinButton.Name = "AudioJoinButton";
+            this.AudioJoinButton.UseVisualStyleBackColor = true;
+            this.AudioJoinButton.Click += new System.EventHandler(this.AudioJoinButton_Click);
             // 
             // label1
             // 
@@ -2762,24 +2789,6 @@
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
             // 
-            // MuxFormatComboBox
-            // 
-            this.MuxFormatComboBox.FormattingEnabled = true;
-            this.MuxFormatComboBox.Items.AddRange(new object[] {
-            resources.GetString("MuxFormatComboBox.Items"),
-            resources.GetString("MuxFormatComboBox.Items1"),
-            resources.GetString("MuxFormatComboBox.Items2"),
-            resources.GetString("MuxFormatComboBox.Items3"),
-            resources.GetString("MuxFormatComboBox.Items4"),
-            resources.GetString("MuxFormatComboBox.Items5")});
-            resources.ApplyResources(this.MuxFormatComboBox, "MuxFormatComboBox");
-            this.MuxFormatComboBox.Name = "MuxFormatComboBox";
-            // 
-            // label40
-            // 
-            resources.ApplyResources(this.label40, "label40");
-            this.label40.Name = "label40";
-            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -2947,7 +2956,7 @@
         private ControlExs.QQButton btnout3;
         private ControlExs.QQButton btnaudio2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private ControlExs.QQTextBox txtout3;
+        private ControlExs.QQTextBox AudioOutputTextBox;
         private ControlExs.QQTextBox txtaudio2;
         private ControlExs.QQTextBox AudioCustomParameterTextBox;
         private System.Windows.Forms.TabPage VideoTab;
@@ -3127,6 +3136,7 @@
         private System.Windows.Forms.ComboBox x264BatchSubSpecialLanguage;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.ComboBox MuxFormatComboBox;
+        private ControlExs.QQButton AudioJoinButton;
     }
 }
 

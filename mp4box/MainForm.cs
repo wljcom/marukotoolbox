@@ -1307,15 +1307,16 @@ namespace mp4box
         }
         private void lbAuto_DragDrop(object sender, DragEventArgs e)
         {
+            ListBox listbox = (ListBox)sender;
             if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
             {
                 String[] files = (String[])e.Data.GetData(DataFormats.FileDrop);
                 foreach (String s in files)
                 {
-                    (sender as ListBox).Items.Add(s);
+                    listbox.Items.Add(s);
                 }
+                return;
             }
-            ListBox listbox = (ListBox)sender;
             indexoftarget = listbox.IndexFromPoint(listbox.PointToClient(new Point(e.X, e.Y)));
             if (indexoftarget != ListBox.NoMatches)
             {
@@ -1334,7 +1335,8 @@ namespace mp4box
         private void lbAuto_DragOver(object sender, DragEventArgs e)
         {
             //拖动源和放置的目的地一定是一个ListBox
-            if (e.Data.GetDataPresent(typeof(System.String)) && ((ListBox)sender).Equals(lbAuto))
+            ListBox listbox = (ListBox)sender;
+            if (e.Data.GetDataPresent(typeof(System.String)) && ((ListBox)sender).Equals(listbox))
             {
                 e.Effect = DragDropEffects.Move;
             }
@@ -1483,7 +1485,7 @@ namespace mp4box
                 for (i = 0; i < this.lbffmpeg.Items.Count; i++)
                 {
                     finish = lbffmpeg.Items[i].ToString().Remove(lbffmpeg.Items[i].ToString().LastIndexOf(".")) + "_" + ext + "封装." + ext;
-                    ffmpeg += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + lbffmpeg.Items[i].ToString() + "\" -c copy -f "+ ext+ " \"" + finish + "\" \r\n";
+                    ffmpeg += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + lbffmpeg.Items[i].ToString() + "\" -c copy -f " + ext + " \"" + finish + "\" \r\n";
                 }
                 ffmpeg += "\r\ncmd";
                 batpath = workPath + "\\flv.bat";
@@ -1573,9 +1575,9 @@ namespace mp4box
         }
         private void txtout3_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (File.Exists(txtout3.Text.ToString()))
+            if (File.Exists(AudioOutputTextBox.Text.ToString()))
             {
-                System.Diagnostics.Process.Start(txtout3.Text.ToString());
+                System.Diagnostics.Process.Start(AudioOutputTextBox.Text.ToString());
             }
         }
         private void txtout6_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -2358,26 +2360,26 @@ namespace mp4box
                 case 0:
                 case 1:
                     if (File.Exists(txtaudio2.Text))
-                        txtout3.Text = AddExt(txtaudio2.Text, "_AAC.aac");
+                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.aac");
                     AudioBitrateComboBox.Enabled = true;
                     AudioBitrateRadioButton.Enabled = true;
                     AudioCustomizeRadioButton.Enabled = true;
                     break;
                 case 2: if (File.Exists(txtaudio2.Text))
-                        txtout3.Text = AddExt(txtaudio2.Text, "_WAV.wav");
+                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_WAV.wav");
                     AudioBitrateComboBox.Enabled = false;
                     AudioBitrateRadioButton.Enabled = false;
                     AudioCustomizeRadioButton.Enabled = false;
                     break;
                 case 3:
                     if (File.Exists(txtaudio2.Text))
-                        txtout3.Text = AddExt(txtaudio2.Text, "_alac.m4a");
+                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_alac.m4a");
                     AudioBitrateComboBox.Enabled = false;
                     AudioBitrateRadioButton.Enabled = false;
                     AudioCustomizeRadioButton.Enabled = false;
                     break;
                 case 4: if (File.Exists(txtaudio2.Text))
-                        txtout3.Text = AddExt(txtaudio2.Text, "_flac.flac");
+                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_flac.flac");
                     AudioBitrateComboBox.Enabled = false;
                     AudioBitrateRadioButton.Enabled = false;
                     AudioCustomizeRadioButton.Enabled = false;
@@ -2389,15 +2391,16 @@ namespace mp4box
 
         private void AudioListBox_DragDrop(object sender, DragEventArgs e)
         {
+            ListBox listbox = (ListBox)sender;
             if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
             {
                 String[] files = (String[])e.Data.GetData(DataFormats.FileDrop);
                 foreach (String s in files)
                 {
-                    (sender as ListBox).Items.Add(s);
+                    listbox.Items.Add(s);
                 }
+                return;
             }
-            ListBox listbox = (ListBox)sender;
             indexoftarget = listbox.IndexFromPoint(listbox.PointToClient(new Point(e.X, e.Y)));
             if (indexoftarget != ListBox.NoMatches)
             {
@@ -2409,7 +2412,8 @@ namespace mp4box
         }
         private void AudioListBox_DragOver(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(typeof(System.String)) && ((ListBox)sender).Equals(lbAuto))
+            ListBox listbox = (ListBox)sender;
+            if (e.Data.GetDataPresent(typeof(System.String)) && ((ListBox)sender).Equals(listbox))
             {
                 e.Effect = DragDropEffects.Move;
             }
@@ -2483,7 +2487,7 @@ namespace mp4box
                         break;
                 }
 
-                txtout3.Text = nameout3;
+                AudioOutputTextBox.Text = nameout3;
             }
         }
         private void btnaac_Click(object sender, EventArgs e)
@@ -2515,18 +2519,18 @@ namespace mp4box
             {
                 nameaudio2 = txtaudio2.Text;
                 if (AudioEncoderComboBox.SelectedIndex == 2)
-                    txtout3.Text = AddExt(txtaudio2.Text, "_WAV.wav");
+                    AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_WAV.wav");
                 else if (AudioEncoderComboBox.SelectedIndex == 3)
-                    txtout3.Text = AddExt(txtaudio2.Text, "_alac.m4a");
+                    AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_alac.m4a");
                 else if (AudioEncoderComboBox.SelectedIndex == 4)
-                    txtout3.Text = AddExt(txtaudio2.Text, "_flac.flac");
+                    AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_flac.flac");
                 else
-                    txtout3.Text = AddExt(txtaudio2.Text, "_AAC.aac");
+                    AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.aac");
             }
         }
         private void txtout3_TextChanged(object sender, EventArgs e)
         {
-            nameout3 = txtout3.Text;
+            nameout3 = AudioOutputTextBox.Text;
         }
         private void txtaudio2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -3427,6 +3431,38 @@ namespace mp4box
             MessageBox.Show("已经复制到剪贴板");
         }
 
-
+        private void AudioJoinButton_Click(object sender, EventArgs e)
+        {
+            if (AudioListBox.Items.Count == 0)
+            {
+                MessageBox.Show("请输入文件！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (AudioOutputTextBox.Text == "")
+            {
+                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            StringBuilder sb = new StringBuilder();
+            ffmpeg = "";
+            string ext = Path.GetExtension(AudioListBox.Items[0].ToString());
+            string finish =AddExt(AudioOutputTextBox.Text,ext);
+            for (int i = 0; i < this.AudioListBox.Items.Count; i++)
+            {
+                if (Path.GetExtension(AudioListBox.Items[i].ToString()) != ext)
+                {
+                    MessageBox.Show("只允许合并相同格式文件。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                sb.AppendLine("file '" + AudioListBox.Items[i].ToString() + "'");
+                File.WriteAllText("concat.txt", sb.ToString());
+                ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -f concat  -i concat.txt -y -c copy " + finish;
+            }
+            ffmpeg += "\r\ncmd";
+            batpath = workPath + "\\concat.bat";
+            File.WriteAllText(batpath, ffmpeg, UnicodeEncoding.Default);
+            LogRecord(aac);
+            System.Diagnostics.Process.Start(batpath);
+        }
     }
 }
