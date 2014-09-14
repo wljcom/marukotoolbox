@@ -12,6 +12,7 @@ using Microsoft.WindowsAPICodePack.Taskbar;
 namespace mp4box
 {
     using Extension;
+    using System.IO;
     public partial class WorkingForm : Form
     {
         /// <summary>
@@ -669,7 +670,8 @@ namespace mp4box
                 savDlg.FilterIndex = 1;
                 savDlg.RestoreDirectory = true;
                 if (savDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    richTextBoxOutput.SaveFile(savDlg.FileName, RichTextBoxStreamType.UnicodePlainText);
+                    File.WriteAllText(savDlg.FileName, richTextBoxOutput.Text);
+                    //richTextBoxOutput.SaveFile(savDlg.FileName, RichTextBoxStreamType.UnicodePlainText);
             }
         }
 
