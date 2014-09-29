@@ -2351,14 +2351,40 @@ namespace mp4box
         }
         #endregion
         #region 音频界面
+
+        // <summary>   
+        /// 是否安装 QuickTime   
+        /// </summary>   
+        /// <returns>true:安装 false:没有安装</returns>   
+        private bool isQuickTimeInstalled()
+        {
+            Microsoft.Win32.RegistryKey uninstallNode = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\Apple Computer, Inc.\QuickTime");
+            if (uninstallNode == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         private void AudioEncoderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-
             switch (AudioEncoderComboBox.SelectedIndex)
             {
                 case 0:
+                    if (File.Exists(txtaudio2.Text))
+                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.aac");
+                    AudioBitrateComboBox.Enabled = true;
+                    AudioBitrateRadioButton.Enabled = true;
+                    AudioCustomizeRadioButton.Enabled = true;
+                    break;
                 case 1:
+                    if (!isQuickTimeInstalled())
+                    {
+                        MessageBox.Show("使用QAAC编码器需要先安装QuickTime： http://www.apple.com/cn/quicktime/download/", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                     if (File.Exists(txtaudio2.Text))
                         AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.aac");
                     AudioBitrateComboBox.Enabled = true;
@@ -3446,7 +3472,7 @@ namespace mp4box
             StringBuilder sb = new StringBuilder();
             ffmpeg = "";
             string ext = Path.GetExtension(AudioListBox.Items[0].ToString());
-            string finish =AddExt(AudioOutputTextBox.Text,ext);
+            string finish = AddExt(AudioOutputTextBox.Text, ext);
             for (int i = 0; i < this.AudioListBox.Items.Count; i++)
             {
                 if (Path.GetExtension(AudioListBox.Items[i].ToString()) != ext)
