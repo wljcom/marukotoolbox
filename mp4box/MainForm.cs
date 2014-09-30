@@ -671,6 +671,7 @@ namespace mp4box
                 return;
             }
 
+            string ext = Path.GetExtension(namevideo);
             //aextract = "\"" + workPath + "\\mp4box.exe\" -raw 2 \"" + namevideo + "\"";
             string aextract = "";
             aextract += Cmd.FormatPath(workPath + "\\ffmpeg.exe");
@@ -678,6 +679,16 @@ namespace mp4box
             if (av == "a")
             {
                 aextract += " -vn -sn -c:a:" + streamIndex + " copy ";
+
+                MediaInfo MI = new MediaInfo();
+                MI.Open(namevideo);
+                string audioFormat = MI.Get(StreamKind.Audio, 0, "Format");
+                if (audioFormat.Contains("MPEG"))
+                    ext = ".mp3";
+                if (audioFormat == "AAC")
+                    ext = ".aac";
+                if (audioFormat == "FLAC")
+                    ext = ".flac";
             }
             else if (av == "v")
             {
@@ -687,14 +698,14 @@ namespace mp4box
             {
                 throw new Exception("尼玛到底是音频流还是视频流啊！");
             }
-            string suf = "_抽取音频";
+            string suf = "_audio_";
             if (av == "v")
             {
-                suf = "_抽取视频";
+                suf = "_video_";
             }
-            suf += "Index" + streamIndex;
+            suf += "index" + streamIndex;
             string outfile = Cmd.GetDir(namevideo) +
-                Path.GetFileNameWithoutExtension(namevideo) + suf + Path.GetExtension(namevideo);
+                Path.GetFileNameWithoutExtension(namevideo) + suf + ext;
             aextract += Cmd.FormatPath(outfile);
             //aextract = vextract;
             batpath = workPath + "\\" + av + "extract.bat";
