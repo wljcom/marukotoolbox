@@ -87,7 +87,7 @@ namespace mp4box
         string neroaac;
         string aac;
         string aextract;
-        string vextract;
+        //string vextract;
         string batpath;
         string auto;
         string startpath;
