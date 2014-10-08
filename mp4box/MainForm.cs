@@ -161,6 +161,10 @@ namespace mp4box
                 string samplingRate = MI.Get(StreamKind.Audio, 0, "SamplingRate/String");
                 string channel = MI.Get(StreamKind.Audio, 0, "Channel(s)");
                 string aSize = MI.Get(StreamKind.Audio, 0, "StreamSize/String");
+
+                string audioInfo = MI.Get(StreamKind.Audio, 0, "Inform") + MI.Get(StreamKind.Audio, 1, "Inform") + MI.Get(StreamKind.Audio, 2, "Inform") + MI.Get(StreamKind.Audio, 3, "Inform");
+                string videoInfo = MI.Get(StreamKind.Video, 0, "Inform");
+
                 info = Path.GetFileName(VideoName) + "\r\n" +
                     "容器：" + container + "\r\n" +
                     "总码率：" + bitrate + "\r\n" +
@@ -185,7 +189,11 @@ namespace mp4box
                     "大小：" + aSize + "\r\n" +
                     "码率：" + aBitRate + "\r\n" +
                     "采样率：" + samplingRate + "\r\n" +
-                    "声道数：" + channel + "\r\n";
+                    "声道数：" + channel + "\r\n" +
+                    "\r\n====详细信息====\r\n" +
+                    videoInfo + "\r\n" +
+                    audioInfo + "\r\n"
+                    ;
                 MI.Close();
             }
             return info;

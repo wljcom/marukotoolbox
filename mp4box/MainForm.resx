@@ -483,6 +483,9 @@
   <data name="MediaInfoTextBox.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="MediaInfoTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
   <data name="MediaInfoTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>550, 549</value>
   </data>
