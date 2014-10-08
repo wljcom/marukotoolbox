@@ -475,7 +475,7 @@
     <value>2</value>
   </data>
   <data name="MediaInfoTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>宋体, 9.75pt</value>
   </data>
   <data name="MediaInfoTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 6</value>
