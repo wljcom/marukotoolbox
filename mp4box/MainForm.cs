@@ -651,11 +651,11 @@ namespace mp4box
             if (cbFPS.Text == "auto")
             {
 
-                mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + namevideo + "\" -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
+                mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + namevideo + "\":par=" + Mp4BoxParComboBox.Text + " -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
             }
             else
             {
-                mux = "\"" + workPath + "\\mp4box.exe\" -fps " + cbFPS.Text + " -add \"" + namevideo + "\" -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
+                mux = "\"" + workPath + "\\mp4box.exe\" -fps " + cbFPS.Text + " -add \"" + namevideo + "\":par=" + Mp4BoxParComboBox.Text + " -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
             }
 
             if (nameaudio == "") //如果没有音频流
