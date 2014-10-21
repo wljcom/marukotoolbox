@@ -2139,6 +2139,17 @@ namespace mp4box
                 return;
             }
 
+            if (x264ExeComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("请选择X264程序", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (x264ThreadsComboBox.SelectedIndex == -1)
+            {
+                x264ThreadsComboBox.SelectedIndex = 0;
+            }
+
             MediaInfo MI = new MediaInfo();
             MI.Open(namevideo2);
             string audio = MI.Get(StreamKind.Audio, 0, "Format");
