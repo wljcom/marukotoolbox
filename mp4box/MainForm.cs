@@ -2678,8 +2678,10 @@ namespace mp4box
             //}
             avsBuilder.Remove(0, avsBuilder.Length);
             string vsfilterDLLPath = Path.Combine(workPath, @"avsfilter\VSFilter.DLL");
+            string undotDLLPath = Path.Combine(workPath, @"avsfilter\UnDot.DLL");
             avsBuilder.AppendLine("LoadPlugin(\"" + vsfilterDLLPath + "\")");
-            if (UndotCheckBox.Checked) avsBuilder.AppendLine("LoadPlugin(\"avsfilter\\UnDot.DLL\")");
+            if (UndotCheckBox.Checked)
+                avsBuilder.AppendLine("LoadPlugin(\"" + undotDLLPath + "\")");
             avsBuilder.AppendLine("DirectShowSource(\"" + namevideo9 + "\")");
             avsBuilder.AppendLine("ConvertToYV12()");
             if (UndotCheckBox.Checked)
