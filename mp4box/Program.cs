@@ -57,15 +57,15 @@ namespace mp4box
             Application.SetCompatibleTextRenderingDefault(false);
             NativeMethods.SetUnmanagedDllDirectory();
 
-            var modulename = Process.GetCurrentProcess().MainModule.ModuleName;
-            var procesname = Path.GetFileNameWithoutExtension(modulename);
-            Process[] processes = Process.GetProcessesByName(procesname);
-            if (processes.Length > 1)
-            {
-                MessageBox.Show("你已经打开了一个小丸工具箱喔！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                Application.Exit();
-                return;
-            }
+            // var modulename = Process.GetCurrentProcess().MainModule.ModuleName;
+            // var procesname = Path.GetFileNameWithoutExtension(modulename);
+            // Process[] processes = Process.GetProcessesByName(procesname);
+            // if (processes.Length > 1)
+            // {
+                // MessageBox.Show("你已经打开了一个小丸工具箱喔！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                // Application.Exit();
+                // return;
+            // }
 
             if (ConfigurationManager.AppSettings["SplashScreen"] == "True")
             {
