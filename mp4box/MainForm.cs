@@ -2405,19 +2405,20 @@ namespace mp4box
         #region 音频界面
 
         // <summary>   
-        /// 是否安装 QuickTime   
+        /// 是否安装 Apple Application Support
         /// </summary>   
         /// <returns>true:安装 false:没有安装</returns>   
-        private bool isQuickTimeInstalled()
+        private bool isAppleAppSupportInstalled()
         {
-            Microsoft.Win32.RegistryKey uninstallNode = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\Apple Computer, Inc.\QuickTime");
-            if (uninstallNode == null)
+            Microsoft.Win32.RegistryKey uninstallNode_1 = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"Software\Wow6432Node\Apple Inc.\Apple Application Support"); //x64 OS
+            Microsoft.Win32.RegistryKey uninstallNode_2 = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"Software\Apple Inc.\Apple Application Support"); //x86 OS
+            if (uninstallNode_1 != null || uninstallNode_2 != null)
             {
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
@@ -2433,9 +2434,10 @@ namespace mp4box
                     AudioCustomizeRadioButton.Enabled = true;
                     break;
                 case 1:
-                    if (!isQuickTimeInstalled())
+                    if (!isAppleAppSupportInstalled())
                     {
-                        MessageBox.Show("使用QAAC编码器需要先安装QuickTime： http://www.apple.com/cn/quicktime/download/", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        if (MessageBox.Show("Apple Application Support未安装.\r\n音频编码器QAAC可能无法使用.\r\n\r\n是否前往QuickTime下载页面?", "Apple Application Support未安装", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        System.Diagnostics.Process.Start("http://www.apple.com/cn/quicktime/download");
                     }
                     if (File.Exists(txtaudio2.Text))
                         AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.aac");
