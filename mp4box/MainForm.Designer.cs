@@ -986,7 +986,8 @@
             resources.GetString("AudioEncoderComboBox.Items1"),
             resources.GetString("AudioEncoderComboBox.Items2"),
             resources.GetString("AudioEncoderComboBox.Items3"),
-            resources.GetString("AudioEncoderComboBox.Items4")});
+            resources.GetString("AudioEncoderComboBox.Items4"),
+            resources.GetString("AudioEncoderComboBox.Items5")});
             resources.ApplyResources(this.AudioEncoderComboBox, "AudioEncoderComboBox");
             this.AudioEncoderComboBox.Name = "AudioEncoderComboBox";
             this.AudioEncoderComboBox.SelectedIndexChanged += new System.EventHandler(this.AudioEncoderComboBox_SelectedIndexChanged);

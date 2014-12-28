@@ -3714,6 +3714,9 @@
   <data name="AudioEncoderComboBox.Items4" xml:space="preserve">
     <value>FLAC</value>
   </data>
+  <data name="AudioEncoderComboBox.Items5" xml:space="preserve">
+    <value>FDKAAC</value>
+  </data>
   <data name="AudioEncoderComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>108, 81</value>
   </data>

@@ -361,7 +361,7 @@ namespace mp4box
                 case 1:
                     if (AudioBitrateRadioButton.Checked)
                     {
-                        neroaac = "\"" + workPath + "\\qaac.exe\" -q 2 -c  " + AudioBitrateComboBox.Text + " \"temp.wav\"  -o \"" + output + "\"";
+                        neroaac = "\"" + workPath + "\\qaac.exe\" -q 2 -c " + AudioBitrateComboBox.Text + " \"temp.wav\"  -o \"" + output + "\"";
                     }
                     if (AudioCustomizeRadioButton.Checked)
                     {
@@ -379,6 +379,16 @@ namespace mp4box
                     break;
                 case 4:
                     neroaac = "\"" + workPath + "\\flac.exe\" -f --ignore-chunk-sizes -5 \"temp.wav\"  -o \"" + output + "\"";
+                    break;
+                case 5:
+                    if (AudioBitrateRadioButton.Checked)
+                    {
+                        neroaac = "\"" + workPath + "\\fdkaac.exe\" --ignorelength -b "+ AudioBitrateComboBox.Text + " \"temp.wav\" -o \"" + output + "\"";
+                    }
+                    if (AudioCustomizeRadioButton.Checked)
+                    {
+                        neroaac = "\"" + workPath + "\\fdkaac.exe\" " + AudioCustomParameterTextBox.Text.ToString() + " \"temp.wav\" -o \"" + output + "\"";
+                    }
                     break;
                 default:
                     break;
@@ -1855,7 +1865,7 @@ namespace mp4box
         }
         private void btnsub9_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "ASS字幕(*.ass;*.ssa)|*.ass;*.ssa|所有文件(*.*)|*.*";
+            openFileDialog1.Filter = "字幕(*.ass;*.ssa;*.srt)|*.ass;*.ssa;*.srt|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -2118,7 +2128,7 @@ namespace mp4box
         }
         private void x264SubBtn_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "ASS字幕(*.ass;*.ssa)|*.ass;*.ssa|所有文件(*.*)|*.*";
+            openFileDialog1.Filter = "字幕(*.ass;*.ssa;*.srt)|*.ass;*.ssa;*.srt|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -2464,6 +2474,13 @@ namespace mp4box
                     AudioBitrateRadioButton.Enabled = false;
                     AudioCustomizeRadioButton.Enabled = false;
                     break;
+                case 5:
+                    if (File.Exists(txtaudio2.Text))
+                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.m4a");
+                    AudioBitrateComboBox.Enabled = true;
+                    AudioBitrateRadioButton.Enabled = true;
+                    AudioCustomizeRadioButton.Enabled = true;
+                    break;
                 default:
                     break;
             }
@@ -2563,6 +2580,8 @@ namespace mp4box
                         break;
                     case 4: nameout3 = savefile.FileName + ".flac";
                         break;
+                    case 5: nameout3 = savefile.FileName + ".m4a";
+                        break;
                     default:
                         break;
                 }
@@ -2604,6 +2623,8 @@ namespace mp4box
                     AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_alac.m4a");
                 else if (AudioEncoderComboBox.SelectedIndex == 4)
                     AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_flac.flac");
+                else if (AudioEncoderComboBox.SelectedIndex == 5)
+                    AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.m4a");
                 else
                     AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.aac");
             }
