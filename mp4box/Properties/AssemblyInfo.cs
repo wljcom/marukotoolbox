@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------
-// Copyright (C) 2011-2014 Maruko Toolbox Project
+// Copyright (C) 2011-2015 Maruko Toolbox Project
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("http://maruko.appinn.me/")]
 [assembly: AssemblyProduct("Maruko Toolbox")]
-[assembly: AssemblyCopyright("Copyright © 2011-2014")]
+[assembly: AssemblyCopyright("Copyright © 2011-2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

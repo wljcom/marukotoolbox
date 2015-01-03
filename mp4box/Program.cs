@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------
-// Copyright (C) 2011-2014 Maruko Toolbox Project
+// Copyright (C) 2011-2015 Maruko Toolbox Project
 // 
 //  Authors: komaruchan <sandy_0308@hotmail.com>
 //           LunarShaddow <aflyhorse@hotmail.com>
