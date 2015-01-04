@@ -206,12 +206,12 @@ namespace mp4box
         }
         public string muxbat(string input1, string input2, string fps, string output)
         {
-            mux = "\"" + workPath + "\\mp4box.exe\" -fps " + fps + " -add " + input1 + " -add " + input2 + " -new \"" + output + "\"\r\n";
+            mux = "\"" + workPath + "\\mp4box.exe\" -fps " + fps + " -add \"" + input1 + "\" -add \"" + input2 + "\" -new \"" + output + "\"\r\n";
             return mux;
         }
         public string muxbat(string input1, string input2, string output)
         {
-            mux = "\"" + workPath + "\\mp4box.exe\" -add " + input1 + " -add " + input2 + " -new \"" + output + "\"\r\n";
+            mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + input1 + "\" -add \"" + input2 + "\" -new \"" + output + "\"\r\n";
             return mux;
         }
         public string x264bat(string input, string output)
@@ -383,7 +383,7 @@ namespace mp4box
                 case 5:
                     if (AudioBitrateRadioButton.Checked)
                     {
-                        neroaac = "\"" + workPath + "\\fdkaac.exe\" --ignorelength -b "+ AudioBitrateComboBox.Text + " \"temp.wav\" -o \"" + output + "\"";
+                        neroaac = "\"" + workPath + "\\fdkaac.exe\" --ignorelength -b " + AudioBitrateComboBox.Text + " \"temp.wav\" -o \"" + output + "\"";
                     }
                     if (AudioCustomizeRadioButton.Checked)
                     {
@@ -396,54 +396,7 @@ namespace mp4box
             aac = ffmpeg + "\r\n" + neroaac + "\r\n";
             return aac;
         }
-        public string oneAuto(string video, string output)
-        {
-            x264 = x264bat(video, "temp.mp4");
-            x264 = x264.Replace("\r\n", "");
-            if (x264SubTextBox.Text != "")
-            {
-                if (x264.IndexOf("--vf") == -1)
-                {
-                    x264 += " --vf subtitles --sub \"" + namesub2 + "\"";
-                }
-                else
-                {
-                    Regex r = new Regex("--vf\\s\\S*");
-                    Match m = r.Match(x264);
-                    x264 = x264.Insert(m.Index + m.Value.Length, "/subtitles");
-                    x264 += " --sub \"" + namesub2 + "\"";
-                }
-            }
-            x264 += "\r\n";
 
-            //audio
-            if (Path.GetExtension(video) == ".avs") //如果是avs就跳过音频处理
-            {
-                aextract = "\r\n";
-                //StreamReader sr = new StreamReader(namevideo3, System.Text.Encoding.Default);
-                //string str = sr.ReadToEnd();
-            }
-            else
-            {
-                aextract = audiobat(video, "temp.aac");
-            }
-
-            //mux
-            mux = muxbat("temp.mp4", "temp.aac", cbFPS.Text, output);
-            auto = aextract + x264 + mux + "\r\n";
-            if (x264FLVCheckBox.Checked == true)
-            {
-                string flvfile = AddExt(output, "_FLV.flv");
-                auto += "\r\n\"" + workPath + "\\ffmpeg.exe\"  -i  \"" + output + "\" -c copy -f flv  \"" + flvfile + "\" \r\n";
-            }
-
-            //if (x264ShutdownCheckBox.Checked)
-            //{
-            //    auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60\r\n";
-            //}
-            //auto += "cmd";
-            return auto;
-        }
         public void BatchVideoWithAudio()
         {
             auto = "";
@@ -1908,7 +1861,7 @@ namespace mp4box
                 //clip = "\"" + workPath + "\\ffmpeg.exe\" -ss " + maskb.Text + " -to " + maske.Text + " -i  \"" + namevideo4 + "\" -acodec copy -vcodec copy \"" + nameout5 + "\" \r\ncmd";
 
                 // "<workPath>\ffmpeg.exe" -i "<namevideo4>" -ss <maskb.Text> -to <maske.Text> -c copy "<nameout5>"
-                clip = String.Format(@"""{0}\ffmpeg.exe"" -i ""{1}"" -ss {2} -to {3} -c copy ""{4}""",
+                clip = String.Format(@"""{0}\ffmpeg.exe"" -i ""{1}"" -ss {2} -to {3} -y -c copy ""{4}""",
                     workPath, namevideo4, maskb.Text, maske.Text, nameout5) + Environment.NewLine + "cmd";
                 batpath = workPath + "\\clip.bat";
                 File.WriteAllText(batpath, clip, UnicodeEncoding.Default);
@@ -2118,7 +2071,8 @@ namespace mp4box
         private void x264OutBtn_Click(object sender, EventArgs e)
         {
             SaveFileDialog savefile = new SaveFileDialog();
-            savefile.Filter = "视频(*.mp4)|*.mp4";
+            savefile.Filter = "MPEG-4 视频(*.mp4)|*.mp4|Flash 视频(*.flv)|*.flv|Matroska 视频(*.mkv)|*.mkv|AVI 视频(*.avi)|*.avi|H.264 流(*.raw)|*.raw";
+            savefile.FileName = Path.GetFileName(x264OutTextBox.Text);
             DialogResult result = savefile.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -2138,6 +2092,10 @@ namespace mp4box
         }
         private void x264StartBtn_Click(object sender, EventArgs e)
         {
+            string ext = Path.GetExtension(nameout2).ToLower();
+
+            #region validation
+
             if (namevideo2 == "")
             {
                 MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -2154,21 +2112,23 @@ namespace mp4box
                 MessageBox.Show("请选择X264程序", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            //防止未选择 x264 thread
             if (x264ThreadsComboBox.SelectedIndex == -1)
             {
                 x264ThreadsComboBox.SelectedIndex = 0;
             }
 
+            //当视频不含音频时自动选择无音频流
             MediaInfo MI = new MediaInfo();
             MI.Open(namevideo2);
             string audio = MI.Get(StreamKind.Audio, 0, "Format");
-            if (string.IsNullOrEmpty(audio))
+            if (string.IsNullOrEmpty(audio) || ext == ".raw")
             {
                 x264AudioModeComboBox.SelectedIndex = 1;
             }
 
-            if (Path.GetExtension(x264VideoTextBox.Text) == ".avs")//如果是AVS复制到C盘根目录
+            //如果是AVS复制到C盘根目录
+            if (Path.GetExtension(x264VideoTextBox.Text) == ".avs")
             {
                 //if (File.Exists(tempavspath)) File.Delete(tempavspath);
                 File.Copy(x264VideoTextBox.Text, tempavspath, true);
@@ -2176,11 +2136,64 @@ namespace mp4box
                 x264AudioModeComboBox.SelectedIndex = 1;
             }
 
+            #endregion
+
+
             switch (x264AudioModeComboBox.SelectedIndex)
             {
+                //压制音频
                 case 0:
-                    x264 = oneAuto(namevideo2, nameout2);
+                    string tempVideo = AddExt(namevideo2, "_temp.mp4");
+                    string tempAudio = AddExt(namevideo2, "_temp.aac");
+
+                    x264 = x264bat(namevideo2, tempVideo);
+                    x264 = x264.Replace("\r\n", "");
+                    if (x264SubTextBox.Text != "")
+                    {
+                        if (x264.IndexOf("--vf") == -1)
+                        {
+                            x264 += " --vf subtitles --sub \"" + namesub2 + "\"";
+                        }
+                        else
+                        {
+                            Regex r = new Regex("--vf\\s\\S*");
+                            Match m = r.Match(x264);
+                            x264 = x264.Insert(m.Index + m.Value.Length, "/subtitles");
+                            x264 += " --sub \"" + namesub2 + "\"";
+                        }
+                    }
+                    x264 += "\r\n";
+
+                    //audio
+                    if (ext == ".avs") //如果是avs就跳过音频处理
+                    {
+                        aextract = "\r\n";
+                    }
+                    else
+                    {
+                        aextract = audiobat(namevideo2, tempAudio);
+                    }
+
+                    //mux
+                    mux = muxbat(tempVideo, tempAudio, cbFPS.Text, AddExt(nameout2, ".mp4"));
+                    x264 = aextract + x264 + mux + "\r\n"
+                        + "del \"" + tempVideo + "\"\r\n"
+                        + "del \"" + tempAudio + "\"\r\n";
+
+                    if (ext != ".mp4")
+                    {
+                        x264 += "\r\n\"" + workPath + "\\ffmpeg.exe\"  -i  \"" + AddExt(nameout2, ".mp4") + "\" -c copy -y \"" + nameout2 + "\" \r\n";
+                        x264 += "del \"" + AddExt(nameout2, ".mp4") + "\"\r\n";
+                    }
+
+                    //if (x264ShutdownCheckBox.Checked)
+                    //{
+                    //    auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60\r\n";
+                    //}
+                    //auto += "cmd";
                     break;
+
+                //无音频
                 case 1:
                     x264 = x264bat(namevideo2, nameout2).Replace("\r\n", "");
                     if (x264SubTextBox.Text != "")
@@ -2206,11 +2219,7 @@ namespace mp4box
                         x264 += " --frames " + x264FramesNumericUpDown.Value.ToString();
                     }
                     x264 += "\r\n";
-                    if (x264FLVCheckBox.Checked == true)
-                    {
-                        string flvfile = AddExt(nameout2, "_FLV.flv");
-                        x264 += "\r\n\"" + workPath + "\\ffmpeg.exe\" -i  \"" + nameout2 + "\" -c copy -f flv  \"" + flvfile + "\" \r\n";
-                    }
+
                     break;
                 default: break;
             }
@@ -2447,7 +2456,7 @@ namespace mp4box
                     if (!isAppleAppSupportInstalled())
                     {
                         if (MessageBox.Show("Apple Application Support未安装.\r\n音频编码器QAAC可能无法使用.\r\n\r\n是否前往QuickTime下载页面?", "Apple Application Support未安装", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                        System.Diagnostics.Process.Start("http://www.apple.com/cn/quicktime/download");
+                            System.Diagnostics.Process.Start("http://www.apple.com/cn/quicktime/download");
                     }
                     if (File.Exists(txtaudio2.Text))
                         AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.aac");

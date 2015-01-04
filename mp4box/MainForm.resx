@@ -4944,39 +4944,6 @@
   <data name="&gt;&gt;x264DemuxerComboBox.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="x264FLVCheckBox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="x264FLVCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="x264FLVCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="x264FLVCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>261, 172</value>
-  </data>
-  <data name="x264FLVCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 21</value>
-  </data>
-  <data name="x264FLVCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <data name="x264FLVCheckBox.Text" xml:space="preserve">
-    <value>封装FLV</value>
-  </data>
-  <data name="&gt;&gt;x264FLVCheckBox.Name" xml:space="preserve">
-    <value>x264FLVCheckBox</value>
-  </data>
-  <data name="&gt;&gt;x264FLVCheckBox.Type" xml:space="preserve">
-    <value>ControlExs.QQCheckBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;x264FLVCheckBox.Parent" xml:space="preserve">
-    <value>VideoTab</value>
-  </data>
-  <data name="&gt;&gt;x264FLVCheckBox.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="x264BatchSubSpecialLanguage.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 158</value>
   </data>
@@ -5254,7 +5221,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="x264ShutdownCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5287,7 +5254,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264ShutdownCheckBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="x264AudioParameterTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -5314,7 +5281,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264AudioParameterTextBox.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="x264SubTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -5338,7 +5305,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264SubTextBox.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="x264OutTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -5362,7 +5329,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264OutTextBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="x264VideoTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -5386,7 +5353,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264VideoTextBox.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="x264Mode1RadioButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5506,7 +5473,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5536,7 +5503,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="PresetNameTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>SimSun-ExtB, 9pt</value>
@@ -5566,7 +5533,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;PresetNameTextBox.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>14</value>
   </data>
   <data name="x264AddPresetBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -5599,7 +5566,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264AddPresetBtn.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>15</value>
   </data>
   <data name="x264DeletePresetBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -5632,7 +5599,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264DeletePresetBtn.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>16</value>
   </data>
   <data name="x264StartBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -5662,7 +5629,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264StartBtn.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>17</value>
   </data>
   <data name="x264SubBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -5692,7 +5659,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264SubBtn.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>18</value>
   </data>
   <data name="x264OutBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -5722,7 +5689,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264OutBtn.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>19</value>
   </data>
   <data name="x264VideoBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -5752,7 +5719,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264VideoBtn.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>20</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5782,7 +5749,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>21</value>
   </data>
   <data name="x264ExeComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>66, 120</value>
@@ -5803,7 +5770,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264ExeComboBox.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>22</value>
   </data>
   <data name="x264FpsComboBox.Items" xml:space="preserve">
     <value>auto</value>
@@ -5857,7 +5824,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264FpsComboBox.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>23</value>
   </data>
   <data name="lbFPS2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5890,7 +5857,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;lbFPS2.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>24</value>
   </data>
   <data name="x264AudioModeComboBox.Items" xml:space="preserve">
     <value>压制音频</value>
@@ -5917,7 +5884,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264AudioModeComboBox.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>25</value>
   </data>
   <data name="VideoPresetComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>66, 196</value>
@@ -5941,7 +5908,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;VideoPresetComboBox.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>26</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5971,7 +5938,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>27</value>
   </data>
   <data name="labelAudio.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6001,7 +5968,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;labelAudio.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>28</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6034,7 +6001,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>29</value>
   </data>
   <data name="lbcrf.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6064,7 +6031,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;lbcrf.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>30</value>
   </data>
   <data name="lbheight.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6094,7 +6061,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;lbheight.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>31</value>
   </data>
   <data name="lbwidth.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6124,7 +6091,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;lbwidth.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>32</value>
   </data>
   <data name="x264HeightNum.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -6151,7 +6118,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264HeightNum.ZOrder" xml:space="preserve">
-    <value>34</value>
+    <value>33</value>
   </data>
   <data name="x264WidthNum.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -6178,7 +6145,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264WidthNum.ZOrder" xml:space="preserve">
-    <value>35</value>
+    <value>34</value>
   </data>
   <data name="x264CRFNum.Location" type="System.Drawing.Point, System.Drawing">
     <value>66, 221</value>
@@ -6202,7 +6169,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264CRFNum.ZOrder" xml:space="preserve">
-    <value>36</value>
+    <value>35</value>
   </data>
   <data name="lbrate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6235,7 +6202,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;lbrate.ZOrder" xml:space="preserve">
-    <value>37</value>
+    <value>36</value>
   </data>
   <data name="x264CustomParameterTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -6271,7 +6238,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264CustomParameterTextBox.ZOrder" xml:space="preserve">
-    <value>38</value>
+    <value>37</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6304,7 +6271,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>39</value>
+    <value>38</value>
   </data>
   <data name="x264BitrateNum.Location" type="System.Drawing.Point, System.Drawing">
     <value>66, 221</value>
@@ -6331,7 +6298,7 @@
     <value>VideoTab</value>
   </data>
   <data name="&gt;&gt;x264BitrateNum.ZOrder" xml:space="preserve">
-    <value>40</value>
+    <value>39</value>
   </data>
   <data name="VideoTab.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -8293,9 +8260,6 @@
         vWv5+rpp9PYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAA
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>小丸工具箱</value>
