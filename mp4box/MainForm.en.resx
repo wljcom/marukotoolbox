@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="groupBox10.Text" xml:space="preserve">
+    <value>Clip</value>
+  </data>
   <data name="btnvideo4.Text" xml:space="preserve">
     <value>Video</value>
   </data>
@@ -135,9 +138,6 @@
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>End time</value>
-  </data>
-  <data name="groupBox10.Text" xml:space="preserve">
-    <value>Clip</value>
   </data>
   <data name="btnMIopen.Text" xml:space="preserve">
     <value>Open</value>
@@ -159,15 +159,6 @@
   </data>
   <data name="label39.Text" xml:space="preserve">
     <value>Filter</value>
-  </data>
-  <data name="AVSwithAudioCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 21</value>
-  </data>
-  <data name="AVSwithAudioCheckBox.Text" xml:space="preserve">
-    <value>with audio</value>
-  </data>
-  <data name="AVSSaveButton.Text" xml:space="preserve">
-    <value>Save AVS</value>
   </data>
   <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 177</value>
@@ -343,6 +334,15 @@
   <data name="AVSScriptTextBox.Text" xml:space="preserve">
     <value>Please Paste AVS script in the TextBox.</value>
   </data>
+  <data name="AVSwithAudioCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 21</value>
+  </data>
+  <data name="AVSwithAudioCheckBox.Text" xml:space="preserve">
+    <value>with audio</value>
+  </data>
+  <data name="AVSSaveButton.Text" xml:space="preserve">
+    <value>Save AVS</value>
+  </data>
   <data name="LevelsCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 21</value>
   </data>
@@ -400,6 +400,9 @@
   <data name="btnsub9.Text" xml:space="preserve">
     <value>Subtitle</value>
   </data>
+  <data name="ExtractTab.Text" xml:space="preserve">
+    <value>Extract</value>
+  </data>
   <data name="MkvExtract4Button.Text" xml:space="preserve">
     <value>Track 4</value>
   </data>
@@ -442,8 +445,17 @@
   <data name="btnaextract2.Text" xml:space="preserve">
     <value>Audio 2</value>
   </data>
-  <data name="ExtractTab.Text" xml:space="preserve">
-    <value>Extract</value>
+  <data name="MuxTab.Text" xml:space="preserve">
+    <value>Mux</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Convert to FLV / MP4</value>
+  </data>
+  <data name="label40.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>Format</value>
   </data>
   <data name="btnffmpegAdd.Text" xml:space="preserve">
     <value>Add</value>
@@ -461,13 +473,10 @@
     <value>Delete</value>
   </data>
   <data name="btnBatchMP4.Text" xml:space="preserve">
-    <value>To MP4</value>
+    <value>Mux</value>
   </data>
-  <data name="btnBatchFLV.Text" xml:space="preserve">
-    <value>To FLV</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Convert to FLV / MP4</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Mux as MP4</value>
   </data>
   <data name="MuxReplaceAudioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>369, 105</value>
@@ -496,8 +505,8 @@
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>220, 112</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Mux as MP4</value>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>Mux as MKV</value>
   </data>
   <data name="button4.Text" xml:space="preserve">
     <value>Output</value>
@@ -514,11 +523,11 @@
   <data name="button7.Text" xml:space="preserve">
     <value>Mux</value>
   </data>
-  <data name="groupBox8.Text" xml:space="preserve">
-    <value>Mux as MKV</value>
+  <data name="AudioTab.Text" xml:space="preserve">
+    <value>Audio</value>
   </data>
-  <data name="MuxTab.Text" xml:space="preserve">
-    <value>Mux</value>
+  <data name="NeroAACGroupBox.Text" xml:space="preserve">
+    <value>Audio Convert</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 12</value>
@@ -547,8 +556,11 @@
   <data name="btnaac.Text" xml:space="preserve">
     <value>Convert</value>
   </data>
-  <data name="NeroAACGroupBox.Text" xml:space="preserve">
-    <value>Audio Convert</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Batch</value>
+  </data>
+  <data name="AudioJoinButton.Text" xml:space="preserve">
+    <value>Join</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>269, 12</value>
@@ -568,11 +580,8 @@
   <data name="AudioDeleteButton.Text" xml:space="preserve">
     <value>Delete</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Batch</value>
-  </data>
-  <data name="AudioTab.Text" xml:space="preserve">
-    <value>Audio</value>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>Single Picture Video</value>
   </data>
   <data name="AudioCopyCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 21</value>
@@ -598,8 +607,8 @@
   <data name="AudioPicButton.Text" xml:space="preserve">
     <value>Picture</value>
   </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>Single Picture Video</value>
+  <data name="VideoTab.Text" xml:space="preserve">
+    <value>Video</value>
   </data>
   <data name="x264FramesLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 12</value>
@@ -619,11 +628,8 @@
   <data name="MaintainResolutionCheckBox.Text" xml:space="preserve">
     <value>Use original resolution</value>
   </data>
-  <data name="x264FLVCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 21</value>
-  </data>
-  <data name="x264FLVCheckBox.Text" xml:space="preserve">
-    <value>Mux as FLV</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Batch</value>
   </data>
   <data name="x264PathButton.Text" xml:space="preserve">
     <value>Output Path</value>
@@ -645,9 +651,6 @@
   </data>
   <data name="btnBatchAuto.Text" xml:space="preserve">
     <value>Start</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Batch</value>
   </data>
   <data name="x264ShutdownCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 21</value>
@@ -748,8 +751,17 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Preset</value>
   </data>
-  <data name="VideoTab.Text" xml:space="preserve">
-    <value>Video</value>
+  <data name="HelpTab.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="ReleaseDatelabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
+  </data>
+  <data name="ReleaseDatelabel2.Text" xml:space="preserve">
+    <value>Release Date</value>
+  </data>
+  <data name="CheckUpdateButton.Text" xml:space="preserve">
+    <value>Check Update</value>
   </data>
   <data name="HomePageBtn.Text" xml:space="preserve">
     <value>Website</value>
@@ -757,17 +769,11 @@
   <data name="AboutBtn.Text" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="linkLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 565</value>
+  <data name="MiscTab.Text" xml:space="preserve">
+    <value>General</value>
   </data>
-  <data name="linkLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 12</value>
-  </data>
-  <data name="linkLabel2.Text" xml:space="preserve">
-    <value>Direct264 upyzl</value>
-  </data>
-  <data name="HelpTab.Text" xml:space="preserve">
-    <value>Help</value>
+  <data name="groupBox11.Text" xml:space="preserve">
+    <value>Add Black Scene</value>
   </data>
   <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 12</value>
@@ -805,11 +811,8 @@
   <data name="BlackVideoButton.Text" xml:space="preserve">
     <value>Video</value>
   </data>
-  <data name="groupBox11.Text" xml:space="preserve">
-    <value>Add Black Scene</value>
-  </data>
-  <data name="MiscTab.Text" xml:space="preserve">
-    <value>General</value>
+  <data name="SetupTabPage.Text" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 12</value>
@@ -822,36 +825,6 @@
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>x264 threads</value>
-  </data>
-  <data name="SplashScreenCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 21</value>
-  </data>
-  <data name="SplashScreenCheckBox.Text" xml:space="preserve">
-    <value>Display splash screen</value>
-  </data>
-  <data name="TrayModeCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 21</value>
-  </data>
-  <data name="TrayModeCheckBox.Text" xml:space="preserve">
-    <value>Hide to system tray</value>
-  </data>
-  <data name="ReleaseDatelabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 12</value>
-  </data>
-  <data name="ReleaseDatelabel2.Text" xml:space="preserve">
-    <value>Release Date</value>
-  </data>
-  <data name="CheckUpdateButton.Text" xml:space="preserve">
-    <value>Check Update</value>
-  </data>
-  <data name="SetupDeleteTempFileCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 21</value>
-  </data>
-  <data name="SetupDeleteTempFileCheckBox.Text" xml:space="preserve">
-    <value>Delete all temporary files before exit</value>
-  </data>
-  <data name="SetDefaultButton.Text" xml:space="preserve">
-    <value>Reset All Settings</value>
   </data>
   <data name="x264PriorityComboBox.Items" xml:space="preserve">
     <value>Idle</value>
@@ -883,14 +856,32 @@
   <data name="label26.Text" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="SplashScreenCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 21</value>
+  </data>
+  <data name="SplashScreenCheckBox.Text" xml:space="preserve">
+    <value>Display splash screen</value>
+  </data>
+  <data name="TrayModeCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 21</value>
+  </data>
+  <data name="TrayModeCheckBox.Text" xml:space="preserve">
+    <value>Hide to system tray</value>
+  </data>
+  <data name="SetupDeleteTempFileCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 21</value>
+  </data>
+  <data name="SetupDeleteTempFileCheckBox.Text" xml:space="preserve">
+    <value>Delete all temporary files before exit</value>
+  </data>
+  <data name="SetDefaultButton.Text" xml:space="preserve">
+    <value>Reset All Settings</value>
+  </data>
   <data name="DeleteLogButton.Text" xml:space="preserve">
     <value>Delete Log</value>
   </data>
   <data name="ViewLogButton.Text" xml:space="preserve">
     <value>View Log</value>
-  </data>
-  <data name="SetupTabPage.Text" xml:space="preserve">
-    <value>Settings</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

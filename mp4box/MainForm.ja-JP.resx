@@ -160,15 +160,6 @@
   <data name="label39.Text" xml:space="preserve">
     <value>Filter</value>
   </data>
-  <data name="AVSwithAudioCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 21</value>
-  </data>
-  <data name="AVSwithAudioCheckBox.Text" xml:space="preserve">
-    <value>オーディオ付き</value>
-  </data>
-  <data name="AVSSaveButton.Text" xml:space="preserve">
-    <value>AVSを保存</value>
-  </data>
   <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 12</value>
   </data>
@@ -216,6 +207,15 @@
   </data>
   <data name="AVSScriptTextBox.Text" xml:space="preserve">
     <value>直接にAVSスクリプトをここに貼り付けてもよい</value>
+  </data>
+  <data name="AVSwithAudioCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 21</value>
+  </data>
+  <data name="AVSwithAudioCheckBox.Text" xml:space="preserve">
+    <value>オーディオ付き</value>
+  </data>
+  <data name="AVSSaveButton.Text" xml:space="preserve">
+    <value>AVSを保存</value>
   </data>
   <data name="button9.Text" xml:space="preserve">
     <value>リセット</value>
@@ -277,6 +277,15 @@
   <data name="ExtractTab.Text" xml:space="preserve">
     <value>デマクス</value>
   </data>
+  <data name="label40.Location" type="System.Drawing.Point, System.Drawing">
+    <value>320, 245</value>
+  </data>
+  <data name="label40.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>フォーマット</value>
+  </data>
   <data name="btnffmpegAdd.Text" xml:space="preserve">
     <value>追加</value>
   </data>
@@ -293,10 +302,7 @@
     <value>削除</value>
   </data>
   <data name="btnBatchMP4.Text" xml:space="preserve">
-    <value>mp4で出力</value>
-  </data>
-  <data name="btnBatchFLV.Text" xml:space="preserve">
-    <value>flvで出力</value>
+    <value>マクス</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>マクス</value>
@@ -433,12 +439,6 @@
   <data name="MaintainResolutionCheckBox.Text" xml:space="preserve">
     <value>元解像度を維持する</value>
   </data>
-  <data name="x264FLVCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 21</value>
-  </data>
-  <data name="x264FLVCheckBox.Text" xml:space="preserve">
-    <value>FLVで出力</value>
-  </data>
   <data name="x264PathButton.Text" xml:space="preserve">
     <value>出力パス</value>
   </data>
@@ -526,6 +526,15 @@
   <data name="VideoTab.Text" xml:space="preserve">
     <value>ビデオ</value>
   </data>
+  <data name="ReleaseDatelabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="ReleaseDatelabel2.Text" xml:space="preserve">
+    <value>公開日</value>
+  </data>
+  <data name="CheckUpdateButton.Text" xml:space="preserve">
+    <value>更新をチェックする</value>
+  </data>
   <data name="HomePageBtn.Text" xml:space="preserve">
     <value>サイト</value>
   </data>
@@ -580,6 +589,12 @@
   <data name="label2.Text" xml:space="preserve">
     <value>x264 threads</value>
   </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>x264優先度</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="SplashScreenCheckBox.Text" xml:space="preserve">
     <value>起動画面表示</value>
   </data>
@@ -589,15 +604,6 @@
   <data name="TrayModeCheckBox.Text" xml:space="preserve">
     <value>トレイに隠す</value>
   </data>
-  <data name="ReleaseDatelabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
-  </data>
-  <data name="ReleaseDatelabel2.Text" xml:space="preserve">
-    <value>公開日</value>
-  </data>
-  <data name="CheckUpdateButton.Text" xml:space="preserve">
-    <value>更新をチェックする</value>
-  </data>
   <data name="SetupDeleteTempFileCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>339, 21</value>
   </data>
@@ -606,12 +612,6 @@
   </data>
   <data name="SetDefaultButton.Text" xml:space="preserve">
     <value>既定値に戻す</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>x264優先度</value>
-  </data>
-  <data name="label26.Text" xml:space="preserve">
-    <value>Language</value>
   </data>
   <data name="DeleteLogButton.Text" xml:space="preserve">
     <value>ログを削除</value>

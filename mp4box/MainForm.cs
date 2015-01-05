@@ -836,6 +836,8 @@ namespace mp4box
             cfa.AppSettings.Settings["SplashScreen"].Value = SplashScreenCheckBox.Checked.ToString();
             cfa.AppSettings.Settings["x264Threads"].Value = x264ThreadsComboBox.SelectedIndex.ToString();
             cfa.AppSettings.Settings["PreviewPlayer"].Value = SetupPlayerTextBox.Text;
+            cfa.AppSettings.Settings["MuxFormat"].Value = MuxFormatComboBox.SelectedIndex.ToString(); ;
+
             cfa.Save();
             ConfigurationManager.RefreshSection("appSettings"); // 刷新命名节，在下次检索它时将从磁盘重新读取它。记住应用程序要刷新节点
             #endregion
@@ -1018,6 +1020,7 @@ namespace mp4box
                 SplashScreenCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["SplashScreen"]);
                 SetupPlayerTextBox.Text = ConfigurationManager.AppSettings["PreviewPlayer"];
                 string SubLangExt = Convert.ToString(ConfigurationManager.AppSettings["SubLanguageExtension"]);
+                MuxFormatComboBox.SelectedIndex = Convert.ToInt32(ConfigurationManager.AppSettings["MuxFormat"]);
                 x264BatchSubSpecialLanguage.DataSource = SubLangExt.Split(',');
                 if (x264ExeComboBox.SelectedIndex == -1)
                 {
@@ -1457,27 +1460,7 @@ namespace mp4box
         {
             lbffmpeg.Items.Clear();
         }
-        private void btnBatchFLV_Click(object sender, EventArgs e)
-        {
-            if (lbffmpeg.Items.Count != 0)
-            {
-                string finish;
-                int i;
-                ffmpeg = "";
-                for (i = 0; i < this.lbffmpeg.Items.Count; i++)
-                {
-                    finish = lbffmpeg.Items[i].ToString().Remove(lbffmpeg.Items[i].ToString().LastIndexOf(".")) + "_FLV封装.flv";
-                    ffmpeg += "\"" + workPath + "\\ffmpeg.exe\" -i \"" + lbffmpeg.Items[i].ToString() + "\" -c copy -f flv \"" + finish + "\" \r\n";
-                }
-                ffmpeg += "\r\ncmd";
-                batpath = workPath + "\\flv.bat";
-                File.WriteAllText(batpath, ffmpeg, UnicodeEncoding.Default);
-                LogRecord(ffmpeg);
-                System.Diagnostics.Process.Start(batpath);
-                //lbffmpeg.Items.Clear();
-            }
-            else MessageBox.Show("请输入视频！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
+
         private void btnBatchMP4_Click(object sender, EventArgs e)
         {
             if (lbffmpeg.Items.Count != 0)
