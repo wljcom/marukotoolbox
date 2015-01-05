@@ -116,9 +116,7 @@
     <Compile Include="Cmd.cs" />
     <Compile Include="SplashScreenApplicationContext.cs" />
     <Compile Include="StartUpClass.cs" />
-    <Compile Include="Supplements.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Supplements.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

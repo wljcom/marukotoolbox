@@ -42,48 +42,5 @@ namespace mp4box
                     action();
             }
         }
-
-        /// <summary>
-        /// Handmade progress bar. Currently not in use.
-        /// </summary>
-        class ProgressBarEx : ProgressBar
-        {
-            public ProgressBarEx()
-            {
-                // Modify the ControlStyles flags
-                //http://msdn.microsoft.com/en-us/library/system.windows.forms.controlstyles.aspx
-                SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
-                // Initialize Property
-                CustomText = "";
-                Format = new StringFormat(StringFormatFlags.NoWrap);
-                Format.Alignment = StringAlignment.Center;
-                Format.LineAlignment = StringAlignment.Center;
-            }
-
-            public String CustomText { get; set; }
-
-            private StringFormat Format { get; set; }
-
-            protected override void OnPaint(PaintEventArgs e)
-            {
-                // let the system do base work first
-                base.OnPaint(e);
-                // grab some tools
-                var rect = ClientRectangle;
-                var g = e.Graphics;
-                // draw the background
-                ProgressBarRenderer.DrawHorizontalBar(g, rect);
-                rect.Inflate(-3, -3);
-                // then chunk
-                if (Value > 0)
-                {
-                    Rectangle clip = new Rectangle(rect.X, rect.Y, Value * rect.Width / Maximum, rect.Height);
-                    ProgressBarRenderer.DrawHorizontalChunks(g, clip);
-                }
-                // append text
-                g.DrawString(CustomText, SystemFonts.DefaultFont, SystemBrushes.ControlText,
-                    this.DisplayRectangle, Format);
-            }
-        }
     }
 }
