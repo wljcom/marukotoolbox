@@ -3,8 +3,7 @@
 A Video-prosessing GUI
 
 * Homepage: http://www.maruko.in/ (Sponsored by Tech Team of ACICFG)
-* https://marukotoolbox.codeplex.com (primary)
-* https://github.com/marukotoolbox/marukotoolbox (mirror)
+* https://marukotoolbox.codeplex.com
 
 界面 / Screenshots
 ================
