@@ -493,17 +493,11 @@
   <data name="btnmux.Text" xml:space="preserve">
     <value>Mux</value>
   </data>
-  <data name="cbFPS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>249, 108</value>
-  </data>
   <data name="btnaudio.Text" xml:space="preserve">
     <value>Audio</value>
   </data>
   <data name="btnout.Text" xml:space="preserve">
     <value>Output</value>
-  </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 112</value>
   </data>
   <data name="groupBox8.Text" xml:space="preserve">
     <value>Mux as MKV</value>
