@@ -1715,7 +1715,7 @@ namespace mp4box
             //    }
             //}
             avs += "LoadPlugin(\"avsfilter\\VSFilter.DLL\")\r\n";
-            avs += string.Format("\r\nDirectShowSource(\"{0}\",23.976,convertFPS=True)\r\nConvertToYV12()\r\nCrop(0,0,0,0)\r\nAddBorders(0,0,0,0)\r\n" + "TextSub(\"{1}\")\r\n#LanczosResize(1280,960)\r\n", namevideo9, namesub9);
+            avs += string.Format("\r\nLWLibavVideoSource(\"{0}\",23.976,convertFPS=True)\r\nConvertToYV12()\r\nCrop(0,0,0,0)\r\nAddBorders(0,0,0,0)\r\n" + "TextSub(\"{1}\")\r\n#LanczosResize(1280,960)\r\n", namevideo9, namesub9);
             //avs += "\r\nDirectShowSource(\"" + namevideo9 + "\",23.976,convertFPS=True)\r\nConvertToYV12()\r\nCrop(0,0,0,0)\r\nAddBorders(0,0,0,0)\r\n" + "TextSub(\"" + namesub9 + "\")\r\n#LanczosResize(1280,960)\r\n";
             AVSScriptTextBox.Text = avs;
             avs = "";
@@ -2697,7 +2697,7 @@ namespace mp4box
             avsBuilder.AppendLine("LoadPlugin(\"" + vsfilterDLLPath + "\")");
             if (UndotCheckBox.Checked)
                 avsBuilder.AppendLine("LoadPlugin(\"" + undotDLLPath + "\")");
-            avsBuilder.AppendLine("DirectShowSource(\"" + namevideo9 + "\")");
+            avsBuilder.AppendLine("LWLibavVideoSource(\"" + namevideo9 + "\")");
             avsBuilder.AppendLine("ConvertToYV12()");
             if (UndotCheckBox.Checked)
                 avsBuilder.AppendLine("Undot()");
