@@ -57,13 +57,13 @@
             // 
             this.LuneartTextLabel.AutoSize = true;
             this.LuneartTextLabel.BackColor = System.Drawing.Color.Transparent;
-            this.LuneartTextLabel.Font = new System.Drawing.Font("宋体", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LuneartTextLabel.ForeColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.LuneartTextLabel.Font = new System.Drawing.Font("SimSun", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LuneartTextLabel.ForeColor = System.Drawing.Color.Red;
             this.LuneartTextLabel.Location = new System.Drawing.Point(350, 176);
             this.LuneartTextLabel.Name = "LuneartTextLabel";
             this.LuneartTextLabel.Size = new System.Drawing.Size(100, 29);
             this.LuneartTextLabel.TabIndex = 1;
-            this.LuneartTextLabel.Text = "月儿版";
+            this.LuneartTextLabel.Text = "七七版";
             // 
             // SplashForm
             // 

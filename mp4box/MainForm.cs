@@ -94,7 +94,7 @@ namespace mp4box
         string avs = "";
         string tempavspath = "";
         string tempPic = "";
-        DateTime ReleaseDate;
+        DateTime ReleaseDate = DateTime.Parse("2015-1-20 8:0:0");
 
         #endregion
 
@@ -983,7 +983,7 @@ namespace mp4box
             }
             AVSFilterComboBox.Items.AddRange(avsfilters.ToArray());
 
-            ReleaseDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
+            //ReleaseDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
             ReleaseDatelabel.Text = ReleaseDate.ToString("yyyy-M-d");
 
             ////load Help Text
@@ -2693,8 +2693,11 @@ namespace mp4box
             //}
             avsBuilder.Remove(0, avsBuilder.Length);
             string vsfilterDLLPath = Path.Combine(workPath, @"avsfilter\VSFilter.DLL");
+            string LSMASHSourceDLLPath = Path.Combine(workPath, @"avsfilter\LSMASHSource.DLL");
             string undotDLLPath = Path.Combine(workPath, @"avsfilter\UnDot.DLL");
             avsBuilder.AppendLine("LoadPlugin(\"" + vsfilterDLLPath + "\")");
+            avsBuilder.AppendLine("LoadPlugin(\"" + LSMASHSourceDLLPath + "\")");
+
             if (UndotCheckBox.Checked)
                 avsBuilder.AppendLine("LoadPlugin(\"" + undotDLLPath + "\")");
             avsBuilder.AppendLine("LWLibavVideoSource(\"" + namevideo9 + "\")");
@@ -3522,8 +3525,9 @@ namespace mp4box
         private void AVSAddFilterButton_Click(object sender, EventArgs e)
         {
             string vsfilterDLLPath = Path.Combine(workPath, @"avsfilter\" + AVSFilterComboBox.Text);
-            Clipboard.SetText("LoadPlugin(\"" + vsfilterDLLPath + "\")");
-            MessageBox.Show("已经复制到剪贴板");
+            string text = "LoadPlugin(\"" + vsfilterDLLPath + "\")";
+            Clipboard.SetText(text);
+            MessageBox.Show(text + "已经复制到剪贴板");
         }
 
         private void AudioJoinButton_Click(object sender, EventArgs e)
