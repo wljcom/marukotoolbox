@@ -1639,6 +1639,8 @@ namespace mp4box
         }
         private void btnAVS9_Click(object sender, EventArgs e)
         {
+            x264DemuxerComboBox.SelectedIndex = 0; //压制AVS始终使用分离器为auto
+            
             if (string.IsNullOrEmpty(nameout9))
             {
                 MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -2117,6 +2119,7 @@ namespace mp4box
                 File.Copy(x264VideoTextBox.Text, tempavspath, true);
                 namevideo2 = tempavspath;
                 x264AudioModeComboBox.SelectedIndex = 1;
+                x264DemuxerComboBox.SelectedIndex = 0; //压制AVS始终使用分离器为auto
             }
 
             #endregion
