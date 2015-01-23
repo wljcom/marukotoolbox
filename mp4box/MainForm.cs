@@ -1472,7 +1472,7 @@ namespace mp4box
                 for (i = 0; i < this.lbffmpeg.Items.Count; i++)
                 {
                     finish = lbffmpeg.Items[i].ToString().Remove(lbffmpeg.Items[i].ToString().LastIndexOf(".")) + "_" + ext + "封装." + ext;
-                    ffmpeg += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + lbffmpeg.Items[i].ToString() + "\" -c copy -f " + ext + " \"" + finish + "\" \r\n";
+                    ffmpeg += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + lbffmpeg.Items[i].ToString() + "\" -c copy \"" + finish + "\" \r\n";
                 }
                 ffmpeg += "\r\ncmd";
                 batpath = workPath + "\\flv.bat";
