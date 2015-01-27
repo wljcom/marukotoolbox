@@ -378,6 +378,7 @@
             this.txtvideo4.EmptyTextTip = null;
             this.txtvideo4.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.txtvideo4.Name = "txtvideo4";
+            this.txtvideo4.ReadOnly = true;
             this.txtvideo4.TextChanged += new System.EventHandler(this.txtvideo4_TextChanged);
             this.txtvideo4.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtvideo4_MouseDoubleClick);
             // 
@@ -876,6 +877,7 @@
             this.txtvideo9.EmptyTextTip = null;
             this.txtvideo9.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.txtvideo9.Name = "txtvideo9";
+            this.txtvideo9.ReadOnly = true;
             this.txtvideo9.TextChanged += new System.EventHandler(this.txtvideo9_TextChanged);
             this.txtvideo9.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtvideo9_MouseDoubleClick);
             // 
@@ -898,6 +900,7 @@
             this.txtsub9.EmptyTextTip = null;
             this.txtsub9.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.txtsub9.Name = "txtsub9";
+            this.txtsub9.ReadOnly = true;
             this.txtsub9.TextChanged += new System.EventHandler(this.txtsub9_TextChanged);
             // 
             // AVSwithAudioCheckBox
@@ -1100,6 +1103,7 @@
             this.txtvideo6.EmptyTextTip = "";
             this.txtvideo6.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.txtvideo6.Name = "txtvideo6";
+            this.txtvideo6.ReadOnly = true;
             this.txtvideo6.TextChanged += new System.EventHandler(this.txtvideo6_TextChanged_1);
             // 
             // groupBox6
@@ -1134,6 +1138,7 @@
             this.txtvideo8.EmptyTextTip = "";
             this.txtvideo8.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.txtvideo8.Name = "txtvideo8";
+            this.txtvideo8.ReadOnly = true;
             this.txtvideo8.TextChanged += new System.EventHandler(this.txtvideo8_TextChanged);
             this.txtvideo8.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtvideo8_MouseDoubleClick);
             // 
@@ -1164,6 +1169,7 @@
             this.ExtractMP4TextBox.EmptyTextTip = "";
             this.ExtractMP4TextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.ExtractMP4TextBox.Name = "ExtractMP4TextBox";
+            this.ExtractMP4TextBox.ReadOnly = true;
             this.ExtractMP4TextBox.TextChanged += new System.EventHandler(this.ExtractMP4TextBox_TextChanged);
             // 
             // btnaextract3
@@ -1336,6 +1342,7 @@
             this.txtvideo.EmptyTextTip = "";
             this.txtvideo.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.txtvideo.Name = "txtvideo";
+            this.txtvideo.ReadOnly = true;
             this.txtvideo.TextChanged += new System.EventHandler(this.txtvideo_TextChanged);
             this.txtvideo.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtvideo_MouseDoubleClick);
             // 
@@ -1392,6 +1399,7 @@
             this.txtaudio.EmptyTextTip = null;
             this.txtaudio.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.txtaudio.Name = "txtaudio";
+            this.txtaudio.ReadOnly = true;
             this.txtaudio.TextChanged += new System.EventHandler(this.txtaudio_TextChanged);
             // 
             // label14
@@ -1433,6 +1441,7 @@
             this.txtvideo5.EmptyTextTip = null;
             this.txtvideo5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.txtvideo5.Name = "txtvideo5";
+            this.txtvideo5.ReadOnly = true;
             this.txtvideo5.TextChanged += new System.EventHandler(this.txtvideo5_TextChanged);
             this.txtvideo5.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtvideo5_MouseDoubleClick);
             // 
@@ -1451,6 +1460,7 @@
             this.txtsub.EmptyTextTip = null;
             this.txtsub.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.txtsub.Name = "txtsub";
+            this.txtsub.ReadOnly = true;
             this.txtsub.TextChanged += new System.EventHandler(this.txtsub_TextChanged);
             // 
             // button3
@@ -1468,6 +1478,7 @@
             this.txtaudio3.EmptyTextTip = "";
             this.txtaudio3.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.txtaudio3.Name = "txtaudio3";
+            this.txtaudio3.ReadOnly = true;
             this.txtaudio3.TextChanged += new System.EventHandler(this.txtaudio3_TextChanged);
             this.txtaudio3.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtaudio3_MouseDoubleClick);
             // 
@@ -1572,6 +1583,7 @@
             this.txtaudio2.EmptyTextTip = null;
             this.txtaudio2.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.txtaudio2.Name = "txtaudio2";
+            this.txtaudio2.ReadOnly = true;
             this.txtaudio2.TextChanged += new System.EventHandler(this.txtaudio2_TextChanged);
             this.txtaudio2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtaudio2_MouseDoubleClick);
             // 
@@ -1869,6 +1881,7 @@
             this.AudioPicAudioTextBox.EmptyTextTip = null;
             this.AudioPicAudioTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.AudioPicAudioTextBox.Name = "AudioPicAudioTextBox";
+            this.AudioPicAudioTextBox.ReadOnly = true;
             this.AudioPicAudioTextBox.TextChanged += new System.EventHandler(this.AudioPicAudioTextBox_TextChanged);
             // 
             // AudioPicTextBox
@@ -1879,6 +1892,7 @@
             this.AudioPicTextBox.EmptyTextTip = null;
             this.AudioPicTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.AudioPicTextBox.Name = "AudioPicTextBox";
+            this.AudioPicTextBox.ReadOnly = true;
             // 
             // VideoTab
             // 
@@ -2109,6 +2123,7 @@
             this.x264VideoTextBox.EmptyTextTip = "";
             this.x264VideoTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.x264VideoTextBox.Name = "x264VideoTextBox";
+            this.x264VideoTextBox.ReadOnly = true;
             this.x264VideoTextBox.TextChanged += new System.EventHandler(this.x264VideoTextBox_TextChanged);
             // 
             // panel1
@@ -2657,6 +2672,7 @@
             this.BlackVideoTextBox.EmptyTextTip = null;
             this.BlackVideoTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             this.BlackVideoTextBox.Name = "BlackVideoTextBox";
+            this.BlackVideoTextBox.ReadOnly = true;
             this.BlackVideoTextBox.TextChanged += new System.EventHandler(this.BlackVideoTextBox_TextChanged);
             // 
             // SetupTabPage
