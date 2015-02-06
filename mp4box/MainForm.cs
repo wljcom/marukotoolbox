@@ -84,10 +84,8 @@ namespace mp4box
         string mux;
         string x264;
         string ffmpeg;
-        string neroaac;
         string aac;
         string aextract;
-        //string vextract;
         string batpath;
         string auto;
         string startpath;
@@ -345,55 +343,54 @@ namespace mp4box
         {
             int AACbr = 1024 * Convert.ToInt32(AudioBitrateComboBox.Text);
             string br = AACbr.ToString();
-            ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + input + "\" -f wav temp.wav";
+            ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input + "\" -vn -acodec pcm_s16le -f wav pipe:|";
             switch (AudioEncoderComboBox.SelectedIndex)
             {
                 case 0:
                     if (AudioBitrateRadioButton.Checked)
                     {
-                        neroaac = "\"" + workPath + "\\neroAacEnc.exe\" -ignorelength -lc -br " + br + " -if \"temp.wav\"  -of \"" + output + "\"";
+                        ffmpeg += "\"" + workPath + "\\neroAacEnc.exe\" -ignorelength -lc -br " + br + " -if - -of \"" + output + "\"";
                     }
                     if (AudioCustomizeRadioButton.Checked)
                     {
-                        neroaac = "\"" + workPath + "\\neroAacEnc.exe\" " + AudioCustomParameterTextBox.Text.ToString() + " -if \"temp.wav\"  -of \"" + output + "\"";
+                        ffmpeg += "\"" + workPath + "\\neroAacEnc.exe\" " + AudioCustomParameterTextBox.Text.ToString() + " -if - -of \"" + output + "\"";
                     }
                     break;
                 case 1:
                     if (AudioBitrateRadioButton.Checked)
                     {
-                        neroaac = "\"" + workPath + "\\qaac.exe\" -q 2 -c " + AudioBitrateComboBox.Text + " \"temp.wav\"  -o \"" + output + "\"";
+                        ffmpeg += "\"" + workPath + "\\qaac.exe\" -q 2 -c " + AudioBitrateComboBox.Text + " - -o \"" + output + "\"";
                     }
                     if (AudioCustomizeRadioButton.Checked)
                     {
-                        neroaac = "\"" + workPath + "\\qaac.exe\" " + AudioCustomParameterTextBox.Text.ToString() + " \"temp.wav\"  -o \"" + output + "\"";
+                        ffmpeg += "\"" + workPath + "\\qaac.exe\" " + AudioCustomParameterTextBox.Text.ToString() + " - -o \"" + output + "\"";
                     }
                     break;
                 case 2:
                     if (Path.GetExtension(output) == ".aac")
                         output = AddExt(output, ".wav");
                     ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + input + "\" -f wav \"" + output + "\"";
-                    neroaac = "";
                     break;
                 case 3:
-                    neroaac = "\"" + workPath + "\\refalac.exe\" -i \"temp.wav\"  -o \"" + output + "\"";
+                    ffmpeg += "\"" + workPath + "\\refalac.exe\" - -o \"" + output + "\"";
                     break;
                 case 4:
-                    neroaac = "\"" + workPath + "\\flac.exe\" -f --ignore-chunk-sizes -5 \"temp.wav\"  -o \"" + output + "\"";
+                    ffmpeg += "\"" + workPath + "\\flac.exe\" -f --ignore-chunk-sizes -5 - -o \"" + output + "\"";
                     break;
                 case 5:
                     if (AudioBitrateRadioButton.Checked)
                     {
-                        neroaac = "\"" + workPath + "\\fdkaac.exe\" --ignorelength -b " + AudioBitrateComboBox.Text + " \"temp.wav\" -o \"" + output + "\"";
+                        ffmpeg += "\"" + workPath + "\\fdkaac.exe\" --ignorelength -b " + AudioBitrateComboBox.Text + " - -o \"" + output + "\"";
                     }
                     if (AudioCustomizeRadioButton.Checked)
                     {
-                        neroaac = "\"" + workPath + "\\fdkaac.exe\" " + AudioCustomParameterTextBox.Text.ToString() + " \"temp.wav\" -o \"" + output + "\"";
+                        ffmpeg += "\"" + workPath + "\\fdkaac.exe\" " + AudioCustomParameterTextBox.Text.ToString() + " - -o \"" + output + "\"";
                     }
                     break;
                 default:
                     break;
             }
-            aac = ffmpeg + "\r\n" + neroaac + "\r\n";
+            aac = ffmpeg + "\r\n";
             return aac;
         }
 
