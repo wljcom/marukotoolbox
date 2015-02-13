@@ -92,7 +92,7 @@ namespace mp4box
         string avs = "";
         string tempavspath = "";
         string tempPic = "";
-        DateTime ReleaseDate = DateTime.Parse("2015-1-20 8:0:0");
+        DateTime ReleaseDate = DateTime.Parse("2015-2-14 8:0:0");
 
         #endregion
 
@@ -229,12 +229,12 @@ namespace mp4box
                 case 2:
                     if (x264HeightNum.Value == 0 || x264WidthNum.Value == 0 || MaintainResolutionCheckBox.Checked)
                     {
-                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" + 
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" +
                                       workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p2 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     else
                     {
-                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" + 
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" +
                                       workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p2 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     break;
@@ -1639,7 +1639,7 @@ namespace mp4box
         private void btnAVS9_Click(object sender, EventArgs e)
         {
             x264DemuxerComboBox.SelectedIndex = 0; //压制AVS始终使用分离器为auto
-            
+
             if (string.IsNullOrEmpty(nameout9))
             {
                 MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -3470,7 +3470,7 @@ namespace mp4box
                     DialogResult dr = MessageBox.Show(string.Format("新鲜小丸已于{0}上架，主人不来尝一口咩？", NewDate.ToString("yyyy-M-d")), "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dr == DialogResult.Yes)
                     {
-                        Process.Start("http://maruko.appinn.me");
+                        Process.Start("http://www.maruko.in/");
                     }
                     else
                     {
@@ -3567,5 +3567,92 @@ namespace mp4box
             LogRecord(aac);
             System.Diagnostics.Process.Start(batpath);
         }
+
+
+
+        #region TabControl
+
+        private void tabControl_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.All;
+                Point pt = new Point(e.X + 2, e.Y + 2);
+                pt = PointToClient(pt);
+                int pi = GetTabPageByTab(pt);
+                if (pi != -1)
+                {
+                    tabControl.SelectedIndex = pi;
+                }
+            }
+            else e.Effect = DragDropEffects.None;
+        }
+
+        /// <summary>
+        /// Finds the TabPage whose tab is contains the given point.
+        /// </summary>
+        /// <param name="pt">The point (given in client coordinates) to look for a TabPage.</param>
+        /// <returns>The TabPage whose tab is at the given point (null if there isn't one).</returns>
+        private int GetTabPageByTab(Point pt)
+        {
+            TabPage tp = null;
+            int pageIndex = -1;
+            for (int i = 0; i < tabControl.TabPages.Count; i++)
+            {
+                Rectangle a = tabControl.GetTabRect(i);
+
+                if (tabControl.GetTabRect(i).Contains(pt))
+                {
+                    tp = tabControl.TabPages[i];
+                    pageIndex = i;
+                    break;
+                }
+            }
+            return pageIndex;
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D1)
+            {
+                tabControl.SelectedIndex = 0;
+            }
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D2)
+            {
+                tabControl.SelectedIndex = 1;
+            }
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D3)
+            {
+                tabControl.SelectedIndex = 2;
+            }
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D4)
+            {
+                tabControl.SelectedIndex = 3;
+            }
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D5)
+            {
+                tabControl.SelectedIndex = 4;
+            }
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D6)
+            {
+                tabControl.SelectedIndex = 5;
+            }
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D7)
+            {
+                tabControl.SelectedIndex = 6;
+            }
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D8)
+            {
+                tabControl.SelectedIndex = 7;
+            }
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D9)
+            {
+                tabControl.SelectedIndex = 8;
+            }
+        }
+
+        #endregion
+
     }
 }
