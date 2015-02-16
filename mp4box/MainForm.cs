@@ -3627,5 +3627,19 @@ namespace mp4box
 
         #endregion
 
+        private void gmkvextractguibButton_Click(object sender, EventArgs e)
+        {
+            string path = System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath) + @"\tools\gMKVExtractGUI.exe";
+
+            if (File.Exists(path))
+            {
+                System.Diagnostics.Process.Start(path);
+            }
+            else
+            {
+                MessageBox.Show("未找到程序文件!请检查\"\\tools\\gMKVExtractGUI.exe\"是否存在", "错误");
+            }
+        }
+
     }
 }

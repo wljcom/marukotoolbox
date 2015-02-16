@@ -877,6 +877,9 @@
   <data name="ViewLogButton.Text" xml:space="preserve">
     <value>View Log</value>
   </data>
+  <data name="gmkvextractguibButton.Text" xml:space="preserve">
+    <value>Use gmkvextractgui</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAUAAAAAAAEAIADeQwAAVgAAADAwAAABACAAqCUAADREAAAgIAAAAQAgAKgQAADcaQAAGBgAAAEA

@@ -102,6 +102,7 @@
             this.btnsub9 = new ControlExs.QQButton();
             this.ExtractTab = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.gmkvextractguibButton = new ControlExs.QQButton();
             this.MkvExtract4Button = new ControlExs.QQButton();
             this.MkvExtract3Button = new ControlExs.QQButton();
             this.MkvExtract2Button = new ControlExs.QQButton();
@@ -1038,6 +1039,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.gmkvextractguibButton);
             this.groupBox7.Controls.Add(this.MkvExtract4Button);
             this.groupBox7.Controls.Add(this.MkvExtract3Button);
             this.groupBox7.Controls.Add(this.MkvExtract2Button);
@@ -1048,6 +1050,13 @@
             resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
+            // 
+            // gmkvextractguibButton
+            // 
+            resources.ApplyResources(this.gmkvextractguibButton, "gmkvextractguibButton");
+            this.gmkvextractguibButton.Name = "gmkvextractguibButton";
+            this.gmkvextractguibButton.UseVisualStyleBackColor = true;
+            this.gmkvextractguibButton.Click += new System.EventHandler(this.gmkvextractguibButton_Click);
             // 
             // MkvExtract4Button
             // 
@@ -3162,6 +3171,7 @@
         private ControlExs.QQButton AudioJoinButton;
         private System.Windows.Forms.ComboBox Mp4BoxParComboBox;
         private System.Windows.Forms.Label label41;
+        private ControlExs.QQButton gmkvextractguibButton;
     }
 }
 
