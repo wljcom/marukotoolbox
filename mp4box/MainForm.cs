@@ -212,6 +212,7 @@ namespace mp4box
             mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + input1 + "\" -add \"" + input2 + "\" -new \"" + output + "\"\r\n";
             return mux;
         }
+        
         public string x264bat(string input, string output)
         {
             switch (mode)
@@ -229,17 +230,19 @@ namespace mp4box
                 case 2:
                     if (x264HeightNum.Value == 0 || x264WidthNum.Value == 0 || MaintainResolutionCheckBox.Checked)
                     {
-                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" +
-                                      workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p2 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" +
+                                      workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p2 -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     else
                     {
-                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" +
-                                      workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p2 --stats \"tmp.stat\" -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" +
+                                      workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p2 -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     break;
                 case 0:
-                    x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " " + x264CustomParameterTextBox.Text + " --demuxer " + x264DemuxerComboBox.Text + " -o \"" + output + "\" \"" + input + "\"\r\n";
+                    {
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " " + x264CustomParameterTextBox.Text + " --demuxer " + x264DemuxerComboBox.Text + " -o \"" + output + "\" \"" + input + "\"\r\n";
+                    }
                     break;
             }
 
@@ -271,36 +274,6 @@ namespace mp4box
             return String.IsNullOrEmpty(str);
         }
 
-        //public string x264bat(string input, string output)
-        //{
-        //    switch (mode)
-        //    {
-        //        case 1:
-        //            if (numheight.Value == 0 || numwidth.Value == 0)
-        //            {
-        //                x264 = "\"" + workpath + "\\x264.exe\"  --crf " + numcrf.Value + " --preset 8 -r 4 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  -o \"" + output + "\" \"" + input + "\"\r\n";
-        //            }
-        //            else
-        //            {
-        //                x264 = "\"" + workpath + "\\x264.exe\"  --crf " + numcrf.Value + " --preset 8 -r 4 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + numwidth.Value + "," + numheight.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
-        //            }
-        //            break;
-        //        case 2:
-        //            if (numheight.Value == 0 || numwidth.Value == 0)
-        //            {
-        //                x264 = "\"" + workpath + "\\x264.exe\"  -p1 --stats \"tmp.stat\" --preset 8 -r 4 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" + workpath + "\\x264.exe\"  -p2 --stats \"tmp.stat\" -B " + numrate.Value + " --preset 8 -r 4 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o \"" + output + "\" \"" + input + "\"\r\n";
-        //            }
-        //            else
-        //            {
-        //                x264 = "\"" + workpath + "\\x264.exe\"  -p1 --stats \"tmp.stat\" --preset 8 -r 4 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  --vf resize:" + numwidth.Value + "," + numheight.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" + workpath + "\\x264.exe\"  -p2 --stats \"tmp.stat\" -B " + numrate.Value + " --preset 8 -r 4 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + numwidth.Value + "," + numheight.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
-        //            }
-        //            break;
-        //        case 0:
-        //            x264 = "\"" + workpath + "\\x264.exe\"  " + txth264.Text + " -o \"" + output + "\" \"" + input + "\"\r\n";
-        //            break;
-        //    }
-        //    return x264;
-        //}
         public string timeminus(int h1, int m1, int s1, int h2, int m2, int s2)
         {
             int h = 0;
@@ -345,7 +318,7 @@ namespace mp4box
         {
             int AACbr = 1024 * Convert.ToInt32(AudioBitrateComboBox.Text);
             string br = AACbr.ToString();
-            ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input + "\" -vn -acodec pcm_s16le -f wav pipe:|";
+            ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input + "\" -vn -c:a pcm_s16le -f wav pipe:|";
             switch (AudioEncoderComboBox.SelectedIndex)
             {
                 case 0:
@@ -1665,7 +1638,7 @@ namespace mp4box
                 //audio
                 aextract = audiobat(namevideo9, "temp.aac");
                 //mux
-                mux = muxbat("temp.mp4", "temp.aac", "23.976", nameout9);
+                mux = muxbat("temp.mp4", "temp.aac", nameout9);
                 auto = aextract + x264 + "\r\n" + mux + " \r\n";
             }
             LogRecord(auto);
@@ -1698,7 +1671,7 @@ namespace mp4box
                 //audio
                 aextract = audiobat(namevideo9, "temp.aac");
                 //mux
-                mux = muxbat("temp.mp4", "temp.aac", "23.976", nameout9);
+                mux = muxbat("temp.mp4", "temp.aac", nameout9);
                 auto = aextract + x264 + "\r\n" + mux + " \r\ncmd";
                 batpath = workPath + "\\auto.bat";
                 File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
@@ -3064,7 +3037,7 @@ namespace mp4box
                 return;
             }
             mux = "";
-            mux = "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + namevideo + "\" -vcodec copy -an  \"" + workPath + "\\video_noaudio.mp4\" \r\n";
+            mux = "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + namevideo + "\" -c:v copy -an  \"" + workPath + "\\video_noaudio.mp4\" \r\n";
             mux += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + workPath + "\\video_noaudio.mp4\" -i \"" + nameaudio + "\" -vcodec copy  -acodec copy \"" + nameout + "\" \r\n";
             mux += "del \"" + workPath + "\\video_noaudio.mp4\" \r\n";
             batpath = workPath + "\\mux.bat";
@@ -3167,7 +3140,7 @@ namespace mp4box
                 string neroPath = Path.Combine(workPath, "neroaacenc.exe");
                 if (AudioCopyCheckBox.Checked)
                 {
-                    mux = "\"" + ffPath + "\" -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
+                    mux = "\"" + ffPath + "\" -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -c:v libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
                     mux += "\"" + ffPath + "\" -i SinglePictureVideo.mp4 -i \"" + AudioPicAudioTextBox.Text + "\" -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
                     mux += "del SinglePictureVideo.mp4\r\n";
                     mux += "cmd";
@@ -3175,7 +3148,7 @@ namespace mp4box
                 else
                 {
                     mux = "\"" + ffPath + "\" -i \"" + AudioPicAudioTextBox.Text + "\" -f wav - |" + neroPath + " -br " + OnePicAudioBitrateNum.Value.ToString() + "000 -ignorelength -if - -of audio.mp4 -lc\r\n";
-                    mux += "\"" + ffPath + "\" -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
+                    mux += "\"" + ffPath + "\" -loop 1 -r " + OnePicFPSNum.Value.ToString() + " -t " + seconds.ToString() + " -f image2 -i \"" + tempPic + "\" -c:v libx264 -crf " + OnePicCRFNum.Value.ToString() + " -y SinglePictureVideo.mp4\r\n";
                     mux += "\"" + ffPath + "\" -i SinglePictureVideo.mp4 -i audio.mp4 -c:v copy -c:a copy -y \"" + AudioOnePicOutputTextBox.Text + "\"\r\n";
                     mux += "del SinglePictureVideo.mp4\r\ndel audio.mp4\r\n";
                     mux += "cmd";
@@ -3371,7 +3344,7 @@ namespace mp4box
             }
 
             //批处理
-            mux = "\"" + workPath + "\\ffmpeg\" -loop 1 -r " + BlackFPSNum.Value.ToString() + " -t " + blackSecond.ToString() + " -f image2 -i \"" + tempPic + "\" -vcodec libx264 -crf " + BlackCRFNum.Value.ToString() + " -y black.flv\r\n";
+            mux = "\"" + workPath + "\\ffmpeg\" -loop 1 -r " + BlackFPSNum.Value.ToString() + " -t " + blackSecond.ToString() + " -f image2 -i \"" + tempPic + "\" -c:v libx264 -crf " + BlackCRFNum.Value.ToString() + " -y black.flv\r\n";
             mux += string.Format("\"{0}\\flvbind\" \"{1}\"  \"{2}\"  black.flv\r\n", workPath, BlackOutputTextBox.Text, BlackVideoTextBox.Text);
             mux += "del black.flv\r\n";
 
