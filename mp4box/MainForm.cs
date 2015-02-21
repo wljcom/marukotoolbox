@@ -328,17 +328,17 @@ namespace mp4box
                     }
                     if (AudioCustomizeRadioButton.Checked)
                     {
-                        ffmpeg += "\"" + workPath + "\\neroAacEnc.exe\" " + AudioCustomParameterTextBox.Text.ToString() + " -if - -of \"" + output + "\"";
+                        ffmpeg += "\"" + workPath + "\\neroAacEnc.exe\" -ignorelength " + AudioCustomParameterTextBox.Text.ToString() + " -if - -of \"" + output + "\"";
                     }
                     break;
                 case 1:
                     if (AudioBitrateRadioButton.Checked)
                     {
-                        ffmpeg += "\"" + workPath + "\\qaac.exe\" -q 2 -c " + AudioBitrateComboBox.Text + " - -o \"" + output + "\"";
+                        ffmpeg += "\"" + workPath + "\\qaac.exe\" -q 2 --ignorelength -c " + AudioBitrateComboBox.Text + " - -o \"" + output + "\"";
                     }
                     if (AudioCustomizeRadioButton.Checked)
                     {
-                        ffmpeg += "\"" + workPath + "\\qaac.exe\" " + AudioCustomParameterTextBox.Text.ToString() + " - -o \"" + output + "\"";
+                        ffmpeg += "\"" + workPath + "\\qaac.exe\" --ignorelength " + AudioCustomParameterTextBox.Text.ToString() + " - -o \"" + output + "\"";
                     }
                     break;
                 case 2:
@@ -347,7 +347,7 @@ namespace mp4box
                     ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + input + "\" -f wav \"" + output + "\"";
                     break;
                 case 3:
-                    ffmpeg += "\"" + workPath + "\\refalac.exe\" - -o \"" + output + "\"";
+                    ffmpeg += "\"" + workPath + "\\refalac.exe\" --ignorelength - -o \"" + output + "\"";
                     break;
                 case 4:
                     ffmpeg += "\"" + workPath + "\\flac.exe\" -f --ignore-chunk-sizes -5 - -o \"" + output + "\"";
@@ -359,7 +359,7 @@ namespace mp4box
                     }
                     if (AudioCustomizeRadioButton.Checked)
                     {
-                        ffmpeg += "\"" + workPath + "\\fdkaac.exe\" " + AudioCustomParameterTextBox.Text.ToString() + " - -o \"" + output + "\"";
+                        ffmpeg += "\"" + workPath + "\\fdkaac.exe\" --ignorelength " + AudioCustomParameterTextBox.Text.ToString() + " - -o \"" + output + "\"";
                     }
                     break;
                 default:
