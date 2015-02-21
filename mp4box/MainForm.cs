@@ -39,6 +39,7 @@ using System.Configuration;
 using System.Drawing.Imaging;
 using System.Net;
 using System.Linq;
+using System.Reflection;
 namespace mp4box
 {
     public partial class MainForm : Form
@@ -2918,6 +2919,7 @@ namespace mp4box
             {
                 case 0:
                     SetLang("zh-CN", this, typeof(MainForm));
+                    Text = String.Format("小丸工具箱 r{0}", Assembly.GetExecutingAssembly().GetName().Version.Build);
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "低", "低于标准", "普通", "高于标准", "高", "实时" });
                     x264PriorityComboBox.SelectedIndex = 2;
@@ -2936,6 +2938,7 @@ namespace mp4box
                     break;
                 case 1:
                     SetLang("zh-TW", this, typeof(MainForm));
+                    Text = String.Format("小丸工具箱 r{0}", Assembly.GetExecutingAssembly().GetName().Version.Build);
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "低", "在標準以下", "標準", "在標準以上", "高", "即時" });
                     x264PriorityComboBox.SelectedIndex = 2;
@@ -2954,6 +2957,7 @@ namespace mp4box
                     break;
                 case 2:
                     SetLang("en-US", this, typeof(MainForm));
+                    Text = String.Format("Maruko Toolbox r{0}", Assembly.GetExecutingAssembly().GetName().Version.Build);
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "Idle", "BelowNormal", "Normal", "AboveNormal", "High", "RealTime" });
                     x264PriorityComboBox.SelectedIndex = 2;
@@ -2972,6 +2976,7 @@ namespace mp4box
                     break;
                 case 3:
                     SetLang("ja-JP", this, typeof(MainForm));
+                    Text = String.Format("Maruko Toolbox r{0}", Assembly.GetExecutingAssembly().GetName().Version.Build);
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "低", "通常以下", "通常", "通常以上", "高", "リアルタイム" });
                     x264PriorityComboBox.SelectedIndex = 2;
