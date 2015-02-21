@@ -213,7 +213,7 @@ namespace mp4box
             mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + input1 + "\" -add \"" + input2 + "\" -new \"" + output + "\"\r\n";
             return mux;
         }
-        
+
         public string x264bat(string input, string output)
         {
             switch (mode)
@@ -2915,6 +2915,7 @@ namespace mp4box
             //StreamReader sr;
             x264Mode1RadioButton.Checked = true;
             AudioBitrateRadioButton.Checked = true;
+            int x264AudioModeComboBoxIndex = 0;
             switch (languageComboBox.SelectedIndex)
             {
                 case 0:
@@ -2923,6 +2924,11 @@ namespace mp4box
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "低", "低于标准", "普通", "高于标准", "高", "实时" });
                     x264PriorityComboBox.SelectedIndex = 2;
+                    x264AudioModeComboBoxIndex = x264AudioModeComboBox.SelectedIndex;
+                    x264AudioModeComboBox.Items.Clear();
+                    x264AudioModeComboBox.Items.Add("压制音频");
+                    x264AudioModeComboBox.Items.Add("无音频流");
+                    x264AudioModeComboBox.SelectedIndex = x264AudioModeComboBoxIndex;
                     x264VideoTextBox.EmptyTextTip = "可以把文件拖曳到这里";
                     //x264OutTextBox.EmptyTextTip = "宽度和高度全为0即不改变分辨率";
                     x264PathTextBox.EmptyTextTip = "字幕文件和视频文件在同一目录下且同名，不同名仅有语言后缀时请在右方选择或输入";
@@ -2942,6 +2948,11 @@ namespace mp4box
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "低", "在標準以下", "標準", "在標準以上", "高", "即時" });
                     x264PriorityComboBox.SelectedIndex = 2;
+                    x264AudioModeComboBoxIndex = x264AudioModeComboBox.SelectedIndex;
+                    x264AudioModeComboBox.Items.Clear();
+                    x264AudioModeComboBox.Items.Add("壓制音頻");
+                    x264AudioModeComboBox.Items.Add("無音頻流");
+                    x264AudioModeComboBox.SelectedIndex = x264AudioModeComboBoxIndex;
                     x264VideoTextBox.EmptyTextTip = "可以把文件拖曳到這裡";
                     //x264OutTextBox.EmptyTextTip = "寬度和高度全為0即不改變解析度";
                     x264PathTextBox.EmptyTextTip = "字幕和視頻在同一資料夾下且同名，不同名僅有語言後綴時請在右方選擇或輸入";
@@ -2961,6 +2972,11 @@ namespace mp4box
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "Idle", "BelowNormal", "Normal", "AboveNormal", "High", "RealTime" });
                     x264PriorityComboBox.SelectedIndex = 2;
+                    x264AudioModeComboBoxIndex = x264AudioModeComboBox.SelectedIndex;
+                    x264AudioModeComboBox.Items.Clear();
+                    x264AudioModeComboBox.Items.Add("with audio");
+                    x264AudioModeComboBox.Items.Add("no audio");
+                    x264AudioModeComboBox.SelectedIndex = x264AudioModeComboBoxIndex;
                     x264VideoTextBox.EmptyTextTip = "Drag file here";
                     //x264OutTextBox.EmptyTextTip = "Both the width and height equal zero means using original resolution";
                     x264PathTextBox.EmptyTextTip = "Subtitle and Video must be of the same name and in the same folder";
@@ -2980,6 +2996,11 @@ namespace mp4box
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "低", "通常以下", "通常", "通常以上", "高", "リアルタイム" });
                     x264PriorityComboBox.SelectedIndex = 2;
+                    x264AudioModeComboBoxIndex = x264AudioModeComboBox.SelectedIndex;
+                    x264AudioModeComboBox.Items.Clear();
+                    x264AudioModeComboBox.Items.Add("オーディオ付き");
+                    x264AudioModeComboBox.Items.Add("オーディオなし");
+                    x264AudioModeComboBox.SelectedIndex = x264AudioModeComboBoxIndex;
                     x264VideoTextBox.EmptyTextTip = "ビデオファイルをここに引きずってください";
                     //x264OutTextBox.EmptyTextTip = "Both the width and height equal zero means using original resolution";
                     x264PathTextBox.EmptyTextTip = "字幕とビデオは同じ名前と同じフォルダにある必要があります";
