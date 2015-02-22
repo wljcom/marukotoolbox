@@ -370,170 +370,7 @@ namespace mp4box
             return aac;
         }
 
-        public void BatchVideoWithAudio()
-        {
-            auto = "";
-            for (int i = 0; i < this.lbAuto.Items.Count; i++)
-            {
-                x264 = x264bat(lbAuto.Items[i].ToString(), "temp.mp4");
-                x264 = x264.Replace("\r\n", "");
 
-                //判断是否内嵌字幕
-                if (x264BatchSubCheckBox.Checked)
-                {
-                    string sub = "";
-                    string splang = "";
-                    if (x264BatchSubSpecialLanguage.Text != "none")
-                    {
-                        splang = "." + x264BatchSubSpecialLanguage.Text;
-                    }
-                    string asssub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + splang + ".ass";
-                    string ssasub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + splang + ".ssa";
-                    string srtsub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + splang + ".srt";
-                    if (File.Exists(asssub))
-                    {
-                        sub = asssub;
-                    }
-                    else if (File.Exists(ssasub))
-                    {
-                        sub = ssasub;
-                    }
-                    else if (File.Exists(srtsub))
-                    {
-                        sub = srtsub;
-                    }
-                    if (sub != "")
-                    {
-                        if (x264.IndexOf("--vf") == -1)
-                        {
-                            x264 += " --vf subtitles --sub \"" + sub + "\"";
-                        }
-                        else
-                        {
-                            Regex r = new Regex("--vf\\s\\S*", RegexOptions.RightToLeft);
-                            Match m = r.Match(x264);
-                            x264 = x264.Insert(m.Index + m.Value.Length, "/subtitles");
-                            x264 += " --sub \"" + sub + "\"";
-                        }
-                    }
-                }
-                x264 += "\r\n";
-                //audio
-                if (Path.GetExtension(lbAuto.Items[i].ToString()) == ".avs")
-                {
-                    aextract = "\r\n";
-                    //string tempvideoname;
-                    //int a, b;
-                    //StreamReader sr = new StreamReader(lbAuto.Items[i].ToString(), System.Text.Encoding.Default);
-                    //string str = sr.ReadToEnd();
-                    //a = str.IndexOf("DirectShowSource(\"");
-                    //if (a == -1)
-                    //{
-                    //    a = str.IndexOf("FFVideoSource(\"");
-                    //    b = str.IndexOf("\"", a + 15);
-                    //    tempvideoname = str.Substring(a + 15, b - a - 15);
-                    //}
-                    //else
-                    //{
-                    //    b = str.IndexOf("\"", a + 18);
-                    //    tempvideoname = str.Substring(a + 18, b - a - 18);
-                    //}
-                    //if (tempvideoname.IndexOf(":") != 1)
-                    //{
-                    //    tempvideoname = lbAuto.Items[i].ToString().Substring(0, lbAuto.Items[i].ToString().LastIndexOf("\\") + 1) + tempvideoname;
-                    //}
-                    //aextract = audiobat(tempvideoname, "temp.aac");
-                    //ffmpeg = "\"" + workpath + "\\ffmpeg.exe\" -y -i \"" + tempvideoname + "\" -f wav temp.wav";
-                }
-                else //如果不是avs
-                {
-                    aextract = audiobat(lbAuto.Items[i].ToString(), "temp.aac");
-                }
-                //mux
-                string finish;
-                if (Directory.Exists(x264PathTextBox.Text))
-                    finish = x264PathTextBox.Text + "\\" + Path.GetFileNameWithoutExtension(lbAuto.Items[i].ToString()) + "_onekeybatch.mp4";
-                else
-                    finish = AddExt(lbAuto.Items[i].ToString(), "_onekeybatch.mp4");
-                mux = muxbat("temp.mp4", "temp.aac", finish);
-                auto += aextract + x264 + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\ndel temp.wav\r\n";
-                //auto += aextract + x264 + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\ndel temp.wav\r\n@echo off&&echo MsgBox \"Finish!\",64,\"Maruko Toolbox\" >> msg.vbs &&call msg.vbs &&del msg.vbs\r\ncmd";
-
-            }
-            //if (x264ShutdownCheckBox.Checked)
-            //{
-            //    auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60";
-            //}
-        }
-        public void BatchVideo()
-        {
-            auto = "";
-            for (int i = 0; i < this.lbAuto.Items.Count; i++)
-            {
-                string finish;
-                if (Directory.Exists(x264PathTextBox.Text))
-                    finish = x264PathTextBox.Text + "\\" + Path.GetFileNameWithoutExtension(lbAuto.Items[i].ToString()) + "_batch.mp4";
-                else
-                    finish = AddExt(lbAuto.Items[i].ToString(), "_Batch.mp4");
-                x264 = x264bat(lbAuto.Items[i].ToString(), finish).Replace("\r\n", "");
-                //内嵌字幕
-                if (x264BatchSubCheckBox.Checked)
-                {
-                    string sub = "";
-                    string splang = "";
-                    if (x264BatchSubSpecialLanguage.Text != "none")
-                    {
-                        splang = "." + x264BatchSubSpecialLanguage.Text;
-                    }
-                    string asssub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + splang + ".ass";
-                    string ssasub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + splang + ".ssa";
-                    string srtsub = lbAuto.Items[i].ToString().Remove(lbAuto.Items[i].ToString().LastIndexOf(".")) + splang + ".srt";
-                    if (File.Exists(asssub))
-                    {
-                        sub = asssub;
-                    }
-                    else if (File.Exists(ssasub))
-                    {
-                        sub = ssasub;
-                    }
-                    else if (File.Exists(srtsub))
-                    {
-                        sub = srtsub;
-                    }
-                    if (sub != "")
-                    {
-                        if (x264.IndexOf("--vf") == -1)
-                        {
-                            x264 += " --vf subtitles --sub \"" + sub + "\"";
-                        }
-                        else
-                        {
-                            Regex r = new Regex("--vf\\s\\S*", RegexOptions.RightToLeft);
-                            Match m = r.Match(x264);
-                            x264 = x264.Insert(m.Index + m.Value.Length, "/subtitles");
-                            x264 += " --sub \"" + sub + "\"";
-                        }
-                    }
-                }
-                //switch (x264AudioModeComboBox.SelectedIndex)
-                //{
-                //    case 1: x264 += " --acodec none"; break;
-                //    case 2: x264 += " --acodec copy"; break;
-                //    case 3: x264 += " --audiofile \"" + x264AudioParameterTextBox.Text + "\""; break;
-                //    case 4: x264 += " --acodec qtaac " + x264AudioParameterTextBox.Text; break;
-                //    case 5: x264 += " --acodec faac " + x264AudioParameterTextBox.Text; break;
-                //    case 0: break;
-                //    default: ; break;
-                //}
-                auto = auto + "\r\n" + x264;
-            }
-            //if (x264ShutdownCheckBox.Checked)
-            //{
-            //    auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60";
-            //}
-            //auto += "\r\n@echo off&&echo MsgBox \"Finish!\",64,\"Maruko Toolbox\" >> msg.vbs &&call msg.vbs &&del msg.vbs\r\ncmd";
-            auto += "\r\n";
-        }
         private void btnaudio_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "音频(*.aac;*.mp3;*.mp4)|*.aac;*.mp3;*.mp4|所有文件(*.*)|*.*";
@@ -1334,6 +1171,75 @@ namespace mp4box
                 ((ListBox)sender).DoDragDrop(((ListBox)sender).Items[indexofsource].ToString(), DragDropEffects.All);
             }
         }
+
+
+        public string VideoBatch(string input, string output)
+        {
+            bool hasAudio = false;
+            string bat = "";
+
+            //检测是否含有音频
+            MediaInfo MI = new MediaInfo();
+            MI.Open(input);
+            string audio = MI.Get(StreamKind.Audio, 0, "Format");
+            if (!string.IsNullOrEmpty(audio))
+            {
+                hasAudio = true;
+            }
+
+            if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio ) //如果压制音频
+            {
+                if (Path.GetExtension(input) == ".avs") //如果输入是avs
+                    aextract = "\r\n";
+                else
+                    aextract = audiobat(input, "temp.aac");
+                x264 = x264bat(input, "temp.mp4").Replace("\r\n", "");
+            }
+            else
+            {
+                x264 = x264bat(input, output).Replace("\r\n", "");
+            }
+
+            if (x264BatchSubCheckBox.Checked) //内嵌字幕
+            {
+                string sub = "";
+                string splang = "";
+                string[] subExt = { ".ass", ".ssa", ".srt" };
+                if (x264BatchSubSpecialLanguage.Text != "none")
+                    splang = "." + x264BatchSubSpecialLanguage.Text;
+                foreach (string ext in subExt)
+                {
+                    if (File.Exists(input.Remove(input.LastIndexOf(".")) + splang + ext))
+                    {
+                        sub = input.Remove(input.LastIndexOf(".")) + splang + ext;
+                        break;
+                    }
+                }
+                if (sub != "")
+                {
+                    if (x264.IndexOf("--vf") == -1)
+                    {
+                        x264 += " --vf subtitles --sub \"" + sub + "\"";
+                    }
+                    else
+                    {
+                        Regex r = new Regex("--vf\\s\\S*", RegexOptions.RightToLeft);
+                        Match m = r.Match(x264);
+                        x264 = x264.Insert(m.Index + m.Value.Length, "/subtitles");
+                        x264 += " --sub \"" + sub + "\"";
+                    }
+                }
+            }
+            x264 += "\r\n";
+            mux = muxbat("temp.mp4", "temp.aac", output);
+
+            if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果压制音频
+                bat += aextract + x264 + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\ndel temp.wav\r\n";
+            else
+                bat += x264;
+            return bat;
+        }
+
         private void btnBatchAuto_Click(object sender, EventArgs e)
         {
             if (lbAuto.Items.Count == 0)
@@ -1341,19 +1247,21 @@ namespace mp4box
                 MessageBox.Show("请输入视频！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            switch (x264AudioModeComboBox.SelectedIndex)
+            string bat = "";
+            for (int i = 0; i < this.lbAuto.Items.Count; i++)
             {
-                case 1:
-                    BatchVideo();
-                    break;
-                case 0:
-                    BatchVideoWithAudio();
-                    break;
-                default: break;
+                string input = lbAuto.Items[i].ToString();
+                string output;
+                if (Directory.Exists(x264PathTextBox.Text))
+                    output = x264PathTextBox.Text + "\\" + Path.GetFileNameWithoutExtension(input) + "_batch.mp4";
+                else
+                    output = AddExt(input, "_batch.mp4");
+                bat += VideoBatch(lbAuto.Items[i].ToString(), output);
             }
+
             //batpath = workPath + "\\auto.bat";
-            LogRecord(auto);
-            WorkingForm wf = new WorkingForm(auto, lbAuto.Items.Count);
+            LogRecord(bat);
+            WorkingForm wf = new WorkingForm(bat, lbAuto.Items.Count);
             wf.Owner = this;
             wf.Show();
             //File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
