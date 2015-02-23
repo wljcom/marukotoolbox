@@ -216,28 +216,40 @@ namespace mp4box
 
         public string x264bat(string input, string output)
         {
+            //keyint设为fps的10倍
+            MediaInfo MI = new MediaInfo();
+            MI.Open(input);
+            string frameRate = MI.Get(StreamKind.Video, 0, "FrameRate");
+            double fps;
+            string keyint = "-1";
+            if (double.TryParse(frameRate, out fps))
+            {
+                fps = Math.Round(fps);
+                keyint = (fps * 10).ToString();
+            }
+
             switch (mode)
             {
                 case 1:
                     if (x264HeightNum.Value == 0 || x264WidthNum.Value == 0 || MaintainResolutionCheckBox.Checked)
                     {
-                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + "  --crf " + x264CRFNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + "  --crf " + x264CRFNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -I " + keyint + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8  -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     else
                     {
-                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + "  --crf " + x264CRFNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + "  --crf " + x264CRFNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -I " + keyint + " -r 4 -b 3 --me umh  -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     break;
                 case 2:
                     if (x264HeightNum.Value == 0 || x264WidthNum.Value == 0 || MaintainResolutionCheckBox.Checked)
                     {
-                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" +
-                                      workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p2 -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -I " + keyint + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o NUL \"" + input + "\" && \"" +
+                                      workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p2 -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -I " + keyint + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     else
                     {
-                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" +
-                                      workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p2 -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
+                        x264 = "\"" + workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p1 -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -I " + keyint + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o NUL \"" + input + "\" && \"" +
+                                      workPath + "\\" + x264ExeComboBox.SelectedItem.ToString() + "\" --threads " + x264ThreadsComboBox.SelectedItem.ToString() + " -p2 -B " + x264BitrateNum.Value + " --preset 8 --demuxer " + x264DemuxerComboBox.Text + " -I " + keyint + " -r 4 -b 3 --me umh -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:" + x264WidthNum.Value + "," + x264HeightNum.Value + ",,,,lanczos -o \"" + output + "\" \"" + input + "\"\r\n";
                     }
                     break;
                 case 0:
@@ -1187,7 +1199,7 @@ namespace mp4box
                 hasAudio = true;
             }
 
-            if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio ) //如果压制音频
+            if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果压制音频
             {
                 if (Path.GetExtension(input) == ".avs") //如果输入是avs
                     aextract = "\r\n";
