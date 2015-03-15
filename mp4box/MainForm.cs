@@ -1996,17 +1996,6 @@ namespace mp4box
                 x264ThreadsComboBox.SelectedIndex = 0;
             }
 
-            string ext = Path.GetExtension(nameout2).ToLower();
-
-            //当视频不含音频时自动选择无音频流
-            MediaInfo MI = new MediaInfo();
-            MI.Open(namevideo2);
-            string audio = MI.Get(StreamKind.Audio, 0, "Format");
-            if (string.IsNullOrEmpty(audio) || ext == ".raw")
-            {
-                x264AudioModeComboBox.SelectedIndex = 1;
-            }
-
             //如果是AVS复制到C盘根目录
             if (Path.GetExtension(x264VideoTextBox.Text) == ".avs")
             {
@@ -2019,91 +2008,74 @@ namespace mp4box
 
             #endregion
 
-
-            switch (x264AudioModeComboBox.SelectedIndex)
+            string ext = Path.GetExtension(nameout2).ToLower();
+            bool hasAudio = false;
+            string tempVideo = AddExt(namevideo2, "_temp.mp4");
+            string tempAudio = AddExt(namevideo2, "_temp.aac");
+            //检测是否含有音频
+            MediaInfo MI = new MediaInfo();
+            MI.Open(namevideo2);
+            string audio = MI.Get(StreamKind.Audio, 0, "Format");
+            if (!string.IsNullOrEmpty(audio))
             {
-                //压制音频
-                case 0:
-                    string tempVideo = AddExt(namevideo2, "_temp.mp4");
-                    string tempAudio = AddExt(namevideo2, "_temp.aac");
-
-                    x264 = x264bat(namevideo2, tempVideo);
-                    x264 = x264.Replace("\r\n", "");
-                    if (x264SubTextBox.Text != "")
-                    {
-                        if (x264.IndexOf("--vf") == -1)
-                        {
-                            x264 += " --vf subtitles --sub \"" + namesub2 + "\"";
-                        }
-                        else
-                        {
-                            Regex r = new Regex("--vf\\s\\S*", RegexOptions.RightToLeft);
-                            Match m = r.Match(x264);
-                            x264 = x264.Insert(m.Index + m.Value.Length, "/subtitles");
-                            x264 += " --sub \"" + namesub2 + "\"";
-                        }
-                    }
-                    x264 += "\r\n";
-
-                    //audio
-                    if (ext == ".avs") //如果是avs就跳过音频处理
-                    {
-                        aextract = "\r\n";
-                    }
-                    else
-                    {
-                        aextract = audiobat(namevideo2, tempAudio);
-                    }
-
-                    //mux
-                    mux = muxbat(tempVideo, tempAudio, cbFPS.Text, AddExt(nameout2, ".mp4"));
-                    x264 = aextract + x264 + mux + "\r\n"
-                        + "del \"" + tempVideo + "\"\r\n"
-                        + "del \"" + tempAudio + "\"\r\n";
-
-                    if (ext != ".mp4")
-                    {
-                        x264 += "\r\n\"" + workPath + "\\ffmpeg.exe\"  -i  \"" + AddExt(nameout2, ".mp4") + "\" -c copy -y \"" + nameout2 + "\" \r\n";
-                        x264 += "del \"" + AddExt(nameout2, ".mp4") + "\"\r\n";
-                    }
-
-                    //if (x264ShutdownCheckBox.Checked)
-                    //{
-                    //    auto += "\r\n" + syspath + ":\\Windows\\System32\\shutdown -f -s -t 60\r\n";
-                    //}
-                    //auto += "cmd";
-                    break;
-
-                //无音频
-                case 1:
-                    x264 = x264bat(namevideo2, nameout2).Replace("\r\n", "");
-                    if (x264SubTextBox.Text != "")
-                    {
-                        if (x264.IndexOf("--vf") == -1)
-                        {
-                            x264 += " --vf subtitles --sub \"" + namesub2 + "\"";
-                        }
-                        else
-                        {
-                            Regex r = new Regex("--vf\\s\\S*", RegexOptions.RightToLeft);
-                            Match m = r.Match(x264);
-                            x264 = x264.Insert(m.Index + m.Value.Length, "/subtitles");
-                            x264 += " --sub \"" + namesub2 + "\"";
-                        }
-                    }
-                    if (x264SeekNumericUpDown.Value != 0)
-                    {
-                        x264 += " --seek " + x264SeekNumericUpDown.Value.ToString();
-                    }
-                    if (x264FramesNumericUpDown.Value != 0)
-                    {
-                        x264 += " --frames " + x264FramesNumericUpDown.Value.ToString();
-                    }
-                    x264 += "\r\n";
-
-                    break;
-                default: break;
+                hasAudio = true;
             }
+
+            //编码文件
+            if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果压制音频
+            {
+                if (Path.GetExtension(namevideo2) == ".avs") //如果输入是avs
+                    aextract = "\r\n";
+                else
+                    aextract = audiobat(namevideo2, tempAudio);
+                x264 = x264bat(namevideo2, tempVideo).Replace("\r\n", "");
+            }
+            else
+            {
+                x264 = x264bat(namevideo2, nameout2).Replace("\r\n", "");
+
+                if (x264SeekNumericUpDown.Value != 0)
+                {
+                    x264 += " --seek " + x264SeekNumericUpDown.Value.ToString();
+                }
+                if (x264FramesNumericUpDown.Value != 0)
+                {
+                    x264 += " --frames " + x264FramesNumericUpDown.Value.ToString();
+                }
+            }
+
+            //如果嵌字幕
+            if (x264SubTextBox.Text != "")
+            {
+                if (x264.IndexOf("--vf") == -1)
+                {
+                    x264 += " --vf subtitles --sub \"" + namesub2 + "\"";
+                }
+                else
+                {
+                    Regex r = new Regex("--vf\\s\\S*", RegexOptions.RightToLeft);
+                    Match m = r.Match(x264);
+                    x264 = x264.Insert(m.Index + m.Value.Length, "/subtitles");
+                    x264 += " --sub \"" + namesub2 + "\"";
+                }
+            }
+            x264 += "\r\n";
+           
+            //封装
+            if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果包含音频
+            {
+                mux = muxbat(tempVideo, tempAudio, cbFPS.Text, AddExt(nameout2, ".mp4"));
+                x264 = aextract + x264 + mux + "\r\n"
+                    + "del \"" + tempVideo + "\"\r\n"
+                    + "del \"" + tempAudio + "\"\r\n";
+
+                if (ext != ".mp4")
+                {
+                    x264 += "\r\n\"" + workPath + "\\ffmpeg.exe\"  -i  \"" + AddExt(nameout2, ".mp4") + "\" -c copy -y \"" + nameout2 + "\" \r\n";
+                    x264 += "del \"" + AddExt(nameout2, ".mp4") + "\"\r\n";
+                }
+            }
+            x264 += "\r\n";
             LogRecord(x264);
             WorkingForm wf = new WorkingForm(x264);
             wf.Owner = this;
