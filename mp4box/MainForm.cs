@@ -489,8 +489,8 @@ namespace mp4box
             string ext = Path.GetExtension(namevideo);
             //aextract = "\"" + workPath + "\\mp4box.exe\" -raw 2 \"" + namevideo + "\"";
             string aextract = "";
-            aextract += Cmd.FormatPath(workPath + "\\ffmpeg.exe");
-            aextract += " -i " + Cmd.FormatPath(namevideo);
+            aextract += Util.FormatPath(workPath + "\\ffmpeg.exe");
+            aextract += " -i " + Util.FormatPath(namevideo);
             if (av == "a")
             {
                 aextract += " -vn -sn -c:a:" + streamIndex + " copy ";
@@ -519,9 +519,9 @@ namespace mp4box
                 suf = "_video_";
             }
             suf += "index" + streamIndex;
-            string outfile = Cmd.GetDir(namevideo) +
+            string outfile = Util.GetDir(namevideo) +
                 Path.GetFileNameWithoutExtension(namevideo) + suf + ext;
-            aextract += Cmd.FormatPath(outfile);
+            aextract += Util.FormatPath(outfile);
             //aextract = vextract;
             batpath = workPath + "\\" + av + "extract.bat";
             File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
@@ -539,13 +539,13 @@ namespace mp4box
 
             //aextract = "\"" + workPath + "\\mp4box.exe\" -raw 2 \"" + namevideo + "\"";
             string aextract = "";
-            aextract += Cmd.FormatPath(workPath + "\\ffmpeg.exe");
-            aextract += " -i " + Cmd.FormatPath(namevideo);
+            aextract += Util.FormatPath(workPath + "\\ffmpeg.exe");
+            aextract += " -i " + Util.FormatPath(namevideo);
             aextract += " -map 0:" + streamIndex + " -c copy ";
             string suf = "_抽取流Index" + streamIndex;
-            string outfile = Cmd.GetDir(namevideo) +
+            string outfile = Util.GetDir(namevideo) +
                 Path.GetFileNameWithoutExtension(namevideo) + suf + Path.GetExtension(namevideo);
-            aextract += Cmd.FormatPath(outfile);
+            aextract += Util.FormatPath(outfile);
             batpath = workPath + "\\mkvextract.bat";
             File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
             LogRecord(aextract);

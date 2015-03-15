@@ -130,7 +130,7 @@ namespace mp4box
         private static string GetFFmpegOutput(string workPath, string filename)
         {
             var processInfo = new System.Diagnostics.ProcessStartInfo(
-                System.IO.Path.Combine(workPath, "ffmpeg.exe"), "-i " + Cmd.FormatPath(filename));
+                System.IO.Path.Combine(workPath, "ffmpeg.exe"), "-i " + Util.FormatPath(filename));
             processInfo.WorkingDirectory = System.IO.Directory.GetCurrentDirectory();
             processInfo.CreateNoWindow = true;
             processInfo.UseShellExecute = false;

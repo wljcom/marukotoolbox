@@ -113,7 +113,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cmd.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="SplashScreenApplicationContext.cs" />
     <Compile Include="StartUpClass.cs" />
     <Compile Include="Supplements.cs" />

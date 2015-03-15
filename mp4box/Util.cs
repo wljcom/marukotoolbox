@@ -29,7 +29,7 @@ using System.Threading;
 
 namespace mp4box
 {
-    class Cmd
+    class Util
     {
         
         /// <summary>
