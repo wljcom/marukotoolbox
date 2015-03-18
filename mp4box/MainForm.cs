@@ -385,7 +385,7 @@ namespace mp4box
 
         private void btnaudio_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "音频(*.aac;*.mp3;*.mp4)|*.aac;*.mp3;*.mp4|所有文件(*.*)|*.*";
+            openFileDialog1.Filter = "音频(*.mp4;*.aac;*.mp2;*.mp3;*.m4a;*.ac3)|*.mp4;*.aac;*.mp2;*.mp3;*.m4a;*.ac3|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -395,7 +395,7 @@ namespace mp4box
         }
         private void btnvideo_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "所有文件(*.*)|*.*";
+            openFileDialog1.Filter = "视频(*.avi;*.mp4;*.m1v;*.m2v;*.m4v;*.264;*.h264;*.hevc)|*.avi;*.mp4;*.m1v;*.m2v;*.m4v;*.264;*.h264;*.hevc|所有文件(*.*)|*.*";
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -436,11 +436,11 @@ namespace mp4box
             if (cbFPS.Text == "auto")
             {
 
-                mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + namevideo + "\":par=" + Mp4BoxParComboBox.Text + " -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
+                mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + namevideo + "#trackID=1:par=" + Mp4BoxParComboBox.Text + "\"" + " -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
             }
             else
             {
-                mux = "\"" + workPath + "\\mp4box.exe\" -fps " + cbFPS.Text + " -add \"" + namevideo + "\":par=" + Mp4BoxParComboBox.Text + " -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
+                mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + namevideo + "#trackID=1:par=" + Mp4BoxParComboBox.Text + ":fps=" + cbFPS.Text + "\"" + " -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
             }
 
             if (nameaudio == "") //如果没有音频流
@@ -580,17 +580,65 @@ namespace mp4box
             //    System.Diagnostics.Process.Start(batpath);
             //}
         }
+
         private void txtvideo_TextChanged(object sender, EventArgs e)
         {
-            if (File.Exists(txtvideo.Text.ToString()))
+            if (txtvideo.Text.Trim().Length > 0)
             {
+                if (!File.Exists(txtvideo.Text.Trim().ToString()))
+                {
+                    MessageBox.Show("输入文件 \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n不存在!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtvideo.Clear();
+                    return;
+                }
+                string inputExt = Path.GetExtension(txtvideo.Text.Trim()).ToLower();
+                if (inputExt != ".avi"
+                        && inputExt != ".mp4"
+                        && inputExt != ".m1v"
+                        && inputExt != ".m2v"
+                        && inputExt != ".m4v"
+                        && inputExt != ".264"
+                        && inputExt != ".h264"
+                        && inputExt != ".hevc")
+                {
+                    MessageBox.Show("输入文件 \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n是一个不被mp4容器支持的视频文件!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtvideo.Clear();
+                    txtout.Clear();
+                    return;
+                }
+                if (inputExt == ".264" || inputExt == ".h264" || inputExt == ".hevc")
+                {
+                    MessageBox.Show("H.264或者HEVC流文件需要设定fps，不设置将默认为25fps", "警告", MessageBoxButtons.OK);
+                }
                 namevideo = txtvideo.Text;
                 txtout.Text = AddExt(txtvideo.Text, "_Mux.mp4");
             }
         }
+
         private void txtaudio_TextChanged(object sender, EventArgs e)
         {
-            nameaudio = txtaudio.Text;
+            if (txtaudio.Text.Trim().Length > 0)
+            {
+                if (!File.Exists(txtaudio.Text.Trim()))
+                {
+                    MessageBox.Show("输入文件 \r\n\r\n" + txtaudio.Text.Trim() + "\r\n\r\n不存在!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtaudio.Clear();
+                    return;
+                }
+                string inputExt = Path.GetExtension(txtaudio.Text.Trim()).ToLower();
+                if (inputExt != ".mp4"
+                        && inputExt != ".aac"
+                        && inputExt != ".mp3"
+                        && inputExt != ".m4a"
+                        && inputExt != ".mp2"
+                        && inputExt != ".ac3")
+                {
+                    MessageBox.Show("输入文件 \r\n\r\n" + txtaudio.Text.Trim() + "\r\n\r\n是一个不被支持mp4容器的音频文件!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtaudio.Clear();
+                    return;
+                }
+                nameaudio = txtaudio.Text;
+            }
         }
         private void txtout_TextChanged(object sender, EventArgs e)
         {
@@ -1754,6 +1802,13 @@ namespace mp4box
         }
         private void cbFPS_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string ext = Path.GetExtension(namevideo).ToLower();
+            if (cbFPS.SelectedIndex != 0 && ext != ".264" && ext != ".h264" && ext != ".hevc")
+            {
+                MessageBox.Show("只有扩展名为.264 .h264 .hevc的流文件设置帧率(fps)才有效", "警告", MessageBoxButtons.OK);
+                cbFPS.SelectedIndex = 0;
+                return;
+            }
         }
         private void btnMIopen_Click(object sender, EventArgs e)
         {
@@ -2060,7 +2115,7 @@ namespace mp4box
                 }
             }
             x264 += "\r\n";
-           
+
             //封装
             if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果包含音频
             {
@@ -2937,6 +2992,7 @@ namespace mp4box
                 File.WriteAllText(savefile.FileName, AVSScriptTextBox.Text, UnicodeEncoding.Default);
             }
         }
+
         private void MuxReplaceAudioButton_Click(object sender, EventArgs e)
         {
             if (namevideo == "")

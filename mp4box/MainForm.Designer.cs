@@ -1323,7 +1323,10 @@
             resources.GetString("Mp4BoxParComboBox.Items2"),
             resources.GetString("Mp4BoxParComboBox.Items3"),
             resources.GetString("Mp4BoxParComboBox.Items4"),
-            resources.GetString("Mp4BoxParComboBox.Items5")});
+            resources.GetString("Mp4BoxParComboBox.Items5"),
+            resources.GetString("Mp4BoxParComboBox.Items6"),
+            resources.GetString("Mp4BoxParComboBox.Items7"),
+            resources.GetString("Mp4BoxParComboBox.Items8")});
             resources.ApplyResources(this.Mp4BoxParComboBox, "Mp4BoxParComboBox");
             this.Mp4BoxParComboBox.Name = "Mp4BoxParComboBox";
             // 
@@ -3100,7 +3103,6 @@
         private System.Windows.Forms.ComboBox languageComboBox;
         private System.Windows.Forms.Label label26;
         private ControlExs.QQButton AVSSaveButton;
-        private ControlExs.QQButton MuxReplaceAudioButton;
         private System.Windows.Forms.Label x264FramesLabel;
         private System.Windows.Forms.Label x264SeekLabel;
         private System.Windows.Forms.NumericUpDown x264FramesNumericUpDown;
@@ -3172,6 +3174,7 @@
         private System.Windows.Forms.ComboBox Mp4BoxParComboBox;
         private System.Windows.Forms.Label label41;
         private ControlExs.QQButton gmkvextractguibButton;
+        private ControlExs.QQButton MuxReplaceAudioButton;
     }
 }
 
