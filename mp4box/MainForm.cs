@@ -587,7 +587,7 @@ namespace mp4box
             {
                 if (!File.Exists(txtvideo.Text.Trim().ToString()))
                 {
-                    MessageBox.Show("输入文件 \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n不存在!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("输入文件: \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n不存在!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtvideo.Clear();
                     return;
                 }
@@ -601,14 +601,14 @@ namespace mp4box
                         && inputExt != ".h264"
                         && inputExt != ".hevc")
                 {
-                    MessageBox.Show("输入文件 \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n是一个不被mp4容器支持的视频文件!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("输入文件: \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n是一个mp4box不支持的视频文件!", "不支持的文件", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtvideo.Clear();
                     txtout.Clear();
                     return;
                 }
                 if (inputExt == ".264" || inputExt == ".h264" || inputExt == ".hevc")
                 {
-                    MessageBox.Show("H.264或者HEVC流文件需要设定fps，不设置将默认为25fps", "警告", MessageBoxButtons.OK);
+                    MessageBox.Show("H.264或者HEVC流文件需要设定fps，不设置将默认为25fps", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 namevideo = txtvideo.Text;
                 txtout.Text = AddExt(txtvideo.Text, "_Mux.mp4");
@@ -621,7 +621,7 @@ namespace mp4box
             {
                 if (!File.Exists(txtaudio.Text.Trim()))
                 {
-                    MessageBox.Show("输入文件 \r\n\r\n" + txtaudio.Text.Trim() + "\r\n\r\n不存在!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("输入文件: \r\n\r\n" + txtaudio.Text.Trim() + "\r\n\r\n不存在!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtaudio.Clear();
                     return;
                 }
@@ -633,7 +633,7 @@ namespace mp4box
                         && inputExt != ".mp2"
                         && inputExt != ".ac3")
                 {
-                    MessageBox.Show("输入文件 \r\n\r\n" + txtaudio.Text.Trim() + "\r\n\r\n是一个不被支持mp4容器的音频文件!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("输入文件: \r\n\r\n" + txtaudio.Text.Trim() + "\r\n\r\n是一个mp4box不支持的音频文件!", "不支持的文件", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtaudio.Clear();
                     return;
                 }
@@ -1805,7 +1805,7 @@ namespace mp4box
             string ext = Path.GetExtension(namevideo).ToLower();
             if (cbFPS.SelectedIndex != 0 && ext != ".264" && ext != ".h264" && ext != ".hevc")
             {
-                MessageBox.Show("只有扩展名为.264 .h264 .hevc的流文件设置帧率(fps)才有效", "警告", MessageBoxButtons.OK);
+                MessageBox.Show("只有扩展名为.264 .h264 .hevc的流文件设置帧率(fps)才有效", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cbFPS.SelectedIndex = 0;
                 return;
             }
@@ -2057,7 +2057,6 @@ namespace mp4box
                 //if (File.Exists(tempavspath)) File.Delete(tempavspath);
                 File.Copy(x264VideoTextBox.Text, tempavspath, true);
                 namevideo2 = tempavspath;
-                x264AudioModeComboBox.SelectedIndex = 1;
                 x264DemuxerComboBox.SelectedIndex = 0; //压制AVS始终使用分离器为auto
             }
 
@@ -3603,7 +3602,7 @@ namespace mp4box
 
         private void gmkvextractguibButton_Click(object sender, EventArgs e)
         {
-            string path = System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath) + @"\tools\gMKVExtractGUI.exe";
+            string path = workPath + "\\gMKVExtractGUI.exe";
 
             if (File.Exists(path))
             {
@@ -3611,7 +3610,7 @@ namespace mp4box
             }
             else
             {
-                MessageBox.Show("未找到程序文件!请检查\"\\tools\\gMKVExtractGUI.exe\"是否存在", "错误");
+                MessageBox.Show("请检查\r\n" + path + "\r\n是否存在", "未找到程序!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
