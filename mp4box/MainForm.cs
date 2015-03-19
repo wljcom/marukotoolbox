@@ -1979,14 +1979,14 @@ namespace mp4box
             DateTime CompileDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
             QQMessageBox.Show(
                 this,
-                "小丸工具箱 月儿版 SP1\r\n主页：http://maruko.appinn.me/ \r\n编译日期：" + CompileDate.ToString(),
+                "小丸工具箱 七七版\r\n主页：http://www.maruko.in/ \r\n编译日期：" + CompileDate.ToString(),
                 "关于",
                 QQMessageBoxIcon.Information,
                 QQMessageBoxButtons.OK);
         }
         private void HomePageBtn_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://maruko.appinn.me/");
+            System.Diagnostics.Process.Start("http://www.maruko.in/");
         }
         #endregion
         #region 视频页面
