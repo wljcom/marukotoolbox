@@ -1,12 +1,16 @@
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
-* text eol=crlf
+* text=auto
 
 ###############################################################################
 # Declare files that will always have CRLF line endings on checkout.
 ###############################################################################
-*.sln text eol=crlf
+*.sln    text eol=crlf
+*.cs     text eol=crlf
+*.resx   text eol=crlf
+*.csproj text eol=crlf
+*.user   text eol=crlf
 
 ###############################################################################
 # Set default behavior for command prompt diff.
@@ -31,6 +35,9 @@
 *.png   binary
 *.gif   binary
 *.lib   binary
+*.dll   binary
+*.pfx   binary
+*.ico   binary
 
 ###############################################################################
 # diff behavior for common document formats
