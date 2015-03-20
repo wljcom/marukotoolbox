@@ -249,11 +249,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.x264BitrateNum = new System.Windows.Forms.NumericUpDown();
             this.HelpTab = new System.Windows.Forms.TabPage();
+            this.FeedbackButton = new ControlExs.QQButton();
             this.HelpTextBox = new System.Windows.Forms.RichTextBox();
             this.ReleaseDatelabel = new System.Windows.Forms.Label();
             this.ReleaseDatelabel2 = new System.Windows.Forms.Label();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.CheckUpdateButton = new ControlExs.QQButton();
             this.HomePageBtn = new ControlExs.QQButton();
             this.AboutBtn = new ControlExs.QQButton();
@@ -2397,17 +2396,23 @@
             // 
             // HelpTab
             // 
+            this.HelpTab.Controls.Add(this.FeedbackButton);
             this.HelpTab.Controls.Add(this.HelpTextBox);
             this.HelpTab.Controls.Add(this.ReleaseDatelabel);
             this.HelpTab.Controls.Add(this.ReleaseDatelabel2);
-            this.HelpTab.Controls.Add(this.linkLabel4);
-            this.HelpTab.Controls.Add(this.linkLabel1);
             this.HelpTab.Controls.Add(this.CheckUpdateButton);
             this.HelpTab.Controls.Add(this.HomePageBtn);
             this.HelpTab.Controls.Add(this.AboutBtn);
             resources.ApplyResources(this.HelpTab, "HelpTab");
             this.HelpTab.Name = "HelpTab";
             this.HelpTab.UseVisualStyleBackColor = true;
+            // 
+            // FeedbackButton
+            // 
+            resources.ApplyResources(this.FeedbackButton, "FeedbackButton");
+            this.FeedbackButton.Name = "FeedbackButton";
+            this.FeedbackButton.UseVisualStyleBackColor = true;
+            this.FeedbackButton.Click += new System.EventHandler(this.FeedbackButton_Click);
             // 
             // HelpTextBox
             // 
@@ -2426,20 +2431,6 @@
             // 
             resources.ApplyResources(this.ReleaseDatelabel2, "ReleaseDatelabel2");
             this.ReleaseDatelabel2.Name = "ReleaseDatelabel2";
-            // 
-            // linkLabel4
-            // 
-            resources.ApplyResources(this.linkLabel4, "linkLabel4");
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
-            // 
-            // linkLabel1
-            // 
-            resources.ApplyResources(this.linkLabel1, "linkLabel1");
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // CheckUpdateButton
             // 
@@ -3042,8 +3033,6 @@
         private System.Windows.Forms.TabPage HelpTab;
         private ControlExs.QQButton HomePageBtn;
         private ControlExs.QQButton AboutBtn;
-        private System.Windows.Forms.LinkLabel linkLabel4;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.TabControl tabControl;
         private ControlExs.QQRadioButton AudioBitrateRadioButton;
         private ControlExs.QQRadioButton AudioCustomizeRadioButton;
@@ -3175,6 +3164,7 @@
         private System.Windows.Forms.Label label41;
         private ControlExs.QQButton gmkvextractguibButton;
         private ControlExs.QQButton MuxReplaceAudioButton;
+        private ControlExs.QQButton FeedbackButton;
     }
 }
 

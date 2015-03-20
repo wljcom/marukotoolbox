@@ -1480,7 +1480,7 @@
     <value>357, 557</value>
   </data>
   <data name="AVSwithAudioCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+    <value>74, 19</value>
   </data>
   <data name="AVSwithAudioCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
@@ -1543,7 +1543,7 @@
     <value>8, 227</value>
   </data>
   <data name="LevelsCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 21</value>
+    <value>89, 19</value>
   </data>
   <data name="LevelsCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -1576,7 +1576,7 @@
     <value>8, 173</value>
   </data>
   <data name="CropCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 21</value>
+    <value>83, 19</value>
   </data>
   <data name="CropCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -1609,7 +1609,7 @@
     <value>8, 200</value>
   </data>
   <data name="TrimCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 21</value>
+    <value>80, 19</value>
   </data>
   <data name="TrimCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -1642,7 +1642,7 @@
     <value>8, 254</value>
   </data>
   <data name="SharpenCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 21</value>
+    <value>102, 19</value>
   </data>
   <data name="SharpenCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -1675,7 +1675,7 @@
     <value>8, 146</value>
   </data>
   <data name="AddBordersCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 21</value>
+    <value>125, 19</value>
   </data>
   <data name="AddBordersCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -1708,7 +1708,7 @@
     <value>8, 119</value>
   </data>
   <data name="LanczosResizeCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 21</value>
+    <value>109, 19</value>
   </data>
   <data name="LanczosResizeCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -1741,7 +1741,7 @@
     <value>8, 92</value>
   </data>
   <data name="TweakCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 21</value>
+    <value>63, 19</value>
   </data>
   <data name="TweakCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -1774,7 +1774,7 @@
     <value>8, 281</value>
   </data>
   <data name="UndotCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 21</value>
+    <value>90, 19</value>
   </data>
   <data name="UndotCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -4405,7 +4405,7 @@
     <value>390, 136</value>
   </data>
   <data name="AudioCopyCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+    <value>74, 19</value>
   </data>
   <data name="AudioCopyCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -4894,7 +4894,7 @@
     <value>377, 222</value>
   </data>
   <data name="MaintainResolutionCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 21</value>
+    <value>98, 19</value>
   </data>
   <data name="MaintainResolutionCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -5098,7 +5098,7 @@
     <value>483, 131</value>
   </data>
   <data name="x264BatchSubCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+    <value>74, 19</value>
   </data>
   <data name="x264BatchSubCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -5245,7 +5245,7 @@
     <value>401, 172</value>
   </data>
   <data name="x264ShutdownCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+    <value>74, 19</value>
   </data>
   <data name="x264ShutdownCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -5377,7 +5377,7 @@
     <value>13, 1</value>
   </data>
   <data name="x264Mode1RadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 21</value>
+    <value>47, 19</value>
   </data>
   <data name="x264Mode1RadioButton.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -5410,7 +5410,7 @@
     <value>77, 1</value>
   </data>
   <data name="x264Mode3RadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 21</value>
+    <value>61, 19</value>
   </data>
   <data name="x264Mode3RadioButton.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -5443,7 +5443,7 @@
     <value>178, 1</value>
   </data>
   <data name="x264Mode2RadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 21</value>
+    <value>58, 19</value>
   </data>
   <data name="x264Mode2RadioButton.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -6336,6 +6336,36 @@
   <data name="&gt;&gt;VideoTab.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="FeedbackButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft YaHei UI, 9pt</value>
+  </data>
+  <data name="FeedbackButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="FeedbackButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 559</value>
+  </data>
+  <data name="FeedbackButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 23</value>
+  </data>
+  <data name="FeedbackButton.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="FeedbackButton.Text" xml:space="preserve">
+    <value>反馈问题</value>
+  </data>
+  <data name="&gt;&gt;FeedbackButton.Name" xml:space="preserve">
+    <value>FeedbackButton</value>
+  </data>
+  <data name="&gt;&gt;FeedbackButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;FeedbackButton.Parent" xml:space="preserve">
+    <value>HelpTab</value>
+  </data>
+  <data name="&gt;&gt;FeedbackButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="HelpTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 6</value>
   </data>
@@ -6358,7 +6388,7 @@
     <value>HelpTab</value>
   </data>
   <data name="&gt;&gt;HelpTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="ReleaseDatelabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6367,7 +6397,7 @@
     <value>NoControl</value>
   </data>
   <data name="ReleaseDatelabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 565</value>
+    <value>89, 565</value>
   </data>
   <data name="ReleaseDatelabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 12</value>
@@ -6385,7 +6415,7 @@
     <value>HelpTab</value>
   </data>
   <data name="&gt;&gt;ReleaseDatelabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="ReleaseDatelabel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6394,7 +6424,7 @@
     <value>NoControl</value>
   </data>
   <data name="ReleaseDatelabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 565</value>
+    <value>14, 565</value>
   </data>
   <data name="ReleaseDatelabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 12</value>
@@ -6415,67 +6445,7 @@
     <value>HelpTab</value>
   </data>
   <data name="&gt;&gt;ReleaseDatelabel2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="linkLabel4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="linkLabel4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="linkLabel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 565</value>
-  </data>
-  <data name="linkLabel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
-  </data>
-  <data name="linkLabel4.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="linkLabel4.Text" xml:space="preserve">
-    <value>终极解码</value>
-  </data>
-  <data name="&gt;&gt;linkLabel4.Name" xml:space="preserve">
-    <value>linkLabel4</value>
-  </data>
-  <data name="&gt;&gt;linkLabel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;linkLabel4.Parent" xml:space="preserve">
-    <value>HelpTab</value>
-  </data>
-  <data name="&gt;&gt;linkLabel4.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="linkLabel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="linkLabel1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 565</value>
-  </data>
-  <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 12</value>
-  </data>
-  <data name="linkLabel1.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="linkLabel1.Text" xml:space="preserve">
-    <value>x264-tmod</value>
-  </data>
-  <data name="&gt;&gt;linkLabel1.Name" xml:space="preserve">
-    <value>linkLabel1</value>
-  </data>
-  <data name="&gt;&gt;linkLabel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;linkLabel1.Parent" xml:space="preserve">
-    <value>HelpTab</value>
-  </data>
-  <data name="&gt;&gt;linkLabel1.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="CheckUpdateButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9pt</value>
@@ -6505,7 +6475,7 @@
     <value>HelpTab</value>
   </data>
   <data name="&gt;&gt;CheckUpdateButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="HomePageBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9pt</value>
@@ -6535,7 +6505,7 @@
     <value>HelpTab</value>
   </data>
   <data name="&gt;&gt;HomePageBtn.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="AboutBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft YaHei UI, 9pt</value>
@@ -6565,7 +6535,7 @@
     <value>HelpTab</value>
   </data>
   <data name="&gt;&gt;AboutBtn.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="HelpTab.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -6844,7 +6814,7 @@
     <value>390, 136</value>
   </data>
   <data name="BlackNoPicCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+    <value>74, 19</value>
   </data>
   <data name="BlackNoPicCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -7447,7 +7417,7 @@
     <value>23, 201</value>
   </data>
   <data name="SplashScreenCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 21</value>
+    <value>98, 19</value>
   </data>
   <data name="SplashScreenCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -7480,7 +7450,7 @@
     <value>23, 165</value>
   </data>
   <data name="TrayModeCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+    <value>74, 19</value>
   </data>
   <data name="TrayModeCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -7513,7 +7483,7 @@
     <value>23, 129</value>
   </data>
   <data name="SetupDeleteTempFileCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 21</value>
+    <value>182, 19</value>
   </data>
   <data name="SetupDeleteTempFileCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>

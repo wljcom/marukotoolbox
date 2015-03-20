@@ -1906,18 +1906,12 @@ namespace mp4box
         private void txtAVScreate_Click(object sender, EventArgs e)
         {
         }
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("http://www.nmm-hd.org/newbbs/viewtopic.php?f=8&t=219");
-        }
+
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://www.sosg.net/read.php?tid=480646");
         }
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("http://pan.baidu.com/s/1dDBvQP7");
-        }
+
         private void btnaextract2_Click(object sender, EventArgs e)
         {
             //MP4 抽取音频2
@@ -3612,6 +3606,12 @@ namespace mp4box
             {
                 MessageBox.Show("请检查\r\n" + path + "\r\n是否存在", "未找到程序!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void FeedbackButton_Click(object sender, EventArgs e)
+        {
+            FeedbackForm ff = new FeedbackForm();
+            ff.Show();
         }
 
     }
