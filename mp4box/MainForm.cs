@@ -1285,8 +1285,12 @@ namespace mp4box
                     {
                         Regex r = new Regex("--vf\\s\\S*");
                         Match m = r.Match(x264);
-                        x264 = x264.Insert(m.Index + m.Value.Length, "/subtitles" + " --sub \"" + namesub2 + "\"");
-                        x264 = x264.Insert(m.NextMatch().Index + m.Value.Length + m.NextMatch().Value.Length, "/subtitles" + " --sub \"" + namesub2 + "\"");
+                        x264 = x264.Insert(m.Index + m.Value.Length, "/subtitles --sub \"" + sub + "\"");
+                        if (m.NextMatch().Success)
+                        {
+                            Match mnext = r.Match(x264).NextMatch();
+                            x264 = x264.Insert(mnext.Index + mnext.Value.Length, "/subtitles --sub \"" + sub + "\"");
+                        }
                     }
                 }
             }
@@ -2103,8 +2107,12 @@ namespace mp4box
                 {
                     Regex r = new Regex("--vf\\s\\S*");
                     Match m = r.Match(x264);
-                    x264 = x264.Insert(m.Index + m.Value.Length, "/subtitles" + " --sub \"" + namesub2 + "\"");
-                    x264 = x264.Insert(m.NextMatch().Index + m.Value.Length + m.NextMatch().Value.Length, "/subtitles" + " --sub \"" + namesub2 + "\"");
+                    x264 = x264.Insert(m.Index + m.Value.Length, "/subtitles --sub \"" + namesub2 + "\"");
+                    if (m.NextMatch().Success)
+                    {
+                        Match mnext = r.Match(x264).NextMatch();
+                        x264 = x264.Insert(mnext.Index +  mnext.Value.Length, "/subtitles --sub \"" + namesub2 + "\"");
+                    }
                 }
             }
             x264 += "\r\n";
