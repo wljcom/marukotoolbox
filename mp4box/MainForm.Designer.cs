@@ -2112,6 +2112,7 @@
             this.x264SubTextBox.Name = "x264SubTextBox";
             this.x264SubTextBox.ReadOnly = true;
             this.x264SubTextBox.TextChanged += new System.EventHandler(this.x264SubTextBox_TextChanged);
+            this.x264SubTextBox.DoubleClick += new System.EventHandler(this.x264SubTextBox_DoubleClick);
             // 
             // x264OutTextBox
             // 

@@ -2031,6 +2031,13 @@ namespace mp4box
                 MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            if (!string.IsNullOrEmpty(namesub2) && !File.Exists(namesub2))
+            {
+                MessageBox.Show("字幕文件不存在，请重新选择", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (string.IsNullOrEmpty(nameout2))
             {
                 MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -2877,7 +2884,8 @@ namespace mp4box
                     x264AudioModeComboBox.Items.Add("压制音频");
                     x264AudioModeComboBox.Items.Add("无音频流");
                     x264AudioModeComboBox.SelectedIndex = x264AudioModeComboBoxIndex;
-                    x264VideoTextBox.EmptyTextTip = "可以把文件拖曳到这里";
+                    x264VideoTextBox.EmptyTextTip = "可以把文件拖拽到这里";
+                    x264SubTextBox.EmptyTextTip = "双击清空字幕文件文本框";
                     //x264OutTextBox.EmptyTextTip = "宽度和高度全为0即不改变分辨率";
                     x264PathTextBox.EmptyTextTip = "字幕文件和视频文件在同一目录下且同名，不同名仅有语言后缀时请在右方选择或输入";
                     //txtvideo3.EmptyTextTip = "音频参数在音频选项卡设定";
@@ -2901,7 +2909,8 @@ namespace mp4box
                     x264AudioModeComboBox.Items.Add("壓制音頻");
                     x264AudioModeComboBox.Items.Add("無音頻流");
                     x264AudioModeComboBox.SelectedIndex = x264AudioModeComboBoxIndex;
-                    x264VideoTextBox.EmptyTextTip = "可以把文件拖曳到這裡";
+                    x264VideoTextBox.EmptyTextTip = "可以把文件拖拽到這裡";
+                    x264SubTextBox.EmptyTextTip = "雙擊清空字幕檔案文本框";
                     //x264OutTextBox.EmptyTextTip = "寬度和高度全為0即不改變解析度";
                     x264PathTextBox.EmptyTextTip = "字幕和視頻在同一資料夾下且同名，不同名僅有語言後綴時請在右方選擇或輸入";
                     //txtvideo3.EmptyTextTip = "音頻參數需在音頻選項卡设定";
@@ -2926,6 +2935,7 @@ namespace mp4box
                     x264AudioModeComboBox.Items.Add("no audio");
                     x264AudioModeComboBox.SelectedIndex = x264AudioModeComboBoxIndex;
                     x264VideoTextBox.EmptyTextTip = "Drag file here";
+                    x264SubTextBox.EmptyTextTip = "Clear subtitle text box by double click";
                     //x264OutTextBox.EmptyTextTip = "Both the width and height equal zero means using original resolution";
                     x264PathTextBox.EmptyTextTip = "Subtitle and Video must be of the same name and in the same folder";
                     //txtvideo3.EmptyTextTip = "It is necessary to set audio parameter in the Audio tab";
@@ -2950,6 +2960,7 @@ namespace mp4box
                     x264AudioModeComboBox.Items.Add("オーディオなし");
                     x264AudioModeComboBox.SelectedIndex = x264AudioModeComboBoxIndex;
                     x264VideoTextBox.EmptyTextTip = "ビデオファイルをここに引きずってください";
+                    x264SubTextBox.EmptyTextTip = "ダブルクリックで字幕を削除する";
                     //x264OutTextBox.EmptyTextTip = "Both the width and height equal zero means using original resolution";
                     x264PathTextBox.EmptyTextTip = "字幕とビデオは同じ名前と同じフォルダにある必要があります";
                     //txtvideo3.EmptyTextTip = "It is necessary to set audio parameter in the Audio tab";
@@ -3224,18 +3235,18 @@ namespace mp4box
 
         private void BlackStartButton_Click(object sender, EventArgs e)
         {
-            string videoname = BlackVideoTextBox.Text;
-            MediaInfo MI = new MediaInfo();
-            MI.Open(videoname);
-            double videobitrate = double.Parse(MI.Get(StreamKind.General, 0, "BitRate"));
-            double targetBitrate = (double)BlackBitrateNum.Value;
-
             //验证
             if (!File.Exists(BlackVideoTextBox.Text) || Path.GetExtension(BlackVideoTextBox.Text) != ".flv")
             {
                 MessageBox.Show("请选择FLV视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            MediaInfo MI = new MediaInfo();
+            MI.Open(BlackVideoTextBox.Text);
+            double videobitrate = double.Parse(MI.Get(StreamKind.General, 0, "BitRate"));
+            double targetBitrate = (double)BlackBitrateNum.Value;
+
             if (!File.Exists(BlackPicTextBox.Text) && BlackNoPicCheckBox.Checked == false)
             {
                 MessageBox.Show("请选择图片文件或勾选使用黑屏", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -3620,6 +3631,11 @@ namespace mp4box
         {
             FeedbackForm ff = new FeedbackForm();
             ff.Show();
+        }
+
+        private void x264SubTextBox_DoubleClick(object sender, EventArgs e)
+        {
+            x264SubTextBox.Clear();
         }
 
     }
