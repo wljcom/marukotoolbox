@@ -544,7 +544,8 @@ namespace mp4box
             aextract += " -map 0:" + streamIndex + " -c copy ";
             string suf = "_抽取流Index" + streamIndex;
             string outfile = Util.GetDir(namevideo) +
-                Path.GetFileNameWithoutExtension(namevideo) + suf + Path.GetExtension(namevideo);
+                Path.GetFileNameWithoutExtension(namevideo) + suf + '.' +
+                FormatExtractor.Extract(workPath, namevideo)[streamIndex].Format;
             aextract += Util.FormatPath(outfile);
             batpath = workPath + "\\mkvextract.bat";
             File.WriteAllText(batpath, aextract, UnicodeEncoding.Default);
