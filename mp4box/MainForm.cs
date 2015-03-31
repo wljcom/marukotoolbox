@@ -2118,7 +2118,7 @@ namespace mp4box
                     if (m.NextMatch().Success)
                     {
                         Match mnext = r.Match(x264).NextMatch();
-                        x264 = x264.Insert(mnext.Index +  mnext.Value.Length, "/subtitles --sub \"" + namesub2 + "\"");
+                        x264 = x264.Insert(mnext.Index + mnext.Value.Length, "/subtitles --sub \"" + namesub2 + "\"");
                     }
                 }
             }
@@ -2291,8 +2291,18 @@ namespace mp4box
             if (File.Exists(path))
             {
                 namevideo2 = path;
-                x264OutTextBox.Text = AddExt(path, "_x264.mp4");
-                //txtsub2.Text = AddExt(path, ".ass");
+                x264OutTextBox.Text = AddExt(namevideo2, "_x264.mp4");
+                string sub = "";
+                string[] subExt = { ".ass", ".ssa", ".srt" };
+                foreach (string ext in subExt)
+                {
+                    if (File.Exists(AddExt(namevideo2,ext)))
+                    {
+                        sub =AddExt(namevideo2,ext);
+                        break;
+                    }
+                }
+                x264SubTextBox.Text=sub;
             }
         }
         private void x264OutTextBox_TextChanged(object sender, EventArgs e)
