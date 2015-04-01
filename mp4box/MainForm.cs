@@ -203,11 +203,6 @@ namespace mp4box
             finish += ext;
             return finish;
         }
-        public string muxbat(string input1, string input2, string fps, string output)
-        {
-            mux = "\"" + workPath + "\\mp4box.exe\" -fps " + fps + " -add \"" + input1 + "\" -add \"" + input2 + "\" -new \"" + output + "\"\r\n";
-            return mux;
-        }
         public string muxbat(string input1, string input2, string output)
         {
             mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + input1 + "\" -add \"" + input2 + "\" -new \"" + output + "\"\r\n";
@@ -2128,7 +2123,7 @@ namespace mp4box
             //封装
             if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果包含音频
             {
-                mux = muxbat(tempVideo, tempAudio, cbFPS.Text, AddExt(nameout2, ".mp4"));
+                mux = muxbat(tempVideo, tempAudio, AddExt(nameout2, ".mp4"));
                 x264 = aextract + x264 + mux + "\r\n"
                     + "del \"" + tempVideo + "\"\r\n"
                     + "del \"" + tempAudio + "\"\r\n";
@@ -2297,13 +2292,13 @@ namespace mp4box
                 string[] subExt = { ".ass", ".ssa", ".srt" };
                 foreach (string ext in subExt)
                 {
-                    if (File.Exists(AddExt(namevideo2,ext)))
+                    if (File.Exists(AddExt(namevideo2, ext)))
                     {
-                        sub =AddExt(namevideo2,ext);
+                        sub = AddExt(namevideo2, ext);
                         break;
                     }
                 }
-                x264SubTextBox.Text=sub;
+                x264SubTextBox.Text = sub;
             }
         }
         private void x264OutTextBox_TextChanged(object sender, EventArgs e)
