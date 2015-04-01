@@ -33,7 +33,6 @@ using Microsoft.WindowsAPICodePack.Taskbar;
 namespace mp4box
 {
     using Extension;
-    using System.IO;
     public partial class WorkingForm : Form
     {
         /// <summary>
@@ -153,6 +152,11 @@ namespace mp4box
         /// </summary>
         private bool autoscroll;
 
+        /// <summary>
+        /// Internal log, without progress Indicators
+        /// </summary>
+        private StringBuilder internellog = new StringBuilder();
+
         #endregion
 
         #region Regex Patterns
@@ -186,6 +190,18 @@ namespace mp4box
             ///     Available patterns: frame.
             /// </summary>
             public static readonly Regex lavfReg = new Regex(lavfRegStr);
+
+            /// <summary>
+            /// NeroAAC sample output:
+            /// <para>Processed 10 seconds...</para>
+            /// </summary>
+            private const string neroRegStr = @"Processed (?<duration>\d+) seconds...";
+
+            /// <summary>
+            /// NeroAAC Progress Regex.
+            ///     Available patterns: duration.
+            /// </summary>
+            public static readonly Regex neroReg = new Regex(neroRegStr);
 
             /// <summary>
             /// x264 execution sample output:
@@ -691,8 +707,7 @@ namespace mp4box
                 savDlg.FilterIndex = 1;
                 savDlg.RestoreDirectory = true;
                 if (savDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    File.WriteAllText(savDlg.FileName, richTextBoxOutput.Text);
-                    //richTextBoxOutput.SaveFile(savDlg.FileName, RichTextBoxStreamType.UnicodePlainText);
+                    System.IO.File.WriteAllText(savDlg.FileName, internellog.ToString());
             }
         }
 
@@ -833,10 +848,20 @@ namespace mp4box
                 result = Patterns.ffmsReg.Match(e.Data);
                 if (result.Success)
                     UpdateProgress(Double.Parse(result.Groups["percent"].Value) / 100);
-                // try lavf pattern
-                result = Patterns.lavfReg.Match(e.Data);
-                if (result.Success)
-                    UpdateProgress(Double.Parse(result.Groups["frame"].Value) / frameCount);
+                else
+                {
+                    // try lavf pattern
+                    result = Patterns.lavfReg.Match(e.Data);
+                    if (result.Success)
+                        UpdateProgress(Double.Parse(result.Groups["frame"].Value) / frameCount);
+                    else
+                    {
+                        // try nero pattern
+                        result = Patterns.neroReg.Match(e.Data);
+                        if (!result.Success)
+                            internellog.AppendLine(e.Data);
+                    }
+                }
             }
         }
 
