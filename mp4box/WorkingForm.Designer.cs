@@ -72,6 +72,7 @@
             resources.ApplyResources(this.progressBarX264, "progressBarX264");
             this.progressBarX264.Maximum = 1000;
             this.progressBarX264.Name = "progressBarX264";
+            this.progressBarX264.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             // 
             // labelProgress
             // 

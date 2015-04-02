@@ -3406,7 +3406,7 @@ namespace mp4box
 
         private void CheckUpdateButton_Click(object sender, EventArgs e)
         {
-            WebRequest request = WebRequest.Create("http://hi.baidu.com/xiaowanmaruko/item/119203f757097c603c148502");
+            WebRequest request = WebRequest.Create("http://mtbftest.sinaapp.com/version.php");
             request.Credentials = CredentialCache.DefaultCredentials;
             // Get the response.
             request.BeginGetResponse(new AsyncCallback(OnResponse), request);
@@ -3432,20 +3432,22 @@ namespace mp4box
                 int s = DateTime.Compare(NewDate, ReleaseDate);
                 if (s == 1) //NewDate is later than ReleaseDate
                 {
-                    DialogResult dr = MessageBox.Show(string.Format("新鲜小丸已于{0}上架，主人不来尝一口咩？", NewDate.ToString("yyyy-M-d")), "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (dr == DialogResult.Yes)
-                    {
-                        Process.Start("http://www.maruko.in/");
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    FormUpdater formUpdater = new FormUpdater(startpath, a);
+                    formUpdater.ShowDialog(this);
+                    //DialogResult dr = MessageBox.Show(string.Format("新鲜小丸已于{0}上架，主人不来尝一口咩？", NewDate.ToString("yyyy-M-d")), "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    //if (dr == DialogResult.Yes)
+                    //{
+                    //    Process.Start("http://www.maruko.in/");
+                    //}
+                    //else
+                    //{
+                    //    return;
+                    //}
                 }
-                else
-                {
-                    MessageBox.Show("喵~伦家已经是最新版啦！", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                //else
+                //{
+                //    MessageBox.Show("喵~伦家已经是最新版啦！", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
             }
         }
 

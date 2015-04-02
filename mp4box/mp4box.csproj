@@ -121,6 +121,12 @@
     <Compile Include="FeedbackForm.Designer.cs">
       <DependentUpon>FeedbackForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUpdater.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdater.Designer.cs">
+      <DependentUpon>FormUpdater.cs</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -160,6 +166,9 @@
     </Compile>
     <EmbeddedResource Include="FeedbackForm.resx">
       <DependentUpon>FeedbackForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdater.resx">
+      <DependentUpon>FormUpdater.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.en.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

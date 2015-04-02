@@ -841,6 +841,9 @@ namespace mp4box
                 if (result.Success)
                 {
                     UpdateWorkCountUI();
+                    progressBarX264.InvokeIfRequired(() =>
+                        progressBarX264.Style = ProgressBarStyle.Blocks
+                    );
                     UpdateProgress(0);
                     frameCount = EstimateFrame(workPath, result.Groups["fileIn"].Value);
                 }
