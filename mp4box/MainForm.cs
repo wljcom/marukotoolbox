@@ -93,7 +93,7 @@ namespace mp4box
         string avs = "";
         string tempavspath = "";
         string tempPic = "";
-        DateTime ReleaseDate = DateTime.Parse("2015-2-14 8:0:0");
+        DateTime ReleaseDate = DateTime.Parse("2015-4-2 8:0:0");
 
         #endregion
 
@@ -2288,17 +2288,15 @@ namespace mp4box
             {
                 namevideo2 = path;
                 x264OutTextBox.Text = AddExt(namevideo2, "_x264.mp4");
-                string sub = "";
                 string[] subExt = { ".ass", ".ssa", ".srt" };
                 foreach (string ext in subExt)
                 {
                     if (File.Exists(AddExt(namevideo2, ext)))
                     {
-                        sub = AddExt(namevideo2, ext);
+                        x264SubTextBox.Text = AddExt(namevideo2, ext);
                         break;
                     }
                 }
-                x264SubTextBox.Text = sub;
             }
         }
         private void x264OutTextBox_TextChanged(object sender, EventArgs e)
@@ -3432,22 +3430,18 @@ namespace mp4box
                 int s = DateTime.Compare(NewDate, ReleaseDate);
                 if (s == 1) //NewDate is later than ReleaseDate
                 {
-                    FormUpdater formUpdater = new FormUpdater(startpath, a);
-                    formUpdater.ShowDialog(this);
-                    //DialogResult dr = MessageBox.Show(string.Format("新鲜小丸已于{0}上架，主人不来尝一口咩？", NewDate.ToString("yyyy-M-d")), "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    //if (dr == DialogResult.Yes)
-                    //{
-                    //    Process.Start("http://www.maruko.in/");
-                    //}
-                    //else
-                    //{
-                    //    return;
-                    //}
+                    DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否立刻下载？（文件约1.5MB）", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dr == DialogResult.Yes)
+                    {
+                        FormUpdater formUpdater = new FormUpdater(startpath, a);
+                        formUpdater.ShowDialog(this);
+                        //Process.Start("http://www.maruko.in/");
+                    }
                 }
-                //else
-                //{
-                //    MessageBox.Show("喵~伦家已经是最新版啦！", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //}
+                else
+                {
+                    MessageBox.Show("已经是最新版了喵！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 

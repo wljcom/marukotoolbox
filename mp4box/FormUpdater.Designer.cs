@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUpdater));
             this.progressBarDownload = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,43 +38,43 @@
             // 
             // progressBarDownload
             // 
-            this.progressBarDownload.Location = new System.Drawing.Point(22, 64);
+            this.progressBarDownload.Location = new System.Drawing.Point(12, 48);
             this.progressBarDownload.Name = "progressBarDownload";
-            this.progressBarDownload.Size = new System.Drawing.Size(390, 26);
+            this.progressBarDownload.Size = new System.Drawing.Size(417, 30);
             this.progressBarDownload.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 11);
+            this.label1.Location = new System.Drawing.Point(27, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 13);
+            this.label1.Size = new System.Drawing.Size(137, 12);
             this.label1.TabIndex = 1;
             this.label1.Text = "发现新版本，发布日期：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 36);
+            this.label2.Location = new System.Drawing.Point(27, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(290, 13);
+            this.label2.Size = new System.Drawing.Size(287, 12);
             this.label2.TabIndex = 2;
             this.label2.Text = "小丸工具箱正在升级中，稍后会自动重启，请稍候喔~";
             // 
             // labelDate
             // 
             this.labelDate.AutoSize = true;
-            this.labelDate.Location = new System.Drawing.Point(184, 11);
+            this.labelDate.Location = new System.Drawing.Point(184, 10);
             this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(75, 13);
+            this.labelDate.Size = new System.Drawing.Size(65, 12);
             this.labelDate.TabIndex = 3;
             this.labelDate.Text = "YYYY-MM-DD";
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(337, 96);
+            this.buttonCancel.Location = new System.Drawing.Point(164, 84);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(125, 29);
             this.buttonCancel.TabIndex = 4;
             this.buttonCancel.Text = "取消升级";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -81,14 +82,15 @@
             // 
             // FormUpdater
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 128);
+            this.ClientSize = new System.Drawing.Size(441, 118);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.labelDate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBarDownload);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormUpdater";
             this.Text = "自动升级";
             this.Load += new System.EventHandler(this.FormUpdater_Load);

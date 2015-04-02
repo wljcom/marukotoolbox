@@ -102,7 +102,7 @@ namespace mp4box
             else
             {
                 if (System.IO.File.Exists(backupPath))
-                    System.IO.File.Exists(backupPath);
+                    System.IO.File.Delete(backupPath);
                 System.IO.File.Move(exePath, backupPath);
                 System.IO.File.Move(newPath, exePath);
                 Application.Restart();
