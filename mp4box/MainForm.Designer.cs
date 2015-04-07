@@ -293,6 +293,7 @@
             this.SetDefaultButton = new ControlExs.QQButton();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
+            this.CheckUpdateCheckBox = new ControlExs.QQCheckBox();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -2679,6 +2680,7 @@
             // 
             // SetupTabPage
             // 
+            this.SetupTabPage.Controls.Add(this.CheckUpdateCheckBox);
             this.SetupTabPage.Controls.Add(this.SetupPlayerTextBox);
             this.SetupTabPage.Controls.Add(this.label38);
             this.SetupTabPage.Controls.Add(this.label2);
@@ -2815,6 +2817,15 @@
             this.ViewLogButton.Name = "ViewLogButton";
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
+            // 
+            // CheckUpdateCheckBox
+            // 
+            resources.ApplyResources(this.CheckUpdateCheckBox, "CheckUpdateCheckBox");
+            this.CheckUpdateCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.CheckUpdateCheckBox.Checked = true;
+            this.CheckUpdateCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckUpdateCheckBox.Name = "CheckUpdateCheckBox";
+            this.CheckUpdateCheckBox.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
@@ -3166,6 +3177,7 @@
         private ControlExs.QQButton gmkvextractguibButton;
         private ControlExs.QQButton MuxReplaceAudioButton;
         private ControlExs.QQButton FeedbackButton;
+        private ControlExs.QQCheckBox CheckUpdateCheckBox;
     }
 }
 

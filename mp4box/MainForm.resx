@@ -7137,6 +7137,39 @@
   <data name="&gt;&gt;MiscTab.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="CheckUpdateCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CheckUpdateCheckBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="CheckUpdateCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CheckUpdateCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 201</value>
+  </data>
+  <data name="CheckUpdateCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 19</value>
+  </data>
+  <data name="CheckUpdateCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="CheckUpdateCheckBox.Text" xml:space="preserve">
+    <value>显示启动画面</value>
+  </data>
+  <data name="&gt;&gt;CheckUpdateCheckBox.Name" xml:space="preserve">
+    <value>CheckUpdateCheckBox</value>
+  </data>
+  <data name="&gt;&gt;CheckUpdateCheckBox.Type" xml:space="preserve">
+    <value>ControlExs.QQCheckBox, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;CheckUpdateCheckBox.Parent" xml:space="preserve">
+    <value>SetupTabPage</value>
+  </data>
+  <data name="&gt;&gt;CheckUpdateCheckBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="SetupPlayerTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
@@ -7159,7 +7192,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;SetupPlayerTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label38.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7189,7 +7222,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7219,7 +7252,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="x264ThreadsComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>374, 55</value>
@@ -7240,7 +7273,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;x264ThreadsComboBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="x264PriorityComboBox.Items" xml:space="preserve">
     <value>低</value>
@@ -7279,7 +7312,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;x264PriorityComboBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7309,7 +7342,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="languageComboBox.Items" xml:space="preserve">
     <value>简体中文</value>
@@ -7342,7 +7375,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;languageComboBox.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="label26.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7372,7 +7405,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="SetupPlayerButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -7402,7 +7435,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;SetupPlayerButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="SplashScreenCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7435,7 +7468,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;SplashScreenCheckBox.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="TrayModeCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7468,7 +7501,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;TrayModeCheckBox.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="SetupDeleteTempFileCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7501,7 +7534,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;SetupDeleteTempFileCheckBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="SetDefaultButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -7531,7 +7564,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;SetDefaultButton.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="DeleteLogButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -7561,7 +7594,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;DeleteLogButton.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="ViewLogButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -7591,7 +7624,7 @@
     <value>SetupTabPage</value>
   </data>
   <data name="&gt;&gt;ViewLogButton.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="SetupTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>

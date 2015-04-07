@@ -40,6 +40,7 @@ using System.Drawing.Imaging;
 using System.Net;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Remoting.Messaging;
 namespace mp4box
 {
     public partial class MainForm : Form
@@ -697,6 +698,7 @@ namespace mp4box
             cfa.AppSettings.Settings["BlackCRF"].Value = BlackCRFNum.Value.ToString();
             cfa.AppSettings.Settings["BlackBitrate"].Value = BlackBitrateNum.Value.ToString();
             cfa.AppSettings.Settings["SetupDeleteTempFile"].Value = SetupDeleteTempFileCheckBox.Checked.ToString();
+            cfa.AppSettings.Settings["CheckUpdate"].Value = CheckUpdateCheckBox.Checked.ToString();
             cfa.AppSettings.Settings["TrayMode"].Value = TrayModeCheckBox.Checked.ToString();
             cfa.AppSettings.Settings["LanguageIndex"].Value = languageComboBox.SelectedIndex.ToString();
             cfa.AppSettings.Settings["SplashScreen"].Value = SplashScreenCheckBox.Checked.ToString();
@@ -778,8 +780,6 @@ namespace mp4box
             BlackCRFNum.Value = 51;
             BlackBitrateNum.Value = 900;
             SetupDeleteTempFileCheckBox.Checked = true;
-
-
         }
 
 
@@ -881,6 +881,7 @@ namespace mp4box
                 BlackCRFNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["BlackCRF"]);
                 BlackBitrateNum.Value = Convert.ToDecimal(ConfigurationManager.AppSettings["BlackBitrate"]);
                 SetupDeleteTempFileCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["SetupDeleteTempFile"]);
+                CheckUpdateCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["CheckUpdate"]);
                 x264ThreadsComboBox.SelectedIndex = Convert.ToInt32(ConfigurationManager.AppSettings["x264Threads"]);
                 TrayModeCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["TrayMode"]);
                 SplashScreenCheckBox.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["SplashScreen"]);
@@ -925,6 +926,14 @@ namespace mp4box
                 }
                 else
                     languageComboBox.SelectedIndex = int.Parse(ConfigurationManager.AppSettings["LanguageIndex"]);
+
+                if (CheckUpdateCheckBox.Checked)
+                {
+                    DateTime d;
+                    bool f;
+                    CheckUpadateDelegate checkUpdateDelegate = CheckUpdate;
+                    checkUpdateDelegate.BeginInvoke(out d, out f, new AsyncCallback(CheckUpdateCallBack), null);
+                }
             }
             catch (Exception)
             {
@@ -3402,6 +3411,90 @@ namespace mp4box
             }
         }
 
+        #region CheckUpdate
+
+        public delegate bool CheckUpadateDelegate(out DateTime newdate, out bool isFullUpdate);
+
+        public void CheckUpdateCallBack(IAsyncResult ar)
+        {
+            DateTime NewDate;
+            bool isFullUpdate;
+            AsyncResult result = (AsyncResult)ar;
+            CheckUpadateDelegate func = (CheckUpadateDelegate)result.AsyncDelegate;
+            bool needUpdate = func.EndInvoke(out NewDate, out isFullUpdate, ar);
+
+            if (needUpdate)
+            {
+                if (isFullUpdate)
+                {
+                    DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否前往官网下载？", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dr == DialogResult.Yes)
+                    {
+                        Process.Start("http://www.maruko.in/");
+                    }
+                }
+                else
+                {
+                    DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否自动升级？（文件约1.5MB）", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dr == DialogResult.Yes)
+                    {
+                        FormUpdater formUpdater = new FormUpdater(startpath, NewDate.ToString());
+                        formUpdater.ShowDialog(this);
+                    }
+                }
+            }
+            else
+            {
+                //MessageBox.Show("已经是最新版了喵！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public bool CheckUpdate(out DateTime NewDate, out bool isFullUpdate)
+        {
+            WebRequest request = WebRequest.Create("http://mtbftest.sinaapp.com/version.php");
+            WebResponse wrs = request.GetResponse();
+            // read the response ...
+            Stream dataStream = wrs.GetResponseStream();
+            // Open the stream using a StreamReader for easy access.
+            StreamReader reader = new StreamReader(dataStream);
+            // Read the content.
+            string responseFromServer = reader.ReadToEnd();
+            Regex dateReg = new Regex(@"Date20\S+Date");
+            Regex VersionReg = new Regex(@"Version\d+Version");
+            Match dateMatch = dateReg.Match(responseFromServer);
+            Match versionMatch = VersionReg.Match(responseFromServer);
+            NewDate = DateTime.Parse("1990-03-08");
+            isFullUpdate = false;
+            if (dateMatch.Success)
+            {
+                string date = dateMatch.Value.Replace("Date", "");
+                string version = versionMatch.Value.Replace("Version", "");
+                NewDate = DateTime.Parse(date);
+                int NewVersion = int.Parse(version);
+                int s = DateTime.Compare(NewDate, ReleaseDate);
+
+                int currentVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor;
+                if (NewVersion > currentVersion)
+                {
+                    isFullUpdate = true;
+                }
+                else
+                {
+                    isFullUpdate = false;
+                }
+                //DateTime CompileDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
+                if (s == 1) //NewDate is later than ReleaseDate
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
         private void CheckUpdateButton_Click(object sender, EventArgs e)
         {
             WebRequest request = WebRequest.Create("http://mtbftest.sinaapp.com/version.php");
@@ -3420,22 +3513,48 @@ namespace mp4box
             StreamReader reader = new StreamReader(dataStream);
             // Read the content.
             string responseFromServer = reader.ReadToEnd();
-            Regex reg = new Regex(@"Maruko20\S+Maruko");
-            Match m = reg.Match(responseFromServer);
-            if (m.Success)
+            Regex dateReg = new Regex(@"Date20\S+Date");
+            Regex VersionReg = new Regex(@"Version\d+Version");
+            Match dateMatch = dateReg.Match(responseFromServer);
+            Match versionMatch = VersionReg.Match(responseFromServer);
+            DateTime NewDate = DateTime.Parse("1990-03-08");
+            bool isFullUpdate = false;
+            if (dateMatch.Success)
             {
-                string a = m.Value.Replace("Maruko", "");
-                DateTime NewDate = DateTime.Parse(a);
-                //DateTime CompileDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
+                string date = dateMatch.Value.Replace("Date", "");
+                string version = versionMatch.Value.Replace("Version", "");
+                NewDate = DateTime.Parse(date);
+                int NewVersion = int.Parse(version);
                 int s = DateTime.Compare(NewDate, ReleaseDate);
+
+                int currentVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor;
+                if (NewVersion > currentVersion)
+                {
+                    isFullUpdate = true;
+                }
+                else
+                {
+                    isFullUpdate = false;
+                }
+                //DateTime CompileDate = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location); //获得程序编译时间
                 if (s == 1) //NewDate is later than ReleaseDate
                 {
-                    DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否立刻下载？（文件约1.5MB）", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (dr == DialogResult.Yes)
+                    if (isFullUpdate)
                     {
-                        FormUpdater formUpdater = new FormUpdater(startpath, a);
-                        formUpdater.ShowDialog(this);
-                        //Process.Start("http://www.maruko.in/");
+                        DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否前往官网下载？", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dr == DialogResult.Yes)
+                        {
+                            Process.Start("http://www.maruko.in/");
+                        }
+                    }
+                    else
+                    {
+                        DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否自动升级？（文件约1.5MB）", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dr == DialogResult.Yes)
+                        {
+                            FormUpdater formUpdater = new FormUpdater(startpath, date);
+                            formUpdater.ShowDialog(this);
+                        }
                     }
                 }
                 else
@@ -3443,7 +3562,13 @@ namespace mp4box
                     MessageBox.Show("已经是最新版了喵！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            else
+            {
+                MessageBox.Show("啊咧~似乎未能获取版本信息，请点击软件主页按钮查看最新版本。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
+        #endregion CheckUpdate
 
         private void x264ShutdownCheckBox_CheckedChanged(object sender, EventArgs e)
         {
