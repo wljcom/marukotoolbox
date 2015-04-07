@@ -2297,13 +2297,17 @@ namespace mp4box
             {
                 namevideo2 = path;
                 x264OutTextBox.Text = AddExt(namevideo2, "_x264.mp4");
-                string[] subExt = { ".ass", ".ssa", ".srt" };
-                foreach (string ext in subExt)
+
+                if (Path.GetExtension(namevideo2) != ".avs")
                 {
-                    if (File.Exists(AddExt(namevideo2, ext)))
+                    string[] subExt = { ".ass", ".ssa", ".srt" };
+                    foreach (string ext in subExt)
                     {
-                        x264SubTextBox.Text = AddExt(namevideo2, ext);
-                        break;
+                        if (File.Exists(AddExt(namevideo2, ext)))
+                        {
+                            x264SubTextBox.Text = AddExt(namevideo2, ext);
+                            break;
+                        }
                     }
                 }
             }
