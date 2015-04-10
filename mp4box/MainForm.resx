@@ -7156,7 +7156,7 @@
     <value>50</value>
   </data>
   <data name="CheckUpdateCheckBox.Text" xml:space="preserve">
-    <value>显示启动画面</value>
+    <value>检查更新</value>
   </data>
   <data name="&gt;&gt;CheckUpdateCheckBox.Name" xml:space="preserve">
     <value>CheckUpdateCheckBox</value>
