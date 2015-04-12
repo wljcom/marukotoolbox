@@ -204,9 +204,9 @@ namespace mp4box
             finish += ext;
             return finish;
         }
-        public string muxbat(string input1, string input2, string output)
+        public string ffmuxbat(string input1, string input2, string output)
         {
-            mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + input1 + "\" -add \"" + input2 + "\" -new \"" + output + "\"\r\n";
+            mux = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input1 + "\" -i \"" + input2 + "\" -c copy -y \"" + output + "\"\r\n";
             return mux;
         }
 
@@ -1300,7 +1300,7 @@ namespace mp4box
                 }
             }
             x264 += "\r\n";
-            mux = muxbat("temp.mp4", "temp.aac", output);
+            mux = ffmuxbat("temp.mp4", "temp.aac", output);
 
             if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果压制音频
                 bat += aextract + x264 + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\ndel temp.wav\r\n";
@@ -1616,7 +1616,7 @@ namespace mp4box
                 //audio
                 aextract = audiobat(namevideo9, "temp.aac");
                 //mux
-                mux = muxbat("temp.mp4", "temp.aac", nameout9);
+                mux = ffmuxbat("temp.mp4", "temp.aac", nameout9);
                 auto = aextract + x264 + "\r\n" + mux + " \r\n";
             }
             LogRecord(auto);
@@ -1649,7 +1649,7 @@ namespace mp4box
                 //audio
                 aextract = audiobat(namevideo9, "temp.aac");
                 //mux
-                mux = muxbat("temp.mp4", "temp.aac", nameout9);
+                mux = ffmuxbat("temp.mp4", "temp.aac", nameout9);
                 auto = aextract + x264 + "\r\n" + mux + " \r\ncmd";
                 batpath = workPath + "\\auto.bat";
                 File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
@@ -2132,16 +2132,10 @@ namespace mp4box
             //封装
             if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果包含音频
             {
-                mux = muxbat(tempVideo, tempAudio, AddExt(nameout2, ".mp4"));
+                mux = ffmuxbat(tempVideo, tempAudio, AddExt(nameout2, ext));
                 x264 = aextract + x264 + mux + "\r\n"
                     + "del \"" + tempVideo + "\"\r\n"
                     + "del \"" + tempAudio + "\"\r\n";
-
-                if (ext != ".mp4")
-                {
-                    x264 += "\r\n\"" + workPath + "\\ffmpeg.exe\"  -i  \"" + AddExt(nameout2, ".mp4") + "\" -c copy -y \"" + nameout2 + "\" \r\n";
-                    x264 += "del \"" + AddExt(nameout2, ".mp4") + "\"\r\n";
-                }
             }
             x264 += "\r\n";
             LogRecord(x264);
@@ -3754,14 +3748,14 @@ namespace mp4box
             }
             else
             {
-                MessageBox.Show("请检查\r\n" + path + "\r\n是否存在", "未找到程序!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("请检查\r\n\r\n" + path + "\r\n\r\n是否存在", "未找到程序!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void FeedbackButton_Click(object sender, EventArgs e)
         {
             FeedbackForm ff = new FeedbackForm();
-            ff.Show();
+            ff.ShowDialog();
         }
 
         private void x264SubTextBox_DoubleClick(object sender, EventArgs e)
