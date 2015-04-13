@@ -2374,7 +2374,7 @@ namespace mp4box
             {
                 case 0:
                     if (File.Exists(txtaudio2.Text))
-                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.aac");
+                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.mp4");
                     AudioBitrateComboBox.Enabled = true;
                     AudioBitrateRadioButton.Enabled = true;
                     AudioCustomizeRadioButton.Enabled = true;
@@ -2386,7 +2386,7 @@ namespace mp4box
                             System.Diagnostics.Process.Start("http://www.apple.com/cn/quicktime/download");
                     }
                     if (File.Exists(txtaudio2.Text))
-                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.aac");
+                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.m4a");
                     AudioBitrateComboBox.Enabled = true;
                     AudioBitrateRadioButton.Enabled = true;
                     AudioCustomizeRadioButton.Enabled = true;
@@ -2399,13 +2399,13 @@ namespace mp4box
                     break;
                 case 3:
                     if (File.Exists(txtaudio2.Text))
-                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_alac.m4a");
+                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_ALAC.m4a");
                     AudioBitrateComboBox.Enabled = false;
                     AudioBitrateRadioButton.Enabled = false;
                     AudioCustomizeRadioButton.Enabled = false;
                     break;
                 case 4: if (File.Exists(txtaudio2.Text))
-                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_flac.flac");
+                        AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_FLAC.flac");
                     AudioBitrateComboBox.Enabled = false;
                     AudioBitrateRadioButton.Enabled = false;
                     AudioCustomizeRadioButton.Enabled = false;
@@ -2468,14 +2468,22 @@ namespace mp4box
         {
             if (AudioListBox.Items.Count != 0)
             {
-                string finish;
+                string finish, outputExt, codec;
                 aac = "";
+                switch (AudioEncoderComboBox.SelectedIndex)
+                {
+                    case 0: outputExt = "mp4"; codec = "AAC"; break;
+                    case 1: outputExt = "m4a"; codec = "AAC"; break;
+                    case 2: outputExt = "wav"; codec = "WAV"; break;
+                    case 3: outputExt = "m4a"; codec = "ALAC"; break;
+                    case 4: outputExt = "flac"; codec = "FLAC"; break;
+                    case 5: outputExt = "m4a"; codec = "AAC"; break;
+                    default: outputExt = "aac"; codec = "AAC"; break;
+                }
                 for (int i = 0; i < this.AudioListBox.Items.Count; i++)
                 {
-                    if (AudioEncoderComboBox.SelectedIndex == 2)
-                        finish = AddExt(AudioListBox.Items[i].ToString(), "_WAV.wav");
-                    else
-                        finish = AddExt(AudioListBox.Items[i].ToString(), "_AAC.aac");
+                    string outname = "_" + codec + "." + outputExt;
+                    finish = AddExt(AudioListBox.Items[i].ToString(), outname);
                     aac += audiobat(AudioListBox.Items[i].ToString(), finish);
                     aac += "\r\n";
                 }
@@ -2507,8 +2515,9 @@ namespace mp4box
             {
                 switch (AudioEncoderComboBox.SelectedIndex)
                 {
-                    case 0:
-                    case 1: nameout3 = savefile.FileName + ".aac";
+                    case 0: nameout3 = savefile.FileName + ".mp4";
+                        break;
+                    case 1: nameout3 = savefile.FileName + ".m4a";
                         break;
                     case 2: nameout3 = savefile.FileName + ".wav";
                         break;
@@ -2553,16 +2562,16 @@ namespace mp4box
             if (File.Exists(txtaudio2.Text.ToString()))
             {
                 nameaudio2 = txtaudio2.Text;
-                if (AudioEncoderComboBox.SelectedIndex == 2)
-                    AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_WAV.wav");
-                else if (AudioEncoderComboBox.SelectedIndex == 3)
-                    AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_alac.m4a");
-                else if (AudioEncoderComboBox.SelectedIndex == 4)
-                    AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_flac.flac");
-                else if (AudioEncoderComboBox.SelectedIndex == 5)
-                    AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.m4a");
-                else
-                    AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.aac");
+                switch (AudioEncoderComboBox.SelectedIndex)
+                {
+                    case 0: AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.mp4"); break;
+                    case 1: AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.m4a"); break;
+                    case 2: AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_WAV.wav"); break;
+                    case 3: AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_ALAC.m4a"); break;
+                    case 4: AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_FLAC.flac"); break;
+                    case 5: AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.m4a"); break;
+                    default: AudioOutputTextBox.Text = AddExt(txtaudio2.Text, "_AAC.aac"); break;
+                }
             }
         }
         private void txtout3_TextChanged(object sender, EventArgs e)
