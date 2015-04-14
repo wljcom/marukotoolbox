@@ -489,25 +489,43 @@ namespace mp4box
             aextract += " -i " + Util.FormatPath(namevideo);
             if (av == "a")
             {
-                aextract += " -vn -sn -c:a:" + streamIndex + " copy ";
+                aextract += " -vn -sn -c:a copy -y -map 0:a:" + streamIndex + " ";
 
                 MediaInfo MI = new MediaInfo();
                 MI.Open(namevideo);
-                string audioFormat = MI.Get(StreamKind.Audio, 0, "Format");
-                if (audioFormat.Contains("MPEG"))
-                    ext = ".mp3";
-                if (audioFormat == "AAC")
-                    ext = ".aac";
-                if (audioFormat == "FLAC")
-                    ext = ".flac";
+                string audioFormat = MI.Get(StreamKind.Audio, streamIndex, "Format");
+                string audioProfile = MI.Get(StreamKind.Audio, streamIndex, "Format_Profile");
+                if (!string.IsNullOrEmpty(audioFormat))
+                {
+                    if (audioFormat.Contains("MPEG") && audioProfile == "Layer 3")
+                        ext = ".mp3";
+                    else if (audioFormat.Contains("MPEG") && audioProfile == "Layer 2")
+                        ext = ".mp2";
+                    else if (audioFormat.Contains("PCM")) //flv support(PCM_U8 * PCM_S16BE * PCM_MULAW * PCM_ALAW * ADPCM_SWF)
+                        ext = ".wav";
+                    else if (audioFormat == "AAC")
+                        ext = ".aac";
+                    else if (audioFormat == "AC3")
+                        ext = ".ac3";
+                    else if (audioFormat == "ALAC")
+                        ext = ".m4a";
+                    else
+                        ext = "mka";
+                }
+                else
+                {
+                    MessageBox.Show("该轨道无音频", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
             }
             else if (av == "v")
             {
-                aextract += " -an -sn -c:v:" + streamIndex + " copy ";
+                aextract += " -an -sn -c:v copy -y -map 0:v:" + streamIndex + " ";
             }
             else
             {
-                throw new Exception("尼玛到底是音频流还是视频流啊！");
+                throw new Exception("未知流！");
             }
             string suf = "_audio_";
             if (av == "v")
