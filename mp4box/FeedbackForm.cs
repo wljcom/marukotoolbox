@@ -49,7 +49,7 @@ namespace mp4box
             string title = TitleTextBox.Text;
             string msg = MessageTextBox.Text;
 
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(msg))
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(msg))
             {
                 MessageBox.Show("请填写以上必填项后再提交。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -66,7 +66,8 @@ namespace mp4box
             {
                 MessageBox.Show("提交失败。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            TitleTextBox.Clear();
+            MessageTextBox.Clear();
         }
     }
 }

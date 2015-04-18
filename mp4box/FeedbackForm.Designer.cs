@@ -44,7 +44,7 @@
             // 
             // PostButton
             // 
-            this.PostButton.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.PostButton.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.PostButton.Location = new System.Drawing.Point(184, 431);
             this.PostButton.Name = "PostButton";
             this.PostButton.Size = new System.Drawing.Size(130, 36);
@@ -59,7 +59,7 @@
             this.UserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserNameTextBox.EmptyTextTip = "反馈者的名字（必填）";
             this.UserNameTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.UserNameTextBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.UserNameTextBox.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.UserNameTextBox.Location = new System.Drawing.Point(48, 12);
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.Size = new System.Drawing.Size(437, 23);
@@ -69,9 +69,9 @@
             // 
             this.QQTextBox.AllowDrop = true;
             this.QQTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.QQTextBox.EmptyTextTip = "用于联系反馈人（选填）";
+            this.QQTextBox.EmptyTextTip = "（选填）";
             this.QQTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.QQTextBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.QQTextBox.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.QQTextBox.Location = new System.Drawing.Point(48, 43);
             this.QQTextBox.Name = "QQTextBox";
             this.QQTextBox.Size = new System.Drawing.Size(437, 23);
@@ -81,9 +81,9 @@
             // 
             this.EmailTextBox.AllowDrop = true;
             this.EmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.EmailTextBox.EmptyTextTip = "用于回复反馈的问题（选填）";
+            this.EmailTextBox.EmptyTextTip = "用于作者回复（必填）";
             this.EmailTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.EmailTextBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.EmailTextBox.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.EmailTextBox.Location = new System.Drawing.Point(48, 74);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(437, 23);
@@ -93,9 +93,9 @@
             // 
             this.TitleTextBox.AllowDrop = true;
             this.TitleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TitleTextBox.EmptyTextTip = "（必填）";
+            this.TitleTextBox.EmptyTextTip = "简明扼要的问题概括（必填）";
             this.TitleTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.TitleTextBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.TitleTextBox.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.TitleTextBox.Location = new System.Drawing.Point(48, 105);
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(437, 23);
@@ -105,9 +105,9 @@
             // 
             this.MessageTextBox.AllowDrop = true;
             this.MessageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MessageTextBox.EmptyTextTip = "（必填）";
+            this.MessageTextBox.EmptyTextTip = "说明你的操作步骤和结果，并附上mediainfo信息和输出的log内容（必填）";
             this.MessageTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.MessageTextBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.MessageTextBox.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.MessageTextBox.Location = new System.Drawing.Point(48, 139);
             this.MessageTextBox.Multiline = true;
             this.MessageTextBox.Name = "MessageTextBox";
