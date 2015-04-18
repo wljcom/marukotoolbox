@@ -737,7 +737,7 @@ namespace mp4box
                 //string finish = namevideo4.Insert(namevideo4.LastIndexOf(".")-1,"");
                 //string ext = namevideo4.Substring(namevideo4.LastIndexOf(".") + 1, 3);
                 //finish += "_clip." + ext;
-                string finish = namevideo4.Insert(namevideo4.LastIndexOf("."), "_clip");
+                string finish = namevideo4.Insert(namevideo4.LastIndexOf("."), "_output");
                 txtout5.Text = finish;
             }
         }
@@ -798,6 +798,7 @@ namespace mp4box
             BlackCRFNum.Value = 51;
             BlackBitrateNum.Value = 900;
             SetupDeleteTempFileCheckBox.Checked = true;
+            TransposeComboBox.SelectedIndex = 1;
         }
 
 
@@ -3788,6 +3789,26 @@ namespace mp4box
         private void x264SubTextBox_DoubleClick(object sender, EventArgs e)
         {
             x264SubTextBox.Clear();
+        }
+
+        private void RotateButton_Click(object sender, EventArgs e)
+        {
+            if (namevideo4 == "")
+            {
+                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (nameout5 == "")
+            {
+                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                clip = String.Format(@"""{0}\ffmpeg.exe"" -i ""{1}"" -vf ""transpose={2}"" -y ""{3}""",
+                    workPath, namevideo4, TransposeComboBox.SelectedIndex, nameout5) + Environment.NewLine + "cmd";
+                batpath = workPath + "\\clip.bat";
+                File.WriteAllText(batpath, clip, UnicodeEncoding.Default);
+                Process.Start(batpath);
+            }
         }
 
     }

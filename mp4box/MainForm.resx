@@ -123,7 +123,99 @@
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>207, 16</value>
   </metadata>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TransposeLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="TransposeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>92, 108</value>
+  </data>
+  <data name="TransposeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 12</value>
+  </data>
+  <data name="TransposeLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="TransposeLabel.Text" xml:space="preserve">
+    <value>Transpose</value>
+  </data>
+  <data name="&gt;&gt;TransposeLabel.Name" xml:space="preserve">
+    <value>TransposeLabel</value>
+  </data>
+  <data name="&gt;&gt;TransposeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TransposeLabel.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;TransposeLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TransposeComboBox.Items" xml:space="preserve">
+    <value>0: 逆时针旋转90°然后垂直翻转</value>
+  </data>
+  <data name="TransposeComboBox.Items1" xml:space="preserve">
+    <value>1: 顺时针旋转90°</value>
+  </data>
+  <data name="TransposeComboBox.Items2" xml:space="preserve">
+    <value>2: 逆时针旋转90°</value>
+  </data>
+  <data name="TransposeComboBox.Items3" xml:space="preserve">
+    <value>3: 顺时针旋转90°然后水平翻转</value>
+  </data>
+  <data name="TransposeComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 105</value>
+  </data>
+  <data name="TransposeComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 20</value>
+  </data>
+  <data name="TransposeComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="&gt;&gt;TransposeComboBox.Name" xml:space="preserve">
+    <value>TransposeComboBox</value>
+  </data>
+  <data name="&gt;&gt;TransposeComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TransposeComboBox.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;TransposeComboBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="RotateButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="RotateButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="RotateButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>483, 105</value>
+  </data>
+  <data name="RotateButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="RotateButton.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="RotateButton.Text" xml:space="preserve">
+    <value>旋转</value>
+  </data>
+  <data name="&gt;&gt;RotateButton.Name" xml:space="preserve">
+    <value>RotateButton</value>
+  </data>
+  <data name="&gt;&gt;RotateButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;RotateButton.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;RotateButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="txtvideo4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
@@ -133,7 +225,6 @@
   <data name="txtvideo4.Size" type="System.Drawing.Size, System.Drawing">
     <value>469, 21</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtvideo4.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
@@ -147,12 +238,11 @@
     <value>groupBox10</value>
   </data>
   <data name="&gt;&gt;txtvideo4.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="btnvideo4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnvideo4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -178,7 +268,7 @@
     <value>groupBox10</value>
   </data>
   <data name="&gt;&gt;btnvideo4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="btnout5.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -208,7 +298,7 @@
     <value>groupBox10</value>
   </data>
   <data name="&gt;&gt;btnout5.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="btnClip.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -238,7 +328,7 @@
     <value>groupBox10</value>
   </data>
   <data name="&gt;&gt;btnClip.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="txtout5.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -262,7 +352,7 @@
     <value>groupBox10</value>
   </data>
   <data name="&gt;&gt;txtout5.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="maske.Location" type="System.Drawing.Point, System.Drawing">
     <value>407, 76</value>
@@ -292,7 +382,7 @@
     <value>groupBox10</value>
   </data>
   <data name="&gt;&gt;maske.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -322,7 +412,7 @@
     <value>groupBox10</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -352,7 +442,7 @@
     <value>groupBox10</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="maskb.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 76</value>
@@ -382,19 +472,19 @@
     <value>groupBox10</value>
   </data>
   <data name="&gt;&gt;maskb.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="groupBox10.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 343</value>
   </data>
   <data name="groupBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>566, 115</value>
+    <value>566, 135</value>
   </data>
   <data name="groupBox10.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
   <data name="groupBox10.Text" xml:space="preserve">
-    <value>截取</value>
+    <value>其他</value>
   </data>
   <data name="&gt;&gt;groupBox10.Name" xml:space="preserve">
     <value>groupBox10</value>
@@ -7150,7 +7240,7 @@
     <value>173, 201</value>
   </data>
   <data name="CheckUpdateCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 19</value>
+    <value>74, 19</value>
   </data>
   <data name="CheckUpdateCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>

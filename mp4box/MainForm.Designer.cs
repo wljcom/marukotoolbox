@@ -33,6 +33,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.TransposeComboBox = new System.Windows.Forms.ComboBox();
+            this.RotateButton = new ControlExs.QQButton();
             this.txtvideo4 = new ControlExs.QQTextBox();
             this.btnvideo4 = new ControlExs.QQButton();
             this.btnout5 = new ControlExs.QQButton();
@@ -278,6 +280,7 @@
             this.BlackOutputTextBox = new ControlExs.QQTextBox();
             this.BlackVideoTextBox = new ControlExs.QQTextBox();
             this.SetupTabPage = new System.Windows.Forms.TabPage();
+            this.CheckUpdateCheckBox = new ControlExs.QQCheckBox();
             this.SetupPlayerTextBox = new ControlExs.QQTextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -293,7 +296,7 @@
             this.SetDefaultButton = new ControlExs.QQButton();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
-            this.CheckUpdateCheckBox = new ControlExs.QQCheckBox();
+            this.TransposeLabel = new System.Windows.Forms.Label();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -354,6 +357,9 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.TransposeLabel);
+            this.groupBox10.Controls.Add(this.TransposeComboBox);
+            this.groupBox10.Controls.Add(this.RotateButton);
             this.groupBox10.Controls.Add(this.txtvideo4);
             this.groupBox10.Controls.Add(this.btnvideo4);
             this.groupBox10.Controls.Add(this.btnout5);
@@ -366,6 +372,25 @@
             resources.ApplyResources(this.groupBox10, "groupBox10");
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.TabStop = false;
+            // 
+            // TransposeComboBox
+            // 
+            this.TransposeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TransposeComboBox.FormattingEnabled = true;
+            this.TransposeComboBox.Items.AddRange(new object[] {
+            resources.GetString("TransposeComboBox.Items"),
+            resources.GetString("TransposeComboBox.Items1"),
+            resources.GetString("TransposeComboBox.Items2"),
+            resources.GetString("TransposeComboBox.Items3")});
+            resources.ApplyResources(this.TransposeComboBox, "TransposeComboBox");
+            this.TransposeComboBox.Name = "TransposeComboBox";
+            // 
+            // RotateButton
+            // 
+            resources.ApplyResources(this.RotateButton, "RotateButton");
+            this.RotateButton.Name = "RotateButton";
+            this.RotateButton.UseVisualStyleBackColor = true;
+            this.RotateButton.Click += new System.EventHandler(this.RotateButton_Click);
             // 
             // txtvideo4
             // 
@@ -2700,6 +2725,15 @@
             this.SetupTabPage.Name = "SetupTabPage";
             this.SetupTabPage.UseVisualStyleBackColor = true;
             // 
+            // CheckUpdateCheckBox
+            // 
+            resources.ApplyResources(this.CheckUpdateCheckBox, "CheckUpdateCheckBox");
+            this.CheckUpdateCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.CheckUpdateCheckBox.Checked = true;
+            this.CheckUpdateCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckUpdateCheckBox.Name = "CheckUpdateCheckBox";
+            this.CheckUpdateCheckBox.UseVisualStyleBackColor = false;
+            // 
             // SetupPlayerTextBox
             // 
             this.SetupPlayerTextBox.AllowDrop = true;
@@ -2818,14 +2852,10 @@
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
             // 
-            // CheckUpdateCheckBox
+            // TransposeLabel
             // 
-            resources.ApplyResources(this.CheckUpdateCheckBox, "CheckUpdateCheckBox");
-            this.CheckUpdateCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.CheckUpdateCheckBox.Checked = true;
-            this.CheckUpdateCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckUpdateCheckBox.Name = "CheckUpdateCheckBox";
-            this.CheckUpdateCheckBox.UseVisualStyleBackColor = false;
+            resources.ApplyResources(this.TransposeLabel, "TransposeLabel");
+            this.TransposeLabel.Name = "TransposeLabel";
             // 
             // MainForm
             // 
@@ -3178,6 +3208,9 @@
         private ControlExs.QQButton MuxReplaceAudioButton;
         private ControlExs.QQButton FeedbackButton;
         private ControlExs.QQCheckBox CheckUpdateCheckBox;
+        private System.Windows.Forms.ComboBox TransposeComboBox;
+        private ControlExs.QQButton RotateButton;
+        private System.Windows.Forms.Label TransposeLabel;
     }
 }
 
