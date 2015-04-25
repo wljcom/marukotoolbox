@@ -325,7 +325,7 @@ namespace mp4box
         }
         public string audiobat(string input, string output)
         {
-            int AACbr = 1024 * Convert.ToInt32(AudioBitrateComboBox.Text);
+            int AACbr = 1000 * Convert.ToInt32(AudioBitrateComboBox.Text);
             string br = AACbr.ToString();
             ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input + "\" -vn -c:a pcm_s16le -f wav pipe:|";
             switch (AudioEncoderComboBox.SelectedIndex)
@@ -510,7 +510,7 @@ namespace mp4box
                     else if (audioFormat == "ALAC")
                         ext = ".m4a";
                     else
-                        ext = "mka";
+                        ext = ".mka";
                 }
                 else
                 {
@@ -1835,7 +1835,6 @@ namespace mp4box
             {
                 MessageBox.Show("只有扩展名为.264 .h264 .hevc的流文件设置帧率(fps)才有效", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cbFPS.SelectedIndex = 0;
-                return;
             }
         }
         private void btnMIopen_Click(object sender, EventArgs e)
