@@ -5043,6 +5043,78 @@
   <data name="&gt;&gt;x264DemuxerComboBox.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="label42.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label42.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label42.Location" type="System.Drawing.Point, System.Drawing">
+    <value>483, 187</value>
+  </data>
+  <data name="label42.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label42.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="label42.Text" xml:space="preserve">
+    <value>格式</value>
+  </data>
+  <data name="&gt;&gt;label42.Name" xml:space="preserve">
+    <value>label42</value>
+  </data>
+  <data name="&gt;&gt;label42.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label42.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label42.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="VideoBatchFormatComboBox.Items" xml:space="preserve">
+    <value>flv</value>
+  </data>
+  <data name="VideoBatchFormatComboBox.Items1" xml:space="preserve">
+    <value>mp4</value>
+  </data>
+  <data name="VideoBatchFormatComboBox.Items2" xml:space="preserve">
+    <value>mkv</value>
+  </data>
+  <data name="VideoBatchFormatComboBox.Items3" xml:space="preserve">
+    <value>mov</value>
+  </data>
+  <data name="VideoBatchFormatComboBox.Items4" xml:space="preserve">
+    <value>avi</value>
+  </data>
+  <data name="VideoBatchFormatComboBox.Items5" xml:space="preserve">
+    <value>f4v</value>
+  </data>
+  <data name="VideoBatchFormatComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>485, 202</value>
+  </data>
+  <data name="VideoBatchFormatComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 20</value>
+  </data>
+  <data name="VideoBatchFormatComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="VideoBatchFormatComboBox.Text" xml:space="preserve">
+    <value>mp4</value>
+  </data>
+  <data name="&gt;&gt;VideoBatchFormatComboBox.Name" xml:space="preserve">
+    <value>VideoBatchFormatComboBox</value>
+  </data>
+  <data name="&gt;&gt;VideoBatchFormatComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;VideoBatchFormatComboBox.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;VideoBatchFormatComboBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="x264BatchSubSpecialLanguage.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 158</value>
   </data>
@@ -5062,7 +5134,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;x264BatchSubSpecialLanguage.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="x264PathButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -5092,7 +5164,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;x264PathButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="x264PathTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -5116,7 +5188,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;x264PathTextBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="lbAuto.HorizontalScrollbar" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5143,7 +5215,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;lbAuto.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="x264BatchClearBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -5173,7 +5245,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;x264BatchClearBtn.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="x264BatchSubCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5206,7 +5278,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;x264BatchSubCheckBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="x264BatchDeleteBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -5236,7 +5308,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;x264BatchDeleteBtn.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="x264BatchAddBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -5266,7 +5338,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;x264BatchAddBtn.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="btnBatchAuto.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -5296,7 +5368,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;btnBatchAuto.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 283</value>

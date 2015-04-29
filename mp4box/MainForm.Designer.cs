@@ -33,6 +33,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.TransposeLabel = new System.Windows.Forms.Label();
             this.TransposeComboBox = new System.Windows.Forms.ComboBox();
             this.RotateButton = new ControlExs.QQButton();
             this.txtvideo4 = new ControlExs.QQTextBox();
@@ -296,7 +297,8 @@
             this.SetDefaultButton = new ControlExs.QQButton();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
-            this.TransposeLabel = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.VideoBatchFormatComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -372,6 +374,11 @@
             resources.ApplyResources(this.groupBox10, "groupBox10");
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.TabStop = false;
+            // 
+            // TransposeLabel
+            // 
+            resources.ApplyResources(this.TransposeLabel, "TransposeLabel");
+            this.TransposeLabel.Name = "TransposeLabel";
             // 
             // TransposeComboBox
             // 
@@ -2030,6 +2037,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label42);
+            this.groupBox1.Controls.Add(this.VideoBatchFormatComboBox);
             this.groupBox1.Controls.Add(this.x264BatchSubSpecialLanguage);
             this.groupBox1.Controls.Add(this.x264PathButton);
             this.groupBox1.Controls.Add(this.x264PathTextBox);
@@ -2852,10 +2861,23 @@
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
             // 
-            // TransposeLabel
+            // label42
             // 
-            resources.ApplyResources(this.TransposeLabel, "TransposeLabel");
-            this.TransposeLabel.Name = "TransposeLabel";
+            resources.ApplyResources(this.label42, "label42");
+            this.label42.Name = "label42";
+            // 
+            // VideoBatchFormatComboBox
+            // 
+            this.VideoBatchFormatComboBox.FormattingEnabled = true;
+            this.VideoBatchFormatComboBox.Items.AddRange(new object[] {
+            resources.GetString("VideoBatchFormatComboBox.Items"),
+            resources.GetString("VideoBatchFormatComboBox.Items1"),
+            resources.GetString("VideoBatchFormatComboBox.Items2"),
+            resources.GetString("VideoBatchFormatComboBox.Items3"),
+            resources.GetString("VideoBatchFormatComboBox.Items4"),
+            resources.GetString("VideoBatchFormatComboBox.Items5")});
+            resources.ApplyResources(this.VideoBatchFormatComboBox, "VideoBatchFormatComboBox");
+            this.VideoBatchFormatComboBox.Name = "VideoBatchFormatComboBox";
             // 
             // MainForm
             // 
@@ -3211,6 +3233,8 @@
         private System.Windows.Forms.ComboBox TransposeComboBox;
         private ControlExs.QQButton RotateButton;
         private System.Windows.Forms.Label TransposeLabel;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.ComboBox VideoBatchFormatComboBox;
     }
 }
 
