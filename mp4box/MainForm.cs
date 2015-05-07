@@ -39,6 +39,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace mp4box
 {
@@ -47,7 +48,7 @@ namespace mp4box
         public string workPath = "!undefined";
         public bool shutdownState = false;
         public bool trayMode = false;
-
+        XDocument xdoc;
         #region Private Members Declaration
 
         private StringBuilder avsBuilder = new StringBuilder(1000);
@@ -383,6 +384,13 @@ namespace mp4box
                     {
                         ffmpeg += "\"" + workPath + "\\fdkaac.exe\" --ignorelength " + AudioCustomParameterTextBox.Text.ToString() + " - -o \"" + output + "\"";
                     }
+                    break;
+                case 6:
+                    ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input + "\" -c:a ac3 -b:a " + AudioBitrateComboBox.Text.ToString() + "k \"" + output + "\"";
+                    break;
+
+                case 7:
+                    ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input + "\"  -vn -sn -c:a copy -y -map 0:a:0 " + "\"" + output + "\"";
                     break;
 
                 default:
@@ -967,7 +975,7 @@ namespace mp4box
             List<string> x264exe = new List<string>();
             foreach (FileInfo FileName in folder.GetFiles())
             {
-                if (FileName.Name.Contains("x264") && Path.GetExtension(FileName.Name) == ".exe")
+                if ((FileName.Name.ToLower().Contains("x264") || FileName.Name.ToLower().Contains("ffmpeg")) && Path.GetExtension(FileName.Name) == ".exe")
                 {
                     x264exe.Add(FileName.Name);
                 }
@@ -1006,6 +1014,16 @@ namespace mp4box
             foreach (FileInfo FileName in TheFolder.GetFiles())
             {
                 VideoPresetComboBox.Items.Add(FileName.Name.Replace(".txt", ""));
+            }
+            if (File.Exists("preset.xml"))
+            {
+                xdoc = XDocument.Load("preset.xml");
+                XElement xAudios = xdoc.Element("root").Element("Audio");
+                foreach (XElement item in xAudios.Elements())
+                {
+                    AudioPresetComboBox.Items.Add(item.Attribute("Name").Value);
+                    AudioPresetComboBox.SelectedIndex = 0;
+                }
             }
         }
 
@@ -2763,6 +2781,8 @@ namespace mp4box
             lbaackbps.Visible = false;
             AudioBitrateComboBox.Visible = false;
             AudioCustomParameterTextBox.Visible = true;
+            AudioPresetLabel.Visible = true;
+            AudioPresetComboBox.Visible = true;
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
@@ -2771,6 +2791,8 @@ namespace mp4box
             lbaackbps.Visible = true;
             AudioBitrateComboBox.Visible = true;
             AudioCustomParameterTextBox.Visible = false;
+            AudioPresetLabel.Visible = false;
+            AudioPresetComboBox.Visible = false;
         }
 
         private void AudioAddButton_Click(object sender, EventArgs e)
@@ -4017,6 +4039,12 @@ namespace mp4box
                 File.WriteAllText(batpath, clip, UnicodeEncoding.Default);
                 Process.Start(batpath);
             }
+        }
+
+        private void AudioPresetComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            XElement x = xdoc.Element("root").Element("Audio").Elements().Where(_ => _.Attribute("Name").Value == AudioPresetComboBox.Text).First();
+            AudioCustomParameterTextBox.Text = x.Value;
         }
     }
 }

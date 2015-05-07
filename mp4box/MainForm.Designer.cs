@@ -206,6 +206,8 @@
             this.MaintainResolutionCheckBox = new ControlExs.QQCheckBox();
             this.x264DemuxerComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.VideoBatchFormatComboBox = new System.Windows.Forms.ComboBox();
             this.x264BatchSubSpecialLanguage = new System.Windows.Forms.ComboBox();
             this.x264PathButton = new ControlExs.QQButton();
             this.x264PathTextBox = new ControlExs.QQTextBox();
@@ -297,8 +299,8 @@
             this.SetDefaultButton = new ControlExs.QQButton();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
-            this.label42 = new System.Windows.Forms.Label();
-            this.VideoBatchFormatComboBox = new System.Windows.Forms.ComboBox();
+            this.AudioPresetComboBox = new System.Windows.Forms.ComboBox();
+            this.AudioPresetLabel = new System.Windows.Forms.Label();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -1565,6 +1567,8 @@
             // 
             // NeroAACGroupBox
             // 
+            this.NeroAACGroupBox.Controls.Add(this.AudioPresetComboBox);
+            this.NeroAACGroupBox.Controls.Add(this.AudioPresetLabel);
             this.NeroAACGroupBox.Controls.Add(this.AudioBitrateComboBox);
             this.NeroAACGroupBox.Controls.Add(this.label7);
             this.NeroAACGroupBox.Controls.Add(this.AudioEncoderComboBox);
@@ -1610,7 +1614,9 @@
             resources.GetString("AudioEncoderComboBox.Items2"),
             resources.GetString("AudioEncoderComboBox.Items3"),
             resources.GetString("AudioEncoderComboBox.Items4"),
-            resources.GetString("AudioEncoderComboBox.Items5")});
+            resources.GetString("AudioEncoderComboBox.Items5"),
+            resources.GetString("AudioEncoderComboBox.Items6"),
+            resources.GetString("AudioEncoderComboBox.Items7")});
             resources.ApplyResources(this.AudioEncoderComboBox, "AudioEncoderComboBox");
             this.AudioEncoderComboBox.Name = "AudioEncoderComboBox";
             this.AudioEncoderComboBox.SelectedIndexChanged += new System.EventHandler(this.AudioEncoderComboBox_SelectedIndexChanged);
@@ -2051,6 +2057,24 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // label42
+            // 
+            resources.ApplyResources(this.label42, "label42");
+            this.label42.Name = "label42";
+            // 
+            // VideoBatchFormatComboBox
+            // 
+            this.VideoBatchFormatComboBox.FormattingEnabled = true;
+            this.VideoBatchFormatComboBox.Items.AddRange(new object[] {
+            resources.GetString("VideoBatchFormatComboBox.Items"),
+            resources.GetString("VideoBatchFormatComboBox.Items1"),
+            resources.GetString("VideoBatchFormatComboBox.Items2"),
+            resources.GetString("VideoBatchFormatComboBox.Items3"),
+            resources.GetString("VideoBatchFormatComboBox.Items4"),
+            resources.GetString("VideoBatchFormatComboBox.Items5")});
+            resources.ApplyResources(this.VideoBatchFormatComboBox, "VideoBatchFormatComboBox");
+            this.VideoBatchFormatComboBox.Name = "VideoBatchFormatComboBox";
             // 
             // x264BatchSubSpecialLanguage
             // 
@@ -2861,23 +2885,18 @@
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
             // 
-            // label42
+            // AudioPresetComboBox
             // 
-            resources.ApplyResources(this.label42, "label42");
-            this.label42.Name = "label42";
+            this.AudioPresetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AudioPresetComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.AudioPresetComboBox, "AudioPresetComboBox");
+            this.AudioPresetComboBox.Name = "AudioPresetComboBox";
+            this.AudioPresetComboBox.SelectedIndexChanged += new System.EventHandler(this.AudioPresetComboBox_SelectedIndexChanged);
             // 
-            // VideoBatchFormatComboBox
+            // AudioPresetLabel
             // 
-            this.VideoBatchFormatComboBox.FormattingEnabled = true;
-            this.VideoBatchFormatComboBox.Items.AddRange(new object[] {
-            resources.GetString("VideoBatchFormatComboBox.Items"),
-            resources.GetString("VideoBatchFormatComboBox.Items1"),
-            resources.GetString("VideoBatchFormatComboBox.Items2"),
-            resources.GetString("VideoBatchFormatComboBox.Items3"),
-            resources.GetString("VideoBatchFormatComboBox.Items4"),
-            resources.GetString("VideoBatchFormatComboBox.Items5")});
-            resources.ApplyResources(this.VideoBatchFormatComboBox, "VideoBatchFormatComboBox");
-            this.VideoBatchFormatComboBox.Name = "VideoBatchFormatComboBox";
+            resources.ApplyResources(this.AudioPresetLabel, "AudioPresetLabel");
+            this.AudioPresetLabel.Name = "AudioPresetLabel";
             // 
             // MainForm
             // 
@@ -3235,6 +3254,8 @@
         private System.Windows.Forms.Label TransposeLabel;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.ComboBox VideoBatchFormatComboBox;
+        private System.Windows.Forms.ComboBox AudioPresetComboBox;
+        private System.Windows.Forms.Label AudioPresetLabel;
     }
 }
 
