@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Video>
+    <Parameter Name="default">--crf 24 --preset 8 -r 6 -b 6 -i 1 --scenecut 60 -f 1:1 --qcomp 0.5 --psy-rd 0.3:0 --aq-mode 2 --aq-strength 0.8 --vf resize:960,540,,,,lanczos</Parameter>
+    <Parameter Name="DVDRIP不切边,16：9">-p1 --crf 20 --aq-mode 2 --sar 32:27 --vf yadif:, --stat "TEMP.stat" --slow-firstpass --ref 8 --preset 8 --subme 10</Parameter>
+    <Parameter Name="DVDRIP不切边,sar40：33,20：11">-p1 --crf 20 --aq-mode 2 --sar 40:33 --vf yadif:, --stat "TEMP.stat" --slow-firstpass --ref 8 --preset 8 --subme 10</Parameter>
+    <Parameter Name="DVDRIP切边,sar40：33.">-p1 --crf 20 --aq-mode 2 --sar 40:33 --vf yadif:,/crop:8,0,8,0 --stat "TEMP.stat" --slow-firstpass --ref 8 --preset 8 --subme 10</Parameter>
+    <Parameter Name="iOS">--profile high --level 3.1 --level-force  --device iphone</Parameter>
+    <Parameter Name="MAD">--crf 25 --preset placebo --subme 10 --ref 7 --bframes 7 --qcomp 0.75 --psy-rd 0:0 --keyint infinite --min-keyint 1</Parameter>
+    <Parameter Name="PSP">--profile main --level 3.0 --ref 3 --b-pyramid none --weightp 1 --vbv-maxrate 10000 --vbv-bufsize 10000   --vf resize:480,272,,,,lanczos  --device psp</Parameter>
+  </Video>
+  <Audio>
+    <Parameter Name="NeroAAC">-q 1 -lc -ignorelength</Parameter>
+    <Parameter Name="QAAC_cbr">-c 256 -q 2 - -no-optimize -noreplaygain -ignorelength</Parameter>
+    <Parameter Name="QAAC_cvbr">--cvbr -q 2 -ignorelength</Parameter>
+    <Parameter Name="QAAC_tvbr">-V 127 -q 2 --no-optimize -noreplaygain -ignorelength</Parameter>
+  </Audio>
+</root>
