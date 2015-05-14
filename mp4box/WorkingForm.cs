@@ -637,7 +637,7 @@ namespace mp4box
         {
             // save commands into a batch file
             batPath = System.IO.Path.Combine(
-                Environment.GetEnvironmentVariable("TEMP", EnvironmentVariableTarget.Machine),
+                Environment.GetEnvironmentVariable("TEMP", EnvironmentVariableTarget.User),
                 "xiaowan" + DateTime.Now.ToFileTimeUtc().ToString() + ".bat");
             var encoder = Encoding.GetEncoding(0);
             var sw = new System.IO.StreamWriter(batPath, false, encoder);
