@@ -18,7 +18,8 @@
 
 using System;
 using System.Collections.Generic;
-
+using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -61,5 +62,46 @@ namespace ControlExs
             }
             _toolTip = null;
         }
+
+        protected String GetCurrentDirectory()
+        {
+            return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        }
+
+        protected void ShowErrorMessage(String argMessage)
+        {
+            MessageBox.Show(argMessage, "错误!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        protected void ShowErrorMessage(String argMessage, String argTitle)
+        {
+            MessageBox.Show(argMessage, argTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        protected void ShowWarningMessage(String argMessage)
+        {
+            MessageBox.Show(argMessage, "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        protected void ShowWarningMessage(String argMessage, String argTitle)
+        {
+            MessageBox.Show(argMessage, argTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        protected void ShowInfoMessage(String argMessage)
+        {
+            MessageBox.Show(argMessage, "提示!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        protected void ShowInfoMessage(String argMessage, String argTitle)
+        {
+            MessageBox.Show(argMessage, argTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        protected DialogResult ShowQuestion(String argQuestion, String argTitle)
+        {
+            return MessageBox.Show(argQuestion, argTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
+
     }
 }

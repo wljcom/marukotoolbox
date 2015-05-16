@@ -533,7 +533,7 @@ namespace mp4box
             /// <returns>The return value is the high-order word of the specified value.</returns>
             public static uint HiWord(IntPtr ptr)
             {
-                    return ((uint)ptr >> 16) & 0xFFFFu;
+                return ((uint)ptr >> 16) & 0xFFFFu;
             }
 
             /// <summary>
@@ -707,7 +707,7 @@ namespace mp4box
                 savDlg.FilterIndex = 1;
                 savDlg.RestoreDirectory = true;
                 if (savDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    System.IO.File.WriteAllText(savDlg.FileName, internellog.ToString());
+                    System.IO.File.WriteAllText(savDlg.FileName, internellog.ToString(), Encoding.Default);
             }
         }
 
@@ -738,7 +738,7 @@ namespace mp4box
         {
             this.ActiveControl = null;
         }
-   
+
         #endregion
 
         /// <summary>

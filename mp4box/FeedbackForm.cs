@@ -18,6 +18,7 @@
 // -------------------------------------------------------------------
 //
 
+using ControlExs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,7 @@ using System.Windows.Forms;
 
 namespace mp4box
 {
-    public partial class FeedbackForm : Form
+    public partial class FeedbackForm : FormBase
     {
         public FeedbackForm()
         {
@@ -51,7 +52,7 @@ namespace mp4box
 
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(msg))
             {
-                MessageBox.Show("请填写以上必填项后再提交。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowWarningMessage("请填写以上必填项后再提交!");
                 return;
             }
 
@@ -60,11 +61,11 @@ namespace mp4box
 
             if (flag)
             {
-                MessageBox.Show("提交成功，感谢反馈！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowInfoMessage("提交成功，感谢反馈!");
             }
             else
             {
-                MessageBox.Show("提交失败。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage("提交失败!");
             }
             TitleTextBox.Clear();
             MessageTextBox.Clear();

@@ -43,7 +43,7 @@ using System.Xml.Linq;
 
 namespace mp4box
 {
-    public partial class MainForm : Form
+    public partial class MainForm : FormBase
     {
         public string workPath = "!undefined";
         public bool shutdownState = false;
@@ -442,7 +442,7 @@ namespace mp4box
         {
             if (namevideo == "")
             {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择视频文件");
                 return;
             }
             //else if (nameaudio == "")
@@ -451,7 +451,7 @@ namespace mp4box
             //}
             if (nameout == "")
             {
-                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择输出文件");
                 return;
             }
             if (cbFPS.Text == "auto")
@@ -503,7 +503,7 @@ namespace mp4box
         {
             if (string.IsNullOrEmpty(namevideo))
             {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择视频文件");
                 return;
             }
 
@@ -539,7 +539,7 @@ namespace mp4box
                 }
                 else
                 {
-                    MessageBox.Show("该轨道无音频", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ShowInfoMessage("该轨道无音频");
                     return;
                 }
             }
@@ -571,7 +571,7 @@ namespace mp4box
         {
             if (string.IsNullOrEmpty(namevideo))
             {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择视频文件");
                 return;
             }
 
@@ -593,7 +593,7 @@ namespace mp4box
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(String.Format(" \r\n有任何建议或疑问可以通过以下方式联系小丸。\nQQ：57655408\n微博：weibo.com/xiaowan3\n百度贴吧ID：小丸到达\n\n\t\t\t发布日期：2012年10月17日\n\t\t\t- ( ゜- ゜)つロ 乾杯~"), "关于", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowInfoMessage(String.Format(" \r\n有任何建议或疑问可以通过以下方式联系小丸。\nQQ：57655408\n微博：weibo.com/xiaowan3\n百度贴吧ID：小丸到达\n\n\t\t\t发布日期：2012年10月17日\n\t\t\t- ( ゜- ゜)つロ 乾杯~"), "关于");
         }
 
         private void btnvextract_Click(object sender, EventArgs e)
@@ -623,61 +623,68 @@ namespace mp4box
 
         private void txtvideo_TextChanged(object sender, EventArgs e)
         {
-            if (txtvideo.Text.Trim().Length > 0)
+            try
             {
-                if (!File.Exists(txtvideo.Text.Trim().ToString()))
+                if (txtvideo.Text.Trim().Length > 0)
                 {
-                    MessageBox.Show("输入文件: \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n不存在!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtvideo.Clear();
-                    return;
+                    if (!File.Exists(txtvideo.Text.Trim()))
+                    {
+                        throw new Exception("输入文件: \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n不存在!");
+                    }
+                    string inputExt = Path.GetExtension(txtvideo.Text.Trim()).ToLower();
+                    if (inputExt != ".avi"  //Only MPEG-4 SP/ASP video and MP3 audio supported at the current time. To import AVC/H264 video, you must first extract the avi track.
+                            && inputExt != ".mp4" //MPEG-4 Video
+                            && inputExt != ".m1v" //MPEG-1 Video
+                            && inputExt != ".m2v" //MPEG-2 Video
+                            && inputExt != ".m4v" //MPEG-4 Video
+                            && inputExt != ".264" //AVC/H264 Video
+                            && inputExt != ".h264" //AVC/H264 Video
+                            && inputExt != ".hevc") //HEVC/H265 Video
+                    {
+                        throw new Exception("输入文件: \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n是一个mp4box不支持的视频文件!");
+                    }
+                    if (inputExt == ".264" || inputExt == ".h264" || inputExt == ".hevc")
+                    {
+                        ShowWarningMessage("H.264或者HEVC流文件需要设定fps，不设置将默认为25fps");
+                    }
+                    namevideo = txtvideo.Text;
+                    txtout.Text = AddExt(txtvideo.Text, "_Mux.mp4");
                 }
-                string inputExt = Path.GetExtension(txtvideo.Text.Trim()).ToLower();
-                if (inputExt != ".avi"
-                        && inputExt != ".mp4"
-                        && inputExt != ".m1v"
-                        && inputExt != ".m2v"
-                        && inputExt != ".m4v"
-                        && inputExt != ".264"
-                        && inputExt != ".h264"
-                        && inputExt != ".hevc")
-                {
-                    MessageBox.Show("输入文件: \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n是一个mp4box不支持的视频文件!", "不支持的文件", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtvideo.Clear();
-                    txtout.Clear();
-                    return;
-                }
-                if (inputExt == ".264" || inputExt == ".h264" || inputExt == ".hevc")
-                {
-                    MessageBox.Show("H.264或者HEVC流文件需要设定fps，不设置将默认为25fps", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                namevideo = txtvideo.Text;
-                txtout.Text = AddExt(txtvideo.Text, "_Mux.mp4");
+            }
+            catch (Exception ex)
+            {
+                txtvideo.Text = string.Empty;
+                ShowErrorMessage(ex.Message);
             }
         }
 
         private void txtaudio_TextChanged(object sender, EventArgs e)
         {
-            if (txtaudio.Text.Trim().Length > 0)
+            try
             {
-                if (!File.Exists(txtaudio.Text.Trim()))
+                if (txtaudio.Text.Trim().Length > 0)
                 {
-                    MessageBox.Show("输入文件: \r\n\r\n" + txtaudio.Text.Trim() + "\r\n\r\n不存在!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtaudio.Clear();
-                    return;
+                    if (!File.Exists(txtaudio.Text.Trim()))
+                    {
+                        throw new Exception("输入文件: \r\n\r\n" + txtaudio.Text.Trim() + "\r\n\r\n不存在!");
+                    }
+                    string inputExt = Path.GetExtension(txtaudio.Text.Trim()).ToLower();
+                    if (inputExt != ".mp4"
+                            && inputExt != ".aac" //ADIF or RAW formats not supported
+                            && inputExt != ".mp3"
+                            && inputExt != ".m4a"
+                            && inputExt != ".mp2"
+                            && inputExt != ".ac3")
+                    {
+                        throw new Exception("输入文件: \r\n\r\n" + txtaudio.Text.Trim() + "\r\n\r\n是一个mp4box不支持的音频文件!");
+                    }
+                    nameaudio = txtaudio.Text;
                 }
-                string inputExt = Path.GetExtension(txtaudio.Text.Trim()).ToLower();
-                if (inputExt != ".mp4"
-                        && inputExt != ".aac"
-                        && inputExt != ".mp3"
-                        && inputExt != ".m4a"
-                        && inputExt != ".mp2"
-                        && inputExt != ".ac3")
-                {
-                    MessageBox.Show("输入文件: \r\n\r\n" + txtaudio.Text.Trim() + "\r\n\r\n是一个mp4box不支持的音频文件!", "不支持的文件", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtaudio.Clear();
-                    return;
-                }
-                nameaudio = txtaudio.Text;
+            }
+            catch (Exception ex)
+            {
+                txtaudio.Text = string.Empty;
+                ShowErrorMessage(ex.Message);
             }
         }
 
@@ -1042,7 +1049,7 @@ namespace mp4box
         {
             if (namevideo6 == "")
             {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择视频文件");
             }
             else
             {
@@ -1091,15 +1098,15 @@ namespace mp4box
         {
             if (namevideo5 == "")
             {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择视频文件");
             }
             else if (nameaudio3 == "")
             {
-                MessageBox.Show("请选择音频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择音频文件");
             }
             else if (nameout6 == "")
             {
-                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择输出文件");
             }
             else
             {
@@ -1136,7 +1143,7 @@ namespace mp4box
         {
             if (namevideo5 == "" && nameaudio3 == "")
             {
-                MessageBox.Show("请选择文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择文件");
             }
             else
             {
@@ -1202,7 +1209,7 @@ namespace mp4box
         {
             if (namevideo6 == "")
             {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择视频文件");
             }
             else
             {
@@ -1410,13 +1417,13 @@ namespace mp4box
         {
             if (lbAuto.Items.Count == 0)
             {
-                MessageBox.Show("请输入视频！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请输入视频！");
                 return;
             }
 
             if (x264ExeComboBox.SelectedIndex == -1)
             {
-                MessageBox.Show("请选择X264程序", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择X264程序");
                 return;
             }
 
@@ -1541,7 +1548,7 @@ namespace mp4box
                 System.Diagnostics.Process.Start(batpath);
                 //lbffmpeg.Items.Clear();
             }
-            else MessageBox.Show("请输入视频！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else ShowErrorMessage("请输入视频！");
         }
 
         private void txtvideo8_TextChanged(object sender, EventArgs e)
@@ -1615,7 +1622,7 @@ namespace mp4box
             }
             else
             {
-                MessageBox.Show("请输入正确的AVS脚本！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请输入正确的AVS脚本！");
             }
         }
 
@@ -1716,7 +1723,7 @@ namespace mp4box
 
             if (string.IsNullOrEmpty(nameout9))
             {
-                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择输出文件");
                 return;
             }
             if (!AVSwithAudioCheckBox.Checked)
@@ -1730,7 +1737,7 @@ namespace mp4box
             {
                 if (!File.Exists(txtvideo9.Text))
                 {
-                    MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ShowErrorMessage("请选择视频文件");
                     return;
                 }
                 string filepath = workPath + "\\temp.avs";
@@ -1763,7 +1770,7 @@ namespace mp4box
         {
             if (String.IsNullOrEmpty(nameout9))
             {
-                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择输出文件");
             }
             else
             {
@@ -1918,11 +1925,11 @@ namespace mp4box
         {
             if (namevideo4 == "")
             {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择视频文件");
             }
             else if (nameout5 == "")
             {
-                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择输出文件");
             }
             else
             {
@@ -1955,7 +1962,7 @@ namespace mp4box
             string ext = Path.GetExtension(namevideo).ToLower();
             if (cbFPS.SelectedIndex != 0 && ext != ".264" && ext != ".h264" && ext != ".hevc")
             {
-                MessageBox.Show("只有扩展名为.264 .h264 .hevc的流文件设置帧率(fps)才有效", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowWarningMessage("只有扩展名为.264 .h264 .hevc的流文件设置帧率(fps)才有效");
                 cbFPS.SelectedIndex = 0;
             }
         }
@@ -2189,25 +2196,25 @@ namespace mp4box
 
             if (string.IsNullOrEmpty(namevideo2))
             {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择视频文件");
                 return;
             }
 
             if (!string.IsNullOrEmpty(namesub2) && !File.Exists(namesub2))
             {
-                MessageBox.Show("字幕文件不存在，请重新选择", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("字幕文件不存在，请重新选择");
                 return;
             }
 
             if (string.IsNullOrEmpty(nameout2))
             {
-                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择输出文件");
                 return;
             }
 
             if (x264ExeComboBox.SelectedIndex == -1)
             {
-                MessageBox.Show("请选择X264程序", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择X264程序");
                 return;
             }
 
@@ -2327,7 +2334,7 @@ namespace mp4box
 
         private void x264DeletePresetBtn_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("确定要删除这条预设参数？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (ShowQuestion("确定要删除这条预设参数？", "提示") == DialogResult.Yes)
             {
                 string preset = workPath + "\\preset";
                 batpath = workPath + "\\preset\\" + VideoPresetComboBox.Text + ".txt";
@@ -2551,7 +2558,7 @@ namespace mp4box
                 case 1:
                     if (!isAppleAppSupportInstalled())
                     {
-                        if (MessageBox.Show("Apple Application Support未安装.\r\n音频编码器QAAC可能无法使用.\r\n\r\n是否前往QuickTime下载页面?", "Apple Application Support未安装", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        if (ShowQuestion("Apple Application Support未安装.\r\n音频编码器QAAC可能无法使用.\r\n\r\n是否前往QuickTime下载页面?", "Apple Application Support未安装") == DialogResult.Yes)
                             System.Diagnostics.Process.Start("http://www.apple.com/cn/quicktime/download");
                     }
                     if (File.Exists(txtaudio2.Text))
@@ -2670,7 +2677,7 @@ namespace mp4box
                 LogRecord(aac);
                 System.Diagnostics.Process.Start(batpath);
             }
-            else MessageBox.Show("请输入文件！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else ShowErrorMessage("请输入文件！");
         }
 
         private void btnaudio2_Click(object sender, EventArgs e)
@@ -2724,11 +2731,11 @@ namespace mp4box
         {
             if (nameaudio2 == "")
             {
-                MessageBox.Show("请选择音频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择音频文件");
             }
             else if (nameout3 == "")
             {
-                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择输出文件");
             }
             else
             {
@@ -3060,9 +3067,9 @@ namespace mp4box
             if (File.Exists(startpath + "\\log.txt"))
             {
                 File.Delete(startpath + "\\log.txt");
-                MessageBox.Show("已经删除日志文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowInfoMessage("已经删除日志文件。");
             }
-            else MessageBox.Show("没有找到日志文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else ShowInfoMessage("没有找到日志文件。");
         }
 
         private void ViewLogButton_Click(object sender, EventArgs e)
@@ -3071,7 +3078,7 @@ namespace mp4box
             {
                 System.Diagnostics.Process.Start(startpath + "\\log.txt");
             }
-            else MessageBox.Show("没有找到日志文件。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else ShowInfoMessage("没有找到日志文件。");
         }
 
         private void x264PathButton_Click(object sender, EventArgs e)
@@ -3274,17 +3281,17 @@ namespace mp4box
         {
             if (namevideo == "")
             {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择视频文件");
                 return;
             }
             if (nameaudio == "")
             {
-                MessageBox.Show("请选择音频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择音频文件");
                 return;
             }
             if (nameout == "")
             {
-                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择输出文件");
                 return;
             }
             mux = "";
@@ -3343,15 +3350,15 @@ namespace mp4box
         {
             if (!File.Exists(AudioPicTextBox.Text))
             {
-                MessageBox.Show("请选择图片文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择图片文件");
             }
             else if (!File.Exists(AudioPicAudioTextBox.Text))
             {
-                MessageBox.Show("请选择音频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择音频文件");
             }
             else if (AudioOnePicOutputTextBox.Text == "")
             {
-                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择输出文件");
             }
             else
             {
@@ -3510,7 +3517,7 @@ namespace mp4box
             //验证
             if (!File.Exists(BlackVideoTextBox.Text) || Path.GetExtension(BlackVideoTextBox.Text) != ".flv")
             {
-                MessageBox.Show("请选择FLV视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择FLV视频文件");
                 return;
             }
 
@@ -3521,23 +3528,23 @@ namespace mp4box
 
             if (!File.Exists(BlackPicTextBox.Text) && BlackNoPicCheckBox.Checked == false)
             {
-                MessageBox.Show("请选择图片文件或勾选使用黑屏", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择图片文件或勾选使用黑屏");
                 return;
             }
             if (BlackOutputTextBox.Text == "")
             {
-                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择输出文件");
                 return;
             }
 
             if (videobitrate < 1000000)
             {
-                MessageBox.Show("此视频不需要后黑。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowInfoMessage("此视频不需要后黑。");
                 return;
             }
             if (videobitrate > 5000000)
             {
-                MessageBox.Show("此视频码率过大，请先压制再后黑。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowInfoMessage("此视频码率过大，请先压制再后黑。");
                 return;
             }
 
@@ -3561,13 +3568,13 @@ namespace mp4box
                 int sourceHeight = img.Height;
                 if (img.Width % 2 != 0 || img.Height % 2 != 0)
                 {
-                    MessageBox.Show("图片的长和宽必须都是偶数。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ShowErrorMessage("图片的长和宽必须都是偶数。");
                     img.Dispose();
                     return;
                 }
                 if (img.Width != videoWidth || img.Height != videoHeight)
                 {
-                    MessageBox.Show("图片的长和宽和视频不一致。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ShowErrorMessage("图片的长和宽和视频不一致。");
                     img.Dispose();
                     return;
                 }
@@ -3818,12 +3825,12 @@ namespace mp4box
                 }
                 else
                 {
-                    MessageBox.Show("已经是最新版了喵！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowInfoMessage("已经是最新版了喵！");
                 }
             }
             else
             {
-                MessageBox.Show("啊咧~似乎未能获取版本信息，请点击软件主页按钮查看最新版本。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowInfoMessage("啊咧~似乎未能获取版本信息，请点击软件主页按钮查看最新版本。");
             }
         }
 
@@ -3876,19 +3883,19 @@ namespace mp4box
             string vsfilterDLLPath = Path.Combine(workPath, @"avsfilter\" + AVSFilterComboBox.Text);
             string text = "LoadPlugin(\"" + vsfilterDLLPath + "\")";
             Clipboard.SetText(text);
-            MessageBox.Show(text + "已经复制到剪贴板");
+            ShowInfoMessage(text + "已经复制到剪贴板");
         }
 
         private void AudioJoinButton_Click(object sender, EventArgs e)
         {
             if (AudioListBox.Items.Count == 0)
             {
-                MessageBox.Show("请输入文件！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请输入文件！");
                 return;
             }
             else if (AudioOutputTextBox.Text == "")
             {
-                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择输出文件");
                 return;
             }
             StringBuilder sb = new StringBuilder();
@@ -3899,7 +3906,7 @@ namespace mp4box
             {
                 if (Path.GetExtension(AudioListBox.Items[i].ToString()) != ext)
                 {
-                    MessageBox.Show("只允许合并相同格式文件。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ShowErrorMessage("只允许合并相同格式文件。");
                     return;
                 }
                 sb.AppendLine("file '" + AudioListBox.Items[i].ToString() + "'");
@@ -4006,7 +4013,7 @@ namespace mp4box
             }
             else
             {
-                MessageBox.Show("请检查\r\n\r\n" + path + "\r\n\r\n是否存在", "未找到程序!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请检查\r\n\r\n" + path + "\r\n\r\n是否存在", "未找到程序!");
             }
         }
 
@@ -4025,11 +4032,11 @@ namespace mp4box
         {
             if (namevideo4 == "")
             {
-                MessageBox.Show("请选择视频文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择视频文件");
             }
             else if (nameout5 == "")
             {
-                MessageBox.Show("请选择输出文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowErrorMessage("请选择输出文件");
             }
             else
             {

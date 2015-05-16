@@ -10,9 +10,9 @@
     <Parameter Name="PSP">--profile main --level 3.0 --ref 3 --b-pyramid none --weightp 1 --vbv-maxrate 10000 --vbv-bufsize 10000   --vf resize:480,272,,,,lanczos  --device psp</Parameter>
   </Video>
   <Audio>
-    <Parameter Name="NeroAAC">-q 1 -lc -ignorelength</Parameter>
-    <Parameter Name="QAAC_cbr">-c 256 -q 2 - -no-optimize -noreplaygain -ignorelength</Parameter>
-    <Parameter Name="QAAC_cvbr">--cvbr -q 2 -ignorelength</Parameter>
-    <Parameter Name="QAAC_tvbr">-V 127 -q 2 --no-optimize -noreplaygain -ignorelength</Parameter>
+    <Parameter Name="NeroAAC">-q 1 -lc</Parameter>
+    <Parameter Name="QAAC_cbr">-c 256 -q 2 --no-optimize</Parameter>
+    <Parameter Name="QAAC_cvbr">--cvbr -q 2 --no-optimize</Parameter>
+    <Parameter Name="QAAC_tvbr">-V 127 -q 2 --no-optimize</Parameter>
   </Audio>
 </root>
