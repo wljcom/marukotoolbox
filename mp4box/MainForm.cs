@@ -1407,7 +1407,7 @@ namespace mp4box
             mux = ffmuxbat("temp.mp4", "temp.aac", output);
 
             if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果压制音频
-                bat += aextract + x264 + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\ndel temp.wav\r\n";
+                bat += aextract + x264 + mux + " \r\ndel temp.aac\r\ndel temp.mp4\r\n";
             else
                 bat += x264;
             return bat;
@@ -3687,32 +3687,36 @@ namespace mp4box
             bool isFullUpdate;
             AsyncResult result = (AsyncResult)ar;
             CheckUpadateDelegate func = (CheckUpadateDelegate)result.AsyncDelegate;
-            bool needUpdate = func.EndInvoke(out NewDate, out isFullUpdate, ar);
 
-            if (needUpdate)
+            try
             {
-                if (isFullUpdate)
+                bool needUpdate = func.EndInvoke(out NewDate, out isFullUpdate, ar);
+                if (needUpdate)
                 {
-                    DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否前往官网下载？", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (dr == DialogResult.Yes)
+                    if (isFullUpdate)
                     {
-                        Process.Start("http://www.maruko.in/");
+                        DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否前往官网下载？", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dr == DialogResult.Yes)
+                        {
+                            Process.Start("http://www.maruko.in/");
+                        }
+                    }
+                    else
+                    {
+                        DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否自动升级？（文件约1.5MB）", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dr == DialogResult.Yes)
+                        {
+                            FormUpdater formUpdater = new FormUpdater(startpath, NewDate.ToString());
+                            formUpdater.ShowDialog(this);
+                        }
                     }
                 }
                 else
                 {
-                    DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否自动升级？（文件约1.5MB）", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (dr == DialogResult.Yes)
-                    {
-                        FormUpdater formUpdater = new FormUpdater(startpath, NewDate.ToString());
-                        formUpdater.ShowDialog(this);
-                    }
+                    //MessageBox.Show("已经是最新版了喵！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else
-            {
-                //MessageBox.Show("已经是最新版了喵！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            catch (Exception) { }
         }
 
         public bool CheckUpdate(out DateTime NewDate, out bool isFullUpdate)

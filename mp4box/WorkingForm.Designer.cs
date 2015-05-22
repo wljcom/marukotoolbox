@@ -112,5 +112,6 @@
         private System.Windows.Forms.Label labelworkCount;
         private System.Windows.Forms.Label labelProgress;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private ITaskbarList3 taskbarProgress;
     }
 }

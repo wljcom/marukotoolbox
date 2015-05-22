@@ -28,7 +28,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace mp4box
 {
@@ -650,7 +649,11 @@ namespace mp4box
             win7supported = (Environment.OSVersion.Version.Major > 6 ||
                 (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor >= 1));
             if (win7supported)
-                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
+            {
+                /* TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal); */
+                taskbarProgress = (ITaskbarList3)new ProgressTaskbar();
+                taskbarProgress.SetProgressState(this.Handle, TBPFLAG.TBPF_NORMAL);
+            }
             // validate the command string
             if (Commands.Equals(encoder.GetString(encoder.GetBytes(Commands))))
                 ProcStart();
@@ -773,7 +776,8 @@ namespace mp4box
                 buttonAbort.Enabled = false);
             UpdateProgress(1);
             if (win7supported)
-                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+                /* TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress); */
+                taskbarProgress.SetProgressState(this.Handle, TBPFLAG.TBPF_NOPROGRESS);
             // wait a little bit for the last asynchronous reading
             System.Threading.Thread.Sleep(75);
             // append finish tag
@@ -822,7 +826,8 @@ namespace mp4box
             killProcTree(proc.Id);
             // reset taskbar progress
             if (win7supported)
-                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+                //TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+                taskbarProgress.SetProgressState(this.Handle, TBPFLAG.TBPF_NOPROGRESS);
             // Print abort message to log
             Print(Environment.NewLine + "Work is aborted by user.");
         }
@@ -917,8 +922,10 @@ namespace mp4box
             labelProgress.InvokeIfRequired(() =>
                 labelProgress.Text = value.ToString("P"));
             if (win7supported)
-                TaskbarManager.Instance.SetProgressValue(
-                Convert.ToInt32(value * progressBarX264.Maximum), progressBarX264.Maximum);
+                /* TaskbarManager.Instance.SetProgressValue(
+                Convert.ToInt32(value * progressBarX264.Maximum), progressBarX264.Maximum); */
+                taskbarProgress.SetProgressValue(this.Handle, Convert.ToUInt64(value * progressBarX264.Maximum), Convert.ToUInt64(progressBarX264.Maximum));
+
             notifyIcon.Text = "小丸工具箱" + Environment.NewLine +
                 labelworkCount.Text + " - " + labelProgress.Text;
         }

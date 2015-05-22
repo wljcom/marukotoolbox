@@ -10,8 +10,6 @@ copy /y "%_TargetDir%xiaowan.exe.Config" "%_SolutionDir%xiaowan\" >nul
 copy /y "%_TargetDir%ControlExs.dll" "%_SolutionDir%xiaowan\" >nul
 copy /y "%_TargetDir%AxInterop.WMPLib.dll" "%_SolutionDir%xiaowan\" >nul
 copy /y "%_TargetDir%Interop.WMPLib.dll" "%_SolutionDir%xiaowan\" >nul
-copy /y "%_TargetDir%Microsoft.WindowsAPICodePack.dll" "%_SolutionDir%xiaowan\" >nul
-copy /y "%_TargetDir%Microsoft.WindowsAPICodePack.Shell.dll" "%_SolutionDir%xiaowan\" >nul
 
 if not exist "%_SolutionDir%xiaowan\en" mkdir "%_SolutionDir%xiaowan\en" >nul
 if not exist "%_SolutionDir%xiaowan\zh-HanT" mkdir "%_SolutionDir%xiaowan\zh-HanT" >nul
