@@ -48,6 +48,10 @@ namespace mp4box
             WorkQueued = workcount;
             this.Parent = this.Owner;
             StartPosition = FormStartPosition.CenterScreen;
+            bgworker.DoWork += bgworker_DoWork;
+            bgworker.WorkerReportsProgress = true;
+            bgworker.ProgressChanged += bgworker_ProgressChanged;
+            bgworker.WorkerSupportsCancellation = true;
         }
 
         /// <summary>
@@ -155,6 +159,11 @@ namespace mp4box
         /// Internal log, without progress Indicators
         /// </summary>
         private StringBuilder internellog = new StringBuilder();
+
+        /// <summary>
+        /// The one who invokes batch file.
+        /// </summary>
+        private BackgroundWorker bgworker = new BackgroundWorker();
 
         #endregion
 
@@ -422,7 +431,11 @@ namespace mp4box
                 /// The WM_CTLCOLORSCROLLBAR message is sent to the parent window of a scroll bar control when the control is about to be drawn.
                 ///     By responding to this message, the parent window can use the display context handle to set the background color of the scroll bar control.
                 /// </summary>
-                WM_CTLCOLORSCROLLBAR = 0x137
+                WM_CTLCOLORSCROLLBAR = 0x137,
+                /// <summary>
+                /// Used to define private messages for use by private window classes, usually of the form WM_USER+x, where x is an integer value.
+                /// </summary>
+                WM_USER = 0x400
             }
 
             /// <summary>
@@ -560,6 +573,40 @@ namespace mp4box
 
             #endregion
 
+            #region <CommCtrl.h>
+
+            /// <summary>
+            /// Windows Common Controls Messages
+            /// </summary>
+            public enum Win32CommCtrlMsgs : uint
+            {
+                /// <summary>
+                /// Sets the state of the progress bar.
+                /// </summary>
+                PBM_SETSTATE = Win32Msgs.WM_USER + 16
+            }
+
+            /// <summary>
+            /// ProgressBar States
+            /// </summary>
+            public enum ProgressBarState : uint
+            {
+                /// <summary>
+                /// In progress.
+                /// </summary>
+                PBST_NORMAL = 0x1,
+                /// <summary>
+                /// Error.
+                /// </summary>
+                PBST_ERROR = 0x2,
+                /// <summary>
+                /// Paused.
+                /// </summary>
+                PBST_PAUSED = 0x3
+            }
+
+            #endregion
+
             /// <summary>
             /// The GetScrollInfo function retrieves the parameters of a scroll bar,
             ///     including the minimum and maximum scrolling positions, the page size,
@@ -627,6 +674,17 @@ namespace mp4box
                 Win32Msgs Msg,
                 [MarshalAs(UnmanagedType.SysUInt)] UIntPtr wParam,
                 [MarshalAs(UnmanagedType.SysInt)] IntPtr lParam);
+
+            /// <summary>
+            /// Another overload for PostMessage.
+            /// </summary>
+            [DllImport("user32.dll")]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            public static extern bool PostMessage(
+                IntPtr hWnd,
+                Win32CommCtrlMsgs Msg,
+                [MarshalAs(UnmanagedType.SysUInt)] UIntPtr wParam,
+                [MarshalAs(UnmanagedType.SysInt)] IntPtr lParam);
         }
         #endregion
 
@@ -650,13 +708,12 @@ namespace mp4box
                 (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor >= 1));
             if (win7supported)
             {
-                /* TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal); */
                 taskbarProgress = (ITaskbarList3)new ProgressTaskbar();
                 taskbarProgress.SetProgressState(this.Handle, TBPFLAG.TBPF_NORMAL);
             }
             // validate the command string
             if (Commands.Equals(encoder.GetString(encoder.GetBytes(Commands))))
-                ProcStart();
+                bgworker.RunWorkerAsync();
             else
             {
                 MessageBox.Show("Path or filename contains invalid characters, please rename and retry."
@@ -693,6 +750,7 @@ namespace mp4box
 
         private void buttonAbort_Click(object sender, EventArgs e)
         {
+            bgworker.CancelAsync();
             ProcAbort();
         }
 
@@ -742,12 +800,7 @@ namespace mp4box
             this.ActiveControl = null;
         }
 
-        #endregion
-
-        /// <summary>
-        /// Start the working process.
-        /// </summary>
-        private void ProcStart()
+        void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
             // setup the process
             CheckFileExist(batPath);
@@ -763,7 +816,15 @@ namespace mp4box
             // setup asynchronous reading
             proc.OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(OutputHandler);
             proc.BeginOutputReadLine();
+            proc.WaitForExit();
         }
+
+        void bgworker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            UpdateProgress((double)e.UserState);
+        }
+
+        #endregion
 
         /// <summary>
         /// Process Exit event handler. Automatically called when process exit normally.
@@ -776,7 +837,6 @@ namespace mp4box
                 buttonAbort.Enabled = false);
             UpdateProgress(1);
             if (win7supported)
-                /* TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress); */
                 taskbarProgress.SetProgressState(this.Handle, TBPFLAG.TBPF_NOPROGRESS);
             // wait a little bit for the last asynchronous reading
             System.Threading.Thread.Sleep(75);
@@ -824,12 +884,18 @@ namespace mp4box
             proc.Exited -= new EventHandler(ProcExit);
             // terminate threads
             killProcTree(proc.Id);
-            // reset taskbar progress
             if (win7supported)
-                //TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+            {
+                // turn progressbar red
+                NativeMethods.PostMessage(progressBarX264.Handle, NativeMethods.Win32CommCtrlMsgs.PBM_SETSTATE,
+                    new UIntPtr((uint)NativeMethods.ProgressBarState.PBST_ERROR), new IntPtr(0));
+                // reset taskbar progress
                 taskbarProgress.SetProgressState(this.Handle, TBPFLAG.TBPF_NOPROGRESS);
+            }
             // Print abort message to log
             Print(Environment.NewLine + "Work is aborted by user.");
+            // Disable abort button
+            buttonAbort.Enabled = false;
         }
 
         /// <summary>
@@ -849,19 +915,21 @@ namespace mp4box
                     progressBarX264.InvokeIfRequired(() =>
                         progressBarX264.Style = ProgressBarStyle.Blocks
                     );
-                    UpdateProgress(0);
+                    bgworker.ReportProgress(0, 0.0);
                     frameCount = EstimateFrame(workPath, result.Groups["fileIn"].Value);
                 }
                 // try ffms pattern
                 result = Patterns.ffmsReg.Match(e.Data);
                 if (result.Success)
-                    UpdateProgress(Double.Parse(result.Groups["percent"].Value) / 100);
+                    bgworker.ReportProgress(0,
+                        Double.Parse(result.Groups["percent"].Value) / 100);
                 else
                 {
                     // try lavf pattern
                     result = Patterns.lavfReg.Match(e.Data);
                     if (result.Success)
-                        UpdateProgress(Double.Parse(result.Groups["frame"].Value) / frameCount);
+                        bgworker.ReportProgress(0,
+                            Double.Parse(result.Groups["frame"].Value) / frameCount);
                     else
                     {
                         // try nero pattern
@@ -925,9 +993,8 @@ namespace mp4box
             labelProgress.InvokeIfRequired(() =>
                 labelProgress.Text = value.ToString("P"));
             if (win7supported)
-                /* TaskbarManager.Instance.SetProgressValue(
-                Convert.ToInt32(value * progressBarX264.Maximum), progressBarX264.Maximum); */
-                taskbarProgress.SetProgressValue(this.Handle, Convert.ToUInt64(value * progressBarX264.Maximum), Convert.ToUInt64(progressBarX264.Maximum));
+                taskbarProgress.SetProgressValue(this.Handle,
+                    Convert.ToUInt64(value * progressBarX264.Maximum), Convert.ToUInt64(progressBarX264.Maximum));
 
             notifyIcon.Text = "小丸工具箱" + Environment.NewLine +
                 labelworkCount.Text + " - " + labelProgress.Text;
