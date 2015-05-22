@@ -879,18 +879,21 @@ namespace mp4box
         /// <param name="pid">The PID of the target process.</param>
         private void killProcTree(int pid)
         {
-            // recursive first
-            foreach (var m in new System.Management.ManagementObjectSearcher(
-                "Select * From Win32_Process Where ParentProcessID=" + pid).Get())
-            {
-                killProcTree(Convert.ToInt32(m["ProcessID"]));
-            }
-            // then suicide, usually threads throw exceptions when killed. Dump them silently.
+            // get child list first
+            var childlist = new System.Management.ManagementObjectSearcher(
+                "Select * From Win32_Process Where ParentProcessID=" + pid).Get();
+            // suicide. Dump exceptions silently.
             try
             {
                 System.Diagnostics.Process.GetProcessById(pid).Kill();
             }
             catch (ArgumentException) { }
+            // recursive genocide
+            foreach (var m in new System.Management.ManagementObjectSearcher(
+                "Select * From Win32_Process Where ParentProcessID=" + pid).Get())
+            {
+                killProcTree(Convert.ToInt32(m["ProcessID"]));
+            }
         }
 
         /// <summary>
