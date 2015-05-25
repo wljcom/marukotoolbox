@@ -40,11 +40,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.LogPathTextBox = new ControlExs.QQTextBox();
+            this.LogFileButton = new ControlExs.QQButton();
             this.SuspendLayout();
             // 
             // PostButton
             // 
-            this.PostButton.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.PostButton.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
             this.PostButton.Location = new System.Drawing.Point(184, 431);
             this.PostButton.Name = "PostButton";
             this.PostButton.Size = new System.Drawing.Size(130, 36);
@@ -59,7 +62,7 @@
             this.UserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserNameTextBox.EmptyTextTip = "反馈者的名字（必填）";
             this.UserNameTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.UserNameTextBox.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.UserNameTextBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
             this.UserNameTextBox.Location = new System.Drawing.Point(48, 12);
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.Size = new System.Drawing.Size(437, 23);
@@ -71,7 +74,7 @@
             this.QQTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QQTextBox.EmptyTextTip = "（选填）";
             this.QQTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.QQTextBox.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.QQTextBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
             this.QQTextBox.Location = new System.Drawing.Point(48, 43);
             this.QQTextBox.Name = "QQTextBox";
             this.QQTextBox.Size = new System.Drawing.Size(437, 23);
@@ -83,7 +86,7 @@
             this.EmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EmailTextBox.EmptyTextTip = "用于作者回复（必填）";
             this.EmailTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.EmailTextBox.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.EmailTextBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
             this.EmailTextBox.Location = new System.Drawing.Point(48, 74);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(437, 23);
@@ -95,7 +98,7 @@
             this.TitleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TitleTextBox.EmptyTextTip = "简明扼要的问题概括（必填）";
             this.TitleTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.TitleTextBox.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.TitleTextBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
             this.TitleTextBox.Location = new System.Drawing.Point(48, 105);
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(437, 23);
@@ -105,13 +108,13 @@
             // 
             this.MessageTextBox.AllowDrop = true;
             this.MessageTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MessageTextBox.EmptyTextTip = "说明你的操作步骤和结果，并附上mediainfo信息和输出的log内容（必填）";
+            this.MessageTextBox.EmptyTextTip = "说明你的操作步骤和结果，并附上mediainfo信息（必填）";
             this.MessageTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.MessageTextBox.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.MessageTextBox.Location = new System.Drawing.Point(48, 139);
+            this.MessageTextBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.MessageTextBox.Location = new System.Drawing.Point(48, 173);
             this.MessageTextBox.Multiline = true;
             this.MessageTextBox.Name = "MessageTextBox";
-            this.MessageTextBox.Size = new System.Drawing.Size(437, 283);
+            this.MessageTextBox.Size = new System.Drawing.Size(437, 248);
             this.MessageTextBox.TabIndex = 5;
             // 
             // label1
@@ -153,17 +156,52 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 140);
+            this.label5.Location = new System.Drawing.Point(9, 174);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 10;
             this.label5.Text = "内容";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 144);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "日志";
+            // 
+            // LogPathTextBox
+            // 
+            this.LogPathTextBox.AllowDrop = true;
+            this.LogPathTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LogPathTextBox.EmptyTextTip = "压制产生的日志log文件，为了准确分析问题请尽量上传日志（选填）";
+            this.LogPathTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.LogPathTextBox.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.LogPathTextBox.Location = new System.Drawing.Point(48, 138);
+            this.LogPathTextBox.Name = "LogPathTextBox";
+            this.LogPathTextBox.Size = new System.Drawing.Size(405, 23);
+            this.LogPathTextBox.TabIndex = 11;
+            // 
+            // LogFileButton
+            // 
+            this.LogFileButton.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.LogFileButton.Location = new System.Drawing.Point(459, 138);
+            this.LogFileButton.Name = "LogFileButton";
+            this.LogFileButton.Size = new System.Drawing.Size(26, 23);
+            this.LogFileButton.TabIndex = 13;
+            this.LogFileButton.Text = "...";
+            this.LogFileButton.UseVisualStyleBackColor = true;
+            this.LogFileButton.Click += new System.EventHandler(this.LogFileButton_Click);
             // 
             // FeedbackForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(497, 474);
+            this.Controls.Add(this.LogFileButton);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.LogPathTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -197,5 +235,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private ControlExs.QQTextBox LogPathTextBox;
+        private ControlExs.QQButton LogFileButton;
     }
 }

@@ -20,6 +20,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="log" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -56,6 +57,7 @@
     <wsdl:part name="email" type="s:string" />
     <wsdl:part name="title" type="s:string" />
     <wsdl:part name="msg" type="s:string" />
+    <wsdl:part name="log" type="s:string" />
   </wsdl:message>
   <wsdl:message name="PostFeedbackHttpGetOut">
     <wsdl:part name="Body" element="tns:boolean" />
@@ -70,6 +72,7 @@
     <wsdl:part name="email" type="s:string" />
     <wsdl:part name="title" type="s:string" />
     <wsdl:part name="msg" type="s:string" />
+    <wsdl:part name="log" type="s:string" />
   </wsdl:message>
   <wsdl:message name="PostFeedbackHttpPostOut">
     <wsdl:part name="Body" element="tns:boolean" />

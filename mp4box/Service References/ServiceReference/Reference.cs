@@ -21,7 +21,7 @@ namespace mp4box.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PostFeedback", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool PostFeedback(string name, string qq, string email, string title, string msg);
+        bool PostFeedback(string name, string qq, string email, string title, string msg, string log);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,8 +55,8 @@ namespace mp4box.ServiceReference {
             return base.Channel.HelloWorld();
         }
         
-        public bool PostFeedback(string name, string qq, string email, string title, string msg) {
-            return base.Channel.PostFeedback(name, qq, email, title, msg);
+        public bool PostFeedback(string name, string qq, string email, string title, string msg, string log) {
+            return base.Channel.PostFeedback(name, qq, email, title, msg, log);
         }
     }
 }

@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -42,6 +43,21 @@ namespace mp4box
 
         }
 
+        private string ReadLogFile(string logPath)
+        {
+            if (File.Exists(logPath))
+            {
+                string logContent = File.ReadAllText(logPath);
+                //logContent = logContent.Replace("\r\n", "<br /");
+                return File.ReadAllText(logPath);
+            }
+            else
+            {
+                ShowErrorMessage("请输入正确的日志文件路径!");
+                return string.Empty;
+            }
+        }
+
         private void PostButton_Click(object sender, EventArgs e)
         {
             string name = UserNameTextBox.Text;
@@ -49,6 +65,7 @@ namespace mp4box
             string email = EmailTextBox.Text;
             string title = TitleTextBox.Text;
             string msg = MessageTextBox.Text;
+            string log = ReadLogFile(LogPathTextBox.Text);
 
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(msg))
             {
@@ -57,7 +74,7 @@ namespace mp4box
             }
 
             ServiceReference.WebServiceSoapClient service = new ServiceReference.WebServiceSoapClient();
-            bool flag = service.PostFeedback(name, qq, email, title, msg);
+            bool flag = service.PostFeedback(name, qq, email, title, msg,log);
 
             if (flag)
             {
@@ -69,6 +86,17 @@ namespace mp4box
             }
             TitleTextBox.Clear();
             MessageTextBox.Clear();
+        }
+
+        private void LogFileButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "日志文件(*.log)|*.log|所有文件(*.*)|*.*";
+            DialogResult result = ofd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LogPathTextBox.Text = ofd.FileName;
+            }
         }
     }
 }
