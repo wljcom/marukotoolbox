@@ -45,17 +45,9 @@ namespace mp4box
 
         private string ReadLogFile(string logPath)
         {
-            if (File.Exists(logPath))
-            {
-                string logContent = File.ReadAllText(logPath);
-                //logContent = logContent.Replace("\r\n", "<br /");
-                return File.ReadAllText(logPath);
-            }
-            else
-            {
-                ShowErrorMessage("请输入正确的日志文件路径!");
-                return string.Empty;
-            }
+            string logContent = File.ReadAllText(logPath);
+            //logContent = logContent.Replace("\r\n", "<br /");
+            return logContent;
         }
 
         private void PostButton_Click(object sender, EventArgs e)
@@ -65,7 +57,19 @@ namespace mp4box
             string email = EmailTextBox.Text;
             string title = TitleTextBox.Text;
             string msg = MessageTextBox.Text;
-            string log = ReadLogFile(LogPathTextBox.Text);
+            string log = "";
+            if (!string.IsNullOrEmpty(LogPathTextBox.Text))
+            {
+                if (File.Exists(LogPathTextBox.Text))
+                {
+                    log = ReadLogFile(LogPathTextBox.Text);
+                }
+                else
+                {
+                    ShowErrorMessage("请输入正确的日志文件路径!");
+                    return;
+                }
+            }
 
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(msg))
             {
@@ -74,7 +78,7 @@ namespace mp4box
             }
 
             ServiceReference.WebServiceSoapClient service = new ServiceReference.WebServiceSoapClient();
-            bool flag = service.PostFeedback(name, qq, email, title, msg,log);
+            bool flag = service.PostFeedback(name, qq, email, title, msg, log);
 
             if (flag)
             {
