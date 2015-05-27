@@ -213,7 +213,9 @@
             this.Controls.Add(this.QQTextBox);
             this.Controls.Add(this.UserNameTextBox);
             this.Controls.Add(this.PostButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FeedbackForm";
             this.Text = "反馈";
             this.Load += new System.EventHandler(this.FeedbackForm_Load);

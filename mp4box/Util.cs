@@ -31,7 +31,6 @@ namespace mp4box
 {
     class Util
     {
-        
         /// <summary>
         /// 自动加引号
         /// </summary>
@@ -81,6 +80,7 @@ namespace mp4box
 
             return str + ext;
         }
+
         /// <summary>
         /// <para></para>输入：目标文件的 路径或所在目录；
         /// <para></para>输入：原始文件的路径；
@@ -124,6 +124,7 @@ namespace mp4box
                 }
             }
         }
+
         /// <summary>
         /// 用目标目录或文件路径（取自tbOutput），和输入的文件，返回一个供输出的文件路径。
         /// </summary>
@@ -134,6 +135,7 @@ namespace mp4box
         {
             return GetSimilarFilePath(DestDirOrFile, SrcFile, null);
         }
+
         /// <summary>
         /// 更换扩展名（保留绝对路径）
         /// </summary>
@@ -144,6 +146,7 @@ namespace mp4box
         {
             return GetDir(srcFile) + Path.GetFileNameWithoutExtension(srcFile) + ext;
         }
+
         /// <summary>
         /// 获取文件目录，带“\”
         /// </summary>
@@ -160,6 +163,29 @@ namespace mp4box
             {
                 return fileDir + "\\";
             }
+        }
+
+        /// <summary>
+        /// Gets the file version/date
+        /// </summary>
+        /// <param name="fileName">the file to check</param>
+        /// <param name="fileVersion">the file version</param>
+        /// <param name="fileDate">the file date</param>
+        /// <param name="fileProductName">the file product name</param>
+        /// <returns>true if file can be found, false if file cannot be found</returns>
+        public static bool GetFileInformation(string fileName, out string fileVersion, out string fileDate, out string fileProductName)
+        {
+            fileVersion = fileDate = fileProductName = string.Empty;
+            if (!File.Exists(fileName))
+                return false;
+
+            FileVersionInfo FileProperties = FileVersionInfo.GetVersionInfo(fileName);
+            fileVersion = FileProperties.FileVersion;
+            if (!String.IsNullOrEmpty(fileVersion))
+                fileVersion = fileVersion.Replace(", ", ".");
+            fileDate = File.GetLastWriteTimeUtc(fileName).ToString("dd-MM-yyyy");
+            fileProductName = FileProperties.ProductName;
+            return true;
         }
 
     }

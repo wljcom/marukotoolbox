@@ -122,6 +122,7 @@
     <Compile Include="FormUpdater.Designer.cs">
       <DependentUpon>FormUpdater.cs</DependentUpon>
     </Compile>
+    <Compile Include="OSInfo.cs" />
     <Compile Include="ProgressTaskbar.cs" />
     <Compile Include="Service References\ServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
