@@ -97,6 +97,7 @@ namespace mp4box
         private string avs = "";
         private string tempavspath = "";
         private string tempPic = "";
+        private string logFileName, logPath;
         private DateTime ReleaseDate = DateTime.Parse("2015-4-2 8:0:0");
 
         #endregion Private Members Declaration
@@ -125,6 +126,8 @@ namespace mp4box
 
         public MainForm()
         {
+            logPath = Application.StartupPath + "\\logs";
+            logFileName = logPath + "\\LogFile-" + DateTime.Now.ToString("yyyy'-'MM'-'dd'_'HH'-'mm'-'ss") + ".log";
             InitializeComponent();
         }
 
@@ -707,7 +710,7 @@ namespace mp4box
 
                 //string[] deletedfiles = { tempPic, "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat",
                 //                            "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
-                string[] deletedfiles = { "temp.wav", "temp.aac", "temp.mp4", tempPic, tempavspath, workPath + "msg.vbs", startpath + "\\x264_2pass.log.mbtree", startpath + "\\x264_2pass.log" };
+                string[] deletedfiles = { "temp.wav", "temp.aac", "temp.mp4", "concat.txt", tempPic, tempavspath, workPath + "msg.vbs", startpath + "\\x264_2pass.log.mbtree", startpath + "\\x264_2pass.log" };
                 deleteFileList.AddRange(deletedfiles);
 
                 foreach (string file in deleteFileList)
@@ -3052,14 +3055,16 @@ namespace mp4box
 
         public void LogRecord(string log)
         {
-            File.AppendAllText(startpath + "\\log.txt", "===========" + DateTime.Now.ToString() + "===========\r\n" + log + "\r\n\r\n", UnicodeEncoding.Default);
+            Util.ensureDirectoryExists(logPath);
+            File.AppendAllText(logFileName,
+                "===========" + DateTime.Now.ToString() + "===========\r\n" + log + "\r\n\r\n", UnicodeEncoding.Default);
         }
 
         private void DeleteLogButton_Click(object sender, EventArgs e)
         {
-            if (File.Exists(startpath + "\\log.txt"))
+            if (Directory.Exists(logPath))
             {
-                File.Delete(startpath + "\\log.txt");
+                Util.DeleteDirectoryIfExists(logPath, true);
                 ShowInfoMessage("已经删除日志文件。");
             }
             else ShowInfoMessage("没有找到日志文件。");
@@ -3067,9 +3072,9 @@ namespace mp4box
 
         private void ViewLogButton_Click(object sender, EventArgs e)
         {
-            if (File.Exists(startpath + "\\log.txt"))
+            if (File.Exists(logFileName))
             {
-                System.Diagnostics.Process.Start(startpath + "\\log.txt");
+                System.Diagnostics.Process.Start(logFileName);
             }
             else ShowInfoMessage("没有找到日志文件。");
         }

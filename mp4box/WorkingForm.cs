@@ -415,8 +415,10 @@ namespace mp4box
             FlashForm();
             BalloonTip(@"完成了喵~ (= ω =)");
 
-            // shutdown the system if required
+            // save log
             MainForm main = (MainForm)this.Owner;
+            main.LogRecord(internellog.ToString());
+            // shutdown the system if required
             if (main.shutdownState)
             {
                 System.Diagnostics.Process.Start("shutdown", "-s");

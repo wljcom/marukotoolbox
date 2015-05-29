@@ -67,20 +67,20 @@ namespace mp4box
         {
             string version4 = OSInfo.GetDotNetVersion("4.0");
             string version = OSInfo.GetDotNetVersion();
-            MessageTextBox.AppendText(String.Format("小丸工具箱版本: {0}", new System.Version(ProductVersion)));
+            MessageTextBox.AppendText(String.Format("小丸工具箱 版本: {0}", new System.Version(ProductVersion)));
             MessageTextBox.AppendText(string.Format("\r\n操作系统: {0}{1} ({2}.{3}.{4}.{5})",
                 OSInfo.GetOSName(), OSInfo.GetOSServicePack(), OSInfo.OSMajorVersion, OSInfo.OSMinorVersion, OSInfo.OSRevisionVersion, OSInfo.OSBuildVersion));
             if (String.IsNullOrEmpty(version4))
                 MessageTextBox.AppendText("\r\n.NET Framework 4.0 未安装");
             else
-                MessageTextBox.AppendText(string.Format("\r\n.NET Framework: {0}", version4));
+                MessageTextBox.AppendText(string.Format("\r\nMicrosoft .NET Framework: {0}", version4));
             if (!String.IsNullOrEmpty(version) && !version4.Equals(version))
-                MessageTextBox.AppendText(string.Format("\r\n.NET Framework: {0}", version));
+                MessageTextBox.AppendText(string.Format("\r\nMicrosoft .NET Framework: {0}", version));
             if (!String.IsNullOrEmpty(CheckAviSynth()))
                 MessageTextBox.AppendText("\r\n" + CheckAviSynth());
             else
-                MessageTextBox.AppendText("\r\nAvisynth未安装");
-            MessageTextBox.AppendText("\r\n------------------------------以上信息为自动检测请勿修改-----------------------\r\n\r\n");
+                MessageTextBox.AppendText("\r\nAvisynth 未安装");
+            MessageTextBox.AppendText("\r\n------------------------------以上信息为自动检测请勿修改------------------------\r\n\r\n");
         }
 
         private string ReadLogFile(string logPath)
