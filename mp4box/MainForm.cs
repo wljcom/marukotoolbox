@@ -883,7 +883,7 @@ namespace mp4box
                 else
                     languageComboBox.SelectedIndex = int.Parse(ConfigurationManager.AppSettings["LanguageIndex"]);
 
-                if (CheckUpdateCheckBox.Checked)
+                if (CheckUpdateCheckBox.Checked && Util.IsConnectInternet())
                 {
                     DateTime d;
                     bool f;
@@ -3765,10 +3765,17 @@ namespace mp4box
 
         private void CheckUpdateButton_Click(object sender, EventArgs e)
         {
-            WebRequest request = WebRequest.Create("http://mtbftest.sinaapp.com/version.php");
-            request.Credentials = CredentialCache.DefaultCredentials;
-            // Get the response.
-            request.BeginGetResponse(new AsyncCallback(OnResponse), request);
+            if (Util.IsConnectInternet())
+            {
+                WebRequest request = WebRequest.Create("http://mtbftest.sinaapp.com/version.php");
+                request.Credentials = CredentialCache.DefaultCredentials;
+                // Get the response.
+                request.BeginGetResponse(new AsyncCallback(OnResponse), request);
+            }
+            else
+            {
+                ShowErrorMessage("这台电脑似乎没有联网呢~");
+            }
         }
 
         protected void OnResponse(IAsyncResult ar)
