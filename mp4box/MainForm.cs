@@ -890,6 +890,7 @@ namespace mp4box
                     CheckUpadateDelegate checkUpdateDelegate = CheckUpdate;
                     checkUpdateDelegate.BeginInvoke(out d, out f, new AsyncCallback(CheckUpdateCallBack), null);
                 }
+                x264ExeComboBox_SelectedIndexChanged(null, null);
             }
             catch (Exception)
             {
@@ -1332,6 +1333,8 @@ namespace mp4box
         private void lbAuto_MouseDown(object sender, MouseEventArgs e)
         {
             indexofsource = ((ListBox)sender).IndexFromPoint(e.X, e.Y);
+            if (indexofsource == 65535)
+                return;
             if (indexofsource != ListBox.NoMatches)
             {
                 ((ListBox)sender).DoDragDrop(((ListBox)sender).Items[indexofsource].ToString(), DragDropEffects.All);
@@ -1361,19 +1364,8 @@ namespace mp4box
 
             if (x264BatchSubCheckBox.Checked) //内嵌字幕
             {
-                string sub = "";
-                string splang = "";
-                string[] subExt = { ".ass", ".ssa", ".srt" };
-                if (x264BatchSubSpecialLanguage.Text != "none")
-                    splang = "." + x264BatchSubSpecialLanguage.Text;
-                foreach (string ext in subExt)
-                {
-                    if (File.Exists(input.Remove(input.LastIndexOf(".")) + splang + ext))
-                    {
-                        sub = input.Remove(input.LastIndexOf(".")) + splang + ext;
-                        break;
-                    }
-                }
+                string sub = GetSubtitlePath(input);
+
                 if (sub != "")
                 {
                     if (x264.IndexOf("--vf") == -1)
@@ -1935,6 +1927,7 @@ namespace mp4box
                 clip = String.Format(@"""{0}\ffmpeg.exe"" -i ""{1}"" -ss {2} -to {3} -y -c copy ""{4}""",
                     workPath, namevideo4, maskb.Text, maske.Text, nameout5) + Environment.NewLine + "cmd";
                 batpath = workPath + "\\clip.bat";
+                LogRecord(clip);
                 File.WriteAllText(batpath, clip, UnicodeEncoding.Default);
                 Process.Start(batpath);
             }
@@ -3070,8 +3063,8 @@ namespace mp4box
         private void x264PathButton_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.ShowDialog();
-            x264PathTextBox.Text = fbd.SelectedPath;
+            if (fbd.ShowDialog() == DialogResult.OK)
+                x264PathTextBox.Text = fbd.SelectedPath;
         }
 
         private void ExtractMP4TextBox_TextChanged(object sender, EventArgs e)
@@ -4049,6 +4042,65 @@ namespace mp4box
         {
             XElement x = xdoc.Element("root").Element("Audio").Elements().Where(_ => _.Attribute("Name").Value == AudioPresetComboBox.Text).First();
             AudioCustomParameterTextBox.Text = x.Value;
+        }
+
+        private void lbAuto_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0 || e.Index >= 65535)
+                return;
+
+            e.DrawBackground();
+            SolidBrush BlueBrush = new SolidBrush(Color.Blue);
+            SolidBrush BlackBrush = new SolidBrush(Color.Black);
+            Color vColor = Color.Black;
+            string input = lbAuto.Items[e.Index].ToString();
+            if (!string.IsNullOrEmpty(GetSubtitlePath(input)))
+            {
+                e.Graphics.DrawString(Convert.ToString(lbAuto.Items[e.Index]), e.Font, BlueBrush, e.Bounds);
+            }
+            else
+            {
+                e.Graphics.DrawString(Convert.ToString(lbAuto.Items[e.Index]), e.Font, BlackBrush, e.Bounds);
+            }
+        }
+
+
+        private string GetSubtitlePath(string videoPath)
+        {
+            string sub = "";
+            string splang = "";
+            string[] subExt = { ".ass", ".ssa", ".srt" };
+            if (x264BatchSubSpecialLanguage.Text != "none")
+                splang = "." + x264BatchSubSpecialLanguage.Text;
+            foreach (string ext in subExt)
+            {
+                if (File.Exists(videoPath.Remove(videoPath.LastIndexOf(".")) + splang + ext))
+                {
+                    sub = videoPath.Remove(videoPath.LastIndexOf(".")) + splang + ext;
+                    break;
+                }
+            }
+            return sub;
+        }
+
+        private void x264ExeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (x264ExeComboBox.SelectedIndex == -1)
+                return;
+
+            if (x264ExeComboBox.SelectedItem.ToString().ToLower().Contains("ffmpeg"))
+            {
+                x264Mode3RadioButton.Checked = true;
+                x264Mode1RadioButton.Enabled = false;
+                x264Mode2RadioButton.Enabled = false;
+            }
+            else
+            {
+                x264Mode1RadioButton.Checked = true;
+                x264Mode1RadioButton.Enabled = true;
+                x264Mode2RadioButton.Enabled = true;
+                x264Mode3RadioButton.Enabled = true;
+            }
         }
     }
 }

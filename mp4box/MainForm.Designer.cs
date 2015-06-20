@@ -160,6 +160,8 @@
             this.button7 = new ControlExs.QQButton();
             this.AudioTab = new System.Windows.Forms.TabPage();
             this.NeroAACGroupBox = new System.Windows.Forms.GroupBox();
+            this.AudioPresetComboBox = new System.Windows.Forms.ComboBox();
+            this.AudioPresetLabel = new System.Windows.Forms.Label();
             this.AudioBitrateComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.AudioEncoderComboBox = new System.Windows.Forms.ComboBox();
@@ -299,8 +301,6 @@
             this.SetDefaultButton = new ControlExs.QQButton();
             this.DeleteLogButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
-            this.AudioPresetComboBox = new System.Windows.Forms.ComboBox();
-            this.AudioPresetLabel = new System.Windows.Forms.Label();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -1585,6 +1585,19 @@
             this.NeroAACGroupBox.Name = "NeroAACGroupBox";
             this.NeroAACGroupBox.TabStop = false;
             // 
+            // AudioPresetComboBox
+            // 
+            this.AudioPresetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AudioPresetComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.AudioPresetComboBox, "AudioPresetComboBox");
+            this.AudioPresetComboBox.Name = "AudioPresetComboBox";
+            this.AudioPresetComboBox.SelectedIndexChanged += new System.EventHandler(this.AudioPresetComboBox_SelectedIndexChanged);
+            // 
+            // AudioPresetLabel
+            // 
+            resources.ApplyResources(this.AudioPresetLabel, "AudioPresetLabel");
+            this.AudioPresetLabel.Name = "AudioPresetLabel";
+            // 
             // AudioBitrateComboBox
             // 
             this.AudioBitrateComboBox.FormattingEnabled = true;
@@ -2101,9 +2114,11 @@
             // lbAuto
             // 
             this.lbAuto.AllowDrop = true;
+            this.lbAuto.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.lbAuto.FormattingEnabled = true;
             resources.ApplyResources(this.lbAuto, "lbAuto");
             this.lbAuto.Name = "lbAuto";
+            this.lbAuto.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lbAuto_DrawItem);
             this.lbAuto.DragDrop += new System.Windows.Forms.DragEventHandler(this.lbAuto_DragDrop);
             this.lbAuto.DragEnter += new System.Windows.Forms.DragEventHandler(this.lbAuto_DragEnter);
             this.lbAuto.DragOver += new System.Windows.Forms.DragEventHandler(this.lbAuto_DragOver);
@@ -2295,6 +2310,7 @@
             this.x264ExeComboBox.FormattingEnabled = true;
             resources.ApplyResources(this.x264ExeComboBox, "x264ExeComboBox");
             this.x264ExeComboBox.Name = "x264ExeComboBox";
+            this.x264ExeComboBox.SelectedIndexChanged += new System.EventHandler(this.x264ExeComboBox_SelectedIndexChanged);
             // 
             // x264FpsComboBox
             // 
@@ -2884,19 +2900,6 @@
             this.ViewLogButton.Name = "ViewLogButton";
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
-            // 
-            // AudioPresetComboBox
-            // 
-            this.AudioPresetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AudioPresetComboBox.FormattingEnabled = true;
-            resources.ApplyResources(this.AudioPresetComboBox, "AudioPresetComboBox");
-            this.AudioPresetComboBox.Name = "AudioPresetComboBox";
-            this.AudioPresetComboBox.SelectedIndexChanged += new System.EventHandler(this.AudioPresetComboBox_SelectedIndexChanged);
-            // 
-            // AudioPresetLabel
-            // 
-            resources.ApplyResources(this.AudioPresetLabel, "AudioPresetLabel");
-            this.AudioPresetLabel.Name = "AudioPresetLabel";
             // 
             // MainForm
             // 
