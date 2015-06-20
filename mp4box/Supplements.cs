@@ -109,7 +109,7 @@ namespace mp4box
         /// <returns>a list of StreamProperty containing stream type and format.</returns>
         public static List<StreamProperty> Extract(string workPath, string filename)
         {
-            var output = GetFFmpegOutput(workPath, filename);
+            var output = Util.GetFFmpegOutput(workPath, filename);
             var list = new List<StreamProperty>(5);
             var match = ffmpegReg.Match(output);
             while (match.Success)
@@ -121,24 +121,5 @@ namespace mp4box
             return list;
         }
 
-        /// <summary>
-        /// ffmpeg output wrapper
-        /// </summary>
-        /// <param name="workPath">work path which contains ffmpeg</param>
-        /// <param name="filename">target media file</param>
-        /// <returns>ffmpeg output info</returns>
-        private static string GetFFmpegOutput(string workPath, string filename)
-        {
-            var processInfo = new System.Diagnostics.ProcessStartInfo(
-                System.IO.Path.Combine(workPath, "ffmpeg.exe"), "-i " + Util.FormatPath(filename));
-            processInfo.WorkingDirectory = System.IO.Directory.GetCurrentDirectory();
-            processInfo.CreateNoWindow = true;
-            processInfo.UseShellExecute = false;
-            processInfo.RedirectStandardError = true;
-            var proc = System.Diagnostics.Process.Start(processInfo);
-            string output = proc.StandardError.ReadToEnd();
-            proc.WaitForExit();
-            return output;
-        }
     }
 }

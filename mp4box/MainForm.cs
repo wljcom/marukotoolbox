@@ -207,7 +207,7 @@ namespace mp4box
 
         public string ffmuxbat(string input1, string input2, string output)
         {
-            mux = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input1 + "\" -i \"" + input2 + "\" -c copy -y \"" + output + "\"\r\n";
+            mux = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input1 + "\" -i \"" + input2 + "\" -sn -c copy -y \"" + output + "\"\r\n";
             return mux;
         }
 
@@ -332,7 +332,7 @@ namespace mp4box
         {
             int AACbr = 1000 * Convert.ToInt32(AudioBitrateComboBox.Text);
             string br = AACbr.ToString();
-            ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input + "\" -vn -c:a pcm_s16le -f wav pipe:|";
+            ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input + "\" -vn -sn -v 0 -c:a pcm_s16le -f wav pipe:|";
             switch (AudioEncoderComboBox.SelectedIndex)
             {
                 case 0:
@@ -452,11 +452,11 @@ namespace mp4box
             }
             if (cbFPS.Text == "auto")
             {
-                mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + namevideo + "#trackID=1:par=" + Mp4BoxParComboBox.Text + "\"" + " -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
+                mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + namevideo + "#trackID=1:par=" + Mp4BoxParComboBox.Text + ":name=\"" + " -add \"" + nameaudio + ":name=\" -new \"" + nameout + "\" \r\n cmd";
             }
             else
             {
-                mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + namevideo + "#trackID=1:par=" + Mp4BoxParComboBox.Text + ":fps=" + cbFPS.Text + "\"" + " -add \"" + nameaudio + "\" -new \"" + nameout + "\" \r\n cmd";
+                mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + namevideo + "#trackID=1:par=" + Mp4BoxParComboBox.Text + ":fps=" + cbFPS.Text + ":name=\"" + " -add \"" + nameaudio + ":name=\" -new \"" + nameout + "\" \r\n cmd";
             }
 
             if (nameaudio == "") //如果没有音频流
@@ -1343,21 +1343,15 @@ namespace mp4box
             bool hasAudio = false;
             string bat = "";
 
-            //检测是否含有音频
-            MediaInfo MI = new MediaInfo();
-            MI.Open(input);
-            string audio = MI.Get(StreamKind.Audio, 0, "Format");
-            if (!string.IsNullOrEmpty(audio))
-            {
-                hasAudio = true;
-            }
+            //检测是否含有音频 
+            string getOutput = Util.GetFFmpegOutput(workPath, input);
+            Regex ffReg = new Regex(@"Stream #0:\d[\s\S]+: Audio[\s\S]+");
+            Match ffmch = ffReg.Match(getOutput);
+            if (ffmch.Success) hasAudio = true;
 
             if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果压制音频
             {
-                if (Path.GetExtension(input) == ".avs") //如果输入是avs
-                    aextract = "\r\n";
-                else
-                    aextract = audiobat(input, "temp.aac");
+                aextract = audiobat(input, "temp.aac");
                 x264 = x264bat(input, "temp.mp4").Replace("\r\n", "");
             }
             else
@@ -2236,21 +2230,15 @@ namespace mp4box
             string tempVideo = Util.ChangeExt(namevideo2, "_temp.mp4");
             string tempAudio = Util.ChangeExt(namevideo2, "_temp.aac");
             //检测是否含有音频
-            MediaInfo MI = new MediaInfo();
-            MI.Open(namevideo2);
-            string audio = MI.Get(StreamKind.Audio, 0, "Format");
-            if (!string.IsNullOrEmpty(audio))
-            {
-                hasAudio = true;
-            }
+            string getOutput = Util.GetFFmpegOutput(workPath, namevideo2);
+            Regex ffReg = new Regex(@"Stream #0:\d[\s\S]+: Audio[\s\S]+");
+            Match ffmch = ffReg.Match(getOutput);
+            if (ffmch.Success) hasAudio = true;
 
             //编码文件
             if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果压制音频
             {
-                if (Path.GetExtension(namevideo2) == ".avs") //如果输入是avs
-                    aextract = "\r\n";
-                else
-                    aextract = audiobat(namevideo2, tempAudio);
+                aextract = audiobat(namevideo2, tempAudio);
                 x264 = x264bat(namevideo2, tempVideo).Replace("\r\n", "");
             }
             else
@@ -3139,7 +3127,7 @@ namespace mp4box
             {
                 case 0:
                     SetLang("zh-CN", this, typeof(MainForm));
-                    Text = String.Format("小丸工具箱 r{0}", Assembly.GetExecutingAssembly().GetName().Version.Build);
+                    this.Text = String.Format("小丸工具箱 {0}", Assembly.GetExecutingAssembly().GetName().Version.Build);
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "低", "低于标准", "普通", "高于标准", "高", "实时" });
                     x264PriorityComboBox.SelectedIndex = 2;
@@ -3165,7 +3153,7 @@ namespace mp4box
 
                 case 1:
                     SetLang("zh-TW", this, typeof(MainForm));
-                    Text = String.Format("小丸工具箱 r{0}", Assembly.GetExecutingAssembly().GetName().Version.Build);
+                    this.Text = String.Format("小丸工具箱 {0}", Assembly.GetExecutingAssembly().GetName().Version.Build);
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "低", "在標準以下", "標準", "在標準以上", "高", "即時" });
                     x264PriorityComboBox.SelectedIndex = 2;
@@ -3191,7 +3179,7 @@ namespace mp4box
 
                 case 2:
                     SetLang("en-US", this, typeof(MainForm));
-                    Text = String.Format("Maruko Toolbox r{0}", Assembly.GetExecutingAssembly().GetName().Version.Build);
+                    this.Text = String.Format("Maruko Toolbox {0}", Assembly.GetExecutingAssembly().GetName().Version.Build);
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "Idle", "BelowNormal", "Normal", "AboveNormal", "High", "RealTime" });
                     x264PriorityComboBox.SelectedIndex = 2;
@@ -3217,7 +3205,7 @@ namespace mp4box
 
                 case 3:
                     SetLang("ja-JP", this, typeof(MainForm));
-                    Text = String.Format("Maruko Toolbox r{0}", Assembly.GetExecutingAssembly().GetName().Version.Build);
+                    this.Text = String.Format("Maruko Toolbox {0}", Assembly.GetExecutingAssembly().GetName().Version.Build);
                     x264PriorityComboBox.Items.Clear();
                     x264PriorityComboBox.Items.AddRange(new string[] { "低", "通常以下", "通常", "通常以上", "高", "リアルタイム" });
                     x264PriorityComboBox.SelectedIndex = 2;

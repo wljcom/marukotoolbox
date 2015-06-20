@@ -219,7 +219,6 @@ namespace mp4box
         }
 
 
-
         [DllImport("wininet.dll")]
         private extern static bool InternetGetConnectedState(int Description, int ReservedValue);
         /// <summary>
@@ -231,5 +230,26 @@ namespace mp4box
             int Description = 0;
             return InternetGetConnectedState(Description, 0);
         }
+
+        /// <summary>
+        /// ffmpeg output wrapper
+        /// </summary>
+        /// <param name="workPath">work path which contains ffmpeg</param>
+        /// <param name="filename">target media file</param>
+        /// <returns>ffmpeg output info</returns>
+        public static string GetFFmpegOutput(string workPath, string filename)
+        {
+            var processInfo = new System.Diagnostics.ProcessStartInfo(
+                System.IO.Path.Combine(workPath, "ffmpeg.exe"), "-i " + FormatPath(filename));
+            processInfo.WorkingDirectory = System.IO.Directory.GetCurrentDirectory();
+            processInfo.CreateNoWindow = true;
+            processInfo.UseShellExecute = false;
+            processInfo.RedirectStandardError = true;
+            var proc = System.Diagnostics.Process.Start(processInfo);
+            string output = proc.StandardError.ReadToEnd();
+            proc.WaitForExit();
+            return output;
+        }
+
     }
 }
