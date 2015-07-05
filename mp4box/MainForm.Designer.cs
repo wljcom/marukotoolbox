@@ -285,13 +285,16 @@
             this.BlackOutputTextBox = new ControlExs.QQTextBox();
             this.BlackVideoTextBox = new ControlExs.QQTextBox();
             this.SetupTabPage = new System.Windows.Forms.TabPage();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.x264extraLine = new ControlExs.QQTextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.x264PriorityComboBox = new System.Windows.Forms.ComboBox();
+            this.x264ThreadsComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.CheckUpdateCheckBox = new ControlExs.QQCheckBox();
             this.SetupPlayerTextBox = new ControlExs.QQTextBox();
             this.label38 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.x264ThreadsComboBox = new System.Windows.Forms.ComboBox();
-            this.x264PriorityComboBox = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.languageComboBox = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
             this.SetupPlayerButton = new ControlExs.QQButton();
@@ -351,6 +354,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BlackCRFNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BlackFPSNum)).BeginInit();
             this.SetupTabPage.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -2754,13 +2758,10 @@
             // 
             // SetupTabPage
             // 
+            this.SetupTabPage.Controls.Add(this.groupBox12);
             this.SetupTabPage.Controls.Add(this.CheckUpdateCheckBox);
             this.SetupTabPage.Controls.Add(this.SetupPlayerTextBox);
             this.SetupTabPage.Controls.Add(this.label38);
-            this.SetupTabPage.Controls.Add(this.label2);
-            this.SetupTabPage.Controls.Add(this.x264ThreadsComboBox);
-            this.SetupTabPage.Controls.Add(this.x264PriorityComboBox);
-            this.SetupTabPage.Controls.Add(this.label11);
             this.SetupTabPage.Controls.Add(this.languageComboBox);
             this.SetupTabPage.Controls.Add(this.label26);
             this.SetupTabPage.Controls.Add(this.SetupPlayerButton);
@@ -2773,6 +2774,64 @@
             resources.ApplyResources(this.SetupTabPage, "SetupTabPage");
             this.SetupTabPage.Name = "SetupTabPage";
             this.SetupTabPage.UseVisualStyleBackColor = true;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.x264extraLine);
+            this.groupBox12.Controls.Add(this.label43);
+            this.groupBox12.Controls.Add(this.x264PriorityComboBox);
+            this.groupBox12.Controls.Add(this.x264ThreadsComboBox);
+            this.groupBox12.Controls.Add(this.label2);
+            this.groupBox12.Controls.Add(this.label11);
+            resources.ApplyResources(this.groupBox12, "groupBox12");
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.TabStop = false;
+            // 
+            // x264extraLine
+            // 
+            this.x264extraLine.AllowDrop = true;
+            this.x264extraLine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.x264extraLine.EmptyTextTip = null;
+            this.x264extraLine.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.x264extraLine, "x264extraLine");
+            this.x264extraLine.Name = "x264extraLine";
+            // 
+            // label43
+            // 
+            resources.ApplyResources(this.label43, "label43");
+            this.label43.Name = "label43";
+            // 
+            // x264PriorityComboBox
+            // 
+            this.x264PriorityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.x264PriorityComboBox.FormattingEnabled = true;
+            this.x264PriorityComboBox.Items.AddRange(new object[] {
+            resources.GetString("x264PriorityComboBox.Items"),
+            resources.GetString("x264PriorityComboBox.Items1"),
+            resources.GetString("x264PriorityComboBox.Items2"),
+            resources.GetString("x264PriorityComboBox.Items3"),
+            resources.GetString("x264PriorityComboBox.Items4"),
+            resources.GetString("x264PriorityComboBox.Items5")});
+            resources.ApplyResources(this.x264PriorityComboBox, "x264PriorityComboBox");
+            this.x264PriorityComboBox.Name = "x264PriorityComboBox";
+            this.x264PriorityComboBox.SelectedIndexChanged += new System.EventHandler(this.x264PriorityComboBox_SelectedIndexChanged);
+            // 
+            // x264ThreadsComboBox
+            // 
+            this.x264ThreadsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.x264ThreadsComboBox.FormattingEnabled = true;
+            resources.ApplyResources(this.x264ThreadsComboBox, "x264ThreadsComboBox");
+            this.x264ThreadsComboBox.Name = "x264ThreadsComboBox";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
             // 
             // CheckUpdateCheckBox
             // 
@@ -2796,38 +2855,6 @@
             // 
             resources.ApplyResources(this.label38, "label38");
             this.label38.Name = "label38";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // x264ThreadsComboBox
-            // 
-            this.x264ThreadsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.x264ThreadsComboBox.FormattingEnabled = true;
-            resources.ApplyResources(this.x264ThreadsComboBox, "x264ThreadsComboBox");
-            this.x264ThreadsComboBox.Name = "x264ThreadsComboBox";
-            // 
-            // x264PriorityComboBox
-            // 
-            this.x264PriorityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.x264PriorityComboBox.FormattingEnabled = true;
-            this.x264PriorityComboBox.Items.AddRange(new object[] {
-            resources.GetString("x264PriorityComboBox.Items"),
-            resources.GetString("x264PriorityComboBox.Items1"),
-            resources.GetString("x264PriorityComboBox.Items2"),
-            resources.GetString("x264PriorityComboBox.Items3"),
-            resources.GetString("x264PriorityComboBox.Items4"),
-            resources.GetString("x264PriorityComboBox.Items5")});
-            resources.ApplyResources(this.x264PriorityComboBox, "x264PriorityComboBox");
-            this.x264PriorityComboBox.Name = "x264PriorityComboBox";
-            this.x264PriorityComboBox.SelectedIndexChanged += new System.EventHandler(this.x264PriorityComboBox_SelectedIndexChanged);
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
             // 
             // languageComboBox
             // 
@@ -2982,6 +3009,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BlackFPSNum)).EndInit();
             this.SetupTabPage.ResumeLayout(false);
             this.SetupTabPage.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3259,6 +3288,9 @@
         private System.Windows.Forms.ComboBox VideoBatchFormatComboBox;
         private System.Windows.Forms.ComboBox AudioPresetComboBox;
         private System.Windows.Forms.Label AudioPresetLabel;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Label label43;
+        private ControlExs.QQTextBox x264extraLine;
     }
 }
 
