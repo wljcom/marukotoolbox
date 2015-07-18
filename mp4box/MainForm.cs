@@ -233,8 +233,8 @@ namespace mp4box
 
             StringBuilder sb = new StringBuilder();
             if (Path.GetExtension(input) == ".avs")
-                sb.Append(Util.FormatPath(workPath + "\\avs4x26x.exe") + " -L ");
-            sb.Append(Util.FormatPath(Path.Combine(workPath, x264ExeComboBox.SelectedItem.ToString())));
+                sb.Append("\"" + workPath + "\\avs4x26x.exe\"" + " -L ");
+            sb.Append("\"" + Path.Combine(workPath, x264ExeComboBox.SelectedItem.ToString()) + "\"");
             // 编码模式
             switch (mode)
             {
@@ -275,9 +275,9 @@ namespace mp4box
             if (x264FramesNumericUpDown.Value != 0)
                 sb.Append(" --frames " + x264FramesNumericUpDown.Value.ToString());
             if (mode == 2 && pass == 1)
-                sb.Append(" --output NUL");
+                sb.Append(" -o NUL");
             else if (!string.IsNullOrEmpty(output))
-                sb.Append(" --output " + "\"" + output + "\"");
+                sb.Append(" -o " + "\"" + output + "\"");
             if (!string.IsNullOrEmpty(input))
                 sb.Append(" \"" + input + "\"");
             return sb.ToString();
@@ -286,7 +286,7 @@ namespace mp4box
         public string x265bat(string input, string output, int pass = 1)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(Util.FormatPath(workPath + "\\ffmpeg.exe") + " -i \"" + input + "\"");
+            sb.Append("\"" + workPath + "\\ffmpeg.exe\"" + " -i \"" + input + "\"");
             if (x264HeightNum.Value != 0 && x264WidthNum.Value != 0 && !MaintainResolutionCheckBox.Checked)
                 sb.Append(" -s " + x264WidthNum.Value + "x" + x264HeightNum.Value);
             sb.Append(" -f yuv4mpegpipe -an -v 0 - | ");
@@ -316,9 +316,9 @@ namespace mp4box
             if (x264FramesNumericUpDown.Value != 0)
                 sb.Append(" --frames " + x264FramesNumericUpDown.Value.ToString());
             if (mode == 2 && pass == 1)
-                sb.Append(" --output NUL");
+                sb.Append(" -o NUL");
             else if (!string.IsNullOrEmpty(output))
-                sb.Append(" --output " + "\"" + output + "\"");
+                sb.Append(" -o " + "\"" + output + "\"");
             if (!string.IsNullOrEmpty(input))
                 sb.Append(" -");
             return sb.ToString();
@@ -1022,7 +1022,7 @@ namespace mp4box
             List<string> x264exe = new List<string>();
             foreach (FileInfo FileName in folder.GetFiles())
             {
-                if ((FileName.Name.ToLower().Contains("x264") || FileName.Name.ToLower().Contains("x265")) && Path.GetExtension(FileName.Name) == ".exe")
+                if ((FileName.Name.ToLower().Contains("x264") || FileName.Name.ToLower().Contains("xxxx")) && Path.GetExtension(FileName.Name) == ".exe")
                 {
                     x264exe.Add(FileName.Name);
                 }
@@ -1392,11 +1392,11 @@ namespace mp4box
             string tempAudio = "temp.aac";
 
             //检测是否含有音频 
-            string getOutput = Util.GetFFmpegOutput(workPath, input);
-            Regex ffReg = new Regex(@"Stream #0:\d[\s\S]+: Audio[\s\S]+");
-            Match ffmch = ffReg.Match(getOutput);
-            if (ffmch.Success) { hasAudio = true; }
-            string sub = (x264BatchSubCheckBox.Checked) ? GetSubtitlePath(input) : null;
+            MediaInfo MI = new MediaInfo();
+            MI.Open(input);
+            string audio = MI.Get(StreamKind.Audio, 0, "Format");
+            if (!string.IsNullOrEmpty(audio)) { hasAudio = true; }
+            string sub = (x264BatchSubCheckBox.Checked) ? GetSubtitlePath(input) : string.Empty;
 
             if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果压制音频
                 aextract = audiobat(input, tempAudio);
@@ -1419,16 +1419,8 @@ namespace mp4box
                 else x264 = x265bat(input, tempVideo, 0);
                 if (x264AudioModeComboBox.SelectedIndex != 0 || !hasAudio)
                 {
-                    if (VideoBatchFormatComboBox.Text == "mp4")
-                    {
-                        x264 += "\r\n\"" + workPath + "\\mp4box.exe\"  -add  \"" + tempVideo + "\" -new \"" + output + "\" \r\n";
-                        x264 += "del \"" + tempVideo + "\"";
-                    }
-                    else
-                    {
-                        x264 += "\r\n\"" + workPath + "\\ffmpeg.exe\"  -i  \"" + tempVideo + "\" -c copy -y \"" + output + "\" \r\n";
-                        x264 += "del \"" + tempVideo + "\"";
-                    }
+                    x264 += "\r\n\"" + workPath + "\\mp4box.exe\"  -add  \"" + tempVideo + "\" -new \"" + output + "\" \r\n";
+                    x264 += "del \"" + tempVideo + "\"";
                 }
             }
             x264 += "\r\n";
@@ -1472,12 +1464,12 @@ namespace mp4box
             }
 
             LogRecord(bat);
-            //WorkingForm wf = new WorkingForm(bat, lbAuto.Items.Count);
-            //wf.Owner = this;
-            //wf.Show();
-            batpath = workPath + "\\auto.bat";
-            File.WriteAllText(batpath, bat, UnicodeEncoding.Default);
-            System.Diagnostics.Process.Start(batpath);
+            WorkingForm wf = new WorkingForm(bat, lbAuto.Items.Count);
+            wf.Owner = this;
+            wf.Show();
+            //batpath = workPath + "\\auto.bat";
+            //File.WriteAllText(batpath, bat, UnicodeEncoding.Default);
+            //System.Diagnostics.Process.Start(batpath);
         }
 
         private void lbffmpeg_MouseDown(object sender, MouseEventArgs e)
@@ -1753,14 +1745,14 @@ namespace mp4box
         {
             x264DemuxerComboBox.SelectedIndex = 0; //压制AVS始终使用分离器为auto
 
-            if (!File.Exists(txtvideo9.Text))
-            {
-                ShowErrorMessage("请选择视频文件");
-                return;
-            }
             if (string.IsNullOrEmpty(nameout9))
             {
                 ShowErrorMessage("请选择输出文件");
+                return;
+            }
+            if (Path.GetExtension(nameout9).ToLower() != ".mp4")
+            {
+                ShowErrorMessage("仅支持MP4输出", "不支持的输出格式");
                 return;
             }
             if (File.Exists(txtout9.Text.Trim()))
@@ -1776,14 +1768,21 @@ namespace mp4box
 
             //检测是否含有音频
             bool hasAudio = false;
-            string getOutput = Util.GetFFmpegOutput(workPath, namevideo9);
-            Regex ffReg = new Regex(@"Stream #0:\d[\s\S]+: Audio[\s\S]+");
-            Match ffmch = ffReg.Match(getOutput);
-            if (ffmch.Success) { hasAudio = true; }
+            MediaInfo MI = new MediaInfo();
+            MI.Open(namevideo9);
+            string audio = MI.Get(StreamKind.Audio, 0, "Format");
+            if (!string.IsNullOrEmpty(audio)) { hasAudio = true; }
 
             //audio
             if (AVSwithAudioCheckBox.Checked && hasAudio)
+            {
+                if (!File.Exists(txtvideo9.Text))
+                {
+                    ShowErrorMessage("请选择视频文件");
+                    return;
+                }
                 aextract = audiobat(namevideo9, "temp.aac");
+            }
             //video
             if (x264ExeComboBox.SelectedItem.ToString().ToLower().Contains("x264"))
             {
@@ -1803,35 +1802,22 @@ namespace mp4box
                 else x264 = x265bat(filepath, tempVideo);
                 if (!AVSwithAudioCheckBox.Checked || !hasAudio)
                 {
-                    if (Path.GetExtension(nameout9) == ".mp4")
-                    {
-                        x264 += "\r\n\"" + workPath + "\\mp4box.exe\"  -add  \"" + tempVideo + "\" -new \"" + nameout9 + "\" \r\n";
-                        x264 += "del \"" + tempVideo + "\"";
-                    }
-                    else
-                    {
-                        x264 += "\r\n\"" + workPath + "\\ffmpeg.exe\"  -i  \"" + tempVideo + "\" -c copy -y \"" + nameout9 + "\" \r\n";
-                        x264 += "del \"" + tempVideo + "\"";
-                    }
+                    x264 += "\r\n\"" + workPath + "\\mp4box.exe\"  -add  \"" + tempVideo + "\" -new \"" + nameout9 + "\" \r\n";
+                    x264 += "del \"" + tempVideo + "\"";
                 }
             }
             //mux
             if (AVSwithAudioCheckBox.Checked && hasAudio) //如果包含音频
-            {
-                if (Path.GetExtension(nameout9) == ".mp4")
-                    mux = boxmuxbat(tempVideo, "temp.aac", nameout9);
-                else
-                    mux = ffmuxbat(tempVideo, "temp.aac", nameout9);
-            }
+                mux = boxmuxbat(tempVideo, "temp.aac", nameout9);
             auto = aextract + x264 + "\r\n" + mux + " \r\n";
-            //WorkingForm wf = new WorkingForm(auto);
-            //wf.Owner = this;
-            //wf.Show();
-            auto += "\r\ncmd";
             LogRecord(auto);
-            batpath = workPath + "\\x264avs.bat";
-            File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
-            System.Diagnostics.Process.Start(batpath);
+            WorkingForm wf = new WorkingForm(auto);
+            wf.Owner = this;
+            wf.Show();
+            //auto += "\r\ncmd";
+            //batpath = workPath + "\\x264avs.bat";
+            //File.WriteAllText(batpath, auto, UnicodeEncoding.Default);
+            //System.Diagnostics.Process.Start(batpath);
         }
 
         private void btnout9_Click(object sender, EventArgs e)
@@ -2327,10 +2313,10 @@ namespace mp4box
             string tempVideo = Util.ChangeExt(namevideo2, "_temp.mp4");
             string tempAudio = Util.ChangeExt(namevideo2, "_temp.aac");
             //检测是否含有音频
-            string getOutput = Util.GetFFmpegOutput(workPath, namevideo2);
-            Regex ffReg = new Regex(@"Stream #0:\d[\s\S]+: Audio[\s\S]+");
-            Match ffmch = ffReg.Match(getOutput);
-            if (ffmch.Success) hasAudio = true;
+            MediaInfo MI = new MediaInfo();
+            MI.Open(namevideo2);
+            string audio = MI.Get(StreamKind.Audio, 0, "Format");
+            if (!string.IsNullOrEmpty(audio)) { hasAudio = true; }
 
             if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果压制音频
                 aextract = audiobat(namevideo2, tempAudio);
@@ -2347,22 +2333,19 @@ namespace mp4box
             else if (x264ExeComboBox.SelectedItem.ToString().ToLower().Contains("x265"))
             {
                 tempVideo = Util.ChangeExt(namevideo2, "_temp.hevc");
+                if (ext != ".mp4")
+                {
+                    ShowErrorMessage("不支持的格式输出,x265当前工具箱仅支持MP4输出");
+                    return;
+                }
                 if (mode == 2)
                     x264 = x265bat(namevideo2, tempVideo, 1) + "\r\n" +
                            x265bat(namevideo2, tempVideo, 2);
                 else x264 = x265bat(namevideo2, tempVideo, 0);
                 if (x264AudioModeComboBox.SelectedIndex != 0 || !hasAudio)
                 {
-                    if (ext == ".mp4")
-                    {
-                        x264 += "\r\n\"" + workPath + "\\mp4box.exe\" -add  \"" + tempVideo + "\" -new \"" + nameout2 + "\" \r\n";
-                        x264 += "del \"" + tempVideo + "\"";
-                    }
-                    else
-                    {
-                        x264 += "\r\n\"" + workPath + "\\ffmpeg.exe\" -i  \"" + tempVideo + "\" -c copy -y \"" + nameout2 + "\" \r\n";
-                        x264 += "del \"" + tempVideo + "\"";
-                    }
+                    x264 += "\r\n\"" + workPath + "\\mp4box.exe\" -add  \"" + tempVideo + "\" -new \"" + Util.ChangeExt(nameout2, ".mp4") + "\" \r\n";
+                    x264 += "del \"" + tempVideo + "\"";
                 }
             }
             x264 += "\r\n";
@@ -2378,13 +2361,13 @@ namespace mp4box
                     + "del \"" + tempAudio + "\"\r\n";
             }
             LogRecord(x264);
-            //WorkingForm wf = new WorkingForm(x264);
-            //wf.Owner = this;
-            //wf.Show();
-            x264 += "\r\ncmd";
-            batpath = workPath + "\\x264.bat";
-            File.WriteAllText(batpath, x264, UnicodeEncoding.Default);
-            System.Diagnostics.Process.Start(batpath);
+            WorkingForm wf = new WorkingForm(x264);
+            wf.Owner = this;
+            wf.Show();
+            //x264 += "\r\ncmd";
+            //batpath = workPath + "\\x264.bat";
+            //File.WriteAllText(batpath, x264, UnicodeEncoding.Default);
+            //System.Diagnostics.Process.Start(batpath);
         }
 
         private void x264AddPresetBtn_Click(object sender, EventArgs e)
@@ -4194,6 +4177,8 @@ namespace mp4box
                 x264BatchSubCheckBox.Enabled = false;
                 x264BatchSubSpecialLanguage.Enabled = false;
                 x264DemuxerComboBox.Enabled = false;
+                VideoBatchFormatComboBox.Text = "mp4";
+                VideoBatchFormatComboBox.Enabled = false;
             }
             else
             {
@@ -4202,6 +4187,7 @@ namespace mp4box
                 x264BatchSubCheckBox.Enabled = true;
                 x264BatchSubSpecialLanguage.Enabled = true;
                 x264DemuxerComboBox.Enabled = true;
+                VideoBatchFormatComboBox.Enabled = true;
             }
             //if (x264ExeComboBox.SelectedItem.ToString().ToLower().Contains("ffmpeg"))
             //{

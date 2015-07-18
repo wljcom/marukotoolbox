@@ -222,8 +222,9 @@ namespace mp4box
             /// <remarks>
             /// Without double quote: ^.+>"(?<workDIR>[^"]+)\\x264.+ -o "(?<fileOut>[^"]+)" "(?<fileIn>[^"]+)"
             /// </remarks>
-            private const string fileRegStr = @">""(?<workDIR>[^""]+)\\x264.+-o ""(?<fileOut>[^""]+)"" ""(?<fileIn>[^""]+)""";
-
+            private const string fileRegStr = @"-o ""(?<fileOut>[^""]+)"" ""(?<fileIn>[^""]+)""|ffmpeg.exe[""]? -i ""(?<fileIn>[^""]+)""";
+            //private const string fileRegStr = @">""(?<workDIR>[^""]+)\\x264.+-o ""(?<fileOut>[^""]+)"" ""(?<fileIn>[^""]+)""";
+            
             /// <summary>
             /// Filename and working directory Regex.
             ///     Available patterns: workDIR, fileOut, fileIn.
