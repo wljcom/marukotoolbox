@@ -207,14 +207,12 @@ namespace mp4box
 
         public string ffmuxbat(string input1, string input2, string output)
         {
-            mux = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input1 + "\" -i \"" + input2 + "\" -sn -c copy -y \"" + output + "\"\r\n";
-            return mux;
+            return "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input1 + "\" -i \"" + input2 + "\" -sn -c copy -y \"" + output + "\"\r\n";
         }
 
         public string boxmuxbat(string input1, string input2, string output)
         {
-            mux = "\"" + workPath + "\\mp4box.exe\" -add \"" + input1 + "\" -add \"" + input2 + "\" -new \"" + output + "\"\r\n";
-            return mux;
+            return "\"" + workPath + "\\mp4box.exe\" -add \"" + input1 + "#trackID=1:name=\" -add \"" + input2 + "#trackID=1:name=\" -new \"" + output + "\"\r\n";
         }
 
         public string x264bat(string input, string output, int pass = 1, string sub = "")
@@ -1419,7 +1417,7 @@ namespace mp4box
                 else x264 = x265bat(input, tempVideo, 0);
                 if (x264AudioModeComboBox.SelectedIndex != 0 || !hasAudio)
                 {
-                    x264 += "\r\n\"" + workPath + "\\mp4box.exe\"  -add  \"" + tempVideo + "\" -new \"" + output + "\" \r\n";
+                    x264 += "\r\n\"" + workPath + "\\mp4box.exe\"  -add  \"" + tempVideo + "#trackID=1:name=\" -new \"" + output + "\" \r\n";
                     x264 += "del \"" + tempVideo + "\"";
                 }
             }
@@ -1802,7 +1800,7 @@ namespace mp4box
                 else x264 = x265bat(filepath, tempVideo);
                 if (!AVSwithAudioCheckBox.Checked || !hasAudio)
                 {
-                    x264 += "\r\n\"" + workPath + "\\mp4box.exe\"  -add  \"" + tempVideo + "\" -new \"" + nameout9 + "\" \r\n";
+                    x264 += "\r\n\"" + workPath + "\\mp4box.exe\"  -add  \"" + tempVideo + "#trackID=1:name=\" -new \"" + nameout9 + "\" \r\n";
                     x264 += "del \"" + tempVideo + "\"";
                 }
             }
@@ -2344,7 +2342,7 @@ namespace mp4box
                 else x264 = x265bat(namevideo2, tempVideo, 0);
                 if (x264AudioModeComboBox.SelectedIndex != 0 || !hasAudio)
                 {
-                    x264 += "\r\n\"" + workPath + "\\mp4box.exe\" -add  \"" + tempVideo + "\" -new \"" + Util.ChangeExt(nameout2, ".mp4") + "\" \r\n";
+                    x264 += "\r\n\"" + workPath + "\\mp4box.exe\" -add  \"" + tempVideo + "#trackID=1:name=\" -new \"" + Util.ChangeExt(nameout2, ".mp4") + "\" \r\n";
                     x264 += "del \"" + tempVideo + "\"";
                 }
             }
