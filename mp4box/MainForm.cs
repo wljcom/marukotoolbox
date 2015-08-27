@@ -1558,9 +1558,12 @@ namespace mp4box
                 string ext = MuxFormatComboBox.Text;
                 int i;
                 ffmpeg = "";
-                for (i = 0; i < this.lbffmpeg.Items.Count; i++)
+                for (i = 0; i < lbffmpeg.Items.Count; i++)
                 {
-                    finish = lbffmpeg.Items[i].ToString().Remove(lbffmpeg.Items[i].ToString().LastIndexOf(".")) + "_" + ext + "封装." + ext;
+                    string filePath = lbffmpeg.Items[i].ToString();
+                    if (Path.GetExtension(filePath).Contains(ext))
+                        continue;
+                        finish = filePath.Remove(filePath.LastIndexOf(".") + 1) + ext;
                     ffmpeg += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + lbffmpeg.Items[i].ToString() + "\" -c copy \"" + finish + "\" \r\n";
                 }
                 ffmpeg += "\r\ncmd";
@@ -2625,7 +2628,8 @@ namespace mp4box
                     AudioCustomizeRadioButton.Enabled = true;
                     break;
 
-                case 2: if (File.Exists(txtaudio2.Text))
+                case 2:
+                    if (File.Exists(txtaudio2.Text))
                         AudioOutputTextBox.Text = Util.ChangeExt(txtaudio2.Text, "_WAV.wav");
                     AudioBitrateComboBox.Enabled = false;
                     AudioBitrateRadioButton.Enabled = false;
@@ -2640,7 +2644,8 @@ namespace mp4box
                     AudioCustomizeRadioButton.Enabled = false;
                     break;
 
-                case 4: if (File.Exists(txtaudio2.Text))
+                case 4:
+                    if (File.Exists(txtaudio2.Text))
                         AudioOutputTextBox.Text = Util.ChangeExt(txtaudio2.Text, "_FLAC.flac");
                     AudioBitrateComboBox.Enabled = false;
                     AudioBitrateRadioButton.Enabled = false;
@@ -2758,22 +2763,28 @@ namespace mp4box
             {
                 switch (AudioEncoderComboBox.SelectedIndex)
                 {
-                    case 0: nameout3 = savefile.FileName + ".mp4";
+                    case 0:
+                        nameout3 = savefile.FileName + ".mp4";
                         break;
 
-                    case 1: nameout3 = savefile.FileName + ".m4a";
+                    case 1:
+                        nameout3 = savefile.FileName + ".m4a";
                         break;
 
-                    case 2: nameout3 = savefile.FileName + ".wav";
+                    case 2:
+                        nameout3 = savefile.FileName + ".wav";
                         break;
 
-                    case 3: nameout3 = savefile.FileName + ".m4a";
+                    case 3:
+                        nameout3 = savefile.FileName + ".m4a";
                         break;
 
-                    case 4: nameout3 = savefile.FileName + ".flac";
+                    case 4:
+                        nameout3 = savefile.FileName + ".flac";
                         break;
 
-                    case 5: nameout3 = savefile.FileName + ".m4a";
+                    case 5:
+                        nameout3 = savefile.FileName + ".m4a";
                         break;
 
                     default:
