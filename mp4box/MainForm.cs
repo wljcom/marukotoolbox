@@ -486,6 +486,20 @@ namespace mp4box
                 ShowErrorMessage("请选择视频文件");
                 return;
             }
+            string inputExt = Path.GetExtension(txtvideo.Text.Trim()).ToLower();
+            if (inputExt != ".avi"  //Only MPEG-4 SP/ASP video and MP3 audio supported at the current time. To import AVC/H264 video, you must first extract the avi track.
+                    && inputExt != ".mp4" //MPEG-4 Video
+                    && inputExt != ".m1v" //MPEG-1 Video
+                    && inputExt != ".m2v" //MPEG-2 Video
+                    && inputExt != ".m4v" //MPEG-4 Video
+                    && inputExt != ".264" //AVC/H264 Video
+                    && inputExt != ".h264" //AVC/H264 Video
+                    && inputExt != ".hevc") //HEVC/H265 Video
+            {
+                ShowErrorMessage("输入文件: \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n是一个mp4box不支持的视频文件!");
+                return;
+            }
+
             if (nameout == "")
             {
                 ShowErrorMessage("请选择输出文件");
@@ -666,17 +680,17 @@ namespace mp4box
                         throw new Exception("输入文件: \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n不存在!");
                     }
                     string inputExt = Path.GetExtension(txtvideo.Text.Trim()).ToLower();
-                    if (inputExt != ".avi"  //Only MPEG-4 SP/ASP video and MP3 audio supported at the current time. To import AVC/H264 video, you must first extract the avi track.
-                            && inputExt != ".mp4" //MPEG-4 Video
-                            && inputExt != ".m1v" //MPEG-1 Video
-                            && inputExt != ".m2v" //MPEG-2 Video
-                            && inputExt != ".m4v" //MPEG-4 Video
-                            && inputExt != ".264" //AVC/H264 Video
-                            && inputExt != ".h264" //AVC/H264 Video
-                            && inputExt != ".hevc") //HEVC/H265 Video
-                    {
-                        throw new Exception("输入文件: \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n是一个mp4box不支持的视频文件!");
-                    }
+                    //if (inputExt != ".avi"  //Only MPEG-4 SP/ASP video and MP3 audio supported at the current time. To import AVC/H264 video, you must first extract the avi track.
+                    //        && inputExt != ".mp4" //MPEG-4 Video
+                    //        && inputExt != ".m1v" //MPEG-1 Video
+                    //        && inputExt != ".m2v" //MPEG-2 Video
+                    //        && inputExt != ".m4v" //MPEG-4 Video
+                    //        && inputExt != ".264" //AVC/H264 Video
+                    //        && inputExt != ".h264" //AVC/H264 Video
+                    //        && inputExt != ".hevc") //HEVC/H265 Video
+                    //{
+                    //    throw new Exception("输入文件: \r\n\r\n" + txtvideo.Text.Trim() + "\r\n\r\n是一个mp4box不支持的视频文件!");
+                    //}
                     if (inputExt == ".264" || inputExt == ".h264" || inputExt == ".hevc")
                     {
                         ShowWarningMessage("H.264或者HEVC流文件mp4box将会自动侦测帧率\r\n如果侦测不到将默认为25fps\r\n如果你知道该文件的帧率建议手动设置");
@@ -1554,24 +1568,38 @@ namespace mp4box
         {
             if (lbffmpeg.Items.Count != 0)
             {
-                string finish;
                 string ext = MuxFormatComboBox.Text;
-                int i;
-                ffmpeg = "";
-                for (i = 0; i < lbffmpeg.Items.Count; i++)
+                string mux = "";
+                for (int i = 0; i < lbffmpeg.Items.Count; i++)
                 {
                     string filePath = lbffmpeg.Items[i].ToString();
+                    //如果是源文件的格式和目标格式相同则跳过
                     if (Path.GetExtension(filePath).Contains(ext))
                         continue;
-                        finish = filePath.Remove(filePath.LastIndexOf(".") + 1) + ext;
-                    ffmpeg += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + lbffmpeg.Items[i].ToString() + "\" -c copy \"" + finish + "\" \r\n";
+                    string finish = filePath.Remove(filePath.LastIndexOf(".") + 1) + ext;
+                    aextract = "";
+
+                    //检测音频是否需要转换为AAC
+                    MediaInfo MI = new MediaInfo();
+                    MI.Open(filePath);
+                    string audio = MI.Get(StreamKind.Audio, 0, "Format");
+                    if (audio.ToLower() != "aac")
+                    {
+                        //string tempAudio = Util.ChangeExt(filePath, "_temp.aac");
+                        //AudioEncoderComboBox.SelectedIndex = 1;
+                        //aextract = audiobat(filePath, tempAudio);
+                        mux += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + lbffmpeg.Items[i].ToString() + "\" -c:v copy -c:a " + MuxAacEncoderComboBox.Text + " \"" + finish + "\" \r\n";
+                    }
+                    else
+                    {
+                        mux += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + lbffmpeg.Items[i].ToString() + "\" -c copy \"" + finish + "\" \r\n";
+                    }
                 }
-                ffmpeg += "\r\ncmd";
-                batpath = workPath + "\\flv.bat";
-                File.WriteAllText(batpath, ffmpeg, UnicodeEncoding.Default);
-                LogRecord(ffmpeg);
-                System.Diagnostics.Process.Start(batpath);
-                //lbffmpeg.Items.Clear();
+                mux += "\r\ncmd";
+                batpath = workPath + "\\mux.bat";
+                File.WriteAllText(batpath, mux, UnicodeEncoding.Default);
+                LogRecord(mux);
+                Process.Start(batpath);
             }
             else ShowErrorMessage("请输入视频！");
         }
@@ -3365,9 +3393,10 @@ namespace mp4box
                 return;
             }
             mux = "";
-            mux = "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + namevideo + "\" -c:v copy -an  \"" + workPath + "\\video_noaudio.mp4\" \r\n";
-            mux += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + workPath + "\\video_noaudio.mp4\" -i \"" + nameaudio + "\" -vcodec copy  -acodec copy \"" + nameout + "\" \r\n";
-            mux += "del \"" + workPath + "\\video_noaudio.mp4\" \r\n";
+            //mux = "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + namevideo + "\" -c:v copy -an  \"" + workPath + "\\video_noaudio.mp4\" \r\n";
+            //mux += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + workPath + "\\video_noaudio.mp4\" -i \"" + nameaudio + "\" -vcodec copy  -acodec copy \"" + nameout + "\" \r\n";
+            //mux += "del \"" + workPath + "\\video_noaudio.mp4\" \r\n";
+            mux = "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + namevideo + "\" -i \""+ nameaudio +"\" -map 0:v -c:v copy -map 1:0 -c:a copy  \"" + txtout.Text + "\" \r\n";
             batpath = workPath + "\\mux.bat";
             File.WriteAllText(batpath, mux, UnicodeEncoding.Default);
             LogRecord(mux);
@@ -3962,9 +3991,8 @@ namespace mp4box
         private void AVSAddFilterButton_Click(object sender, EventArgs e)
         {
             string vsfilterDLLPath = Path.Combine(workPath, @"avsfilter\" + AVSFilterComboBox.Text);
-            string text = "LoadPlugin(\"" + vsfilterDLLPath + "\")";
-            Clipboard.SetText(text);
-            ShowInfoMessage(text + "已经复制到剪贴板");
+            string text = "LoadPlugin(\"" + vsfilterDLLPath + "\")" + "\r\n";
+            AVSScriptTextBox.Text = text + AVSScriptTextBox.Text;
         }
 
         private void AudioJoinButton_Click(object sender, EventArgs e)

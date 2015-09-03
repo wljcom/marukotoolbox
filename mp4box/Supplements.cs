@@ -55,7 +55,7 @@ namespace mp4box
         /// <para>Stream #0:3: Subtitle: ass (default)</para>
         /// </summary>
         private static readonly Regex ffmpegReg
-            = new Regex(@"Stream #0:\d+: (?<type>.+): (?<metadata>.+)");
+            = new Regex(@"Stream #0:\S+: (?<type>.+): (?<metadata>.+)");
 
         public enum StreamType
         {

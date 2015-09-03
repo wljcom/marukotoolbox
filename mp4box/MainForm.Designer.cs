@@ -285,6 +285,17 @@
             this.BlackOutputTextBox = new ControlExs.QQTextBox();
             this.BlackVideoTextBox = new ControlExs.QQTextBox();
             this.SetupTabPage = new System.Windows.Forms.TabPage();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.SetupPlayerTextBox = new ControlExs.QQTextBox();
+            this.SetupPlayerButton = new ControlExs.QQButton();
+            this.SetupDeleteTempFileCheckBox = new ControlExs.QQCheckBox();
+            this.CheckUpdateCheckBox = new ControlExs.QQCheckBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.SplashScreenCheckBox = new ControlExs.QQCheckBox();
+            this.TrayModeCheckBox = new ControlExs.QQCheckBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.languageComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.x264extraLine = new ControlExs.QQTextBox();
             this.label43 = new System.Windows.Forms.Label();
@@ -292,18 +303,11 @@
             this.x264ThreadsComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.CheckUpdateCheckBox = new ControlExs.QQCheckBox();
-            this.SetupPlayerTextBox = new ControlExs.QQTextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.languageComboBox = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.SetupPlayerButton = new ControlExs.QQButton();
-            this.SplashScreenCheckBox = new ControlExs.QQCheckBox();
-            this.TrayModeCheckBox = new ControlExs.QQCheckBox();
-            this.SetupDeleteTempFileCheckBox = new ControlExs.QQCheckBox();
-            this.SetDefaultButton = new ControlExs.QQButton();
             this.DeleteLogButton = new ControlExs.QQButton();
+            this.SetDefaultButton = new ControlExs.QQButton();
             this.ViewLogButton = new ControlExs.QQButton();
+            this.label44 = new System.Windows.Forms.Label();
+            this.MuxAacEncoderComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox10.SuspendLayout();
             this.MediaInfoTab.SuspendLayout();
             this.AVSTab.SuspendLayout();
@@ -354,6 +358,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BlackCRFNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BlackFPSNum)).BeginInit();
             this.SetupTabPage.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1261,6 +1267,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label44);
+            this.groupBox4.Controls.Add(this.MuxAacEncoderComboBox);
             this.groupBox4.Controls.Add(this.label40);
             this.groupBox4.Controls.Add(this.MuxFormatComboBox);
             this.groupBox4.Controls.Add(this.lbffmpeg);
@@ -2758,22 +2766,110 @@
             // 
             // SetupTabPage
             // 
+            this.SetupTabPage.Controls.Add(this.groupBox14);
+            this.SetupTabPage.Controls.Add(this.groupBox13);
             this.SetupTabPage.Controls.Add(this.groupBox12);
-            this.SetupTabPage.Controls.Add(this.CheckUpdateCheckBox);
-            this.SetupTabPage.Controls.Add(this.SetupPlayerTextBox);
-            this.SetupTabPage.Controls.Add(this.label38);
-            this.SetupTabPage.Controls.Add(this.languageComboBox);
-            this.SetupTabPage.Controls.Add(this.label26);
-            this.SetupTabPage.Controls.Add(this.SetupPlayerButton);
-            this.SetupTabPage.Controls.Add(this.SplashScreenCheckBox);
-            this.SetupTabPage.Controls.Add(this.TrayModeCheckBox);
-            this.SetupTabPage.Controls.Add(this.SetupDeleteTempFileCheckBox);
-            this.SetupTabPage.Controls.Add(this.SetDefaultButton);
             this.SetupTabPage.Controls.Add(this.DeleteLogButton);
+            this.SetupTabPage.Controls.Add(this.SetDefaultButton);
             this.SetupTabPage.Controls.Add(this.ViewLogButton);
             resources.ApplyResources(this.SetupTabPage, "SetupTabPage");
             this.SetupTabPage.Name = "SetupTabPage";
             this.SetupTabPage.UseVisualStyleBackColor = true;
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.label38);
+            this.groupBox14.Controls.Add(this.SetupPlayerTextBox);
+            this.groupBox14.Controls.Add(this.SetupPlayerButton);
+            this.groupBox14.Controls.Add(this.SetupDeleteTempFileCheckBox);
+            this.groupBox14.Controls.Add(this.CheckUpdateCheckBox);
+            resources.ApplyResources(this.groupBox14, "groupBox14");
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.TabStop = false;
+            // 
+            // label38
+            // 
+            resources.ApplyResources(this.label38, "label38");
+            this.label38.Name = "label38";
+            // 
+            // SetupPlayerTextBox
+            // 
+            this.SetupPlayerTextBox.AllowDrop = true;
+            this.SetupPlayerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SetupPlayerTextBox.EmptyTextTip = null;
+            this.SetupPlayerTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.SetupPlayerTextBox, "SetupPlayerTextBox");
+            this.SetupPlayerTextBox.Name = "SetupPlayerTextBox";
+            // 
+            // SetupPlayerButton
+            // 
+            resources.ApplyResources(this.SetupPlayerButton, "SetupPlayerButton");
+            this.SetupPlayerButton.Name = "SetupPlayerButton";
+            this.SetupPlayerButton.UseVisualStyleBackColor = true;
+            this.SetupPlayerButton.Click += new System.EventHandler(this.SetupAVSPlayerButton_Click);
+            // 
+            // SetupDeleteTempFileCheckBox
+            // 
+            resources.ApplyResources(this.SetupDeleteTempFileCheckBox, "SetupDeleteTempFileCheckBox");
+            this.SetupDeleteTempFileCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.SetupDeleteTempFileCheckBox.Checked = true;
+            this.SetupDeleteTempFileCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.SetupDeleteTempFileCheckBox.Name = "SetupDeleteTempFileCheckBox";
+            this.SetupDeleteTempFileCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // CheckUpdateCheckBox
+            // 
+            resources.ApplyResources(this.CheckUpdateCheckBox, "CheckUpdateCheckBox");
+            this.CheckUpdateCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.CheckUpdateCheckBox.Checked = true;
+            this.CheckUpdateCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckUpdateCheckBox.Name = "CheckUpdateCheckBox";
+            this.CheckUpdateCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.SplashScreenCheckBox);
+            this.groupBox13.Controls.Add(this.TrayModeCheckBox);
+            this.groupBox13.Controls.Add(this.label26);
+            this.groupBox13.Controls.Add(this.languageComboBox);
+            resources.ApplyResources(this.groupBox13, "groupBox13");
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.TabStop = false;
+            // 
+            // SplashScreenCheckBox
+            // 
+            resources.ApplyResources(this.SplashScreenCheckBox, "SplashScreenCheckBox");
+            this.SplashScreenCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.SplashScreenCheckBox.Checked = true;
+            this.SplashScreenCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.SplashScreenCheckBox.Name = "SplashScreenCheckBox";
+            this.SplashScreenCheckBox.UseVisualStyleBackColor = false;
+            // 
+            // TrayModeCheckBox
+            // 
+            resources.ApplyResources(this.TrayModeCheckBox, "TrayModeCheckBox");
+            this.TrayModeCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.TrayModeCheckBox.Name = "TrayModeCheckBox";
+            this.TrayModeCheckBox.UseVisualStyleBackColor = false;
+            this.TrayModeCheckBox.CheckedChanged += new System.EventHandler(this.TrayModeCheckBox_CheckedChanged);
+            // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            // 
+            // languageComboBox
+            // 
+            this.languageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.languageComboBox.FormattingEnabled = true;
+            this.languageComboBox.Items.AddRange(new object[] {
+            resources.GetString("languageComboBox.Items"),
+            resources.GetString("languageComboBox.Items1"),
+            resources.GetString("languageComboBox.Items2"),
+            resources.GetString("languageComboBox.Items3")});
+            resources.ApplyResources(this.languageComboBox, "languageComboBox");
+            this.languageComboBox.Name = "languageComboBox";
+            this.languageComboBox.SelectedIndexChanged += new System.EventHandler(this.languageComboBox_SelectedIndexChanged);
             // 
             // groupBox12
             // 
@@ -2833,79 +2929,12 @@
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
             // 
-            // CheckUpdateCheckBox
+            // DeleteLogButton
             // 
-            resources.ApplyResources(this.CheckUpdateCheckBox, "CheckUpdateCheckBox");
-            this.CheckUpdateCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.CheckUpdateCheckBox.Checked = true;
-            this.CheckUpdateCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckUpdateCheckBox.Name = "CheckUpdateCheckBox";
-            this.CheckUpdateCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // SetupPlayerTextBox
-            // 
-            this.SetupPlayerTextBox.AllowDrop = true;
-            this.SetupPlayerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SetupPlayerTextBox.EmptyTextTip = null;
-            this.SetupPlayerTextBox.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            resources.ApplyResources(this.SetupPlayerTextBox, "SetupPlayerTextBox");
-            this.SetupPlayerTextBox.Name = "SetupPlayerTextBox";
-            // 
-            // label38
-            // 
-            resources.ApplyResources(this.label38, "label38");
-            this.label38.Name = "label38";
-            // 
-            // languageComboBox
-            // 
-            this.languageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.languageComboBox.FormattingEnabled = true;
-            this.languageComboBox.Items.AddRange(new object[] {
-            resources.GetString("languageComboBox.Items"),
-            resources.GetString("languageComboBox.Items1"),
-            resources.GetString("languageComboBox.Items2"),
-            resources.GetString("languageComboBox.Items3")});
-            resources.ApplyResources(this.languageComboBox, "languageComboBox");
-            this.languageComboBox.Name = "languageComboBox";
-            this.languageComboBox.SelectedIndexChanged += new System.EventHandler(this.languageComboBox_SelectedIndexChanged);
-            // 
-            // label26
-            // 
-            resources.ApplyResources(this.label26, "label26");
-            this.label26.Name = "label26";
-            // 
-            // SetupPlayerButton
-            // 
-            resources.ApplyResources(this.SetupPlayerButton, "SetupPlayerButton");
-            this.SetupPlayerButton.Name = "SetupPlayerButton";
-            this.SetupPlayerButton.UseVisualStyleBackColor = true;
-            this.SetupPlayerButton.Click += new System.EventHandler(this.SetupAVSPlayerButton_Click);
-            // 
-            // SplashScreenCheckBox
-            // 
-            resources.ApplyResources(this.SplashScreenCheckBox, "SplashScreenCheckBox");
-            this.SplashScreenCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.SplashScreenCheckBox.Checked = true;
-            this.SplashScreenCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SplashScreenCheckBox.Name = "SplashScreenCheckBox";
-            this.SplashScreenCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // TrayModeCheckBox
-            // 
-            resources.ApplyResources(this.TrayModeCheckBox, "TrayModeCheckBox");
-            this.TrayModeCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.TrayModeCheckBox.Name = "TrayModeCheckBox";
-            this.TrayModeCheckBox.UseVisualStyleBackColor = false;
-            this.TrayModeCheckBox.CheckedChanged += new System.EventHandler(this.TrayModeCheckBox_CheckedChanged);
-            // 
-            // SetupDeleteTempFileCheckBox
-            // 
-            resources.ApplyResources(this.SetupDeleteTempFileCheckBox, "SetupDeleteTempFileCheckBox");
-            this.SetupDeleteTempFileCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.SetupDeleteTempFileCheckBox.Checked = true;
-            this.SetupDeleteTempFileCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SetupDeleteTempFileCheckBox.Name = "SetupDeleteTempFileCheckBox";
-            this.SetupDeleteTempFileCheckBox.UseVisualStyleBackColor = false;
+            resources.ApplyResources(this.DeleteLogButton, "DeleteLogButton");
+            this.DeleteLogButton.Name = "DeleteLogButton";
+            this.DeleteLogButton.UseVisualStyleBackColor = true;
+            this.DeleteLogButton.Click += new System.EventHandler(this.DeleteLogButton_Click);
             // 
             // SetDefaultButton
             // 
@@ -2914,19 +2943,28 @@
             this.SetDefaultButton.UseVisualStyleBackColor = true;
             this.SetDefaultButton.Click += new System.EventHandler(this.SetDefaultButton_Click);
             // 
-            // DeleteLogButton
-            // 
-            resources.ApplyResources(this.DeleteLogButton, "DeleteLogButton");
-            this.DeleteLogButton.Name = "DeleteLogButton";
-            this.DeleteLogButton.UseVisualStyleBackColor = true;
-            this.DeleteLogButton.Click += new System.EventHandler(this.DeleteLogButton_Click);
-            // 
             // ViewLogButton
             // 
             resources.ApplyResources(this.ViewLogButton, "ViewLogButton");
             this.ViewLogButton.Name = "ViewLogButton";
             this.ViewLogButton.UseVisualStyleBackColor = true;
             this.ViewLogButton.Click += new System.EventHandler(this.ViewLogButton_Click);
+            // 
+            // label44
+            // 
+            resources.ApplyResources(this.label44, "label44");
+            this.label44.Name = "label44";
+            // 
+            // MuxAacEncoderComboBox
+            // 
+            this.MuxAacEncoderComboBox.FormattingEnabled = true;
+            this.MuxAacEncoderComboBox.Items.AddRange(new object[] {
+            resources.GetString("MuxAacEncoderComboBox.Items"),
+            resources.GetString("MuxAacEncoderComboBox.Items1"),
+            resources.GetString("MuxAacEncoderComboBox.Items2"),
+            resources.GetString("MuxAacEncoderComboBox.Items3")});
+            resources.ApplyResources(this.MuxAacEncoderComboBox, "MuxAacEncoderComboBox");
+            this.MuxAacEncoderComboBox.Name = "MuxAacEncoderComboBox";
             // 
             // MainForm
             // 
@@ -3008,7 +3046,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.BlackCRFNum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BlackFPSNum)).EndInit();
             this.SetupTabPage.ResumeLayout(false);
-            this.SetupTabPage.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             this.ResumeLayout(false);
@@ -3291,6 +3332,10 @@
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.Label label43;
         private ControlExs.QQTextBox x264extraLine;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.ComboBox MuxAacEncoderComboBox;
     }
 }
 
