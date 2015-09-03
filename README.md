@@ -19,7 +19,7 @@ https://marukotoolbox.codeplex.com/releases/
 ###On Windows
 1. Windows XP, Vista, 7, 8, 8.1 x86 or x64
 
-2. .Net Framwork 3.5 SP1
+2. .Net Framwork 4.0
 
 ###On Linux
 _Not Thoroughly Tested 仅经过基本测试_
