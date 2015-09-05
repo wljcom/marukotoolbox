@@ -51,8 +51,39 @@ namespace mp4box
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
+            // 检测需要提升运行这个程序
+            Boolean bRunElevated = false, bForceAdmin = false;
+            foreach (string strParam in args)
+            {
+                if (strParam.Equals("-elevate"))
+                    bRunElevated = true;
+                else if (strParam.Equals("-forceadmin"))
+                    bForceAdmin = true;
+            }
+
+            // 检查程序路径是否可写入
+            if (!Util.IsDirWriteable(Path.GetDirectoryName(Application.ExecutablePath)))
+                bForceAdmin = true;
+
+            // 如果需要则提升权限
+            if (bForceAdmin && !bRunElevated)
+            {
+                try
+                {
+                    Process p = new Process();
+                    p.StartInfo.FileName = Application.ExecutablePath;
+                    p.StartInfo.Arguments = "-elevate";
+                    p.StartInfo.Verb = "runas";
+                    p.Start();
+                    return;
+                }
+                catch
+                {
+                }
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             NativeMethods.SetUnmanagedDllDirectory();
@@ -62,9 +93,9 @@ namespace mp4box
             // Process[] processes = Process.GetProcessesByName(procesname);
             // if (processes.Length > 1)
             // {
-                // MessageBox.Show("你已经打开了一个小丸工具箱喔！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                // Application.Exit();
-                // return;
+            // MessageBox.Show("你已经打开了一个小丸工具箱喔！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            // Application.Exit();
+            // return;
             // }
 
             if (ConfigurationManager.AppSettings["SplashScreen"] == "True")

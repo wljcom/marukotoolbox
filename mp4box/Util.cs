@@ -232,6 +232,42 @@ namespace mp4box
         }
 
         /// <summary>
+        /// 检查目录是否可写入
+        /// </summary>
+        /// <param name"strPath">需要检查的路径</param>
+        public static bool IsDirWriteable(string strPath)
+        {
+            try
+            {
+                bool bDirectoryCreated = false;
+
+                if (!Directory.Exists(strPath))
+                {
+                    Directory.CreateDirectory(strPath);
+                    bDirectoryCreated = true;
+                }
+
+                string newFilePath = string.Empty;
+                do
+                    newFilePath = Path.Combine(strPath, Path.GetRandomFileName());
+                while (File.Exists(newFilePath));
+
+                FileStream fs = File.Create(newFilePath);
+                fs.Close();
+                File.Delete(newFilePath);
+
+                if (bDirectoryCreated)
+                    Directory.Delete(strPath);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// ffmpeg output wrapper
         /// </summary>
         /// <param name="workPath">work path which contains ffmpeg</param>
