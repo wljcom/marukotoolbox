@@ -1476,6 +1476,7 @@ namespace mp4box
             }
 
             LogRecord(bat);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(GetCultureName());
             WorkingForm wf = new WorkingForm(bat, lbAuto.Items.Count);
             wf.Owner = this;
             wf.Show();
@@ -1840,6 +1841,7 @@ namespace mp4box
                 mux = boxmuxbat(tempVideo, "temp.aac", nameout9);
             auto = aextract + x264 + "\r\n" + mux + " \r\n";
             LogRecord(auto);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(GetCultureName());
             WorkingForm wf = new WorkingForm(auto);
             wf.Owner = this;
             wf.Show();
@@ -2390,6 +2392,7 @@ namespace mp4box
                     + "del \"" + tempAudio + "\"\r\n";
             }
             LogRecord(x264);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(GetCultureName());
             WorkingForm wf = new WorkingForm(x264);
             wf.Owner = this;
             wf.Show();
@@ -3343,6 +3346,29 @@ namespace mp4box
                 default:
                     break;
             }
+        }
+
+        private string GetCultureName()
+        {
+            string name = "zh-CN";
+            switch (languageComboBox.SelectedIndex)
+            {
+                case 0:
+                    name = "zh-CN";
+                    break;
+                case 1:
+                    name = "zh-TW";
+                    break;
+                case 2:
+                    name = "en-US";
+                    break;
+                case 3:
+                    name = "ja-JP";
+                    break;
+                default:
+                    break;
+            }
+            return name;
         }
 
         #endregion globalization
