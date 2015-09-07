@@ -1432,7 +1432,7 @@ namespace mp4box
                 if (x264AudioModeComboBox.SelectedIndex != 0 || !hasAudio)
                 {
                     x264 += "\r\n\"" + workPath + "\\mp4box.exe\"  -add  \"" + tempVideo + "#trackID=1:name=\" -new \"" + output + "\" \r\n";
-                    x264 += "del \"" + tempVideo + "\"";
+                    //x264 += "del \"" + tempVideo + "\"";
                 }
             }
             x264 += "\r\n";
@@ -1443,9 +1443,11 @@ namespace mp4box
             else
                 mux = ffmuxbat(tempVideo, tempAudio, output);
             if (x264AudioModeComboBox.SelectedIndex == 0 && hasAudio) //如果压制音频
-                bat += aextract + x264 + mux + " \r\ndel " + tempVideo + "\r\ndel " + tempAudio + "\r\n";
+                bat += aextract + x264 + mux + " \r\n";
             else
                 bat += x264;
+
+            bat += "echo ===== one file is completed! =====\r\n";
             return bat;
         }
 
@@ -1840,6 +1842,7 @@ namespace mp4box
             if (AVSwithAudioCheckBox.Checked && hasAudio) //如果包含音频
                 mux = boxmuxbat(tempVideo, "temp.aac", nameout9);
             auto = aextract + x264 + "\r\n" + mux + " \r\n";
+            auto += "\r\necho ===== one file is completed! =====\r\n";
             LogRecord(auto);
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(GetCultureName());
             WorkingForm wf = new WorkingForm(auto);
@@ -2391,6 +2394,7 @@ namespace mp4box
                     + "del \"" + tempVideo + "\"\r\n"
                     + "del \"" + tempAudio + "\"\r\n";
             }
+            x264 += "\r\necho ===== one file is completed! =====\r\n";
             LogRecord(x264);
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(GetCultureName());
             WorkingForm wf = new WorkingForm(x264);

@@ -231,6 +231,12 @@ namespace mp4box
             /// </summary>
             public static readonly Regex fileReg = new Regex(fileRegStr, RegexOptions.Singleline);
 
+            private const string x264endRegStr = @"encoded\s\d+\sframes,";
+            public static readonly Regex x264endReg = new Regex(x264endRegStr, RegexOptions.Singleline);
+
+            private const string fileCompletedRegStr = @"echo ===== one file is completed! =====";
+            public static readonly Regex fileCompletedReg = new Regex(fileCompletedRegStr, RegexOptions.Singleline);
+            
             /// <summary>
             /// ffmpeg -i sample output:
             /// <para>Duration: 00:02:20.22, start: 0.000000, bitrate: 827 kb/s</para>
@@ -364,6 +370,7 @@ namespace mp4box
         void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
             // setup the process
+            UpdateWorkCountUI();
             CheckFileExist(batPath);
             var processInfo = new System.Diagnostics.ProcessStartInfo(batPath, "2>&1");
             processInfo.WorkingDirectory = System.IO.Directory.GetCurrentDirectory();
@@ -393,7 +400,7 @@ namespace mp4box
         private void ProcExit(object sender, EventArgs e)
         {
             // synchronize UI
-            UpdateWorkCountUI();
+            //UpdateWorkCountUI();
             buttonAbort.InvokeIfRequired(() =>
                 buttonAbort.Enabled = false);
             UpdateProgress(1);
@@ -474,12 +481,16 @@ namespace mp4box
                 Match result = Patterns.fileReg.Match(e.Data);
                 if (result.Success)
                 {
-                    UpdateWorkCountUI();
                     progressBarX264.InvokeIfRequired(() =>
                         progressBarX264.Style = ProgressBarStyle.Blocks
                     );
                     bgworker.ReportProgress(0, 0.0);
                     frameCount = EstimateFrame(workPath, result.Groups["fileIn"].Value);
+                }
+                result = Patterns.fileCompletedReg.Match(e.Data);
+                if (result.Success)
+                {
+                    UpdateWorkCountUI();
                 }
                 // try ffms pattern
                 result = Patterns.ffmsReg.Match(e.Data);
