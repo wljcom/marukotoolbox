@@ -48,7 +48,8 @@ namespace mp4box
         public string workPath = "!undefined";
         public bool shutdownState = false;
         public bool trayMode = false;
-        XDocument xdoc;
+        private XDocument xdoc;
+
         #region Private Members Declaration
 
         private StringBuilder avsBuilder = new StringBuilder(1000);
@@ -239,9 +240,11 @@ namespace mp4box
                 case 0: // 自定义
                     sb.Append(" " + x264CustomParameterTextBox.Text);
                     break;
+
                 case 1: // crf
                     sb.Append(" --crf " + x264CRFNum.Value);
                     break;
+
                 case 2: // 2pass
                     sb.Append(" --pass " + pass + " --bitrate " + x264BitrateNum.Value);
                     break;
@@ -295,9 +298,11 @@ namespace mp4box
                 case 0: // 自定义
                     sb.Append(" " + x264CustomParameterTextBox.Text);
                     break;
+
                 case 1: // crf
                     sb.Append(" --crf " + x264CRFNum.Value);
                     break;
+
                 case 2: // 2pass
                     sb.Append(" --pass " + pass + " --bitrate " + x264BitrateNum.Value);
                     break;
@@ -426,6 +431,7 @@ namespace mp4box
                         ffmpeg += "\"" + workPath + "\\fdkaac.exe\" --ignorelength " + AudioCustomParameterTextBox.Text.ToString() + " - -o \"" + output + "\"";
                     }
                     break;
+
                 case 6:
                     ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input + "\" -c:a ac3 -b:a " + AudioBitrateComboBox.Text.ToString() + "k \"" + output + "\"";
                     break;
@@ -834,7 +840,9 @@ namespace mp4box
         /// </summary>
         private void InitParameter()
         {
-            x264CRFNum.Value = 24;
+            #region Video Tab
+
+            x264CRFNum.Value = 23.5m;
             x264BitrateNum.Value = 800;
             x264AudioParameterTextBox.Text = "--abitrate 128";
             x264AudioModeComboBox.SelectedIndex = 0;
@@ -843,18 +851,64 @@ namespace mp4box
             x264HeightNum.Value = 0;
             x264CustomParameterTextBox.Text = "";
             x264PriorityComboBox.SelectedIndex = 2;
+            x264FramesNumericUpDown.Value = 0;
+            x264SeekNumericUpDown.Value = 0;
+            x264Mode1RadioButton.Checked = true;
+            x264ShutdownCheckBox.Checked = false;
+
+            #endregion Video Tab
+
+            #region Audio Tab
+
             AudioEncoderComboBox.SelectedIndex = 0;
-            AudioCustomParameterTextBox.Text = "";
+            AudioPresetComboBox.SelectedIndex = 0;
             AudioBitrateComboBox.Text = "128";
+            AudioBitrateRadioButton.Checked = true;
+
+            #endregion Audio Tab
+
+            #region General Tab
+
             OnePicAudioBitrateNum.Value = 128;
             OnePicFPSNum.Value = 1;
             OnePicCRFNum.Value = 24;
-            AVSScriptTextBox.Text = "";
+
             BlackFPSNum.Value = 1;
             BlackCRFNum.Value = 51;
             BlackBitrateNum.Value = 900;
-            SetupDeleteTempFileCheckBox.Checked = true;
+
+            maskb.Text = "000000";
+            maske.Text = "000020";
+
             TransposeComboBox.SelectedIndex = 1;
+
+            #endregion General Tab
+
+            #region Mux Tab
+
+            cbFPS.SelectedIndex = 0;
+            Mp4BoxParComboBox.SelectedIndex = 0;
+            MuxAacEncoderComboBox.SelectedIndex = 0;
+            MuxFormatComboBox.Text = "flv";
+
+            #endregion Mux Tab
+
+            #region AVS Tab
+
+            AVSwithAudioCheckBox.Checked = false;
+
+            #endregion AVS Tab
+
+            #region Setup Tab
+
+            SplashScreenCheckBox.Checked = true;
+            TrayModeCheckBox.Checked = false;
+            x264PriorityComboBox.SelectedIndex = 2;
+            x264ThreadsComboBox.SelectedIndex = 0;
+            SetupDeleteTempFileCheckBox.Checked = true;
+            CheckUpdateCheckBox.Checked = true;
+
+            #endregion Setup Tab
         }
 
         private void LoadSettings()
@@ -1027,7 +1081,6 @@ namespace mp4box
             string systemTempPath = Environment.GetEnvironmentVariable("TEMP", EnvironmentVariableTarget.Machine);
             tempavspath = systemTempPath + "\\temp.avs";
             tempPic = systemTempPath + "\\marukotemp.jpg";
-            InitParameter();
 
             //load x264 exe
             DirectoryInfo folder = new DirectoryInfo(workPath);
@@ -1084,6 +1137,8 @@ namespace mp4box
                     AudioPresetComboBox.SelectedIndex = 0;
                 }
             }
+
+            InitParameter();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -1403,7 +1458,7 @@ namespace mp4box
             string tempVideo = "temp.mp4";
             string tempAudio = "temp.aac";
 
-            //检测是否含有音频 
+            //检测是否含有音频
             MediaInfo MI = new MediaInfo();
             MI.Open(input);
             string audio = MI.Get(StreamKind.Audio, 0, "Format");
@@ -3360,15 +3415,19 @@ namespace mp4box
                 case 0:
                     name = "zh-CN";
                     break;
+
                 case 1:
                     name = "zh-TW";
                     break;
+
                 case 2:
                     name = "en-US";
                     break;
+
                 case 3:
                     name = "ja-JP";
                     break;
+
                 default:
                     break;
             }
@@ -3426,7 +3485,7 @@ namespace mp4box
             //mux = "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + namevideo + "\" -c:v copy -an  \"" + workPath + "\\video_noaudio.mp4\" \r\n";
             //mux += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + workPath + "\\video_noaudio.mp4\" -i \"" + nameaudio + "\" -vcodec copy  -acodec copy \"" + nameout + "\" \r\n";
             //mux += "del \"" + workPath + "\\video_noaudio.mp4\" \r\n";
-            mux = "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + namevideo + "\" -i \""+ nameaudio +"\" -map 0:v -c:v copy -map 1:0 -c:a copy  \"" + txtout.Text + "\" \r\n";
+            mux = "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + namevideo + "\" -i \"" + nameaudio + "\" -map 0:v -c:v copy -map 1:0 -c:a copy  \"" + txtout.Text + "\" \r\n";
             batpath = workPath + "\\mux.bat";
             File.WriteAllText(batpath, mux, UnicodeEncoding.Default);
             LogRecord(mux);
@@ -3778,7 +3837,12 @@ namespace mp4box
 
         private void SetDefaultButton_Click(object sender, EventArgs e)
         {
-            InitParameter();
+            DialogResult dr = MessageBox.Show(string.Format("是否将所有界面参数恢复到默认设置？"), "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                InitParameter();
+                MessageBox.Show("恢复默认设置完成！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         //Ctrl+A 可以全选文本
@@ -3824,7 +3888,7 @@ namespace mp4box
                 {
                     if (isFullUpdate)
                     {
-                        DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否前往官网下载？", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否前往官网下载？", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dr == DialogResult.Yes)
                         {
                             Process.Start("http://www.maruko.in/");
@@ -3832,7 +3896,7 @@ namespace mp4box
                     }
                     else
                     {
-                        DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否自动升级？（文件约1.5MB）", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否自动升级？（文件约1.5MB）", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dr == DialogResult.Yes)
                         {
                             FormUpdater formUpdater = new FormUpdater(startpath, NewDate.ToString());
@@ -3947,7 +4011,7 @@ namespace mp4box
                 {
                     if (isFullUpdate)
                     {
-                        DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否前往官网下载？", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否前往官网下载？", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dr == DialogResult.Yes)
                         {
                             Process.Start("http://www.maruko.in/");
@@ -3955,7 +4019,7 @@ namespace mp4box
                     }
                     else
                     {
-                        DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否自动升级？（文件约1.5MB）", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        DialogResult dr = MessageBox.Show(string.Format("新版已于{0}发布，是否自动升级？（文件约1.5MB）", NewDate.ToString("yyyy-M-d")), "喜大普奔", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dr == DialogResult.Yes)
                         {
                             FormUpdater formUpdater = new FormUpdater(startpath, date);
@@ -4212,7 +4276,6 @@ namespace mp4box
                 e.Graphics.DrawString(Convert.ToString(lbAuto.Items[e.Index]), e.Font, BlackBrush, e.Bounds);
             }
         }
-
 
         private string GetSubtitlePath(string videoPath)
         {
