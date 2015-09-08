@@ -20,13 +20,10 @@
 //
 
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows.Forms;
 namespace mp4box
 {
@@ -53,35 +50,36 @@ namespace mp4box
         [STAThread]
         static void Main(string[] args)
         {
-            // 检测需要提升运行这个程序
-            Boolean bRunElevated = false, bForceAdmin = false;
-            foreach (string strParam in args)
-            {
-                if (strParam.Equals("-elevate"))
-                    bRunElevated = true;
-                else if (strParam.Equals("-forceadmin"))
-                    bForceAdmin = true;
-            }
-
             // 检查程序路径是否可写入
             if (!Util.IsDirWriteable(Path.GetDirectoryName(Application.ExecutablePath)))
-                bForceAdmin = true;
-
-            // 如果需要则提升权限
-            if (bForceAdmin && !bRunElevated)
             {
-                try
+                bool bRunElevated = false;
+                //检测程序是否以高权限运行
+                foreach (string strParam in args)
                 {
-                    Process p = new Process();
-                    p.StartInfo.FileName = Application.ExecutablePath;
-                    p.StartInfo.Arguments = "-elevate";
-                    p.StartInfo.Verb = "runas";
-                    p.Start();
-                    return;
+                    if (strParam.Equals("-elevate"))
+                    {
+                        bRunElevated = true;
+                        break;
+                    }
                 }
-                catch
+
+                // 如果需要则提升权限
+                if (!bRunElevated)
                 {
+                    try
+                    {
+                        Process p = new Process();
+                        p.StartInfo.FileName = Application.ExecutablePath;
+                        p.StartInfo.Arguments = "-elevate";
+                        p.StartInfo.Verb = "runas";
+                        p.Start();
+                        return;
+                    }
+                    catch { }
                 }
+                MessageBox.Show("小丸工具箱无法启动因为当前目录无法写入\r\n\r\n请赋予小丸工具箱所需权限或者将应用程序移动到未受保护的目录下", "小丸工具箱 错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             Application.EnableVisualStyles();
