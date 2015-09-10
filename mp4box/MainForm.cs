@@ -430,15 +430,28 @@ namespace mp4box
                     ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input + "\" -c:a ac3 -b:a " + AudioBitrateComboBox.Text.ToString() + "k \"" + output + "\"";
                     break;
 
-                case 7:
-                    ffmpeg = "\"" + workPath + "\\ffmpeg.exe\" -i \"" + input + "\"  -vn -sn -c:a copy -y -map 0:a:0 " + "\"" + output + "\"";
-                    break;
-
                 default:
                     break;
             }
             aac = ffmpeg + "\r\n";
             return aac;
+        }
+
+        private string getAudioExt()
+        {
+            string ext = ".aac";
+            switch (AudioEncoderComboBox.SelectedIndex)
+            {
+                case 0: ext = ".mp4"; break;
+                case 1: ext = ".m4a"; break;
+                case 2: ext = ".wav"; break;
+                case 3: ext = ".m4a"; break;
+                case 4: ext = ".flac"; break;
+                case 5: ext = ".m4a"; break;
+                case 6: ext = ".ac3"; break;
+                default: ext = ".aac"; break;
+            }
+            return ext;
         }
 
         private void btnaudio_Click(object sender, EventArgs e)
@@ -578,7 +591,7 @@ namespace mp4box
                         ext = ".wav";
                     else if (audioFormat == "AAC")
                         ext = ".aac";
-                    else if (audioFormat == "AC3")
+                    else if (audioFormat == "AC-3")
                         ext = ".ac3";
                     else if (audioFormat == "ALAC")
                         ext = ".m4a";
@@ -640,7 +653,7 @@ namespace mp4box
                     ext = ".wav";
                 else if (audioFormat == "AAC")
                     ext = ".aac";
-                else if (audioFormat == "AC3")
+                else if (audioFormat == "AC-3")
                     ext = ".ac3";
                 else if (audioFormat == "ALAC")
                     ext = ".m4a";
@@ -1169,7 +1182,7 @@ namespace mp4box
                     AudioPresetComboBox.Items.Add(item.Attribute("Name").Value);
                     AudioPresetComboBox.SelectedIndex = 0;
                 }
-            }   
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -1487,7 +1500,7 @@ namespace mp4box
             bool hasAudio = false;
             string bat = "";
             string tempVideo = "temp.mp4";
-            string tempAudio = "temp.aac";
+            string tempAudio = "temp"+getAudioExt();
 
             //检测是否含有音频
             MediaInfo MI = new MediaInfo();
@@ -1917,7 +1930,7 @@ namespace mp4box
                     ShowErrorMessage("请选择视频文件");
                     return;
                 }
-                aextract = audiobat(namevideo9, "temp.aac");
+                aextract = audiobat(namevideo9, "temp"+getAudioExt());
             }
             //video
             if (x264ExeComboBox.SelectedItem.ToString().ToLower().Contains("x264"))
@@ -2417,7 +2430,7 @@ namespace mp4box
             string ext = Path.GetExtension(nameout2).ToLower();
             bool hasAudio = false;
             string tempVideo = Util.ChangeExt(namevideo2, "_temp.mp4");
-            string tempAudio = Util.ChangeExt(namevideo2, "_temp.aac");
+            string tempAudio = Util.ChangeExt(namevideo2, "_temp"+ getAudioExt());
 
             #region Audio
 
@@ -2872,6 +2885,7 @@ namespace mp4box
                     case 3: outputExt = "m4a"; codec = "ALAC"; break;
                     case 4: outputExt = "flac"; codec = "FLAC"; break;
                     case 5: outputExt = "m4a"; codec = "AAC"; break;
+                    case 6: outputExt = "ac3"; codec = "AC3"; break;
                     default: outputExt = "aac"; codec = "AAC"; break;
                 }
                 for (int i = 0; i < this.AudioListBox.Items.Count; i++)
@@ -2909,36 +2923,7 @@ namespace mp4box
             DialogResult result = savefile.ShowDialog();
             if (result == DialogResult.OK)
             {
-                switch (AudioEncoderComboBox.SelectedIndex)
-                {
-                    case 0:
-                        nameout3 = savefile.FileName + ".mp4";
-                        break;
-
-                    case 1:
-                        nameout3 = savefile.FileName + ".m4a";
-                        break;
-
-                    case 2:
-                        nameout3 = savefile.FileName + ".wav";
-                        break;
-
-                    case 3:
-                        nameout3 = savefile.FileName + ".m4a";
-                        break;
-
-                    case 4:
-                        nameout3 = savefile.FileName + ".flac";
-                        break;
-
-                    case 5:
-                        nameout3 = savefile.FileName + ".m4a";
-                        break;
-
-                    default:
-                        break;
-                }
-
+                nameout3 = savefile.FileName + getAudioExt();
                 AudioOutputTextBox.Text = nameout3;
             }
         }
@@ -2975,6 +2960,7 @@ namespace mp4box
                     case 3: AudioOutputTextBox.Text = Util.ChangeExt(txtaudio2.Text, "_ALAC.m4a"); break;
                     case 4: AudioOutputTextBox.Text = Util.ChangeExt(txtaudio2.Text, "_FLAC.flac"); break;
                     case 5: AudioOutputTextBox.Text = Util.ChangeExt(txtaudio2.Text, "_AAC.m4a"); break;
+                    case 6: AudioOutputTextBox.Text = Util.ChangeExt(txtaudio2.Text, "_AC3.ac3"); break;
                     default: AudioOutputTextBox.Text = Util.ChangeExt(txtaudio2.Text, "_AAC.aac"); break;
                 }
             }
