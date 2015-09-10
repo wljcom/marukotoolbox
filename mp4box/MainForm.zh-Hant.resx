@@ -232,12 +232,6 @@
   <data name="btnaextract2.Text" xml:space="preserve">
     <value>抽取音頻2</value>
   </data>
-  <data name="MuxTab.Text" xml:space="preserve">
-    <value>封裝</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>封装轉換</value>
-  </data>
   <data name="label44.Text" xml:space="preserve">
     <value>AAC編碼器</value>
   </data>
@@ -247,8 +241,8 @@
   <data name="label3.Text" xml:space="preserve">
     <value>新檔案生成在原資料夾</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>封裝為MP4</value>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>封装轉換</value>
   </data>
   <data name="MuxReplaceAudioButton.Text" xml:space="preserve">
     <value>替換音頻</value>
@@ -265,8 +259,8 @@
   <data name="btnout.Text" xml:space="preserve">
     <value>輸出</value>
   </data>
-  <data name="groupBox8.Text" xml:space="preserve">
-    <value>封裝為MKV</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>封裝為MP4</value>
   </data>
   <data name="button4.Text" xml:space="preserve">
     <value>輸出</value>
@@ -280,11 +274,11 @@
   <data name="button7.Text" xml:space="preserve">
     <value>封裝</value>
   </data>
-  <data name="AudioTab.Text" xml:space="preserve">
-    <value>音頻</value>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>封裝為MKV</value>
   </data>
-  <data name="NeroAACGroupBox.Text" xml:space="preserve">
-    <value>音頻壓制</value>
+  <data name="MuxTab.Text" xml:space="preserve">
+    <value>封裝</value>
   </data>
   <data name="AudioPresetLabel.Text" xml:space="preserve">
     <value>預設</value>
@@ -310,8 +304,8 @@
   <data name="btnaac.Text" xml:space="preserve">
     <value>壓制</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>批量壓制</value>
+  <data name="NeroAACGroupBox.Text" xml:space="preserve">
+    <value>音頻壓制</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 12</value>
@@ -322,8 +316,11 @@
   <data name="AudioBatchButton.Text" xml:space="preserve">
     <value>批量壓制</value>
   </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>一圖流</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>批量壓制</value>
+  </data>
+  <data name="AudioTab.Text" xml:space="preserve">
+    <value>音頻</value>
   </data>
   <data name="AudioCopyCheckBox.Text" xml:space="preserve">
     <value>複製音頻</value>
@@ -343,8 +340,8 @@
   <data name="AudioPicButton.Text" xml:space="preserve">
     <value>圖片</value>
   </data>
-  <data name="VideoTab.Text" xml:space="preserve">
-    <value>影片</value>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>一圖流</value>
   </data>
   <data name="x264FramesLabel.Text" xml:space="preserve">
     <value>編碼幀數</value>
@@ -357,9 +354,6 @@
   </data>
   <data name="MaintainResolutionCheckBox.Text" xml:space="preserve">
     <value>保持原始解析度</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>批量壓制</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="x264BatchSubSpecialLanguage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -375,6 +369,9 @@
     <value>刪除</value>
   </data>
   <data name="btnBatchAuto.Text" xml:space="preserve">
+    <value>批量壓制</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
     <value>批量壓制</value>
   </data>
   <data name="x264ShutdownCheckBox.Text" xml:space="preserve">
@@ -416,8 +413,8 @@
   <data name="label4.Text" xml:space="preserve">
     <value>預設</value>
   </data>
-  <data name="HelpTab.Text" xml:space="preserve">
-    <value>幫助</value>
+  <data name="VideoTab.Text" xml:space="preserve">
+    <value>影片</value>
   </data>
   <data name="FeedbackButton.Text" xml:space="preserve">
     <value>回饋問題</value>
@@ -434,8 +431,8 @@
   <data name="AboutBtn.Text" xml:space="preserve">
     <value>關於</value>
   </data>
-  <data name="groupBox11.Text" xml:space="preserve">
-    <value>後黑</value>
+  <data name="HelpTab.Text" xml:space="preserve">
+    <value>幫助</value>
   </data>
   <data name="label36.Text" xml:space="preserve">
     <value>目標碼率</value>
@@ -455,8 +452,8 @@
   <data name="BlackVideoButton.Text" xml:space="preserve">
     <value>影片</value>
   </data>
-  <data name="SetupTabPage.Text" xml:space="preserve">
-    <value>設定</value>
+  <data name="groupBox11.Text" xml:space="preserve">
+    <value>後黑</value>
   </data>
   <data name="label38.Text" xml:space="preserve">
     <value>預覽播放器</value>
@@ -490,6 +487,9 @@
   </data>
   <data name="ViewLogButton.Text" xml:space="preserve">
     <value>查看日誌</value>
+  </data>
+  <data name="SetupTabPage.Text" xml:space="preserve">
+    <value>設定</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

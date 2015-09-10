@@ -1453,7 +1453,7 @@
     <value>30</value>
   </data>
   <data name="AVSScriptTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
+    <value>SimSun, 9.75pt</value>
   </data>
   <data name="AVSScriptTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 332</value>
@@ -2704,7 +2704,7 @@
     <value>19</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
-    <value>MP4</value>
+    <value>所有格式</value>
   </data>
   <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
     <value>groupBox5</value>
@@ -7750,7 +7750,7 @@
     <value>1</value>
   </data>
   <data name="x264extraLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
+    <value>Microsoft YaHei, 9pt</value>
   </data>
   <data name="x264extraLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 72</value>

@@ -93,7 +93,7 @@ namespace mp4box
         private string tempavspath = "";
         private string tempPic = "";
         private string logFileName, logPath;
-        private DateTime ReleaseDate = DateTime.Parse("2015-9-9 8:0:0");
+        private DateTime ReleaseDate = DateTime.Parse("2015-9-10 8:0:0");
 
         #endregion Private Members Declaration
 
@@ -814,7 +814,7 @@ namespace mp4box
 
                 //string[] deletedfiles = { tempPic, "msg.vbs", tempavspath, "temp.avs", "clip.bat", "aextract.bat", "vextract.bat",
                 //                            "x264.bat", "aac.bat", "auto.bat", "mux.bat", "flv.bat", "mkvmerge.bat", "mkvextract.bat", "tmp.stat.mbtree", "tmp.stat" };
-                string[] deletedfiles = { "temp.wav", "temp.aac", "temp.mp4", "concat.txt", tempPic, tempavspath, workPath + "msg.vbs", startpath + "\\x264_2pass.log.mbtree",
+                string[] deletedfiles = { "vtemp.hevc", "atemp.m4a" , "atemp.flac" , "atemp.ac3" , "atemp.aac", "vtemp.mp4", "atemp.mp4", "concat.txt", tempPic, tempavspath, workPath + "msg.vbs", startpath + "\\x264_2pass.log.mbtree",
                                             startpath + "\\x264_2pass.log", "temp.hevc", startpath + "\\x265_2pass.log", startpath + "\\x265_2pass.log.cutree" };
                 deleteFileList.AddRange(deletedfiles);
 
@@ -1499,8 +1499,8 @@ namespace mp4box
         {
             bool hasAudio = false;
             string bat = "";
-            string tempVideo = "temp.mp4";
-            string tempAudio = "temp"+getAudioExt();
+            string tempVideo = "vtemp.mp4";
+            string tempAudio = "atemp" + getAudioExt();
 
             //检测是否含有音频
             MediaInfo MI = new MediaInfo();
@@ -1541,7 +1541,7 @@ namespace mp4box
             }
             else if (x264ExeComboBox.SelectedItem.ToString().ToLower().Contains("x265"))
             {
-                tempVideo = "temp.hevc";
+                tempVideo = "vtemp.hevc";
                 if (x264mode == 2)
                     x264 = x265bat(input, tempVideo, 1) + "\r\n" +
                            x265bat(input, tempVideo, 2);
@@ -1705,9 +1705,6 @@ namespace mp4box
                     string audio = MI.Get(StreamKind.Audio, 0, "Format");
                     if (audio.ToLower() != "aac")
                     {
-                        //string tempAudio = Util.ChangeExt(filePath, "_temp.aac");
-                        //AudioEncoderComboBox.SelectedIndex = 1;
-                        //aextract = audiobat(filePath, tempAudio);
                         mux += "\"" + workPath + "\\ffmpeg.exe\" -y -i \"" + lbffmpeg.Items[i].ToString() + "\" -c:v copy -c:a " + MuxAacEncoderComboBox.Text + " \"" + finish + "\" \r\n";
                     }
                     else
@@ -1910,7 +1907,8 @@ namespace mp4box
                 if (dgs == DialogResult.No) return;
             }
 
-            string tempVideo = "temp.mp4";
+            string tempVideo = "vtemp.mp4";
+            string tempAudio = "atemp" + getAudioExt();
             string filepath = tempavspath;
             //string filepath = workpath + "\\temp.avs";
             File.WriteAllText(filepath, AVSScriptTextBox.Text, Encoding.Default);
@@ -1930,8 +1928,11 @@ namespace mp4box
                     ShowErrorMessage("请选择视频文件");
                     return;
                 }
-                aextract = audiobat(namevideo9, "temp"+getAudioExt());
+                aextract = audiobat(namevideo9, tempAudio);
             }
+            else
+                aextract = "";
+
             //video
             if (x264ExeComboBox.SelectedItem.ToString().ToLower().Contains("x264"))
             {
@@ -1944,7 +1945,7 @@ namespace mp4box
             }
             else if (x264ExeComboBox.SelectedItem.ToString().ToLower().Contains("x265"))
             {
-                tempVideo = "temp.hevc";
+                tempVideo = "vtemp.hevc";
                 if (x264mode == 2)
                     x264 = x265bat(filepath, tempVideo, 1) + "\r\n" +
                            x265bat(filepath, tempVideo, 2);
@@ -1957,7 +1958,10 @@ namespace mp4box
             }
             //mux
             if (AVSwithAudioCheckBox.Checked && hasAudio) //如果包含音频
-                mux = boxmuxbat(tempVideo, "temp.aac", nameout9);
+                mux = boxmuxbat(tempVideo, tempAudio, nameout9);
+            else
+                mux = "";
+
             auto = aextract + x264 + "\r\n" + mux + " \r\n";
             auto += "\r\necho ===== one file is completed! =====\r\n";
             LogRecord(auto);
@@ -1979,28 +1983,6 @@ namespace mp4box
             if (result == DialogResult.OK)
             {
                 txtout9.Text = nameout9 = savefile.FileName;
-            }
-        }
-
-        private void btnAVSone_Click(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(nameout9))
-            {
-                ShowErrorMessage("请选择输出文件");
-            }
-            else
-            {
-                string filepath = workPath + "\\temp.avs";
-                File.WriteAllText(filepath, AVSScriptTextBox.Text, Encoding.Default);
-                x264 = x264bat(filepath, "temp.mp4");
-                //audio
-                aextract = audiobat(namevideo9, "temp.aac");
-                //mux
-                mux = ffmuxbat("temp.mp4", "temp.aac", nameout9);
-                auto = aextract + x264 + "\r\n" + mux + " \r\ncmd";
-                batpath = workPath + "\\auto.bat";
-                File.WriteAllText(batpath, auto, Encoding.Default);
-                Process.Start(batpath);
             }
         }
 
@@ -2429,8 +2411,8 @@ namespace mp4box
 
             string ext = Path.GetExtension(nameout2).ToLower();
             bool hasAudio = false;
-            string tempVideo = Util.ChangeExt(namevideo2, "_temp.mp4");
-            string tempAudio = Util.ChangeExt(namevideo2, "_temp"+ getAudioExt());
+            string tempVideo = Util.ChangeExt(namevideo2, "_vtemp.mp4");
+            string tempAudio = Util.ChangeExt(namevideo2, "_atemp" + getAudioExt());
 
             #region Audio
 
@@ -2484,7 +2466,7 @@ namespace mp4box
             }
             else if (x264ExeComboBox.SelectedItem.ToString().ToLower().Contains("x265"))
             {
-                tempVideo = Util.ChangeExt(namevideo2, "_temp.hevc");
+                tempVideo = Util.ChangeExt(namevideo2, "_vtemp.hevc");
                 if (ext != ".mp4")
                 {
                     ShowErrorMessage("不支持的格式输出,x265当前工具箱仅支持MP4输出");

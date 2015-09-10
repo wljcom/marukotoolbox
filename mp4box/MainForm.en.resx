@@ -448,6 +448,9 @@
   <data name="btnaextract2.Text" xml:space="preserve">
     <value>Audio 2</value>
   </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>All Formats</value>
+  </data>
   <data name="ExtractTab.Text" xml:space="preserve">
     <value>Extract</value>
   </data>
