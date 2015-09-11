@@ -52,6 +52,7 @@ namespace mp4box
             bgworker.DoWork += bgworker_DoWork;
             bgworker.WorkerReportsProgress = true;
             bgworker.ProgressChanged += bgworker_ProgressChanged;
+            bgworker.RunWorkerCompleted += bgworker__RunWorkerCompleted;
             bgworker.WorkerSupportsCancellation = true;
         }
 
@@ -224,7 +225,7 @@ namespace mp4box
             /// </remarks>
             private const string fileRegStr = @"-o ""(?<fileOut>[^""]+)"" ""(?<fileIn>[^""]+)""|ffmpeg.exe[""]? -i ""(?<fileIn>[^""]+)""";
             //private const string fileRegStr = @">""(?<workDIR>[^""]+)\\x264.+-o ""(?<fileOut>[^""]+)"" ""(?<fileIn>[^""]+)""";
-            
+
             /// <summary>
             /// Filename and working directory Regex.
             ///     Available patterns: workDIR, fileOut, fileIn.
@@ -236,7 +237,7 @@ namespace mp4box
 
             private const string fileCompletedRegStr = @"echo ===== one file is completed! =====";
             public static readonly Regex fileCompletedReg = new Regex(fileCompletedRegStr, RegexOptions.Singleline);
-            
+
             /// <summary>
             /// ffmpeg -i sample output:
             /// <para>Duration: 00:02:20.22, start: 0.000000, bitrate: 827 kb/s</para>
@@ -392,6 +393,12 @@ namespace mp4box
             UpdateProgress((double)e.UserState);
         }
 
+        void bgworker__RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (win7supported)
+                taskbarProgress.SetProgressState(this.Handle, TBPFLAG.TBPF_NOPROGRESS);
+        }
+
         #endregion
 
         /// <summary>
@@ -404,8 +411,7 @@ namespace mp4box
             buttonAbort.InvokeIfRequired(() =>
                 buttonAbort.Enabled = false);
             UpdateProgress(1);
-            if (win7supported)
-                taskbarProgress.SetProgressState(this.Handle, TBPFLAG.TBPF_NOPROGRESS);
+
             // wait a little bit for the last asynchronous reading
             System.Threading.Thread.Sleep(75);
             // append finish tag
@@ -566,12 +572,25 @@ namespace mp4box
                 progressBarX264.Value = Convert.ToInt32(value * progressBarX264.Maximum));
             labelProgress.InvokeIfRequired(() =>
                 labelProgress.Text = value.ToString("P"));
+
             if (win7supported)
-                taskbarProgress.SetProgressValue(this.Handle,
-                    Convert.ToUInt64(value * progressBarX264.Maximum), Convert.ToUInt64(progressBarX264.Maximum));
+                UpdateTaskBar(value);
 
             notifyIcon.Text = "小丸工具箱" + Environment.NewLine +
                 labelworkCount.Text + " - " + labelProgress.Text;
+        }
+
+        public void UpdateTaskBar(double value)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(delegate { UpdateTaskBar(value); }));
+            }
+            else
+            {
+                taskbarProgress.SetProgressValue(this.Handle,
+                                  Convert.ToUInt64(value * progressBarX264.Maximum), Convert.ToUInt64(progressBarX264.Maximum));
+            }
         }
 
         /// <summary>
