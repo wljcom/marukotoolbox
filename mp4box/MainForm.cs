@@ -43,7 +43,7 @@ using System.Xml.Linq;
 
 namespace mp4box
 {
-    public partial class MainForm : FormBase
+    public partial class MainForm : Form
     {
         public string workPath = "!undefined";
         public bool shutdownState = false;
@@ -879,7 +879,7 @@ namespace mp4box
             get { return (Environment.OSVersion.Platform == PlatformID.Win32NT) && (Environment.OSVersion.Version.Major >= 6); }
         }
 
-        #region common
+        #region Settings
 
         /// <summary>
         /// 还原默认参数
@@ -1088,7 +1088,7 @@ namespace mp4box
             ConfigurationManager.RefreshSection("appSettings"); // 刷新命名节，在下次检索它时将从磁盘重新读取它。记住应用程序要刷新节点
         }
 
-        #endregion common
+        #endregion
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -4340,5 +4340,49 @@ namespace mp4box
                 VideoBatchFormatComboBox.Enabled = true;
             }
         }
+
+        #region Form
+
+        protected String GetCurrentDirectory()
+        {
+            return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        }
+
+        protected void ShowErrorMessage(String argMessage)
+        {
+            MessageBox.Show(argMessage, "错误!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        protected void ShowErrorMessage(String argMessage, String argTitle)
+        {
+            MessageBox.Show(argMessage, argTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        protected void ShowWarningMessage(String argMessage)
+        {
+            MessageBox.Show(argMessage, "警告!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        protected void ShowWarningMessage(String argMessage, String argTitle)
+        {
+            MessageBox.Show(argMessage, argTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        protected void ShowInfoMessage(String argMessage)
+        {
+            MessageBox.Show(argMessage, "提示!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        protected void ShowInfoMessage(String argMessage, String argTitle)
+        {
+            MessageBox.Show(argMessage, argTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        protected DialogResult ShowQuestion(String argQuestion, String argTitle)
+        {
+            return MessageBox.Show(argQuestion, argTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
+        
+        #endregion
     }
 }
