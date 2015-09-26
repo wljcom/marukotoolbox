@@ -45,8 +45,8 @@ namespace mp4box
         private string CheckAviSynth()
         {
             bool bFoundInstalledAviSynth = false;
-            string fileVersion = string.Empty,fileDate = string.Empty,fileProductName = string.Empty;
-            string syswow64path = Environment.GetFolderPath(Environment.SpecialFolder.System).ToLowerInvariant().Replace("\\system32", "\\SysWOW64");
+            string fileVersion = string.Empty, fileDate = string.Empty, fileProductName = string.Empty;
+            string syswow64path = Environment.GetFolderPath(Environment.SpecialFolder.SystemX86);
 
             if (!Directory.Exists(syswow64path)
                            && Util.GetFileInformation(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "avisynth.dll"), out fileVersion, out fileDate, out fileProductName))

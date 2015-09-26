@@ -1522,7 +1522,10 @@ namespace mp4box
                     break;
                 case 2:
                     if (audio.ToLower() == "aac")
+                    {
+                        tempAudio = "atemp.aac";
                         aextract = ExtractAudio(input, tempAudio);
+                    }
                     else
                         aextract = audiobat(input, tempAudio);
                     break;
@@ -2440,6 +2443,7 @@ namespace mp4box
                 case 2:
                     if (audio.ToLower() == "aac")
                     {
+                        tempAudio = Util.ChangeExt(namevideo2, "_atemp.aac");
                         aextract = ExtractAudio(namevideo2, tempAudio);
                     }
                     else
@@ -2801,6 +2805,14 @@ namespace mp4box
                     AudioBitrateComboBox.Enabled = true;
                     AudioBitrateRadioButton.Enabled = true;
                     AudioCustomizeRadioButton.Enabled = true;
+                    break;
+
+                case 6:
+                    if (File.Exists(txtaudio2.Text))
+                        AudioOutputTextBox.Text = Util.ChangeExt(txtaudio2.Text, "_AC3.ac3");
+                    AudioBitrateComboBox.Enabled = true;
+                    AudioBitrateRadioButton.Enabled = true;
+                    AudioCustomizeRadioButton.Enabled = false;
                     break;
 
                 default:
@@ -4382,7 +4394,7 @@ namespace mp4box
         {
             return MessageBox.Show(argQuestion, argTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
-        
+
         #endregion
     }
 }
