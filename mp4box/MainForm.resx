@@ -1453,7 +1453,7 @@
     <value>30</value>
   </data>
   <data name="AVSScriptTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>SimSun, 9.75pt</value>
+    <value>宋体, 9pt</value>
   </data>
   <data name="AVSScriptTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 332</value>
@@ -6159,6 +6159,9 @@
   <data name="x264AudioModeComboBox.Items1" xml:space="preserve">
     <value>无音频流</value>
   </data>
+  <data name="x264AudioModeComboBox.Items2" xml:space="preserve">
+    <value>复制音频流</value>
+  </data>
   <data name="x264AudioModeComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>377, 93</value>
   </data>
@@ -7750,7 +7753,7 @@
     <value>1</value>
   </data>
   <data name="x264extraLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft YaHei, 9pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="x264extraLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 72</value>
@@ -8700,6 +8703,6 @@
     <value>MainForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>ControlExs.FormBase, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

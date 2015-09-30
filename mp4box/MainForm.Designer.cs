@@ -2366,7 +2366,8 @@
             this.x264AudioModeComboBox.FormattingEnabled = true;
             this.x264AudioModeComboBox.Items.AddRange(new object[] {
             resources.GetString("x264AudioModeComboBox.Items"),
-            resources.GetString("x264AudioModeComboBox.Items1")});
+            resources.GetString("x264AudioModeComboBox.Items1"),
+            resources.GetString("x264AudioModeComboBox.Items2")});
             resources.ApplyResources(this.x264AudioModeComboBox, "x264AudioModeComboBox");
             this.x264AudioModeComboBox.Name = "x264AudioModeComboBox";
             // 
